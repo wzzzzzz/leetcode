@@ -1,0 +1,1 @@
+如果last比now小：要减去两个last的值。//注意switch case语句，每个case都要break;
