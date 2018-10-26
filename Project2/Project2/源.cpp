@@ -87,105 +87,167 @@ using namespace std;
 
 
 
-/****************************************第十六题!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*********************************************/
-#include<vector>;
-#include<algorithm>;
-class Solution {
-public:
-	int threeSumClosest(vector<int>& nums, int target) {
-		int res = nums[0] + nums[1] + nums[2];
-		int len = nums.size();
-		for (int i = 0; i < len; i++) {
-			for (int j = i + 1; j < len; j++) {
-				for (int k = j + 1; k < len; k++) {
-					int sum = nums[i] + nums[j] + nums[k];
-					if (abs(target - sum) < abs(target - res))
-						res = sum;
-				}
-			}
-		}
-		cout << res;
-		return res;
-	}
-};
-
-int main() {
-	Solution s;
-	int n[4] = { -1,2,1,-4 };
-	vector<int> nums(n, n + 4);
-	s.threeSumClosest(nums, 1);
-	system("pause");
-	return 0;
-}
-
-
-
-/****************************************第十五题!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*********************************************/
+/****************************************第十六题*********************************************/
 //#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	int threeSumClosest(vector<int>& nums, int target) {
+//		
+//		//solution
+//		//sort(nums.begin(),nums.end());
+//
+//		//int res = nums[0] + nums[1] + nums[2];
+//		//int len = nums.size();
+//		//int lastdis = target > res ? (target - res) : (res - target);
+//		//int dis = 0;
+//		//for (int i = 0; i < len-2; i++) {
+//		//	int j = i + 1;
+//		//	int k = len - 1;
+//		//	while (j < k) {
+//		//		int sum = nums[i] + nums[j] + nums[k];
+//		//		if (target == sum) {
+//		//			return sum;
+//		//		}
+//		//		dis = target - sum;
+//		//		if (dis > 0) {
+//		//			j++;
+//		//		}
+//		//		else {
+//		//			k--;
+//		//			dis = 0 - dis;
+//		//		}
+//		//		if (dis < lastdis) {
+//		//			lastdis = dis;
+//		//			res = sum;
+//		//		}
+//		//	}
+//		//}
+//
+//		//基础思路
+//		int res = nums[0] + nums[1] + nums[2];
+//		int len = nums.size();
+//		int lastdis = target > res ? (target - res) : (res - target);
+//		int dis = 0;
+//		for (int i = 0; i < len-2; i++) {
+//			for (int j = i + 1; j < len-1; j++) {
+//				for (int k = j + 1; k < len; k++) {
+//					int sum = nums[i] + nums[j] + nums[k];
+//					if (target == sum) {
+//						return sum;
+//					}
+//					dis = target > sum ? (target - sum) : (sum - target);
+//					if (dis < lastdis) {
+//						res = sum;
+//						lastdis = dis;
+//					}
+//				}
+//			}
+//		}
+//
+//		cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[4] = { -1,2,1,-4 };
+//	vector<int> nums(n, n + 4);
+//	s.threeSumClosest(nums, 1);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第十五题*********************************************/
+//#include<vector>;
+//#include <algorithm>;
 //class Solution {
 //public:
 //	vector<vector<int>> threeSum(vector<int> &nums) {
+//		//solution1
 //		vector<vector<int>> res;
 //		int len = nums.size();
 //		if (len == 0)
 //			return res;
 //		if (len < 3)
 //			return res;
-//		
-//		//基础思路1
-//		for (int i = 0; i < len; i++) {
-//			for (int j = i+1; j < len; j++) {
-//				for (int k = j + 1; k < len; k++) {
-//					if (nums[i] + nums[j] + nums[k] == 0) {
-//						vector<int> tmp = { nums[i],nums[j],nums[k] };
-//						res.push_back(tmp);
-//						break;
+//
+//		//先排序
+//		sort(nums.begin(), nums.end());
+//
+//		//后处理
+//		//左边负的，右边正的
+//		for (int i = 0; i < len - 2; i++) {
+//			int j = i + 1;
+//			int k = len - 1;
+//			while (j < k) {
+//				int sum = nums[i] + nums[j] + nums[k];
+//				if (sum == 0) {
+//					vector<int> tmp = { nums[i],nums[j],nums[k] };
+//					res.push_back(tmp);
+//					while (nums[j] == nums[j + 1]) {
+//						j++;
 //					}
+//					j++;
+//					while (nums[k] == nums[k - 1]) {
+//						k--;
+//					}
+//					k--;
 //				}
+//				else if (sum < 0) {
+//					j++;
+//				}
+//				else k--;
+//			}
+//			while (nums[i] == nums[i + 1]) {
+//				i++;
 //			}
 //		}
 //
-//		for (int i = 0; i < res.size(); i++) {
-//			for (int j = i + 1; j < res.size(); j++) {
-//				vector<int>::iterator first = find(res[j].begin(), res[j].end(), res[i][0]);
-//				vector<int>::iterator second = find(res[j].begin(), res[j].end(), res[i][1]);
-//				vector<int>::iterator third = find(res[j].begin(), res[j].end(), res[i][2]);
-//				if (!(first == res[j].end() || second == res[j].end() || third == res[j].end()||(res[i][0] == 0 && res[i][1] == 0 && res[i][2] == 0 && (res[j][0] != 0 || res[j][1] != 0 || res[j][2] != 0)))) {
-//					res.erase(res.begin() + j);
-//					j--;
-//				}
-//			}
-//		}
-//
-//		//思路2，太慢了
+//		////思路，太慢了		
+//		//vector<vector<int>> res;
+//		//int len = nums.size();
+//		//if (len == 0)
+//		//	return res;
+//		//if (len < 3)
+//		//	return res;
 //		////先排序
-//		//for (int i = 0; i < len; i++) {
-//		//	int max = nums[i];
-//		//	int maxj = i;
-//		//	for (int j = i; j < len; j++) {
-//		//		if (nums[j] > max)
-//		//		{
-//		//			max = nums[j];
-//		//			maxj = j;
-//		//		}
-//		//	}
-//		//	nums[maxj] = nums[i];
-//		//	nums[i] = max;
-//		//}
+//		//sort(nums.begin(), nums.end());
 //
 //		////后处理
 //		//int left = 0;
 //		//int right = len - 1;
 //		//int third = 0;
 //		//int target = 0;
-//		////左边正的，右边负的
-//		//while (left < len&&nums[left] >= 0) {
-//		//	while (right > (left+1) && nums[right] <= 0) {
+//		////左边负的，右边正的
+//		//while (left < len&&nums[left] <= 0) {
+//		//	while (right > (left+1) && nums[right] >= 0) {
 //		//		target = 0 - nums[left] - nums[right];
 //		//		//cout << target << " ";
-//		//		//第三个指针从右边检查负的
-//		//		if (target < 0) {
+//		//		//第三个指针从右边检查正的
+//		//		if (target > 0) {
 //		//			third = right - 1;
+//		//			while (nums[third] >= 0) {
+//		//				//cout << nums[left] << " " << nums[right] << " " << nums[third] << endl;
+//		//				if (nums[third] == target) {
+//		//					vector<int> tmp = { nums[left],nums[right],nums[third] };
+//		//					res.push_back(tmp);							
+//
+//		//					break;
+//		//				}
+//		//				//最大的也不够大
+//		//				else if (nums[third] < target) {
+//		//					break;
+//		//				}
+//		//				else third--;
+//		//			}
+//		//		}
+//		//		//第三个指针从左边检查负的
+//		//		else {
+//		//			third = left + 1;
 //		//			while (nums[third] <= 0) {
 //		//				//cout << nums[left] << " " << nums[right] << " " << nums[third] << endl;
 //		//				if (nums[third] == target) {
@@ -194,18 +256,8 @@ int main() {
 //
 //		//					break;
 //		//				}
-//		//				else third--;
-//		//			}
-//		//		}
-//		//		//第三个指针从左边检查正的
-//		//		else {
-//		//			third = left + 1;
-//		//			while (nums[third] >= 0) {
-//		//				//cout << nums[left] << " " << nums[right] << " " << nums[third] << endl;
-//		//				if (nums[third] == target) {
-//		//					vector<int> tmp = { nums[left],nums[right],nums[third] };
-//		//					res.push_back(tmp);							
-//
+//		//				//最小的还不够小
+//		//				else if (nums[third] > target) {
 //		//					break;
 //		//				}
 //		//				else third++;
@@ -225,12 +277,13 @@ int main() {
 //		//	right = len - 1;
 //		//}
 //
-//for (int i = 0; i < res.size(); i++) {
-//	for (int j = 0; j < res[i].size(); j++) {
-//		cout << res[i][j] << " ";
-//	}
-//	cout << endl;
-//}
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//
 //		return res;
 //	}
 //};
