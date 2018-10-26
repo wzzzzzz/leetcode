@@ -3,6 +3,79 @@ using namespace std;
 
 
 
+
+/****************************************第十八题*********************************************/
+//#include <vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<vector<int>> fourSum(vector<int>& nums, int target) {
+//		vector<vector<int>> res;
+//		int len = nums.size();
+//		if (len == 0)
+//			return res;
+//		if (len < 4)
+//			return res;
+//
+//		//先排序
+//		sort(nums.begin(), nums.end());
+//
+//		for (int i = 0; i < len - 3; i++) {
+//			for (int j = len - 1; j > i&&j > 2; j--) {
+//				int t = i + 1;
+//				int k = j - 1;
+//				if ((nums[i] + nums[j] + nums[t] + nums[t + 1] > 0) || (nums[i] + nums[j] + nums[k] + nums[k - 1]) < 0)
+//					t = k;
+//				while (t < k) {
+//					int sum = nums[i] + nums[j] + nums[t] + nums[k];
+//					if (sum == target) {
+//						vector<int> tmp = { nums[i],nums[j],nums[t],nums[k] };
+//						res.push_back(tmp);
+//						while (nums[t] == nums[t + 1]) {
+//							t++;
+//						}
+//						t++;
+//						while (nums[k] == nums[k - 1]) {
+//							k--;
+//						}
+//						k--;
+//					}
+//					else if (sum < target) {
+//						t++;
+//					}
+//					else k--;
+//				}
+//				while (nums[j] == nums[j - 1]) {
+//					j--;
+//				}
+//			}
+//			while (nums[i] == nums[i + 1]) {
+//				i++;
+//			}
+//		}
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;	
+//	int n[6] = { 1, 0, -1, 0, -2, 2 };
+//	vector<int> nums(n, n + 6);
+//	s.fourSum(nums, 0);
+//	system("pause");
+//	return 0;
+//}
+
+
+
 /****************************************第十七题*********************************************/
 //class Solution {
 //public:
