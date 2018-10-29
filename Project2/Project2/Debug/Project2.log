@@ -1,7 +1,3 @@
 ﻿  源.cpp
 e:\课程\leetcode\project2\project2\源.cpp(1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-e:\课程\leetcode\project2\project2\源.cpp(4): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-e:\课程\leetcode\project2\project2\源.cpp(5): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-e:\课程\leetcode\project2\project2\源.cpp(53): warning C4018: “<”: 有符号/无符号不匹配
-e:\课程\leetcode\project2\project2\源.cpp(54): warning C4018: “<”: 有符号/无符号不匹配
   Project2.vcxproj -> E:\课程\leetcode\Project2\Debug\Project2.exe

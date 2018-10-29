@@ -1,6 +1,59 @@
 #include <iostream>;
 using namespace std;
 
+//Definition for singly-linked list.
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
+class Solution {
+public:
+	ListNode * removeNthFromEnd(ListNode* head, int n) {
+		ListNode* last = head;
+		ListNode* tmp;
+		
+		while (n > 0) {
+			last = last->next;
+			n--;
+		}
+
+		if (!last) {
+			head = head->next;
+		}
+		else {
+			tmp = head;
+			while (last->next) {
+				last = last->next;
+				tmp = tmp->next;
+			}
+			tmp->next = tmp->next->next;
+		}
+
+		//while (head) {
+		//	cout << head->val << " ";
+		//	head = head->next;
+		//}
+		return head;
+	}
+};
+
+int main() {
+	Solution s;
+	ListNode l1(1);
+	ListNode l2(2);
+	ListNode l3(3);
+	ListNode l4(4);
+	ListNode l5(5);
+	l4.next = &l5;
+	l3.next = &l4;
+	l2.next = &l3;
+	l1.next = &l2;
+	s.removeNthFromEnd(&l1, 1);
+	system("pause");
+	return 0;
+}
 
 
 
