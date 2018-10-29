@@ -1,59 +1,103 @@
 #include <iostream>;
 using namespace std;
 
-//Definition for singly-linked list.
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
 
-class Solution {
-public:
-	ListNode * removeNthFromEnd(ListNode* head, int n) {
-		ListNode* last = head;
-		ListNode* tmp;
-		
-		while (n > 0) {
-			last = last->next;
-			n--;
-		}
 
-		if (!last) {
-			head = head->next;
-		}
-		else {
-			tmp = head;
-			while (last->next) {
-				last = last->next;
-				tmp = tmp->next;
-			}
-			tmp->next = tmp->next->next;
-		}
 
-		//while (head) {
-		//	cout << head->val << " ";
-		//	head = head->next;
-		//}
-		return head;
-	}
-};
+/****************************************第二十二题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	vector<string> generateParenthesis(int n) {
+//		vector<string> res;
+//		int left = 0;
+//		string str = "(";
+//		parenthesis(n, 1, str, &res);
+//		//cout << res.size();
+//		return res;
+//	}
+//
+//	void parenthesis(int n, int left, string str, vector<string>* res ) {
+//		int len = str.size();
+//		if (len < 2 * n-1) {
+//			if (left > len - left) {
+//				parenthesis(n, left, str + ")", res);
+//			}
+//			if (left < n) {
+//				parenthesis(n, left + 1, str + "(", res);
+//			}
+//		}
+//		else {
+//			str += ")";
+//			res->push_back(str);
+//			//cout << str.c_str() << endl;
+//		}		
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.generateParenthesis(3);
+//	system("pause");
+//	return 0;
+//}
 
-int main() {
-	Solution s;
-	ListNode l1(1);
-	ListNode l2(2);
-	ListNode l3(3);
-	ListNode l4(4);
-	ListNode l5(5);
-	l4.next = &l5;
-	l3.next = &l4;
-	l2.next = &l3;
-	l1.next = &l2;
-	s.removeNthFromEnd(&l1, 1);
-	system("pause");
-	return 0;
-}
+
+
+/****************************************第十九题*********************************************/
+////Definition for singly-linked list.
+//struct ListNode {
+//    int val;
+//    ListNode *next;
+//    ListNode(int x) : val(x), next(NULL) {}
+//};
+
+//class Solution {
+//public:
+//	ListNode * removeNthFromEnd(ListNode* head, int n) {
+//		ListNode* last = head;
+//		ListNode* tmp;
+//		
+//		while (n > 0) {
+//			last = last->next;
+//			n--;
+//		}
+//
+//		if (!last) {
+//			head = head->next;
+//		}
+//		else {
+//			tmp = head;
+//			while (last->next) {
+//				last = last->next;
+//				tmp = tmp->next;
+//			}
+//			tmp->next = tmp->next->next;
+//		}
+//
+//		//while (head) {
+//		//	cout << head->val << " ";
+//		//	head = head->next;
+//		//}
+//		return head;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	ListNode l1(1);
+//	ListNode l2(2);
+//	ListNode l3(3);
+//	ListNode l4(4);
+//	ListNode l5(5);
+//	l4.next = &l5;
+//	l3.next = &l4;
+//	l2.next = &l3;
+//	l1.next = &l2;
+//	s.removeNthFromEnd(&l1, 1);
+//	system("pause");
+//	return 0;
+//}
 
 
 
