@@ -1,6 +1,190 @@
 #include <iostream>;
 using namespace std;
 
+class Solution {
+public:
+	int divide(int dividend, int divisor) {
+		//solution
+		if (dividend == 0)
+			return 0;
+		if (divisor == 1) 
+			return dividend;			
+		if (divisor == -1) {
+			if (dividend == (-2147483647 - 1)) {
+				return 2147483647;
+			}				
+			return -dividend;
+		}			
+
+		int res = 0;
+		int flag = 1;
+		unsigned int udividend = dividend;
+		unsigned int udivisor = divisor;
+		if (dividend < 0) {
+			flag = -flag;
+			udividend = -dividend;
+		}
+		if (divisor < 0) {
+			flag = -flag;
+			udivisor = -divisor;
+		}
+		cout << udividend << " ";
+
+		while (udividend >= udivisor) {
+			long long  i = udivisor;
+			int count = 1;
+			while (udividend >= (i<<1)) {
+				i = i << 1;
+				count =count<<1;
+			}
+			udividend -= i;
+			res += count;
+		}
+
+		if (flag < 0)
+			res = -res;
+		cout << res;
+		return res;
+
+		//思路
+		//if (dividend == 0)
+		//	return 0;
+		//if (divisor == 1) 
+		//	return dividend;			
+		//if (divisor == -1) {
+		//	if (dividend == (-2147483647 - 1)) {
+		//		return 2147483647;
+		//	}				
+		//	return -dividend;
+		//}			
+
+		//int res = 0;
+		//int flag = 1;
+		//unsigned int udividend = dividend;
+		//unsigned int udivisor = divisor;
+		//if (dividend < 0) {
+		//	flag = -flag;
+		//	udividend = -dividend;
+		//}
+		//if (divisor < 0) {
+		//	flag = -flag;
+		//	udivisor = -divisor;
+		//}
+		//cout << udividend << " " << udivisor << " ";
+		//
+		//int two = 0, four = 0, eight = 0, sixteen = 0, thirtytwo = 0;
+		//two = udivisor + udivisor;
+		//if (two > 0) {
+		//	four = two + two;
+		//	if (four > 0) {
+		//		eight = four + four;
+		//		if (eight > 0) {
+		//			sixteen = eight + eight;
+		//			if (sixteen > 0) {
+		//				thirtytwo = sixteen + sixteen;
+		//			}
+		//		}
+		//	}
+		//}
+		////cout << two << "             " << four << "             " << eight << "             " << sixteen << "             " << thirtytwo << "             ";
+		//while (udividend >= udivisor) {
+		//	if (thirtytwo > 0 && udividend > thirtytwo) {
+		//		udividend -= thirtytwo;
+		//		res += 32;
+		//	}
+		//	else if (sixteen > 0 && udividend > sixteen) {
+		//		udividend -= sixteen;
+		//		res += 16;
+		//	}
+		//	else if (eight > 0 && udividend > eight) {
+		//		udividend -= eight;
+		//		res += 8;
+		//	}
+		//	else if (four > 0 && udividend > four) {
+		//		udividend -= four;
+		//		res += 4;
+		//	}
+		//	else if (two > 0 && udividend > two) {
+		//		udividend -= two;
+		//		res += 2;
+		//	}
+		//	else {
+		//		udividend -= udivisor;
+		//		res += 1;
+		//	}
+		//}
+		//if (flag < 0)
+		//	res = -res;
+		////cout << res;
+		//return res;
+	}
+};
+
+int main() {
+	Solution s;
+	s.divide(-2147483647-1,2);
+	system("pause");
+	return 0;
+}
+
+
+
+/****************************************第二十四题*********************************************/
+////Definition for singly-linked list.
+//struct ListNode {
+//    int val;
+//    ListNode *next;
+//    ListNode(int x) : val(x), next(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	ListNode * swapPairs(ListNode* head) {
+//		if (!head || !head->next) {
+//			return head;
+//		}
+//
+//		ListNode* first = head->next;
+//		ListNode* second = head;
+//		ListNode* last = nullptr;
+//		head = first;
+//
+//		while(first&&second) {
+//			second->next = first->next;
+//			first->next = second;
+//			if(last)
+//				last->next = first;
+//
+//			last = second;
+//			second = second->next;
+//			if (second) {				
+//				first = second->next;
+//			}
+//		}
+//
+//		//while (head) {
+//		//	cout << head->val << "  ";
+//		//	head = head->next;
+//		//}
+//		return head;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	ListNode l1(1);
+//	ListNode l2(2);
+//	ListNode l3(3);
+//	ListNode l4(4);
+//	ListNode l5(5);
+//	l4.next = &l5;
+//	l3.next = &l4;
+//	l2.next = &l3;
+//	l1.next = &l2;
+//	s.swapPairs(&l1);
+//	system("pause");
+//	return 0;
+//}
 
 
 

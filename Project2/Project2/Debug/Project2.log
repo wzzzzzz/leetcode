@@ -1,4 +1,4 @@
 ﻿  源.cpp
 e:\课程\leetcode\project2\project2\源.cpp(1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-e:\课程\leetcode\project2\project2\源.cpp(4): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+e:\课程\leetcode\project2\project2\源.cpp(40): warning C4244: “-=”: 从“__int64”转换到“unsigned int”，可能丢失数据
   Project2.vcxproj -> E:\课程\leetcode\Project2\Debug\Project2.exe
