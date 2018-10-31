@@ -1,131 +1,177 @@
 #include <iostream>;
 using namespace std;
 
+#include <vector>;
 class Solution {
 public:
-	int divide(int dividend, int divisor) {
-		//solution
-		if (dividend == 0)
-			return 0;
-		if (divisor == 1) 
-			return dividend;			
-		if (divisor == -1) {
-			if (dividend == (-2147483647 - 1)) {
-				return 2147483647;
-			}				
-			return -dividend;
-		}			
-
-		int res = 0;
-		int flag = 1;
-		unsigned int udividend = dividend;
-		unsigned int udivisor = divisor;
-		if (dividend < 0) {
-			flag = -flag;
-			udividend = -dividend;
+	void nextPermutation(vector<int>& nums) {
+		int len = nums.size();
+		int i = 0;
+		//判断是不是全是逆序
+		for (i; i < len-1; i++) {
+			if (nums[i] < nums[i + 1])
+				break;
 		}
-		if (divisor < 0) {
-			flag = -flag;
-			udivisor = -divisor;
-		}
-		cout << udividend << " ";
-
-		while (udividend >= udivisor) {
-			long long  i = udivisor;
-			int count = 1;
-			while (udividend >= (i<<1)) {
-				i = i << 1;
-				count =count<<1;
+		//全是逆序，没有更大的排序
+		if (i == len) {
+			for (i = 0; i < len / 2; i++) {
+				int tmp = nums[i];
+				nums[i] = nums[len - i - 1];
+				nums[len - i - 1] = tmp;
 			}
-			udividend -= i;
-			res += count;
+		}
+		//排成下一个更大的排序
+		else {
+			int left = 0;
+			int right = len - 1;
+			while (right > 0) {
+
+			}
 		}
 
-		if (flag < 0)
-			res = -res;
-		cout << res;
-		return res;
-
-		//思路
-		//if (dividend == 0)
-		//	return 0;
-		//if (divisor == 1) 
-		//	return dividend;			
-		//if (divisor == -1) {
-		//	if (dividend == (-2147483647 - 1)) {
-		//		return 2147483647;
-		//	}				
-		//	return -dividend;
-		//}			
-
-		//int res = 0;
-		//int flag = 1;
-		//unsigned int udividend = dividend;
-		//unsigned int udivisor = divisor;
-		//if (dividend < 0) {
-		//	flag = -flag;
-		//	udividend = -dividend;
-		//}
-		//if (divisor < 0) {
-		//	flag = -flag;
-		//	udivisor = -divisor;
-		//}
-		//cout << udividend << " " << udivisor << " ";
-		//
-		//int two = 0, four = 0, eight = 0, sixteen = 0, thirtytwo = 0;
-		//two = udivisor + udivisor;
-		//if (two > 0) {
-		//	four = two + two;
-		//	if (four > 0) {
-		//		eight = four + four;
-		//		if (eight > 0) {
-		//			sixteen = eight + eight;
-		//			if (sixteen > 0) {
-		//				thirtytwo = sixteen + sixteen;
-		//			}
-		//		}
-		//	}
-		//}
-		////cout << two << "             " << four << "             " << eight << "             " << sixteen << "             " << thirtytwo << "             ";
-		//while (udividend >= udivisor) {
-		//	if (thirtytwo > 0 && udividend > thirtytwo) {
-		//		udividend -= thirtytwo;
-		//		res += 32;
-		//	}
-		//	else if (sixteen > 0 && udividend > sixteen) {
-		//		udividend -= sixteen;
-		//		res += 16;
-		//	}
-		//	else if (eight > 0 && udividend > eight) {
-		//		udividend -= eight;
-		//		res += 8;
-		//	}
-		//	else if (four > 0 && udividend > four) {
-		//		udividend -= four;
-		//		res += 4;
-		//	}
-		//	else if (two > 0 && udividend > two) {
-		//		udividend -= two;
-		//		res += 2;
-		//	}
-		//	else {
-		//		udividend -= udivisor;
-		//		res += 1;
-		//	}
-		//}
-		//if (flag < 0)
-		//	res = -res;
-		////cout << res;
-		//return res;
+		for (int j = 0; j < len; j++) {
+			cout << nums[j] << " ";
+		}
 	}
 };
 
 int main() {
 	Solution s;
-	s.divide(-2147483647-1,2);
+	int n[3] = { 1,3,2 };
+	vector<int> nums(n, n + 3);
+	s.nextPermutation(nums);
 	system("pause");
 	return 0;
 }
+
+
+
+/****************************************第二十九题*********************************************/
+//class Solution {
+//public:
+//	int divide(int dividend, int divisor) {
+//		//solution
+//		if (dividend == 0)
+//			return 0;
+//		if (divisor == 1) 
+//			return dividend;			
+//		if (divisor == -1) {
+//			if (dividend == (-2147483647 - 1)) {
+//				return 2147483647;
+//			}				
+//			return -dividend;
+//		}			
+//
+//		int res = 0;
+//		int flag = 1;
+//		unsigned int udividend = dividend;
+//		unsigned int udivisor = divisor;
+//		if (dividend < 0) {
+//			flag = -flag;
+//			udividend = -dividend;
+//		}
+//		if (divisor < 0) {
+//			flag = -flag;
+//			udivisor = -divisor;
+//		}
+//		cout << udividend << " ";
+//
+//		while (udividend >= udivisor) {
+//			long long  i = udivisor;
+//			int count = 1;
+//			while (udividend >= (i<<1)) {
+//				i = i << 1;
+//				count =count<<1;
+//			}
+//			udividend -= i;
+//			res += count;
+//		}
+//
+//		if (flag < 0)
+//			res = -res;
+//		cout << res;
+//		return res;
+//
+//		//思路
+//		//if (dividend == 0)
+//		//	return 0;
+//		//if (divisor == 1) 
+//		//	return dividend;			
+//		//if (divisor == -1) {
+//		//	if (dividend == (-2147483647 - 1)) {
+//		//		return 2147483647;
+//		//	}				
+//		//	return -dividend;
+//		//}			
+//
+//		//int res = 0;
+//		//int flag = 1;
+//		//unsigned int udividend = dividend;
+//		//unsigned int udivisor = divisor;
+//		//if (dividend < 0) {
+//		//	flag = -flag;
+//		//	udividend = -dividend;
+//		//}
+//		//if (divisor < 0) {
+//		//	flag = -flag;
+//		//	udivisor = -divisor;
+//		//}
+//		//cout << udividend << " " << udivisor << " ";
+//		//
+//		//int two = 0, four = 0, eight = 0, sixteen = 0, thirtytwo = 0;
+//		//two = udivisor + udivisor;
+//		//if (two > 0) {
+//		//	four = two + two;
+//		//	if (four > 0) {
+//		//		eight = four + four;
+//		//		if (eight > 0) {
+//		//			sixteen = eight + eight;
+//		//			if (sixteen > 0) {
+//		//				thirtytwo = sixteen + sixteen;
+//		//			}
+//		//		}
+//		//	}
+//		//}
+//		////cout << two << "             " << four << "             " << eight << "             " << sixteen << "             " << thirtytwo << "             ";
+//		//while (udividend >= udivisor) {
+//		//	if (thirtytwo > 0 && udividend > thirtytwo) {
+//		//		udividend -= thirtytwo;
+//		//		res += 32;
+//		//	}
+//		//	else if (sixteen > 0 && udividend > sixteen) {
+//		//		udividend -= sixteen;
+//		//		res += 16;
+//		//	}
+//		//	else if (eight > 0 && udividend > eight) {
+//		//		udividend -= eight;
+//		//		res += 8;
+//		//	}
+//		//	else if (four > 0 && udividend > four) {
+//		//		udividend -= four;
+//		//		res += 4;
+//		//	}
+//		//	else if (two > 0 && udividend > two) {
+//		//		udividend -= two;
+//		//		res += 2;
+//		//	}
+//		//	else {
+//		//		udividend -= udivisor;
+//		//		res += 1;
+//		//	}
+//		//}
+//		//if (flag < 0)
+//		//	res = -res;
+//		////cout << res;
+//		//return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.divide(-2147483647-1,2);
+//	system("pause");
+//	return 0;
+//}
 
 
 
