@@ -1,48 +1,187 @@
 #include <iostream>;
 using namespace std;
 
-#include <vector>;
-class Solution {
-public:
-	void nextPermutation(vector<int>& nums) {
-		int len = nums.size();
-		int i = 0;
-		//判断是不是全是逆序
-		for (i; i < len-1; i++) {
-			if (nums[i] < nums[i + 1])
-				break;
-		}
-		//全是逆序，没有更大的排序
-		if (i == len) {
-			for (i = 0; i < len / 2; i++) {
-				int tmp = nums[i];
-				nums[i] = nums[len - i - 1];
-				nums[len - i - 1] = tmp;
-			}
-		}
-		//排成下一个更大的排序
-		else {
-			int left = 0;
-			int right = len - 1;
-			while (right > 0) {
 
-			}
-		}
 
-		for (int j = 0; j < len; j++) {
-			cout << nums[j] << " ";
-		}
-	}
-};
 
-int main() {
-	Solution s;
-	int n[3] = { 1,3,2 };
-	vector<int> nums(n, n + 3);
-	s.nextPermutation(nums);
-	system("pause");
-	return 0;
-}
+/****************************************第三十三题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	int search(vector<int>& nums, int target) {
+//		//solution 二分
+//		//int len = nums.size();
+//		//if (len == 0)
+//		//	return -1;
+//		//int left = 0;
+//		//int right = len - 1;
+//		//int mid = (left + right) / 2;
+//		//while (left <= right) {
+//		//	mid = (left + right) / 2;
+//		//	cout << left << " " << right << " " << mid << endl;
+//		//	if (target > nums[mid]) {
+//		//		if (nums[left] > target) {
+//		//			left = mid + 1;
+//		//		}
+//		//		else {
+//		//			if (nums[left] < nums[mid]) {
+//		//				left = mid + 1;
+//		//			}
+//		//			else {
+//		//				if (nums[right] < target) {
+//		//					right = mid - 1;
+//		//				}
+//		//				else left = mid + 1;
+//		//			}
+//		//		}
+//		//	}
+//		//	else if (target < nums[mid]) {
+//		//		if (nums[right] < target) {
+//		//			right = mid - 1;
+//		//		}
+//		//		else {
+//		//			if (nums[mid] < nums[right]) {
+//		//				right = mid - 1;
+//		//			}
+//		//			else {
+//		//				if (nums[left] > target) {
+//		//					left = mid + 1;
+//		//				}
+//		//				else right = mid - 1;
+//		//			}
+//		//		}
+//		//	}
+//		//	else {
+//		//		cout << mid;
+//		//		return mid;
+//		//	}
+//		//}
+//		//return -1;
+//
+//		//思路
+//		int len = nums.size();
+//		if (len == 0)
+//			return -1;
+//		if (nums[0] < target) {
+//			for (int i = 0; i < len; i++) {
+//				if (nums[i] > target || nums[i] < nums[0])
+//					return -1;
+//				else if (nums[i] == target) {
+//					cout << i;
+//					return i;
+//				}
+//			}
+//			return -1;
+//		}
+//		else if (nums[0] == target) return 0;
+//		else if (nums[len - 1] > target) {
+//			for (int i = len - 1; i >= 0; i--) {
+//				if (nums[i] < target || nums[i]>nums[len - 1])
+//					return -1;
+//				else if (nums[i] == target) {
+//					cout << i;
+//					return i;
+//				}
+//			}
+//			return -1;
+//		}
+//		else if (nums[len - 1] == target )return len - 1;
+//		else return -1;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[7] = { 5,1,2,3,4,1,2 };
+//	vector<int> nums(n, n + 5);
+//	s.search(nums, 1);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第三十一题*********************************************/
+//#include <vector>;
+//class Solution {
+//public:
+//	void nextPermutation(vector<int>& nums) {
+//		int len = nums.size();
+//		if (len == 1 || len == 0) {
+//			return;
+//		}
+//		int i = 0;
+//		//判断是不是全是逆序
+//		for (i; i < len-1; i++) {
+//			if (nums[i] < nums[i + 1])
+//				break;
+//		}
+//		//全是逆序，没有更大的排序
+//		if (i == len-1) {
+//			for (i = 0; i < len / 2; i++) {
+//				int tmp = nums[i];
+//				nums[i] = nums[len - i - 1];
+//				nums[len - i - 1] = tmp;
+//			}
+//		}
+//		//排成下一个更大的排序
+//		else {
+//			int left = len - 2;
+//			int right = len - 1;
+//			//从右边找到第一个比右边数字小的数字
+//			while (left >= 0) {
+//				if (nums[left] < nums[left+1]) {
+//					break;
+//				}
+//				else left--;
+//			}
+//			//找到left右边比它大的最小的
+//			int tmp = right;
+//			//先找到第一个比它大的
+//			while (right > left) {
+//				if (nums[right] > nums[left]) {
+//					tmp = right;
+//					break;
+//				}
+//				right--;
+//			}
+//			//然后再找最小的
+//			while (right > left) {
+//				if (nums[right] > nums[left] && nums[right] < nums[tmp]) {
+//					tmp = right;
+//				}
+//				right--;
+//			}
+//			right = tmp;
+//			cout << left << " " << right;
+//			//交换这两个
+//			tmp = nums[right];
+//			nums[right] = nums[left];
+//			nums[left] = tmp;
+//
+//			//把后面的全部倒序
+//			for (int j = left + 1; j <= (len - 1 + left) / 2; j++) {
+//				//cout << nums[j] << " " << nums[len + left - j] << endl;
+//				tmp = nums[j];
+//				nums[j] = nums[len + left - j];
+//				nums[len + left - j] = tmp;
+//			}
+//		}
+//
+//		for (int j = 0; j < len; j++) {
+//			cout << nums[j] << " ";
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[5] = {2,3,1,3,3 };
+//	vector<int> nums(n, n + 5);
+//	s.nextPermutation(nums);
+//	system("pause");
+//	return 0;
+//}
 
 
 
