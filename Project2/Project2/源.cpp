@@ -1,6 +1,100 @@
 #include <iostream>;
 using namespace std;
 
+#include <vector>;
+class Solution {
+public:
+	bool isValidSudoku(vector<vector<char>>& board) {
+		//检查横竖
+		for (int i = 0; i < 9; i++) {
+			int count[9] = { 0 };
+			int count0[9] = { 0 };
+			for (int j = 0; j < 9; j++) {
+				char t = board[i][j];
+				if (t != '.') {
+					if (count[t - '0' - 1] == 1)
+						return false;
+					count[t - '0' - 1]++;
+				}
+				t = board[j][i];
+				if (t != '.') {
+					if (count0[t - '0' - 1] == 1)
+						return false;
+					count0[t - '0' - 1]++;
+				}
+			}
+			//检查小块
+			int count00[9] = { 0 };
+			for (int k = 0; k < 3; k++) {
+				for (int j = 0; j < 3; j++) {
+					char t = board[k + 3 * (i / 3)][j + 3 * (i % 3)];
+					//cout << k + 3 * (i / 3) << " " << j + 3 * (i % 3) << "    ";
+					if (t != '.') {
+						if (count00[t - '0' - 1] == 1)
+							return false;
+						count00[t - '0' - 1]++;
+					}
+				}
+			}
+		}
+
+		//cout << "tttttt";
+		return true;
+	}
+};
+
+int main() {
+	Solution s;
+	vector<vector<char>> b{
+		{ '.','.','.','.','5','.','.','1','.'},
+		{'.','4','.','3','.','.','.','.','.'},
+		{'.','.','.','.','.','3','.','.','1'},
+		{'8','.','.','.','.','.','.','2','.'},
+		{'.','.','2','.','7','.','.','.','.'},	
+		{'.','1','5','.','.','.','.','.','.'},
+		{'.','.','.','.','.','2','.','.','.'},
+		{'.','2','.','9','.','.','.','.','.'},
+		{'.','.','4','.','.','.','.','.','.' }
+	};
+	s.isValidSudoku(b);
+	system("pause");
+	return 0;
+}
+
+
+
+/****************************************第三十四题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	vector<int> searchRange(vector<int>& nums, int target) {
+//		int len = nums.size();
+//		vector<int> tmp{ -1,-1 };
+//		for (int i = 0; i < len; i++) {
+//			if (nums[i] > target) break;
+//			else if (nums[i] == target) {
+//				if (i == 0 || nums[i - 1] < target) {
+//					tmp[0]=i;
+//				}
+//				if (i == len - 1 || nums[i + 1] > target) {
+//					tmp[1]=i;
+//					break;
+//				}
+//			}
+//		}
+//		//cout << tmp[0] << " " << tmp[1];
+//		return tmp;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[7] = { 5,7,7,8,8,10,11 };
+//	vector<int> nums(n, n + 6);
+//	s.searchRange(nums, 5);
+//	system("pause");
+//	return 0;
+//}
 
 
 
