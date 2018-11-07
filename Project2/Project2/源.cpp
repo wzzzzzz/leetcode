@@ -1,65 +1,90 @@
 #include <iostream>;
 using namespace std;
 
-#include <vector>;
-class Solution {
-public:
-	bool isValidSudoku(vector<vector<char>>& board) {
-		//检查横竖
-		for (int i = 0; i < 9; i++) {
-			int count[9] = { 0 };
-			int count0[9] = { 0 };
-			for (int j = 0; j < 9; j++) {
-				char t = board[i][j];
-				if (t != '.') {
-					if (count[t - '0' - 1] == 1)
-						return false;
-					count[t - '0' - 1]++;
-				}
-				t = board[j][i];
-				if (t != '.') {
-					if (count0[t - '0' - 1] == 1)
-						return false;
-					count0[t - '0' - 1]++;
-				}
-			}
-			//检查小块
-			int count00[9] = { 0 };
-			for (int k = 0; k < 3; k++) {
-				for (int j = 0; j < 3; j++) {
-					char t = board[k + 3 * (i / 3)][j + 3 * (i % 3)];
-					//cout << k + 3 * (i / 3) << " " << j + 3 * (i % 3) << "    ";
-					if (t != '.') {
-						if (count00[t - '0' - 1] == 1)
-							return false;
-						count00[t - '0' - 1]++;
-					}
-				}
-			}
-		}
 
-		//cout << "tttttt";
-		return true;
-	}
-};
 
-int main() {
-	Solution s;
-	vector<vector<char>> b{
-		{ '.','.','.','.','5','.','.','1','.'},
-		{'.','4','.','3','.','.','.','.','.'},
-		{'.','.','.','.','.','3','.','.','1'},
-		{'8','.','.','.','.','.','.','2','.'},
-		{'.','.','2','.','7','.','.','.','.'},	
-		{'.','1','5','.','.','.','.','.','.'},
-		{'.','.','.','.','.','2','.','.','.'},
-		{'.','2','.','9','.','.','.','.','.'},
-		{'.','.','4','.','.','.','.','.','.' }
-	};
-	s.isValidSudoku(b);
-	system("pause");
-	return 0;
-}
+
+/****************************************第三十六题*********************************************/
+//#include <vector>;
+//class Solution {
+//public:
+//	bool isValidSudoku(vector<vector<char>>& board) {
+//		//solution
+//		int count[9][9] = { 0 };
+//		int count0[9][9] = { 0 };
+//		int count00[9][9] = { 0 };
+//		for (int i = 0; i < 9; i++) {
+//			for (int j = 0; j < 9; j++) {
+//				char t = board[i][j] - '0' - 1;
+//				if (board[i][j] != '.') {
+//					if (count[i][t] == 1)
+//						return false;
+//					count[i][t]++;
+//					if (count0[t][j] == 1)
+//						return false;
+//					count0[t][j]++;
+//					if (count00[i / 3 * 3 + j / 3][t] == 1)
+//						return false;
+//					count00[i / 3 * 3 + j / 3][t]++;
+//				}
+//			}
+//		}
+//
+//		//检查横竖
+//		//for (int i = 0; i < 9; i++) {
+//		//	int count[9] = { 0 };
+//		//	int count0[9] = { 0 };
+//		//	for (int j = 0; j < 9; j++) {
+//		//		char t = board[i][j];
+//		//		if (t != '.') {
+//		//			if (count[t - '0' - 1] == 1)
+//		//				return false;
+//		//			count[t - '0' - 1]++;
+//		//		}
+//		//		t = board[j][i];
+//		//		if (t != '.') {
+//		//			if (count0[t - '0' - 1] == 1)
+//		//				return false;
+//		//			count0[t - '0' - 1]++;
+//		//		}
+//		//	}
+//		//	//检查小块
+//		//	int count00[9] = { 0 };
+//		//	for (int k = 0; k < 3; k++) {
+//		//		for (int j = 0; j < 3; j++) {
+//		//			char t = board[k + 3 * (i / 3)][j + 3 * (i % 3)];
+//		//			//cout << k + 3 * (i / 3) << " " << j + 3 * (i % 3) << "    ";
+//		//			if (t != '.') {
+//		//				if (count00[t - '0' - 1] == 1)
+//		//					return false;
+//		//				count00[t - '0' - 1]++;
+//		//			}
+//		//		}
+//		//	}
+//		//}
+//
+//		//cout << "tttttt";
+//		return true;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<char>> b{
+//		{ '.','.','.','.','5','.','.','1','.'},
+//		{'.','4','.','3','.','.','.','.','.'},
+//		{'.','.','.','.','.','3','.','.','1'},
+//		{'8','.','.','.','.','.','.','2','.'},
+//		{'.','.','2','.','7','.','.','.','.'},	
+//		{'.','1','5','.','.','.','.','.','.'},
+//		{'.','.','.','.','.','2','.','.','.'},
+//		{'.','2','.','9','.','.','.','.','.'},
+//		{'.','.','4','.','.','.','.','.','.' }
+//	};
+//	s.isValidSudoku(b);
+//	system("pause");
+//	return 0;
+//}
 
 
 
