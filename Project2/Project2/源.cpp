@@ -1,6 +1,130 @@
 #include <iostream>;
 using namespace std;
 
+#include<string>;
+#include<vector>;
+class Solution {
+public:
+	string multiply(string num1, string num2) {
+		int len1 = num1.length();
+		int len2 = num2.length();
+		//保证num1是比较短的数字
+		if (len2 < len1) {
+			string tmp = num1;
+			num1 = num2;
+			num2 = tmp;
+			int t = len1;
+			len1 = len2;
+			len2 = t;
+		}
+		vector<string> tmp;
+		for (int i = len1-1; i >= 0 ; i--) {
+			int ind = len1 - i - 1;
+			tmp.push_back("");
+			int n1 = num1[i] - '0';
+			int t = 0;
+			for (int j = len2 -1; j >= 0 ; j--) {
+				int n2 = num2[j] - '0';
+				int thisn = (n1*n2) % 10 + t;
+				if (thisn > 10) {
+					t = 1;
+					thisn -= 10;
+				}
+				else t = 0;
+				tmp[ind] = to_string(thisn) + tmp[ind];
+				t += n1 * n2 / 10;
+			}
+			if (t > 0) {
+				tmp[ind] = to_string(t) + tmp[ind];
+			}
+			for (int j = 0; j < ind; j++) {
+				tmp[ind] += "0";
+			}
+			cout << tmp[ind] << endl;
+		}
+
+		int len = tmp.size();
+		int maxlen = tmp[len - 1].size();
+		int next = 0;
+		string res;
+		for (int i = maxlen - 1; i > 0; i--) {
+			int ind = maxlen - i - 1;
+			int thissum = 0;
+			for (int j = 0; j < len; j++) {
+				if (tmp[j].length() > i) {
+					thissum += tmp[j][i]-'0';
+				}
+			}
+			thissum += next;
+			next = thissum / 10;
+			res = to_string(thissum % 10) + res;
+		}
+
+		cout << res;
+		return res;
+	}
+};
+
+int main() {
+	string a = "123", b = "456";
+	Solution s;
+	s.multiply(a, b);
+	system("pause");
+	return 0;
+}
+
+
+
+/****************************************第四十题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<vector<int>> res;
+//	vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+//		vector<int> tmp;
+//		int len = candidates.size();
+//		sort(candidates.begin(), candidates.end());
+//		cout << candidates.size()<<" ";
+//		getsum(0, tmp, candidates, target);
+//		cout << res.size()<<endl;
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//	void getsum(int index, vector<int> tmp, vector<int>& candidates, int target) {
+//		int len = candidates.size();
+//		if (target == 0) {
+//			res.push_back(tmp);
+//			return;
+//		}
+//		for (int i = index; i < len; i++) {
+//			if (candidates[i] > target) {
+//				return;
+//			}
+//			tmp.push_back(candidates[i]);
+//			getsum(i + 1, tmp, candidates, target - candidates[i]);
+//			tmp.pop_back();
+//			while (i < len - 1 && candidates[i] == candidates[i + 1]) {
+//				i++;
+//			}
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[7] = { 2,5,2,1,2,1,5 };
+//	vector<int> nums(n, n + 5);
+//	s.combinationSum2(nums, 5);
+//	system("pause");
+//	return 0;
+//}
+
 
 
 /****************************************第三十九题*********************************************/
