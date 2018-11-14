@@ -6,8 +6,11 @@ using namespace std;
 class Solution {
 public:
 	string multiply(string num1, string num2) {
+		if (num1 == "0" || num2 == "0")
+			return "0";
 		int len1 = num1.length();
 		int len2 = num2.length();
+
 		//保证num1是比较短的数字
 		if (len2 < len1) {
 			string tmp = num1;
@@ -44,21 +47,28 @@ public:
 		}
 
 		int len = tmp.size();
-		int maxlen = tmp[len - 1].size();
+		vector<int> lens;
+		for (int i = 0; i < len; i++) {
+			lens.push_back(tmp[i].size());
+		}
 		int next = 0;
 		string res;
-		for (int i = maxlen - 1; i > 0; i--) {
-			int ind = maxlen - i - 1;
+		for (int i = lens[len-1] - 1; i >= 0; i--) {
 			int thissum = 0;
 			for (int j = 0; j < len; j++) {
-				if (tmp[j].length() > i) {
-					thissum += tmp[j][i]-'0';
+				int ind = lens[j] - (lens[len - 1] - i - 1)-1;
+				if (ind>=0) {
+					thissum += tmp[j][ind]-'0';
 				}
 			}
 			thissum += next;
+			//cout << thissum<<" "<<next<<"   ";
 			next = thissum / 10;
 			res = to_string(thissum % 10) + res;
 		}
+		//if (next != 0) {
+		//	res = to_string(next) + res;
+		//}
 
 		cout << res;
 		return res;
@@ -66,7 +76,7 @@ public:
 };
 
 int main() {
-	string a = "123", b = "456";
+	string a = "123456789", b = "987654321";
 	Solution s;
 	s.multiply(a, b);
 	system("pause");
