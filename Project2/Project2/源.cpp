@@ -3,6 +3,69 @@ using namespace std;
 
 
 
+/****************************************第三十九题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+//		vector<vector<int>> res;
+//		int len = candidates.size();
+//		sort(candidates.begin(), candidates.end());
+//		cout << candidates.size();
+//		res = getsum(candidates, target);
+//		cout << endl;
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//	vector<vector<int>> getsum(vector<int>& candidates, int target) {
+//		vector<vector<int>> res;
+//		int len = candidates.size();
+//
+//		for (int i = 0; i < len&&candidates[i] <= target; i++) {
+//			int count = target / candidates[i];		
+//			int thisnum = candidates[i];
+//
+//			if (target%candidates[i] == 0) {
+//				vector<int> tmp( count, candidates[i] );
+//				res.push_back(tmp);
+//				count--;
+//			}
+//			vector<int> next(candidates.begin() + i + 1 , candidates.end());
+//			cout << next.size();
+//			for (count; count > 0; count--) {
+//				vector<vector<int>> tmp;
+//				int sum = count * thisnum;
+//				tmp = getsum(next, target - sum);
+//				//给tmp的每个数组前面加上对应的count个thisnum,然后加给res
+//				for (int j = 0; j < tmp.size(); j++) {
+//					for (int k = 0; k < count; k++) {
+//						tmp[j].insert(tmp[j].begin(), thisnum);
+//					}
+//					res.push_back(tmp[j]);
+//				}
+//			}
+//		}
+//
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[7] = { 2,3,6,7,10,11,0 };
+//	vector<int> nums(n, n + 4);
+//	s.combinationSum(nums, 7);
+//	system("pause");
+//	return 0;
+//}
+
+
 
 /****************************************第三十六题*********************************************/
 //#include <vector>;
