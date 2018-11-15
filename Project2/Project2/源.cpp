@@ -1,83 +1,78 @@
 #include <iostream>;
 using namespace std;
 
-#include<string>;
-#include<vector>;
-class Solution {
-public:
-	string multiply(string num1, string num2) {
-		if (num1 == "0" || num2 == "0")
-			return "0";
-		int len1 = num1.length();
-		int len2 = num2.length();
 
-		//保证num1是比较短的数字
-		if (len2 < len1) {
-			string tmp = num1;
-			num1 = num2;
-			num2 = tmp;
-			int t = len1;
-			len1 = len2;
-			len2 = t;
-		}
-		vector<string> tmp;
-		for (int i = len1-1; i >= 0 ; i--) {
-			int ind = len1 - i - 1;
-			tmp.push_back("");
-			int n1 = num1[i] - '0';
-			int t = 0;
-			for (int j = len2 -1; j >= 0 ; j--) {
-				int n2 = num2[j] - '0';
-				int thisn = n1 * n2 + t;
-				t = thisn / 10;
-				thisn %= 10;
-				tmp[ind] = to_string(thisn) + tmp[ind];
-			}
-			if (t > 0) {
-				tmp[ind] = to_string(t) + tmp[ind];
-			}
-			for (int j = 0; j < ind; j++) {
-				tmp[ind] += "0";
-			}
-			//cout << tmp[ind] << endl;
-		}
 
-		int len = tmp.size();
-		vector<int> lens;
-		for (int i = 0; i < len; i++) {
-			lens.push_back(tmp[i].size());
-		}
-		int next = 0;
-		string res;
-		for (int i = lens[len-1] - 1; i >= 0; i--) {
-			int thissum = 0;
-			for (int j = 0; j < len; j++) {
-				int ind = lens[j] - (lens[len - 1] - i - 1)-1;
-				if (ind>=0) {
-					thissum += tmp[j][ind]-'0';
-				}
-			}
-			thissum += next;
-			//cout << thissum<<" "<<next<<"   ";
-			next = thissum / 10;
-			res = to_string(thissum % 10) + res;
-		}
-		if (next != 0) {
-			res = to_string(next) + res;
-		}
 
-		//cout << res;
-		return res;
-	}
-};
-
-int main() {
-	string a = "123456789", b = "987654321";
-	Solution s;
-	s.multiply(a, b);
-	system("pause");
-	return 0;
-}
+/****************************************第四十三题*********************************************/
+//#include<string>;
+//#include<vector>;
+//class Solution {
+//public:
+//	string multiply(string num1, string num2) {
+//		if (num1 == "0" || num2 == "0")
+//			return "0";
+//		int len1 = num1.length();
+//		int len2 = num2.length();
+//
+//		vector<string> tmp;
+//		for (int i = len1-1; i >= 0 ; i--) {
+//			int ind = len1 - i - 1;
+//			tmp.push_back("");
+//			int n1 = num1[i] - '0';
+//			int t = 0;
+//			for (int j = len2 -1; j >= 0 ; j--) {
+//				int n2 = num2[j] - '0';
+//				int thisn = n1 * n2 + t;
+//				t = thisn / 10;
+//				thisn %= 10;
+//				tmp[ind] = to_string(thisn) + tmp[ind];
+//			}
+//			if (t > 0) {
+//				tmp[ind] = to_string(t) + tmp[ind];
+//			}
+//			for (int j = 0; j < ind; j++) {
+//				tmp[ind] += "0";
+//			}
+//			//cout << tmp[ind] << endl;
+//		}
+//
+//		int len = tmp.size();
+//		vector<int> lens;
+//		for (int i = 0; i < len; i++) {
+//			lens.push_back(tmp[i].size());
+//		}
+//		int next = 0;
+//		string res;
+//		for (int i = lens[len-1] - 1; i >= 0; i--) {
+//			int thissum = 0;
+//			for (int j = 0; j < len; j++) {
+//				int ind = lens[j] - (lens[len - 1] - i - 1)-1;
+//				if (ind>=0) {
+//					thissum += tmp[j][ind]-'0';
+//				}
+//			}
+//			thissum += next;
+//			//cout << thissum<<" "<<next<<"   ";
+//			next = thissum / 10;
+//			res = to_string(thissum % 10) + res;
+//		}
+//		if (next != 0) {
+//			res = to_string(next) + res;
+//		}
+//
+//		//cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	string a = "123456789", b = "987654321";
+//	Solution s;
+//	s.multiply(a, b);
+//	system("pause");
+//	return 0;
+//}
 
 
 
