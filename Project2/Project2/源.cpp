@@ -28,14 +28,10 @@ public:
 			int t = 0;
 			for (int j = len2 -1; j >= 0 ; j--) {
 				int n2 = num2[j] - '0';
-				int thisn = (n1*n2) % 10 + t;
-				if (thisn > 10) {
-					t = 1;
-					thisn -= 10;
-				}
-				else t = 0;
+				int thisn = n1 * n2 + t;
+				t = thisn / 10;
+				thisn %= 10;
 				tmp[ind] = to_string(thisn) + tmp[ind];
-				t += n1 * n2 / 10;
 			}
 			if (t > 0) {
 				tmp[ind] = to_string(t) + tmp[ind];
@@ -43,7 +39,7 @@ public:
 			for (int j = 0; j < ind; j++) {
 				tmp[ind] += "0";
 			}
-			cout << tmp[ind] << endl;
+			//cout << tmp[ind] << endl;
 		}
 
 		int len = tmp.size();
@@ -66,11 +62,11 @@ public:
 			next = thissum / 10;
 			res = to_string(thissum % 10) + res;
 		}
-		//if (next != 0) {
-		//	res = to_string(next) + res;
-		//}
+		if (next != 0) {
+			res = to_string(next) + res;
+		}
 
-		cout << res;
+		//cout << res;
 		return res;
 	}
 };
