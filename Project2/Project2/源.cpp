@@ -1,6 +1,32 @@
 #include <iostream>;
 using namespace std;
 
+#include<vector>;
+class Solution {
+public:
+	vector<vector<int>> permute(vector<int>& nums) {
+		vector<int> tmp;
+		vector<int> res;
+		int len = nums.size();
+		getpermute(nums, 0, len, tmp, res);
+	}
+
+	void getpermute(vector<int>& nums, int ind, int len, vector<int>& tmp, vector<int>& res) {
+		if (ind == len - 1) {
+			res.push_back(tmp);
+
+		}
+	}
+};
+
+int main() {
+	Solution s;
+	int n[7] = { 1,2,3,1,2,1,5 };
+	vector<int> nums(n, n + 3);
+	s.permute(nums);
+	system("pause");
+	return 0;
+}
 
 
 
