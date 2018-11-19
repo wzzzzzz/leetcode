@@ -5,24 +5,41 @@ using namespace std;
 class Solution {
 public:
 	vector<vector<int>> permute(vector<int>& nums) {
-		vector<int> tmp;
-		vector<int> res;
+		vector<int> tmp = nums;
+		vector<vector<int>> res;
 		int len = nums.size();
-		getpermute(nums, 0, len, tmp, res);
+		getpermute( 0, len, tmp, res);
+
+		for (int i = 0; i < res.size(); i++) {
+			for (int j = 0; j < res[i].size(); j++) {
+				cout << res[i][j] << " ";
+			}
+			cout << endl;
+		}
+		return res;
 	}
 
-	void getpermute(vector<int>& nums, int ind, int len, vector<int>& tmp, vector<int>& res) {
-		if (ind == len - 1) {
+	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
+		if (ind == 0) {
+			getpermute(ind + 1, len, tmp, res);
+		}
+		else if (ind < len)
 			res.push_back(tmp);
-
+		vector<int> thistmp = tmp;
+		for (int i = ind+1; i < len; i++) {
+			vector<int> now = thistmp;
+			int t = now[ind];
+			now[ind] = now[i];
+			now[i] = t;
+			getpermute(ind + 1, len, now, res);
 		}
 	}
 };
 
 int main() {
 	Solution s;
-	int n[7] = { 1,2,3,1,2,1,5 };
-	vector<int> nums(n, n + 3);
+	int n[7] = { 1,2,3,4,2,1,5 };
+	vector<int> nums(n, n + 4);
 	s.permute(nums);
 	system("pause");
 	return 0;
