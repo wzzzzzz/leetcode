@@ -1,58 +1,114 @@
 #include <iostream>;
 using namespace std;
 
-#include<vector>;
-#include<algorithm>;
-class Solution {
-public:
-	vector<vector<int>> permuteUnique(vector<int>& nums) {
-		vector<int> tmp = nums;
-		vector<vector<int>> res;
-		int len = nums.size();
-		sort(nums.begin(), nums.end());
-		getpermute( 0, len, tmp, res);
 
-		for (int i = 0; i < res.size(); i++) {
-			for (int j = 0; j < res[i].size(); j++) {
-				cout << res[i][j] << " ";
-			}
-			cout << endl;
-		}
-		return res;
-	}
 
-	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
-		if (ind < len-2) {
-			getpermute(ind + 1, len, tmp, res);
-		}
-		if (ind == len-2||ind==len-1)
-			res.push_back(tmp);
-		vector<int> thistmp = tmp;
-		for (int i = ind+1; i < len; i++) {
-			vector<int> now = thistmp;
-			if (i < len - 1 && now[i] == now[i + 1]) {
-				//cout << " ==";
-				//i++;
-				continue;
-			}
-			if (now[i] != now[ind]) {
-				int t = now[ind];
-				now[ind] = now[i];
-				now[i] = t;
-				getpermute(ind + 1, len, now, res);
-			}
-		}
-	}
-};
+/****************************************第四十七题*********************************************/
+//#include<vector>；
+//class Solution {
+//public:
+//	void rotate(vector<vector<int>>& matrix) {
+//		int len = matrix.size();
+//		for (int i = 0; i < len; i++) {
+//			for (int j = 0; j < len -1 - i; j++) {
+//				//cout << i<<" "<<j<<" "<<matrix[len - 1 - j][len - 1 - i] << " " << matrix[i][j] << endl;
+//				int tmp = matrix[i][j];
+//				matrix[i][j] = matrix[len-1-j][len - 1 - i];
+//				matrix[len - 1 - j][len - 1 - i] = tmp;
+//			}
+//		}
+//		for (int i = 0; i < len / 2; i++) {
+//			vector<int> tmp= matrix[i];
+//			matrix[i] = matrix[len - 1 - i];
+//			matrix[len - 1 - i] = tmp;
+//		}
+//
+//		for (int i = 0; i < len; i++) {
+//			for (int j = 0; j < len; j++) {
+//				cout << matrix[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> b{
+//		{1,2,3,4},
+//		{4,5,6,7},
+//		{7,8,9,10},
+//		{8,9,10,11}
+//	};
+//	s.rotate(b);
+//	system("pause");
+//	return 0;
+//}
 
-int main() {
-	Solution s;
-	int n[7] = { 1,2,3,4,1,-1,2};
-	vector<int> nums(n, n + 4);
-	s.permuteUnique(nums);
-	system("pause");
-	return 0;
-}
+
+
+/****************************************第四十七题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<vector<int>> permuteUnique(vector<int>& nums) {
+//		vector<int> tmp = nums;
+//		vector<vector<int>> res;
+//		int len = nums.size();
+//		sort(nums.begin(), nums.end());
+//		getpermute( 0, len, tmp, res);
+//
+//		//for (int i = 0; i < res.size(); i++) {
+//		//	for (int j = 0; j < res[i].size(); j++) {
+//		//		cout << res[i][j] << " ";
+//		//	}
+//		//	cout << endl;
+//		//}
+//		return res;
+//	}
+//
+//	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
+//		vector<int> thistmp = tmp;
+//		if (ind < len-2) {
+//			int t = 1;
+//			while (tmp[ind] == tmp[ind + 1]) {
+//				t++;
+//				ind++;
+//			}
+//			getpermute(ind + t, len, thistmp, res);
+//		}
+//		else if (ind < len) {
+//			cout << ind << " " << tmp[0] << " " << tmp[1] << " " << tmp[2] << " " << tmp[3] << endl;
+//			res.push_back(tmp);
+//		}
+//		else return;
+//		for (int i = ind+1; i < len; i++) {
+//			vector<int> now = tmp;
+//			if (i < len - 1 && now[i] == now[i + 1]) {
+//				//cout << " ==";
+//				//i++;
+//				continue;
+//			}
+//			if (now[i] != now[ind]) {
+//				int t = now[ind];
+//				now[ind] = now[i];
+//				now[i] = t;
+//				getpermute(ind + 1, len, now, res);
+//			}
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[7] = { -1,2,-1,2,1,-1,2};
+//	vector<int> nums(n, n + 4);
+//	s.permuteUnique(nums);
+//	system("pause");
+//	return 0;
+//}
 
 
 
