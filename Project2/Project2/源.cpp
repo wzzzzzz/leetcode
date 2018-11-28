@@ -3,7 +3,113 @@ using namespace std;
 
 
 
-/****************************************第四十七题*********************************************/
+/****************************************第四十九题*********************************************/
+//#include<vector>;
+//#include<string>;
+//#include<algorithm>;
+//#include<map>;
+//class Solution {
+//public:
+//	vector<vector<string>> groupAnagrams(vector<string>& strs) {
+//		//glc
+//		map<string, vector<string> > dic;
+//		for (int i = 0; i< strs.size(); ++i) {
+//			string tmp = strs[i];
+//			sort(tmp.begin(), tmp.end());
+//			if (dic.find(tmp) != dic.end()) {
+//				dic[tmp].push_back(strs[i]);
+//			}
+//			else {
+//				vector<string> t = { strs[i] };
+//				dic[tmp] = t;
+//			}
+//		}
+//		vector<vector<string> > res;
+//		for (auto i : dic) {
+//			res.push_back(i.second);
+//		}
+//		return res;
+//
+//		//排序思路
+//		int len = strs.size();
+//		vector<vector<string>> res{ {strs[0]} };
+//		vector<vector<int>> resind{ { 0 } };
+//		vector<string> strssort(len);
+//		for (int i = 0; i < len; i++) {
+//			strssort[i] = strs[i];
+//			sort(strssort[i].begin(), strssort[i].end());
+//			int reslen = res.size();
+//			if (i == 0)
+//				continue;
+//			int j;
+//			for (j = 0; j < reslen; j++) {
+//				int ind = resind[j][0];
+//				if (strssort[i] == strssort[ind]) {
+//					resind[j].push_back(i);
+//					res[j].push_back(strs[i]);
+//					break;
+//				}
+//			}
+//			if (j == reslen) {
+//				resind.push_back(vector<int>{i});
+//				res.push_back(vector<string>{strs[i]});
+//			}
+//		}
+//
+//		//计数思路
+//		//int len = strs.size();
+//		//vector<vector<string>> res{ {strs[0]} };
+//		//vector<vector<int>> resind{ {0} };
+//		//vector<vector<int>> counts(len,vector<int>(26,0));
+//		//for (int i = 0; i < len; i++) {
+//		//	int lens = strs[i].length();
+//		//	for (int j = 0; j < lens; j++) {
+//		//		int c = strs[i][j] - 'a';
+//		//		counts[i][c]++;
+//		//	}
+//
+//		//	if (i == 0)
+//		//		continue;
+//		//	int reslen = res.size();
+//		//	int j;
+//		//	for (j = 0; j < reslen; j++) {
+//		//		int ind = resind[j][0];
+//		//		if (counts[i] == counts[ind]) {
+//		//			resind[j].push_back(i);
+//		//			res[j].push_back(strs[i]);
+//		//			break;
+//		//		}
+//		//	}
+//		//	if (j == reslen) {
+//		//		resind.push_back(vector<int>{i});
+//		//		res.push_back(vector<string>{strs[i]});
+//		//	}
+//		//}
+//
+//		int reslen = res.size();
+//		for (int i = 0; i < reslen; i++) {
+//			int reslens = res[i].size();
+//			for (int j = 0; j < reslens; j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	string n[7] = { "eat", "tea", "tan", "ate", "nat", "bat" };
+//	vector<string> nums(n, n + 6);
+//	s.groupAnagrams(nums);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第四十八题*********************************************/
 //#include<vector>；
 //class Solution {
 //public:
