@@ -1,6 +1,76 @@
 #include <iostream>;
 using namespace std;
 
+//class Solution {
+//public:
+//	double myPow(double x, int n) {
+//		if (n == 1)
+//			return x;
+//		if (n == -1)
+//			return 1/x;
+//		if (n == 0)
+//			return 1;
+//
+//		long double res;
+//		if (n > 0) {
+//			res = x * x;
+//			double last = x;
+//			int lasti = 1;
+//			int i = 2;
+//			while (i < n) {
+//				if (i <= n / 2) {
+//					last = res;
+//					lasti = i;
+//					res *= res;
+//					i *= 2;
+//				}
+//				else if (i + lasti <= n) {
+//					res *= last;
+//					i += lasti;
+//				}
+//				else {
+//					res *= x;
+//					i++;
+//				}
+//				cout << res << " ";
+//			}
+//		}
+//		else {
+//			res = 1 / (x * x);
+//			double last = 1 / x;
+//			int lasti = -1;
+//			int i = -2;
+//			while (i > n) {
+//				if (i >= n / 2) {
+//					last = res;
+//					lasti = i;
+//					res *= res;
+//					i *= 2;
+//				}
+//				else if (i + lasti >= n) {
+//					res *= last;
+//					i += lasti;
+//				}
+//				else {
+//					res /= x;
+//					i--;
+//				}
+//			}
+//		}		
+//		cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	double x = 0.01;
+//	int n = 21474;
+//	Solution s;
+//	s.myPow(x, n);
+//	system("pause");
+//	return 0;
+//}
+
 
 
 /****************************************第四十九题*********************************************/
@@ -155,66 +225,53 @@ using namespace std;
 
 
 /****************************************第四十七题*********************************************/
-//#include<vector>;
-//#include<algorithm>;
-//class Solution {
-//public:
-//	vector<vector<int>> permuteUnique(vector<int>& nums) {
-//		vector<int> tmp = nums;
-//		vector<vector<int>> res;
-//		int len = nums.size();
-//		sort(nums.begin(), nums.end());
-//		getpermute( 0, len, tmp, res);
-//
-//		//for (int i = 0; i < res.size(); i++) {
-//		//	for (int j = 0; j < res[i].size(); j++) {
-//		//		cout << res[i][j] << " ";
-//		//	}
-//		//	cout << endl;
-//		//}
-//		return res;
-//	}
-//
-//	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
-//		vector<int> thistmp = tmp;
-//		if (ind < len-2) {
-//			int t = 1;
-//			while (tmp[ind] == tmp[ind + 1]) {
-//				t++;
-//				ind++;
-//			}
-//			getpermute(ind + t, len, thistmp, res);
-//		}
-//		else if (ind < len) {
-//			cout << ind << " " << tmp[0] << " " << tmp[1] << " " << tmp[2] << " " << tmp[3] << endl;
-//			res.push_back(tmp);
-//		}
-//		else return;
-//		for (int i = ind+1; i < len; i++) {
-//			vector<int> now = tmp;
-//			if (i < len - 1 && now[i] == now[i + 1]) {
-//				//cout << " ==";
-//				//i++;
-//				continue;
-//			}
-//			if (now[i] != now[ind]) {
-//				int t = now[ind];
-//				now[ind] = now[i];
-//				now[i] = t;
-//				getpermute(ind + 1, len, now, res);
-//			}
-//		}
-//	}
-//};
-//
-//int main() {
-//	Solution s;
-//	int n[7] = { -1,2,-1,2,1,-1,2};
-//	vector<int> nums(n, n + 4);
-//	s.permuteUnique(nums);
-//	system("pause");
-//	return 0;
-//}
+#include<vector>;
+#include<algorithm>;
+class Solution {
+public:
+	vector<vector<int>> permuteUnique(vector<int>& nums) {
+		vector<int> tmp = nums;
+		vector<vector<int>> res;
+		int len = nums.size();
+		sort(nums.begin(), nums.end());
+		getpermute( 0, len, tmp, res);
+
+		for (int i = 0; i < res.size(); i++) {
+			for (int j = 0; j < res[i].size(); j++) {
+				cout << res[i][j] << " ";
+			}
+			cout << endl;
+		}
+		return res;
+	}
+
+	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
+		if (ind >= len - 1) {
+			res.push_back(tmp);
+			return;
+		}
+
+		for (int i = ind; i < len; i++) {
+			if (i>ind && i < len - 1 && tmp[i] == tmp[i + 1]) {
+				continue;
+			}
+			if (i==ind||tmp[i] != tmp[ind]) {
+				swap(tmp[ind], tmp[i]);
+				getpermute(ind + 1, len, tmp, res);
+				swap(tmp[ind], tmp[i]);
+			}
+		}
+	}
+};
+
+int main() {
+	Solution s;
+	int n[5] = { -1,2,-1,2 ,-1};
+	vector<int> nums(n, n + 5);
+	s.permuteUnique(nums);
+	system("pause");
+	return 0;
+}
 
 
 
@@ -238,19 +295,34 @@ using namespace std;
 //	}
 //
 //	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
-//		if (ind < len-2) {
-//			getpermute(ind + 1, len, tmp, res);
-//		}
-//		else if (ind < len)
+//		//改进
+//		if (ind >= len - 1) {
 //			res.push_back(tmp);
+//			return;
+//		}
 //		vector<int> thistmp = tmp;
-//		for (int i = ind+1; i < len; i++) {
+//		for (int i = ind ; i < len; i++) {
 //			vector<int> now = thistmp;
 //			int t = now[ind];
 //			now[ind] = now[i];
 //			now[i] = t;
 //			getpermute(ind + 1, len, now, res);
 //		}
+//		
+//		//我的
+//		//if (ind < len-2) {
+//		//	getpermute(ind + 1, len, tmp, res);
+//		//}
+//		//else if (ind < len)
+//		//	res.push_back(tmp);
+//		//vector<int> thistmp = tmp;
+//		//for (int i = ind+1; i < len; i++) {
+//		//	vector<int> now = thistmp;
+//		//	int t = now[ind];
+//		//	now[ind] = now[i];
+//		//	now[i] = t;
+//		//	getpermute(ind + 1, len, now, res);
+//		//}
 //	}
 //};
 //
