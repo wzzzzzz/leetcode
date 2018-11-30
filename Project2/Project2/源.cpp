@@ -267,7 +267,7 @@ public:
 int main() {
 	Solution s;
 	int n[5] = { -1,2,-1,2 ,-1};
-	vector<int> nums(n, n + 5);
+	vector<int> nums(n, n + 3);
 	s.permuteUnique(nums);
 	system("pause");
 	return 0;

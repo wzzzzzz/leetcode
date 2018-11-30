@@ -172,8 +172,18 @@ using namespace std;
 //class Solution {
 //public:
 //	int climbStairs(int n) {
-//
-//
+//		//迭代方法
+//		if (n == 1 || n == 0)
+//			return n;
+//		int last1 = 1;
+//		int last2 = 2;
+//		for (int i = 2; i < n; i++) {
+//			int tmp = last2;
+//			last2 = last1 + last2;
+//			last1 = tmp;
+//		}
+//		cout << last2;
+//		return last2;
 //
 //		//不好！阶乘数字太大了！而且估计也不快！
 //		//if (n == 0)
@@ -213,6 +223,7 @@ using namespace std;
 //		//return (n1 + n2);
 //	}
 //
+//
 //	//int qiujiecheng(int x) {
 //	//	int res = 1;
 //	//	for (int i = 0; i < x; i++) {
@@ -223,7 +234,7 @@ using namespace std;
 //};
 //
 //int main() {
-//	int n = 40;
+//	int n = 4;
 //	Solution s;
 //	s.climbStairs(n);
 //	system("pause");
