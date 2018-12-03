@@ -1,6 +1,123 @@
 #include <iostream>;
 using namespace std;
 
+#include<vector>;
+#include<algorithm>;
+class Solution {
+public:
+	vector<int> spiralOrder(vector<vector<int>>& matrix) {
+		vector<int> res;
+		int m = matrix.size();
+		if (m == 0)
+			return res;
+		if (m == 1)
+			return matrix[0];
+		int n = matrix[0].size();
+		int mm = (int)ceil((float)m / (float)2);
+		int nn = (int)ceil((float)n / (float)2);
+		int ll = min(mm, nn);
+		int l = max(m, n);
+		int last = 0;
+		for (int i = 0; i < ll; i++) {
+			vector<int> res1;
+			vector<int> res2;
+			vector<int> res3;
+			vector<int> res4;
+			for (int j = i; j < l - i; j++) {
+				//第一行
+				if (j < n - i) {
+					res1.push_back(matrix[i][j]);
+				}
+				//最后一循环，中间只有一行的情况
+				if (m % 2 == 0 || i != m / 2) {
+					//最后一列
+					if (j < m - i) {
+						res2.push_back(matrix[j][n - 1 - i]);
+					}
+					//最后一行
+					if (j < n - i) {
+						res3.push_back(matrix[m - 1 - i][n - 1 - j]);
+					}
+					//第一列
+					if (j < m - i) {
+						res4.push_back(matrix[m - 1 - j][i]);
+					}
+				}
+			}
+			//for (int j = 0; j < res1.size(); j++) {
+			//	cout << res1[j] << " ";
+			//}
+			//cout << endl;
+			//for (int j = 0; j < res2.size(); j++) {
+			//	cout << res2[j] << " ";
+			//}
+			//cout << endl;
+			//for (int j = 0; j < res3.size(); j++) {
+			//	cout << res3[j] << " ";
+			//}
+			//cout << endl;
+			//for (int j = 0; j < res4.size(); j++) {
+			//	cout << res4[j] << " ";
+			//}
+			//cout << endl;
+
+			for (int j = 0; j < res1.size(); j++) {
+				res.push_back(res1[j]);
+			}
+			last = res.back();
+			res.pop_back();
+			for (int j = 0; j < res2.size(); j++) {
+				res.push_back(res2[j]);
+			}
+			if (res2.size() != 0) {
+				last = res.back();
+				res.pop_back();
+			}
+
+			for (int j = 0; j < res3.size(); j++) {
+				res.push_back(res3[j]);
+			}
+			if (res3.size() != 0) {
+				last = res.back();
+				res.pop_back();
+			}
+			for (int j = 0; j < res4.size(); j++) {
+				res.push_back(res4[j]);
+			}
+			if (res4.size() != 0) {
+				last = NULL;
+				res.pop_back();
+			}
+		}
+		if (last) {
+			res.push_back(last);
+		}
+		cout << res.size() << endl;
+		for (int i = 0; i < res.size(); i++) {
+			cout << res[i] << " ";
+		}
+		return res;
+	}
+};
+
+int main() {
+	Solution s;
+	vector<vector<int>> b{
+		{ 1,2 },
+		/*{5},*/
+		//{9,10,11,12,19},
+		//{13, 14, 15, 16,20},
+		//{ 17, 18, 19, 20,21 }
+	};
+	s.spiralOrder(b);
+	system("pause");
+	return 0;
+}
+
+
+
+
+/****************************************第五十题*********************************************/
 //class Solution {
 //public:
 //	double myPow(double x, int n) {
@@ -225,53 +342,53 @@ using namespace std;
 
 
 /****************************************第四十七题*********************************************/
-#include<vector>;
-#include<algorithm>;
-class Solution {
-public:
-	vector<vector<int>> permuteUnique(vector<int>& nums) {
-		vector<int> tmp = nums;
-		vector<vector<int>> res;
-		int len = nums.size();
-		sort(nums.begin(), nums.end());
-		getpermute( 0, len, tmp, res);
-
-		for (int i = 0; i < res.size(); i++) {
-			for (int j = 0; j < res[i].size(); j++) {
-				cout << res[i][j] << " ";
-			}
-			cout << endl;
-		}
-		return res;
-	}
-
-	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
-		if (ind >= len - 1) {
-			res.push_back(tmp);
-			return;
-		}
-
-		for (int i = ind; i < len; i++) {
-			if (i>ind && i < len - 1 && tmp[i] == tmp[i + 1]) {
-				continue;
-			}
-			if (i==ind||tmp[i] != tmp[ind]) {
-				swap(tmp[ind], tmp[i]);
-				getpermute(ind + 1, len, tmp, res);
-				swap(tmp[ind], tmp[i]);
-			}
-		}
-	}
-};
-
-int main() {
-	Solution s;
-	int n[5] = { -1,2,-1,2 ,-1};
-	vector<int> nums(n, n + 3);
-	s.permuteUnique(nums);
-	system("pause");
-	return 0;
-}
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<vector<int>> permuteUnique(vector<int>& nums) {
+//		vector<int> tmp = nums;
+//		vector<vector<int>> res;
+//		int len = nums.size();
+//		sort(nums.begin(), nums.end());
+//		getpermute( 0, len, tmp, res);
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//
+//	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
+//		if (ind >= len - 1) {
+//			res.push_back(tmp);
+//			return;
+//		}
+//
+//		for (int i = ind; i < len; i++) {
+//			if (i>ind && i < len - 1 && tmp[i] == tmp[i + 1]) {
+//				continue;
+//			}
+//			if (i==ind||tmp[i] != tmp[ind]) {
+//				swap(tmp[ind], tmp[i]);
+//				getpermute(ind + 1, len, tmp, res);
+//				swap(tmp[ind], tmp[i]);
+//			}
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[5] = { -1,2,-1,2 ,-1};
+//	vector<int> nums(n, n + 3);
+//	s.permuteUnique(nums);
+//	system("pause");
+//	return 0;
+//}
 
 
 
