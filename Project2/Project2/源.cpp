@@ -10,8 +10,8 @@ public:
 		int m = matrix.size();
 		if (m == 0)
 			return res;
-		if (m == 1)
-			return matrix[0];
+		//if (m == 1)
+		//	return matrix[0];
 		int n = matrix[0].size();
 		int mm = (int)ceil((float)m / (float)2);
 		int nn = (int)ceil((float)n / (float)2);
@@ -28,12 +28,12 @@ public:
 				if (j < n - i) {
 					res1.push_back(matrix[i][j]);
 				}
-				//最后一循环，中间只有一行的情况
-				if (m % 2 == 0 || i != m / 2) {
-					//最后一列
-					if (j < m - i) {
-						res2.push_back(matrix[j][n - 1 - i]);
-					}
+				//最后一列
+				if (j < m - i) {
+					res2.push_back(matrix[j][n - 1 - i]);
+				}
+				//最后一循环中间只有一行或者一列时，不计算最后一行和第一列
+				if ((i!=ll-1||m%2==0||i!=m/2-1)&&(i!=l-1-i||i<ll-1)) {
 					//最后一行
 					if (j < n - i) {
 						res3.push_back(matrix[m - 1 - i][n - 1 - j]);
@@ -44,22 +44,22 @@ public:
 					}
 				}
 			}
-			//for (int j = 0; j < res1.size(); j++) {
-			//	cout << res1[j] << " ";
-			//}
-			//cout << endl;
-			//for (int j = 0; j < res2.size(); j++) {
-			//	cout << res2[j] << " ";
-			//}
-			//cout << endl;
-			//for (int j = 0; j < res3.size(); j++) {
-			//	cout << res3[j] << " ";
-			//}
-			//cout << endl;
-			//for (int j = 0; j < res4.size(); j++) {
-			//	cout << res4[j] << " ";
-			//}
-			//cout << endl;
+			for (int j = 0; j < res1.size(); j++) {
+				cout << res1[j] << " ";
+			}
+			cout << endl;
+			for (int j = 0; j < res2.size(); j++) {
+				cout << res2[j] << " ";
+			}
+			cout << endl;
+			for (int j = 0; j < res3.size(); j++) {
+				cout << res3[j] << " ";
+			}
+			cout << endl;
+			for (int j = 0; j < res4.size(); j++) {
+				cout << res4[j] << " ";
+			}
+			cout << endl;
 
 			for (int j = 0; j < res1.size(); j++) {
 				res.push_back(res1[j]);
@@ -92,7 +92,7 @@ public:
 		if (last) {
 			res.push_back(last);
 		}
-		cout << res.size() << endl;
+
 		for (int i = 0; i < res.size(); i++) {
 			cout << res[i] << " ";
 		}
@@ -103,11 +103,11 @@ public:
 int main() {
 	Solution s;
 	vector<vector<int>> b{
-		{ 1,2 },
-		/*{5},*/
-		//{9,10,11,12,19},
-		//{13, 14, 15, 16,20},
-		//{ 17, 18, 19, 20,21 }
+		{1,2},
+	{ 2,3 },
+
+		//{13, 14, 15},
+		//{ 17, 18, 19 }
 	};
 	s.spiralOrder(b);
 	system("pause");

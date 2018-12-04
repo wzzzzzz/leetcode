@@ -1,10 +1,14 @@
 ﻿  源.cpp
-f:\leetcode\project2\project2\源.cpp(1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-f:\leetcode\project2\project2\源.cpp(4): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-f:\leetcode\project2\project2\源.cpp(5): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-f:\leetcode\project2\project2\源.cpp(64): warning C4018: “<”: 有符号/无符号不匹配
-f:\leetcode\project2\project2\源.cpp(69): warning C4018: “<”: 有符号/无符号不匹配
-f:\leetcode\project2\project2\源.cpp(77): warning C4018: “<”: 有符号/无符号不匹配
-f:\leetcode\project2\project2\源.cpp(84): warning C4018: “<”: 有符号/无符号不匹配
-f:\leetcode\project2\project2\源.cpp(96): warning C4018: “<”: 有符号/无符号不匹配
-  Project2.vcxproj -> F:\leetcode\Project2\Debug\Project2.exe
+e:\课程\leetcode\project2\project2\源.cpp(1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+e:\课程\leetcode\project2\project2\源.cpp(4): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+e:\课程\leetcode\project2\project2\源.cpp(5): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+e:\课程\leetcode\project2\project2\源.cpp(47): warning C4018: “<”: 有符号/无符号不匹配
+e:\课程\leetcode\project2\project2\源.cpp(51): warning C4018: “<”: 有符号/无符号不匹配
+e:\课程\leetcode\project2\project2\源.cpp(55): warning C4018: “<”: 有符号/无符号不匹配
+e:\课程\leetcode\project2\project2\源.cpp(59): warning C4018: “<”: 有符号/无符号不匹配
+e:\课程\leetcode\project2\project2\源.cpp(64): warning C4018: “<”: 有符号/无符号不匹配
+e:\课程\leetcode\project2\project2\源.cpp(69): warning C4018: “<”: 有符号/无符号不匹配
+e:\课程\leetcode\project2\project2\源.cpp(77): warning C4018: “<”: 有符号/无符号不匹配
+e:\课程\leetcode\project2\project2\源.cpp(84): warning C4018: “<”: 有符号/无符号不匹配
+e:\课程\leetcode\project2\project2\源.cpp(96): warning C4018: “<”: 有符号/无符号不匹配
+  Project2.vcxproj -> E:\课程\leetcode\Project2\Debug\Project2.exe
