@@ -1,119 +1,156 @@
 #include <iostream>;
 using namespace std;
 
-#include<vector>;
-#include<algorithm>;
-class Solution {
-public:
-	vector<int> spiralOrder(vector<vector<int>>& matrix) {
-		vector<int> res;
-		int m = matrix.size();
-		if (m == 0)
-			return res;
-		//if (m == 1)
-		//	return matrix[0];
-		int n = matrix[0].size();
-		int mm = (int)ceil((float)m / (float)2);
-		int nn = (int)ceil((float)n / (float)2);
-		int ll = min(mm, nn);
-		int l = max(m, n);
-		int last = 0;
-		for (int i = 0; i < ll; i++) {
-			vector<int> res1;
-			vector<int> res2;
-			vector<int> res3;
-			vector<int> res4;
-			for (int j = i; j < l - i; j++) {
-				//第一行
-				if (j < n - i) {
-					res1.push_back(matrix[i][j]);
-				}
-				//最后一列
-				if (j < m - i) {
-					res2.push_back(matrix[j][n - 1 - i]);
-				}
-				//最后一循环中间只有一行或者一列时，不计算最后一行和第一列
-				if ((i!=ll-1||m%2==0||i!=m/2-1)&&(i!=l-1-i||i<ll-1)) {
-					//最后一行
-					if (j < n - i) {
-						res3.push_back(matrix[m - 1 - i][n - 1 - j]);
-					}
-					//第一列
-					if (j < m - i) {
-						res4.push_back(matrix[m - 1 - j][i]);
-					}
-				}
-			}
-			for (int j = 0; j < res1.size(); j++) {
-				cout << res1[j] << " ";
-			}
-			cout << endl;
-			for (int j = 0; j < res2.size(); j++) {
-				cout << res2[j] << " ";
-			}
-			cout << endl;
-			for (int j = 0; j < res3.size(); j++) {
-				cout << res3[j] << " ";
-			}
-			cout << endl;
-			for (int j = 0; j < res4.size(); j++) {
-				cout << res4[j] << " ";
-			}
-			cout << endl;
 
-			for (int j = 0; j < res1.size(); j++) {
-				res.push_back(res1[j]);
-			}
-			last = res.back();
-			res.pop_back();
-			for (int j = 0; j < res2.size(); j++) {
-				res.push_back(res2[j]);
-			}
-			if (res2.size() != 0) {
-				last = res.back();
-				res.pop_back();
-			}
 
-			for (int j = 0; j < res3.size(); j++) {
-				res.push_back(res3[j]);
-			}
-			if (res3.size() != 0) {
-				last = res.back();
-				res.pop_back();
-			}
-			for (int j = 0; j < res4.size(); j++) {
-				res.push_back(res4[j]);
-			}
-			if (res4.size() != 0) {
-				last = NULL;
-				res.pop_back();
-			}
-		}
-		if (last) {
-			res.push_back(last);
-		}
-
-		for (int i = 0; i < res.size(); i++) {
-			cout << res[i] << " ";
-		}
-		return res;
-	}
-};
-
-int main() {
-	Solution s;
-	vector<vector<int>> b{
-		{1,2},
-	{ 2,3 },
-
-		//{13, 14, 15},
-		//{ 17, 18, 19 }
-	};
-	s.spiralOrder(b);
-	system("pause");
-	return 0;
-}
-
+/****************************************第五十四题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<int> spiralOrder(vector<vector<int>>& matrix) {
+//		vector<int> res;
+//		int m = matrix.size();
+//		if (m == 0)
+//			return res;
+//		//if (m == 1)
+//		//	return matrix[0];
+//		int n = matrix[0].size();
+//		int mm = (int)ceil((float)m / (float)2);
+//		int nn = (int)ceil((float)n / (float)2);
+//		int ll = min(mm, nn);
+//		int l = max(m, n);
+//		int last = 0;
+//		for (int i = 0; i < ll; i++) {
+//			//第一行
+//			for (int j = i; j < l - i; j++) {
+//				if (j < n - i) {
+//					res.push_back(matrix[i][j]);
+//				}
+//			}
+//			res.pop_back();
+//			//最后一列
+//			for (int j = i; j < l - i; j++) {
+//				if (j < m - i) {
+//					res.push_back(matrix[j][n - 1 - i]);
+//				}
+//			}
+//			//最后一循环中间只有一行或者一列时，不计算最后一行和第一列
+//			bool hang = !(i == ll - 1 && m % 2 == 1 && mm == ll);
+//			bool lie = !(i == ll - 1 && n % 2 == 1 && ll == nn);
+//			if (hang &&lie) {
+//				res.pop_back();
+//				//最后一行
+//				for (int j = i; j < l - i; j++) {
+//					if (j < n - i) {
+//						res.push_back(matrix[m - 1 - i][n - 1 - j]);
+//					}
+//				}
+//				res.pop_back();
+//				//第一列
+//				for (int j = i; j < l - i; j++) {
+//					if (j < m - i) {
+//						res.push_back(matrix[m - 1 - j][i]);
+//					}
+//				}
+//				res.pop_back();
+//			}
+//		}
+//
+//
+//		//思路1
+//		//vector<int> res;
+//		//int m = matrix.size();
+//		//if (m == 0)
+//		//	return res;
+//		////if (m == 1)
+//		////	return matrix[0];
+//		//int n = matrix[0].size();
+//		//int mm = (int)ceil((float)m / (float)2);
+//		//int nn = (int)ceil((float)n / (float)2);
+//		//int ll = min(mm, nn);
+//		//int l = max(m, n);
+//		//int last = 0;
+//		//for (int i = 0; i < ll; i++) {
+//		//	vector<int> res1;
+//		//	vector<int> res2;
+//		//	vector<int> res3;
+//		//	vector<int> res4;
+//		//	for (int j = i; j < l - i; j++) {
+//		//		//第一行
+//		//		if (j < n - i) {
+//		//			res1.push_back(matrix[i][j]);
+//		//		}
+//		//		//最后一列
+//		//		if (j < m - i) {
+//		//			res2.push_back(matrix[j][n - 1 - i]);
+//		//		}
+//		//		//最后一循环中间只有一行或者一列时，不计算最后一行和第一列
+//		//		bool hang = !(i == ll - 1 && m % 2 == 1 && mm == ll);
+//		//		bool lie = !(i == ll - 1 && n % 2 == 1 && ll == nn );
+//		//		cout << "00000"<<hang << " " << lie << endl;
+//		//		if (hang &&lie) {
+//		//			//最后一行
+//		//			if (j < n - i) {
+//		//				res3.push_back(matrix[m - 1 - i][n - 1 - j]);
+//		//			}
+//		//			//第一列
+//		//			if (j < m - i) {
+//		//				res4.push_back(matrix[m - 1 - j][i]);
+//		//			}
+//		//		}
+//		//	}
+//
+//		//	for (int j = 0; j < res1.size(); j++) {
+//		//		res.push_back(res1[j]);
+//		//	}
+//		//	last = res.back();
+//		//	res.pop_back();
+//		//	for (int j = 0; j < res2.size(); j++) {
+//		//		res.push_back(res2[j]);
+//		//	}
+//		//	if (res2.size() != 0) {
+//		//		last = res.back();
+//		//		res.pop_back();
+//		//	}
+//		//	for (int j = 0; j < res3.size(); j++) {
+//		//		res.push_back(res3[j]);
+//		//	}
+//		//	if (res3.size() != 0) {
+//		//		last = res.back();
+//		//		res.pop_back();
+//		//	}
+//		//	for (int j = 0; j < res4.size(); j++) {
+//		//		res.push_back(res4[j]);
+//		//	}
+//		//	if (res4.size() != 0) {
+//		//		last = NULL;
+//		//		res.pop_back();
+//		//	}
+//		//}
+//		//if (last) {
+//		//	res.push_back(last);
+//		//}
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			cout << res[i] << " ";
+//		}
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> b{
+//		{1,5,6},
+//		{2,4,7},
+//		{15,3,8},
+//		//{19,2,9 }
+//	};
+//	s.spiralOrder(b);
+//	system("pause");
+//	return 0;
+//}
 
 
 
