@@ -1,6 +1,109 @@
 #include <iostream>;
 using namespace std;
 
+#include<vector>;
+#include<algorithm>;
+//Definition for an interval.
+struct Interval {
+    int start;
+    int end;
+    Interval() : start(0), end(0) {}
+    Interval(int s, int e) : start(s), end(e) {}
+};
+
+class Solution {
+public:
+	bool mysort(Interval &a, Interval &b) {
+		return (a.start < b.start);
+	}
+	vector<Interval> merge(vector<Interval>& intervals) {
+		//思路2
+		int len = intervals.size();
+		std::sort(intervals.begin(), intervals.end(), mysort);
+		for (int i = 0; i < len - 1; i++) {
+			for (int j = i + 1; j < len; j++) {
+				//合并
+				if (intervals[i].end >= intervals[j].start&&intervals[i].end <= intervals[j].end) {
+					intervals[i].start = min(intervals[i].start, intervals[j].start);
+					intervals[i].end = max(intervals[i].end, intervals[j].end);
+					intervals.erase(intervals.begin() + j);
+					len--;
+					j--;
+				}
+			}
+		}
+
+		//思路1
+		//int len = intervals.size();
+		//for (int i = 0; i < len-1; i++) {
+		//	for (int j = i+1; j < len; j++) {
+		//		//合并
+		//		if ((intervals[i].end >= intervals[j].start&&intervals[i].end <= intervals[j].end) || (intervals[j].end >= intervals[i].start&&intervals[j].end <= intervals[i].end)) {
+		//			intervals[i].start = min(intervals[i].start, intervals[j].start);
+		//			intervals[i].end = max(intervals[i].end, intervals[j].end);
+		//			intervals.erase(intervals.begin() + j);
+		//			len--;
+		//			i--;
+		//			break;
+		//		}
+		//	}
+		//}
+		for (int i = 0; i < len; i++) {
+			cout << intervals[i].start << " " << intervals[i].end << endl;
+		}
+		return intervals;
+	}
+
+};
+
+int main() {
+	Solution s;
+	vector<Interval> b{
+		{1,3},
+		{2,6},
+		{2,10},
+		//{15,16}
+	};
+	s.merge(b);
+	system("pause");
+	return 0;
+}
+
+
+
+/****************************************第五十五题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	bool canJump(vector<int>& nums) {
+//		int len = nums.size();
+//		int i = 0;
+//		int maxind = 0;
+//		bool res;
+//		for (i = 0; i < len; i++) {
+//			if (maxind < i)
+//				return false;
+//			else {
+//				if (i + nums[i] > maxind)
+//					maxind = i + nums[i];
+//			}
+//		}
+//		if (i >=len-1) {
+//			cout << "111";
+//			return true;
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[7] = { 2,0,1,1,4,0,0 };
+//	vector<int> nums(n, n +5);
+//	s.canJump(nums);
+//	system("pause");
+//	return 0;
+//}
+
 
 
 /****************************************第五十四题*********************************************/
