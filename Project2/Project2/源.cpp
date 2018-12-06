@@ -2,72 +2,106 @@
 using namespace std;
 
 #include<vector>;
-#include<algorithm>;
-//Definition for an interval.
-struct Interval {
-    int start;
-    int end;
-    Interval() : start(0), end(0) {}
-    Interval(int s, int e) : start(s), end(e) {}
-};
-
 class Solution {
 public:
-	bool mysort(Interval &a, Interval &b) {
-		return (a.start < b.start);
-	}
-	vector<Interval> merge(vector<Interval>& intervals) {
-		//思路2
-		int len = intervals.size();
-		std::sort(intervals.begin(), intervals.end(), mysort);
-		for (int i = 0; i < len - 1; i++) {
-			for (int j = i + 1; j < len; j++) {
-				//合并
-				if (intervals[i].end >= intervals[j].start&&intervals[i].end <= intervals[j].end) {
-					intervals[i].start = min(intervals[i].start, intervals[j].start);
-					intervals[i].end = max(intervals[i].end, intervals[j].end);
-					intervals.erase(intervals.begin() + j);
-					len--;
-					j--;
-				}
-			}
-		}
+	vector<vector<int>> generateMatrix(int n) {
 
-		//思路1
-		//int len = intervals.size();
-		//for (int i = 0; i < len-1; i++) {
-		//	for (int j = i+1; j < len; j++) {
-		//		//合并
-		//		if ((intervals[i].end >= intervals[j].start&&intervals[i].end <= intervals[j].end) || (intervals[j].end >= intervals[i].start&&intervals[j].end <= intervals[i].end)) {
-		//			intervals[i].start = min(intervals[i].start, intervals[j].start);
-		//			intervals[i].end = max(intervals[i].end, intervals[j].end);
-		//			intervals.erase(intervals.begin() + j);
-		//			len--;
-		//			i--;
-		//			break;
-		//		}
-		//	}
-		//}
-		for (int i = 0; i < len; i++) {
-			cout << intervals[i].start << " " << intervals[i].end << endl;
-		}
-		return intervals;
 	}
-
 };
 
 int main() {
 	Solution s;
-	vector<Interval> b{
-		{1,3},
-		{2,6},
-		{2,10},
-		//{15,16}
-	};
-	s.merge(b);
+	s.generateMatrix(3);
 	system("pause");
 	return 0;
 }
+
+
+
+/****************************************第五十六题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
+////Definition for an interval.
+//struct Interval {
+//    int start;
+//    int end;
+//    Interval() : start(0), end(0) {}
+//    Interval(int s, int e) : start(s), end(e) {}
+//};
+//bool mysort(Interval &a, Interval &b) {
+//	return (a.start < b.start);
+//}
+//
+//class Solution {
+//public:
+//	vector<Interval> merge(vector<Interval>& intervals) {
+//		//solution
+//		vector<Interval> res;
+//		int len = intervals.size();
+//		if (len == 1 || len == 0)
+//			return intervals;
+//		std::sort(intervals.begin(), intervals.end(), mysort);
+//		res.push_back(intervals[0]);
+//		for (int i = 1; i < len; i++) {
+//			//合并
+//			if (intervals[i].start <= res.back().end) {
+//				res.back().end = max(res.back().end, intervals[i].end);
+//			}
+//			else {
+//				res.push_back(intervals[i]);
+//			}
+//		}
+//
+//		//思路2
+//		//int len = intervals.size();
+//		//std::sort(intervals.begin(), intervals.end(), mysort);
+//		//for (int i = 0; i < len - 1; i++) {
+//		//	for (int j = i + 1; j < len; j++) {
+//		//		//合并
+//		//		if (intervals[j].start <= intervals[i].end) {
+//		//			intervals[i].end = max(intervals[i].end, intervals[j].end);
+//		//			intervals.erase(intervals.begin() + j);
+//		//			len--;
+//		//			j--;
+//		//		}
+//		//	}
+//		//}
+//
+//		//思路1
+//		//int len = intervals.size();
+//		//for (int i = 0; i < len-1; i++) {
+//		//	for (int j = i+1; j < len; j++) {
+//		//		//合并
+//		//		if ((intervals[i].end >= intervals[j].start&&intervals[i].end <= intervals[j].end) || (intervals[j].end >= intervals[i].start&&intervals[j].end <= intervals[i].end)) {
+//		//			intervals[i].start = min(intervals[i].start, intervals[j].start);
+//		//			intervals[i].end = max(intervals[i].end, intervals[j].end);
+//		//			intervals.erase(intervals.begin() + j);
+//		//			len--;
+//		//			i--;
+//		//			break;
+//		//		}
+//		//	}
+//		//}
+//		for (int i = 0; i < res.size(); i++) {
+//			cout << res[i].start << " " << res[i].end << endl;
+//		}
+//		return intervals;
+//	}
+//
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<Interval> b{
+//		{1,3},
+//		{2,6},
+//		{ 8,10 },
+//		{15,18}
+//	};
+//	s.merge(b);
+//	system("pause");
+//	return 0;
+//}
 
 
 
