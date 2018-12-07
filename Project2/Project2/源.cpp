@@ -1,20 +1,104 @@
 #include <iostream>;
 using namespace std;
 
-#include<vector>;
+#include<string>;
 class Solution {
 public:
-	vector<vector<int>> generateMatrix(int n) {
+	string getPermutation(int n, int k) {
+		//阶乘数
+		int factorial[8] = { 1,2,6,24,120,720,5040,40320};
+		//中介数
+		int num[8] = { -1,-1,-1,-1,-1,-1,-1,-1 };
+		//标记前面有几个比他小的
+		int beforeandsmall[9] = { -1,-1,-1,-1,-1,-1,-1,-1,-1 };
+		string res;
+		for (int i = n-1; i >=0; i--) {
+			num[i] = k / factorial[i];
+			k = k % factorial[i];
+		}
+		for (int i = 7; i >= 0; i--) {
+			cout << num[i] << " ";
+		}
+		cout << endl;
 
+		//1-8位
+		for (int i = 0; i < n-1; i++) {
+			if (num[8-i] != -1) {
+				int tmp = 8-i;
+				tmp += beforeandsmall[8 - i];
+				res += to_string(tmp);
+				for (int j = 8; j >= tmp; j--)
+					beforeandsmall[j]++;
+			}
+		}
+		for (int i = 0; i < 8; i++)
+			cout << beforeandsmall[i] << " ";
+		//第9位
+		cout << res;
+		return res;
 	}
 };
 
 int main() {
 	Solution s;
-	s.generateMatrix(3);
+	s.getPermutation(3, 3);
 	system("pause");
 	return 0;
 }
+
+
+
+/****************************************第五十九题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	vector<vector<int>> generateMatrix(int n) {
+//		vector<vector<int>> res(n, vector<int>(n, 0));
+//		int nn = (int)ceil((float)n / (float)2);
+//		int num = 1;
+//		for (int i = 0; i < nn; i++) {
+//			//第一行
+//			for (int j = i; j < n - i - 1; j++) {
+//				res[i][j] = num;
+//				num++;
+//			}
+//			//最后一列
+//			for (int j = i; j < n - i; j++) {
+//				res[j][n - 1 - i]=num;
+//				num++;
+//			}
+//			//不是最后一循环且中间只有一个的情况
+//			if (!(i == nn - 1 && n % 2 == 1)) {
+//				num--;
+//				//最后一行
+//				for (int j = i; j < n - i - 1; j++) {
+//					res[n - 1 - i][n - 1 - j] = num;
+//					num++;
+//				}
+//				//第一列
+//				for (int j = i; j < n -1 -i; j++) {
+//					res[n - 1 - j][i]=num;
+//					num++;
+//				}
+//			}
+//		}
+//
+//		for (int j = 0; j < n; j++) {
+//			for (int k = 0; k < n; k++) {
+//				cout << res[j][k] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.generateMatrix(5);
+//	system("pause");
+//	return 0;
+//}
 
 
 
