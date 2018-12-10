@@ -5,35 +5,50 @@ using namespace std;
 class Solution {
 public:
 	string getPermutation(int n, int k) {
+		k--;
 		//阶乘数
 		int factorial[8] = { 1,2,6,24,120,720,5040,40320};
 		//中介数
-		int num[8] = { -1,-1,-1,-1,-1,-1,-1,-1 };
+		int num[9] = { 0,-1,-1,-1,-1,-1,-1,-1,-1 };
 		//标记前面有几个比他小的
-		int beforeandsmall[9] = { -1,-1,-1,-1,-1,-1,-1,-1,-1 };
+		int beforeandsmall[9] = { 0,0,0,0,0,0,0,0,0 };
 		string res;
-		for (int i = n-1; i >=0; i--) {
-			num[i] = k / factorial[i];
+		//计算中介数
+		for (int i = n-2; i >=0; i--) {
+			num[i+1] = k / factorial[i];
 			k = k % factorial[i];
 		}
-		for (int i = 7; i >= 0; i--) {
-			cout << num[i] << " ";
-		}
-		cout << endl;
 
-		//1-8位
-		for (int i = 0; i < n-1; i++) {
-			if (num[8-i] != -1) {
-				int tmp = 8-i;
-				tmp += beforeandsmall[8 - i];
+		for (int i = n-1; i >=0; i--) {
+			if (num[i] != -1) {
+				int tmp = num[i]+1;
+				cout << tmp << "   ";
+				for (int j = 0; j < n - i - 1; j++) {
+					cout << tmp <<" "<< res[j] << "   ";
+					if (tmp > (int)res[j]-'0')
+						tmp++;
+					else if (tmp == (int)res[j] - '0') {
+						tmp++;
+						j = -1;
+					}
+				}
+				cout << tmp << endl;
 				res += to_string(tmp);
-				for (int j = 8; j >= tmp; j--)
-					beforeandsmall[j]++;
+				//tmp += beforeandsmall[tmp-1];
+				//while (beforeandsmall[tmp-1] < 0) {
+				//	tmp++;
+				//}
+				//cout << "      " << num[i] << " " << tmp << "  "  << beforeandsmall[tmp] << endl;
+				//res += to_string(tmp);
+				//for (int j = n-1; j >= tmp; j--)
+				//	if(beforeandsmall[j]>=0)
+				//		beforeandsmall[j]++;
+				//beforeandsmall[tmp-1] = -1;
+				//for (int j = 0; j < 9; j++)
+				//	cout << beforeandsmall[j] << " ";
 			}
 		}
-		for (int i = 0; i < 8; i++)
-			cout << beforeandsmall[i] << " ";
-		//第9位
+
 		cout << res;
 		return res;
 	}
@@ -41,7 +56,7 @@ public:
 
 int main() {
 	Solution s;
-	s.getPermutation(3, 3);
+	s.getPermutation(4, 9);
 	system("pause");
 	return 0;
 }
