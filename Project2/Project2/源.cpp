@@ -1,65 +1,52 @@
 #include <iostream>;
 using namespace std;
 
-#include<string>;
-class Solution {
-public:
-	string getPermutation(int n, int k) {
-		k--;
-		//阶乘数
-		int factorial[8] = { 1,2,6,24,120,720,5040,40320};
-		//中介数
-		int num[9] = { 0,-1,-1,-1,-1,-1,-1,-1,-1 };
-		//标记前面有几个比他小的
-		int beforeandsmall[9] = { 0,0,0,0,0,0,0,0,0 };
-		string res;
-		//计算中介数
-		for (int i = n-2; i >=0; i--) {
-			num[i+1] = k / factorial[i];
-			k = k % factorial[i];
-		}
 
-		for (int i = n-1; i >=0; i--) {
-			if (num[i] != -1) {
-				int tmp = num[i]+1;
-				cout << tmp << "   ";
-				for (int j = 0; j < n - i - 1; j++) {
-					cout << tmp <<" "<< res[j] << "   ";
-					if (tmp > (int)res[j]-'0')
-						tmp++;
-					else if (tmp == (int)res[j] - '0') {
-						tmp++;
-						j = -1;
-					}
-				}
-				cout << tmp << endl;
-				res += to_string(tmp);
-				//tmp += beforeandsmall[tmp-1];
-				//while (beforeandsmall[tmp-1] < 0) {
-				//	tmp++;
-				//}
-				//cout << "      " << num[i] << " " << tmp << "  "  << beforeandsmall[tmp] << endl;
-				//res += to_string(tmp);
-				//for (int j = n-1; j >= tmp; j--)
-				//	if(beforeandsmall[j]>=0)
-				//		beforeandsmall[j]++;
-				//beforeandsmall[tmp-1] = -1;
-				//for (int j = 0; j < 9; j++)
-				//	cout << beforeandsmall[j] << " ";
-			}
-		}
 
-		cout << res;
-		return res;
-	}
-};
-
-int main() {
-	Solution s;
-	s.getPermutation(4, 9);
-	system("pause");
-	return 0;
-}
+/****************************************第六十题*********************************************/
+//#include<string>;
+//class Solution {
+//public:
+//	string getPermutation(int n, int k) {
+//		k--;
+//		//阶乘数
+//		int factorial[8] = { 1,2,6,24,120,720,5040,40320};
+//		//中介数
+//		int num[9] = { 0,-1,-1,-1,-1,-1,-1,-1,-1 };
+//		string res;
+//		//计算中介数
+//		for (int i = n-2; i >=0; i--) {
+//			num[i+1] = k / factorial[i];
+//			k = k % factorial[i];
+//		}
+//
+//		for (int i = n - 1; i >= 0; i--) {
+//			int compared[9] = { -1,-1,-1,-1,-1,-1,-1,-1,-1 };
+//			if (num[i] != -1) {
+//				int tmp = num[i] + 1;
+//				cout << tmp << "   ";
+//				for (int j = 0; j < n - i - 1; j++) {
+//					if (tmp >= (int)res[j] - '0'&&compared[j]==-1) {
+//						tmp++;
+//						compared[j] = 1;
+//						j = -1;
+//					}
+//				}
+//				res += to_string(tmp);
+//			}
+//		}
+//
+//		cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.getPermutation(4, 8);
+//	system("pause");
+//	return 0;
+//}
 
 
 
