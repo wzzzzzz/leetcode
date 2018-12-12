@@ -1,6 +1,106 @@
 #include <iostream>;
 using namespace std;
 
+class Solution {
+public:
+	int res=0;
+	int uniquePaths(int m, int n) {
+		if (m == 1 && n == 1)
+			return 0;
+		int i = 0; 
+		int j = 0;
+		m--;
+		n--;
+		path(i, j, m, n);
+		cout << res;
+		return res;
+	}
+
+	void path(int i, int j, int m, int n) {
+		if (i == m && j == n) {
+			res++;
+			return;
+		}
+		if (i < m) {
+			path(i + 1, j, m, n);
+		}
+		if (j < n) {
+			path(i, j + 1, m, n);
+		}
+	}
+};
+
+int main() {
+	Solution s;
+	s.uniquePaths(23, 12);
+	system("pause");
+	return 0;
+}
+
+
+
+/****************************************第六十一题*********************************************/
+////Definition for singly-linked list.
+//struct ListNode {
+//    int val;
+//    ListNode *next;
+//    ListNode(int x) : val(x), next(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	ListNode * rotateRight(ListNode* head, int k) {
+//		ListNode* res = head;
+//		int len = 0;
+//		while (res) {
+//			len++;
+//			res = res->next;
+//		}
+//		if (len == 0)
+//			return head;
+//		k = k % len;
+//		if (k == 0)
+//			return head;
+//		int start = len - k;
+//		res = head;
+//		while (start > 1) {
+//			res = res->next;
+//			start--;
+//		}
+//		ListNode* end = res;
+//		res = end->next;
+//		end->next = NULL;
+//		ListNode* mid = res;
+//		while (mid->next) {
+//			mid = mid->next;
+//		}
+//		mid->next = head;
+//
+//		while (res) {
+//			cout << res->val << " ";
+//			res = res->next;
+//		}
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	ListNode l1(1);
+//	//ListNode l2(2);
+//	//ListNode l3(3);
+//	//ListNode l4(4);
+//	//ListNode l5(5);
+//	//l1.next = &l2;
+//	//l2.next = &l3;
+//	//l3.next = &l4;
+//	//l4.next = &l5;
+//
+//	Solution s;
+//	s.rotateRight(&l1,0);
+//	system("pause");
+//	return 0;
+//}
+
 
 
 /****************************************第六十题*********************************************/
