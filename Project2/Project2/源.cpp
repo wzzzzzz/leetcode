@@ -1,41 +1,184 @@
 #include <iostream>;
 using namespace std;
 
-class Solution {
-public:
-	int res=0;
-	int uniquePaths(int m, int n) {
-		if (m == 1 && n == 1)
-			return 0;
-		int i = 0; 
-		int j = 0;
-		m--;
-		n--;
-		path(i, j, m, n);
-		cout << res;
-		return res;
-	}
 
-	void path(int i, int j, int m, int n) {
-		if (i == m && j == n) {
-			res++;
-			return;
-		}
-		if (i < m) {
-			path(i + 1, j, m, n);
-		}
-		if (j < n) {
-			path(i, j + 1, m, n);
-		}
-	}
-};
 
-int main() {
-	Solution s;
-	s.uniquePaths(23, 12);
-	system("pause");
-	return 0;
-}
+/****************************************第七十一题*********************************************/
+//#include<string>;
+//#include<vector>;
+//#include<stack>;
+//class Solution {
+//public:
+//	string simplifyPath(string path) {
+//		stack<string> paths;
+//		string tmp;
+//		string res = "";
+//		int len = path.length();
+//		for (int i = 0; i <= len; i++) {
+//			if (i == len || path[i] == '/') {
+//				if (tmp != "")
+//				{
+//					if (tmp == "..") {
+//						if (!paths.empty()) 
+//							paths.pop();
+//					}
+//					else if (tmp != "." && tmp != "")
+//						paths.push(tmp);
+//				}
+//				tmp = "";
+//			}
+//			else {
+//				tmp += path[i];
+//			}
+//		}
+//		while (!paths.empty()) {
+//			if (paths.size() == 0 && paths.top() == "..") {
+//				break;
+//			}
+//			res = paths.top() + res;
+//			res = '/' + res;
+//			paths.pop();
+//		}
+//		if (res == "")
+//			res = "/";
+//		cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	string path = "/...";
+//	Solution s;
+//	s.simplifyPath(path);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第六十四题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	int minPathSum(vector<vector<int>>& grid) {
+//		int m = grid.size();
+//		int n = grid[0].size();
+//		vector<vector<int>> res(m, vector<int>(n, 0));
+//		res[0][0] = grid[0][0];
+//		for (int i = 1; i < m; i++) {
+//			res[i][0] = res[i - 1][0] + grid[i][0];
+//		}
+//		for (int i = 1; i < n; i++) {
+//			res[0][i] = res[0][i - 1] + grid[0][i];
+//		}
+//		for (int i = 1; i < m; i++) {
+//			for (int j = 1; j < n; j++) {
+//				int left = res[i - 1][j] + grid[i][j];
+//				int up = res[i][j - 1] + grid[i][j];
+//				res[i][j] = min(left, up);
+//			}
+//		}
+//		cout << res[m - 1][n - 1];
+//		return res[m - 1][n - 1];
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> b{
+//		{1,3,1},
+//		{1,5,1},
+//		{4,2,1}
+//	};
+//	s.minPathSum(b);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第六十三题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+//		int n = obstacleGrid.size();
+//		int m = obstacleGrid[0].size();
+//		vector<vector<int>> path(n, vector<int>(m, 0));
+//		if (obstacleGrid[0][0] == 1 || obstacleGrid[n - 1][m - 1] == 1) {
+//			return 0;
+//		}
+//		path[0][0] = 1;
+//		for (int i = 1; i < n; i++) {
+//			if (obstacleGrid[i - 1][0] == 1 || path[i - 1][0] == 0) {
+//				path[i][0] = 0;
+//			}
+//			else path[i][0] = 1;
+//		}
+//		for (int j = 1; j < m; j++) {
+//			if (obstacleGrid[0][j - 1] == 1 || path[0][j - 1] == 0) {
+//				path[0][j] = 0;
+//			}
+//			else path[0][j] = 1;
+//		}
+//		for (int i = 1; i < n; i++) {
+//			for (int j = 1; j < m; j++) {
+//				if (obstacleGrid[i - 1][j] == 1 && obstacleGrid[i][j - 1] == 1) {
+//					path[i][j] = 0;
+//				}
+//				else if (obstacleGrid[i - 1][j] == 1) {
+//					path[i][j] = path[i][j - 1];
+//				}
+//				else if (obstacleGrid[i][j - 1] == 1) {
+//					path[i][j] = path[i - 1][j];
+//				}
+//				else path[i][j] = path[i - 1][j] + path[i][j - 1];
+//			}
+//		}
+//
+//		return path[n - 1][m - 1];
+//	}
+//};
+
+
+
+/****************************************第六十二题*********************************************/
+//class Solution {
+//public:
+//	int res=0;
+//	int uniquePaths(int m, int n) {
+//		if (m == 1 && n == 1)
+//			return 0;
+//		int i = 0; 
+//		int j = 0;
+//		m--;
+//		n--;
+//		path(i, j, m, n);
+//		cout << res;
+//		return res;
+//	}
+//
+//	void path(int i, int j, int m, int n) {
+//		if (i == m && j == n) {
+//			res++;
+//			return;
+//		}
+//		if (i < m) {
+//			path(i + 1, j, m, n);
+//		}
+//		if (j < n) {
+//			path(i, j + 1, m, n);
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.uniquePaths(23, 12);
+//	system("pause");
+//	return 0;
+//}
 
 
 
