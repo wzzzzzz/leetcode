@@ -1,6 +1,86 @@
 #include <iostream>;
 using namespace std;
 
+#include<vector>;
+class Solution {
+public:
+	void setZeroes(vector<vector<int>>& matrix) {
+		//更慢了
+		//int m = matrix.size();
+		//int n = matrix[0].size();
+		//int flag = 1;
+		//vector<int> col(n, 1);
+		//for (int i = 0; i < m; i++) {
+		//	for (int j = 0; j < n; j++) {
+		//		if (matrix[i][j] == 0) {
+		//			flag = 0;
+		//			col[j] = 0;
+		//		}
+		//	}
+		//	if (flag == 0) {
+		//		matrix[i] = vector<int>(n, 0);
+		//		flag = 1;
+		//	}
+		//}
+		//for (int i = 0; i < m; i++) {
+		//	for (int j = 0; j < n; j++) {
+		//		cout << matrix[i][j];
+		//	}
+		//	cout << endl;
+		//}
+		//for (int j = 0; j < n; j++) {
+		//	if (col[j] == 0) {
+		//		for (int i = 0; i < m; i++) {				
+		//			matrix[i][j] = 0;
+		//		}
+		//	}
+		//}
+		
+		//额外空间m+n的做法
+		//int m = matrix.size();
+		//int n = matrix[0].size();
+		//vector<int> row(m, 1);
+		//vector<int> col(n, 1);
+		//for (int i = 0; i < m; i++) {
+		//	for (int j = 0; j < n; j++) {
+		//		if (matrix[i][j] == 0) {
+		//			row[i] = 0;
+		//			col[j] = 0;
+		//		}
+		//	}
+		//}
+		//for (int i = 0; i < m; i++) {
+		//	if (row[i] == 0) {
+		//		matrix[i] = vector<int>(n, 0);
+		//	}
+		//	for (int j = 0; j < n; j++) {
+		//		if (col[j] == 0) {
+		//			matrix[i][j] = 0;
+		//		}
+		//	}
+		//}
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				cout << matrix[i][j];
+			}
+			cout << endl;
+		}
+	}
+};
+
+int main() {
+	Solution s;
+	vector<vector<int>> b{
+		{1,1,2,1},
+		{1,0,1,5},
+		{1,1,1,7},
+		{1,1,8,7},
+	};
+	s.setZeroes(b);
+	system("pause");
+	return 0;
+}
+
 
 
 /****************************************第七十一题*********************************************/
