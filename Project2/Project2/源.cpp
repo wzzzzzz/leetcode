@@ -4,82 +4,197 @@ using namespace std;
 #include<vector>;
 class Solution {
 public:
-	void setZeroes(vector<vector<int>>& matrix) {
-		//更慢了
-		//int m = matrix.size();
-		//int n = matrix[0].size();
-		//int flag = 1;
-		//vector<int> col(n, 1);
-		//for (int i = 0; i < m; i++) {
-		//	for (int j = 0; j < n; j++) {
-		//		if (matrix[i][j] == 0) {
-		//			flag = 0;
-		//			col[j] = 0;
-		//		}
-		//	}
-		//	if (flag == 0) {
-		//		matrix[i] = vector<int>(n, 0);
-		//		flag = 1;
-		//	}
-		//}
-		//for (int i = 0; i < m; i++) {
-		//	for (int j = 0; j < n; j++) {
-		//		cout << matrix[i][j];
-		//	}
-		//	cout << endl;
-		//}
-		//for (int j = 0; j < n; j++) {
-		//	if (col[j] == 0) {
-		//		for (int i = 0; i < m; i++) {				
-		//			matrix[i][j] = 0;
-		//		}
-		//	}
-		//}
-		
-		//额外空间m+n的做法
-		//int m = matrix.size();
-		//int n = matrix[0].size();
-		//vector<int> row(m, 1);
-		//vector<int> col(n, 1);
-		//for (int i = 0; i < m; i++) {
-		//	for (int j = 0; j < n; j++) {
-		//		if (matrix[i][j] == 0) {
-		//			row[i] = 0;
-		//			col[j] = 0;
-		//		}
-		//	}
-		//}
-		//for (int i = 0; i < m; i++) {
-		//	if (row[i] == 0) {
-		//		matrix[i] = vector<int>(n, 0);
-		//	}
-		//	for (int j = 0; j < n; j++) {
-		//		if (col[j] == 0) {
-		//			matrix[i][j] = 0;
-		//		}
-		//	}
-		//}
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				cout << matrix[i][j];
+	vector<vector<int>> combine(int n, int k) {
+		vector<vector<int>> res;
+		vector<int> tmp;
+		if (k == 0 || n == 0)
+			return res;
+		else {
+			for (int i = n; i >= k; i++) {
+				tmp.push_back(i);
+				getcombine(res, tmp, k - 1, i - 1);
+				tmp.pop_back();
+			}
+		}
+		for (int i = 0; i < res.size(); i++) {
+			for (int j = 0; j < res[i].size(); j++) {
+				cout << res[i][j] << " ";
 			}
 			cout << endl;
+		}
+		return res;
+	}
+
+	void getcombine(vector<vector<int>> &res, vector<int> &tmp, int k, int n) {
+		if (k == 1) {
+			for (int j = 1; j <= n; j++) {
+				tmp.push_back(j);
+				res.push_back(tmp);
+				tmp.pop_back();
+			}
+			return;
+		}
+		else {
+			for (int j = n; j >= k; j--) {
+				tmp.push_back(j);
+				getcombine(res, tmp, k - 1, j - 1);
+				tmp.pop_back();
+			}
 		}
 	}
 };
 
 int main() {
 	Solution s;
-	vector<vector<int>> b{
-		{1,1,2,1},
-		{1,0,1,5},
-		{1,1,1,7},
-		{1,1,8,7},
-	};
-	s.setZeroes(b);
+	int n = 4;
+	int k = 2;
+	s.combine(4, 2);
 	system("pause");
 	return 0;
 }
+
+
+
+/****************************************第七十五题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	void sortColors(vector<int>& nums) {
+//		int len = nums.size();
+//		int i = 0;
+//		int j = len - 1;
+//		while (i < j) {
+//			if (nums[i] == 0)
+//				i++;
+//			else if (nums[j] == 2)
+//				j--;
+//			else if (nums[j] == 0) {
+//				nums[j] = nums[i];
+//				nums[i] = 0;
+//				i++;
+//			}
+//			else if (nums[i] == 2) {
+//				nums[i] = nums[j];
+//				nums[j] = 2;
+//				j--;
+//			}
+//			else {
+//				int t = i;
+//				while (t < j) {
+//					if (nums[t] == 0) {
+//						nums[t] = 1;
+//						nums[i] = 0;
+//						i++;
+//						break;
+//					}
+//					else if (nums[t] == 2) {
+//						nums[t] = 1;
+//						nums[j] = 2;
+//						j--;
+//						break;
+//					}
+//					else t++;
+//				}
+//				if (t == j)
+//					break;
+//			}
+//		}
+//		for (i = 0; i < len; i++) {
+//			cout << nums[i];
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> nums = { 1,2,2,2,2,0,0,0,1,1};
+//	s.sortColors(nums);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第七十四题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	void setZeroes(vector<vector<int>>& matrix) {
+//		//更慢了
+//		//int m = matrix.size();
+//		//int n = matrix[0].size();
+//		//int flag = 1;
+//		//vector<int> col(n, 1);
+//		//for (int i = 0; i < m; i++) {
+//		//	for (int j = 0; j < n; j++) {
+//		//		if (matrix[i][j] == 0) {
+//		//			flag = 0;
+//		//			col[j] = 0;
+//		//		}
+//		//	}
+//		//	if (flag == 0) {
+//		//		matrix[i] = vector<int>(n, 0);
+//		//		flag = 1;
+//		//	}
+//		//}
+//		//for (int i = 0; i < m; i++) {
+//		//	for (int j = 0; j < n; j++) {
+//		//		cout << matrix[i][j];
+//		//	}
+//		//	cout << endl;
+//		//}
+//		//for (int j = 0; j < n; j++) {
+//		//	if (col[j] == 0) {
+//		//		for (int i = 0; i < m; i++) {				
+//		//			matrix[i][j] = 0;
+//		//		}
+//		//	}
+//		//}
+//		
+//		//额外空间m+n的做法
+//		//int m = matrix.size();
+//		//int n = matrix[0].size();
+//		//vector<int> row(m, 1);
+//		//vector<int> col(n, 1);
+//		//for (int i = 0; i < m; i++) {
+//		//	for (int j = 0; j < n; j++) {
+//		//		if (matrix[i][j] == 0) {
+//		//			row[i] = 0;
+//		//			col[j] = 0;
+//		//		}
+//		//	}
+//		//}
+//		//for (int i = 0; i < m; i++) {
+//		//	if (row[i] == 0) {
+//		//		matrix[i] = vector<int>(n, 0);
+//		//	}
+//		//	for (int j = 0; j < n; j++) {
+//		//		if (col[j] == 0) {
+//		//			matrix[i][j] = 0;
+//		//		}
+//		//	}
+//		//}
+//		for (int i = 0; i < m; i++) {
+//			for (int j = 0; j < n; j++) {
+//				cout << matrix[i][j];
+//			}
+//			cout << endl;
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> b{
+//		{1,1,2,1},
+//		{1,0,1,5},
+//		{1,1,1,7},
+//		{1,1,8,7},
+//	};
+//	s.setZeroes(b);
+//	system("pause");
+//	return 0;
+//}
 
 
 
