@@ -76,6 +76,137 @@ int main() {
 
 
 
+/****************************************第七十八题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	vector<vector<int>> subsets(vector<int>& nums) {
+//		int len = nums.size();
+//		vector<vector<int>> res;
+//		res.push_back(vector<int>{});
+//		vector<int> max;
+//		for (int i = 0; i < len; i++) {
+//			res.push_back(vector<int>{nums[i]});
+//			max.push_back(nums[i]);
+//		}
+//		if (len > 1) {
+//			res.push_back(max);
+//		}
+//
+//		for (int i = 2; i < len; i++) {
+//			combine(res, nums, i);
+//		}
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//
+//	void combine(vector<vector<int>> &res, vector<int>& nums, int k) {
+//		vector<int> tmp;
+//		vector<int> nextnums = nums;
+//		for (int i = nums.size(); i >= k; i--) {
+//			tmp.push_back(nums[i-1]);
+//			nextnums.pop_back();
+//			getcombine(res, tmp, nextnums, k - 1);
+//			tmp.pop_back();
+//		}
+//	}
+//
+//	void getcombine(vector<vector<int>> &res, vector<int> &tmp, vector<int>& nums, int k) {
+//		int len = nums.size();
+//		if (k == 1) {
+//			for (int j = 0; j < len; j++) {
+//				tmp.push_back(nums[j]);
+//				res.push_back(tmp);
+//				tmp.pop_back();
+//			}
+//			return;
+//		}
+//		vector<int> nextnums = nums;
+//		for (int j = len; j >= k; j--) {
+//			tmp.push_back(nums[j-1]);
+//			nextnums.pop_back();
+//			getcombine(res, tmp, nextnums, k - 1);
+//			tmp.pop_back();
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> nums{ 1,2,0,4};
+//	s.subsets(nums);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第七十七题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	vector<vector<int>> combine(int n, int k) {
+//		vector<vector<int>> res;
+//		vector<int> tmp;
+//		if (k == 0 || n == 0)
+//			return res;
+//		else {
+//			for (int i = n; i >= k; i--) {
+//				tmp.push_back(i);
+//				getcombine(res, tmp, k - 1, i - 1);
+//				//cout << i << " ";
+//				tmp.pop_back();
+//			}
+//		}
+////		for (int i = 0; i < res.size(); i++) {
+////			for (int j = 0; j < res[i].size(); j++) {
+////				cout << res[i][j] << " ";
+////			}
+////			cout << endl;
+////		}
+//		return res;
+//	}
+//
+//	void getcombine(vector<vector<int>> &res, vector<int> &tmp, int k, int n) {
+//		if (k == 0) {
+//			for (int j = 0; j <tmp.size(); j++) {
+//				res.push_back(tmp);
+//			}
+//			return;
+//		}
+//		if (k == 1) {
+//			for (int j = 1; j <= n; j++) {
+//				tmp.push_back(j);
+//				res.push_back(tmp);
+//				tmp.pop_back();
+//			}
+//			return;
+//		}
+//		for (int j = n; j >= k; j--) {
+//			tmp.push_back(j);
+//			getcombine(res, tmp, k - 1, j - 1);
+//			tmp.pop_back();
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n = 4;
+//	int k = 2;
+//	s.combine(5, 1);
+//	system("pause");
+//	return 0;
+//}
+
+
+
 /****************************************第七十五题*********************************************/
 //#include<vector>;
 //class Solution {
@@ -137,6 +268,52 @@ int main() {
 
 
 /****************************************第七十四题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	bool searchMatrix(vector<vector<int>>& matrix, int target) {
+//		int m = matrix.size();
+//		if (m == 0)
+//			return false;
+//		int n = matrix[0].size();
+//		if (n == 0)
+//			return false;
+//		if (matrix[0][0] > target || matrix[m - 1][n - 1] < target)
+//			return false;
+//		int i = 0;
+//		int j = 0;
+//		for (i = 0; i < m; i++) {
+//			if (matrix[i][0] == target)
+//				return true;
+//			if (matrix[i][0] > target)
+//				break;
+//		}
+//		for (j = 0; j < n; j++) {
+//			if (matrix[i-1][j] == target)
+//				return true;
+//			if (matrix[i-1][j] > target)
+//				break;
+//		}
+//		cout << "f";
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> b{
+//		{1/*,3,5,7*/},
+//		//{10,11,15,20},
+//		//{23,30,35,40}
+//	};
+//	s.searchMatrix(b,0);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第七十三题*********************************************/
 //#include<vector>;
 //class Solution {
 //public:
