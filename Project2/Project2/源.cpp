@@ -4,51 +4,72 @@ using namespace std;
 #include<vector>;
 class Solution {
 public:
-	vector<vector<int>> combine(int n, int k) {
-		vector<vector<int>> res;
-		vector<int> tmp;
-		if (k == 0 || n == 0)
-			return res;
-		else {
-			for (int i = n; i >= k; i++) {
-				tmp.push_back(i);
-				getcombine(res, tmp, k - 1, i - 1);
-				tmp.pop_back();
+	bool exist(vector<vector<char>>& board, string word) {
+		int m = board.size();
+		int n = board[0].size();
+		int len = word.length();
+		int res = 0;
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				if (board[i][j] == word[0]) {
+					findcharactor(board, word, 1, i, j, -1,-1, res);
+					cout << res << "   ";
+					if (res==1) {
+						cout << "1";
+						return true;
+					}
+				}
 			}
 		}
-		for (int i = 0; i < res.size(); i++) {
-			for (int j = 0; j < res[i].size(); j++) {
-				cout << res[i][j] << " ";
-			}
-			cout << endl;
-		}
-		return res;
+		return false;
 	}
 
-	void getcombine(vector<vector<int>> &res, vector<int> &tmp, int k, int n) {
-		if (k == 1) {
-			for (int j = 1; j <= n; j++) {
-				tmp.push_back(j);
-				res.push_back(tmp);
-				tmp.pop_back();
-			}
-			return;
+	void findcharactor(vector<vector<char>>& board, string word, int ind, int xind, int yind, int lxind, int lyind, int &res) {
+		int m = board.size();
+		int n = board[0].size();
+		char target = word[ind];
+		if (ind > word.size() - 1) {
+			res = 1;
 		}
-		else {
-			for (int j = n; j >= k; j--) {
-				tmp.push_back(j);
-				getcombine(res, tmp, k - 1, j - 1);
-				tmp.pop_back();
+		if (ind == word.size()-1) {
+			if (xind>0 && lxind != xind - 1 && board[xind - 1][yind] == target) {
+				res = 1;
 			}
+			else if (xind<m-1 && lxind != xind + 1 && board[xind + 1][yind] == target) {
+				res = 1;
+			}
+			else if (yind>0 && lyind != yind - 1 && board[xind][yind - 1] == target) {
+				res = 1;
+			}
+			else if (yind<n-1 && lyind != yind + 1 && board[xind][yind + 1] == target) {
+				res = 1;
+			}
+		}
+		else {			
+			if (xind>0 && lxind!= xind - 1 && board[xind - 1][yind] == target) {
+				findcharactor(board, word, ind + 1, xind - 1, yind, xind, yind, res);
+			}
+			if (xind<m-1 && lxind != xind + 1 && board[xind + 1][yind] == target) {
+				findcharactor(board, word, ind + 1, xind + 1, yind, xind, yind, res);
+			}
+			if (yind>0 && lyind != yind - 1 && board[xind][yind - 1] == target) {
+				findcharactor(board, word, ind + 1, xind, yind - 1, xind, yind, res);
+			}
+			if (yind<n-1 && lyind != yind + 1 && board[xind][yind + 1] == target) {
+				findcharactor(board, word, ind + 1, xind, yind + 1, xind, yind, res);
+			}
+			
 		}
 	}
 };
 
 int main() {
 	Solution s;
-	int n = 4;
-	int k = 2;
-	s.combine(4, 2);
+	vector<vector<char>> b = {
+		{ 'A'},
+	};
+	string w = "A";
+	s.exist(b, w);
 	system("pause");
 	return 0;
 }
