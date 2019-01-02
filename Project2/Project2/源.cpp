@@ -1,16 +1,94 @@
 #include <iostream>;
 using namespace std;
 
+
 #include<vector>;
+#include<algorithm>;
 class Solution {
 public:
 	vector<int> grayCode(int n) {
+		if (n == 0) {
+			return vector<int>(1, 0);
+		}
+		int len = pow(2, n);
+		vector<int> res(len, 0);
+		vector<int> ress(len, 0);
+		vector<int> log(n, 1);
+		for (int i = 1; i < len; i++) {
+			res[i] = i;
+			if (i < n) {
+				log[i] = log[i - 1] * 10;
+			}
+			//string tmpres = "";
+			int tmpres = 0;
+			int t = i;
+			int l = len / 2;
+			while (l>0) {
+				//tmpres += t / tmp;
+				tmpres *= 10;
+				tmpres += (int)(t / l);
+				t = t % l;
+				l /= 2;
+			}
+			ress[i] = tmpres;
+		}
 
+		int i = 1, j = 2;
+		int tmp = 0;
+		while (i < len-1) {
+			tmp = ress[j] - ress[i];
+			tmp = (tmp > 0) ? tmp : (-tmp);
+			int k = 0;
+			for (k = 0; k < n; k++) {
+				if (tmp == log[k]) {
+					break;
+				}
+			}
+			if (k < n) {
+				i++;
+			}
+			else {
+				j = i + 1;
+				tmp = ress[j] - ress[i];
+				tmp = (tmp > 0) ? tmp : (-tmp);
+				for (k = 0; k < n; k++) {
+					if (tmp == log[k]) {
+						break;
+					}
+				}
+				while (j < len - 1 && k == n) {
+					j++;
+					tmp = ress[j] - ress[i];
+					tmp = (tmp > 0) ? tmp : (-tmp);
+					for (k = 0; k < n; k++) {
+						if (tmp == log[k]) {
+							break;
+						}
+					}
+				}
+				cout << i << " " << j << endl;
+				int t = res[i+1];
+				res[i + 1] = res[j];
+				res[j] = t;
+				t = ress[i + 1];
+				ress[i + 1] = ress[j];
+				ress[j] = t;
+				i++;
+				j = i + 1;
+			}
+		}
+		for (int i = 0; i < len; i++) {
+			cout << res[i] << "  ";
+		}
+		return res;
 	}
 };
 
 int main() {
-
+	Solution s;
+	s.grayCode(5);
+	system("pause");
+	return 0;
 }
 
 
