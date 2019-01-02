@@ -4,75 +4,295 @@ using namespace std;
 #include<vector>;
 class Solution {
 public:
-	bool exist(vector<vector<char>>& board, string word) {
-		int m = board.size();
-		int n = board[0].size();
-		int len = word.length();
-		int res = 0;
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				if (board[i][j] == word[0]) {
-					findcharactor(board, word, 1, i, j, -1,-1, res);
-					cout << res << "   ";
-					if (res==1) {
-						cout << "1";
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
+	vector<int> grayCode(int n) {
 
-	void findcharactor(vector<vector<char>>& board, string word, int ind, int xind, int yind, int lxind, int lyind, int &res) {
-		int m = board.size();
-		int n = board[0].size();
-		char target = word[ind];
-		if (ind > word.size() - 1) {
-			res = 1;
-		}
-		if (ind == word.size()-1) {
-			if (xind>0 && lxind != xind - 1 && board[xind - 1][yind] == target) {
-				res = 1;
-			}
-			else if (xind<m-1 && lxind != xind + 1 && board[xind + 1][yind] == target) {
-				res = 1;
-			}
-			else if (yind>0 && lyind != yind - 1 && board[xind][yind - 1] == target) {
-				res = 1;
-			}
-			else if (yind<n-1 && lyind != yind + 1 && board[xind][yind + 1] == target) {
-				res = 1;
-			}
-		}
-		else {			
-			if (xind>0 && lxind!= xind - 1 && board[xind - 1][yind] == target) {
-				findcharactor(board, word, ind + 1, xind - 1, yind, xind, yind, res);
-			}
-			if (xind<m-1 && lxind != xind + 1 && board[xind + 1][yind] == target) {
-				findcharactor(board, word, ind + 1, xind + 1, yind, xind, yind, res);
-			}
-			if (yind>0 && lyind != yind - 1 && board[xind][yind - 1] == target) {
-				findcharactor(board, word, ind + 1, xind, yind - 1, xind, yind, res);
-			}
-			if (yind<n-1 && lyind != yind + 1 && board[xind][yind + 1] == target) {
-				findcharactor(board, word, ind + 1, xind, yind + 1, xind, yind, res);
-			}
-			
-		}
 	}
 };
 
 int main() {
-	Solution s;
-	vector<vector<char>> b = {
-		{ 'A'},
-	};
-	string w = "A";
-	s.exist(b, w);
-	system("pause");
-	return 0;
+
 }
+
+
+
+/****************************************第八十六题*********************************************/
+//Definition for singly-linked list.
+//struct ListNode {
+//    int val;
+//    ListNode *next;
+//    ListNode(int x) : val(x), next(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	ListNode * partition(ListNode* head, int x) {
+//		if (head == NULL || head->next == NULL) {
+//			return head;
+//		}
+//		ListNode* beforelarge = NULL;
+//		ListNode* large = head;
+//		ListNode* small = head->next;
+//		ListNode* beforesmall = head;
+//		while (large) {
+//			if (large->val < x) {
+//				beforelarge = large;
+//				large = large->next;
+//			}
+//			else break;
+//		}
+//
+//		if (large) {
+//			beforesmall = large;
+//			small = large->next;
+//		}
+//		else return head;
+//
+//		while (small) {
+//			if (small->val < x) {
+//				//移动
+//				beforesmall->next = small->next;
+//				small->next = large;
+//				if (beforelarge == NULL) {
+//					head = small;
+//					beforelarge = small;
+//				}
+//				else {
+//					beforelarge->next = small;
+//					beforelarge = small;
+//				}
+//				small = beforesmall->next;
+//			}
+//			else {
+//				beforesmall = small;
+//				small = small->next;
+//			}
+//		}
+//
+//		while (head) {
+//			cout << head->val<<" ";
+//			head = head->next;
+//		}
+//		return head;
+//	}
+//};
+//
+//int main() {
+//	ListNode l1(1);
+//	ListNode l2(1);
+//	//ListNode l3(3);
+//	//ListNode l4(2);
+//	//ListNode l5(5);
+//	//ListNode l6(2);
+//	l1.next = &l2;
+//	//l2.next = &l3;
+//	//l3.next = &l4;
+//	//l4.next = &l5;
+//	//l5.next = &l6;
+//
+//	Solution s;
+//	s.partition(&l1,3);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第八十题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	int removeDuplicates(vector<int>& nums) {
+//		int len = nums.size();
+//		int res = len;
+//		if (len < 3)
+//			return res;
+//		int flag = nums[0] - 1;
+//		int num = nums[0];
+//		int count = 1;
+//		for (int i = 1; i < len; i++) {
+//			if (nums[i] == num) {
+//				count++;
+//			}
+//			else {
+//				count = 1;
+//				num = nums[i];
+//			}
+//			if (count > 2) {
+//				nums[i] = flag;
+//				res--;
+//			}
+//		}
+//		//i是重复的，j是被交换的
+//		int i = 0, j = 1;
+//		while ( i < len&&j < len) {
+//			if (nums[i] != flag) {
+//				i++;
+//				j = i;
+//			}
+//			else {
+//				if (nums[j] == flag) {
+//					j++;
+//				}
+//				else {
+//					int tmp = nums[i];
+//					nums[i] = nums[j];
+//					nums[j] = tmp;
+//					i++;
+//					j++;
+//				}
+//			}
+//		}
+//		for (int i = 0; i < len; i++) {
+//			cout << nums[i] << " ";
+//		}
+//		cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> nums = { 0,1 ,1,1,1,1,2,3,3,3 };
+//	s.removeDuplicates(nums);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第七十九题？？？？？？？？？？？？？？*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	bool exist(vector<vector<char>>& board, string word) {
+//		int m = board.size();
+//		int n = board[0].size();
+//		int len = word.length();
+//		int res = 0;
+//		if (len > m*n)
+//			return false;
+//		vector<vector<int>> flag( m,vector<int>(n,0) );
+//		for (int i = 0; i < m; i++) {
+//			for (int j = 0; j < n; j++) {
+//				if (board[i][j] == word[0]) {
+//					board[i][j] = ' ';
+//					findcharactor(board, word, 1, i, j, res);
+//					//cout << res << "   ";
+//					if (res==1) {
+//						return true;
+//					}
+//					board[i][j] = word[0];
+//				}
+//			}
+//		}
+//		return false;
+//	}
+//
+//	void findcharactor(vector<vector<char>>& board, string word, int ind, int xind, int yind, int &res) {
+//		int m = board.size();
+//		int n = board[0].size();
+//		//for (int i = 0; i < m; i++) {
+//		//	for (int j = 0; j < n; j++) {
+//		//		cout << board[i][j] << "  ";
+//		//	}
+//		//	cout << endl;
+//		//}
+//		//cout << endl;
+//		char target = word[ind];
+//		if (ind > word.size() - 1) {
+//			res = 1;
+//			return;
+//		}
+//		if (ind == word.size()-1) {
+//			if (xind>0 && board[xind - 1][yind] == target) {
+//				res = 1;
+//				return;
+//			}
+//			else if (xind<m-1 && board[xind + 1][yind] == target) {
+//				res = 1;
+//				return;
+//			}
+//			else if (yind>0 && board[xind][yind - 1] == target) {
+//				res = 1;
+//				return;
+//			}
+//			else if (yind<n-1 && board[xind][yind + 1] == target) {
+//				res = 1;
+//				return;
+//			}
+//			return;
+//		}
+//		else {	
+//			int flag = 0;
+//			if (xind>0 && board[xind - 1][yind] == target) {
+//				board[xind - 1][yind] = ' ';
+//				findcharactor(board, word, ind + 1, xind - 1, yind, res);
+//				board[xind - 1][yind] = target;
+//				flag = 1;
+//			}
+//			if (xind<m-1 && board[xind + 1][yind] == target) {
+//				board[xind + 1][yind] = ' ';
+//				findcharactor(board, word, ind + 1, xind + 1, yind, res);
+//				board[xind + 1][yind] = target;
+//				flag = 1;
+//			}
+//			if (yind>0 && board[xind][yind - 1] == target) {
+//				board[xind][yind - 1] = ' ';
+//				findcharactor(board, word, ind + 1, xind, yind - 1, res);
+//				board[xind][yind - 1] = target;
+//				flag = 1;
+//			}
+//			if (yind<n-1 && board[xind][yind + 1] == target) {
+//				board[xind][yind + 1] = ' ';
+//				findcharactor(board, word, ind + 1, xind, yind + 1, res);
+//				board[xind][yind + 1] = target;
+//				flag = 1;
+//			}
+//			if(flag==0)
+//				return;
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<char>> b = {
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'},
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 	    
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//		{'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'}, 
+//	    {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'b'}
+//	};
+//	string w = "baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+//	s.exist(b, w);
+//	system("pause");
+//	return 0;
+//}
 
 
 
@@ -92,9 +312,10 @@ int main() {
 //		if (len > 1) {
 //			res.push_back(max);
 //		}
-//
+//		vector<int> tmp;
+//		vector<int> nextnums = nums;
 //		for (int i = 2; i < len; i++) {
-//			combine(res, nums, i);
+//			getcombine(res, tmp, nextnums, i);
 //		}
 //
 //		for (int i = 0; i < res.size(); i++) {
@@ -104,17 +325,6 @@ int main() {
 //			cout << endl;
 //		}
 //		return res;
-//	}
-//
-//	void combine(vector<vector<int>> &res, vector<int>& nums, int k) {
-//		vector<int> tmp;
-//		vector<int> nextnums = nums;
-//		for (int i = nums.size(); i >= k; i--) {
-//			tmp.push_back(nums[i-1]);
-//			nextnums.pop_back();
-//			getcombine(res, tmp, nextnums, k - 1);
-//			tmp.pop_back();
-//		}
 //	}
 //
 //	void getcombine(vector<vector<int>> &res, vector<int> &tmp, vector<int>& nums, int k) {
@@ -156,30 +366,17 @@ int main() {
 //		vector<int> tmp;
 //		if (k == 0 || n == 0)
 //			return res;
-//		else {
-//			for (int i = n; i >= k; i--) {
-//				tmp.push_back(i);
-//				getcombine(res, tmp, k - 1, i - 1);
-//				//cout << i << " ";
-//				tmp.pop_back();
-//			}
-//		}
-////		for (int i = 0; i < res.size(); i++) {
-////			for (int j = 0; j < res[i].size(); j++) {
-////				cout << res[i][j] << " ";
-////			}
-////			cout << endl;
-////		}
+//		getcombine(res, tmp, k, n);
+//		//for (int i = 0; i < res.size(); i++) {
+//		//	for (int j = 0; j < res[i].size(); j++) {
+//		//		cout << res[i][j] << " ";
+//		//	}
+//		//	cout << endl;
+//		//}
 //		return res;
 //	}
 //
 //	void getcombine(vector<vector<int>> &res, vector<int> &tmp, int k, int n) {
-//		if (k == 0) {
-//			for (int j = 0; j <tmp.size(); j++) {
-//				res.push_back(tmp);
-//			}
-//			return;
-//		}
 //		if (k == 1) {
 //			for (int j = 1; j <= n; j++) {
 //				tmp.push_back(j);
