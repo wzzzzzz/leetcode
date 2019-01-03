@@ -1,95 +1,228 @@
 #include <iostream>;
 using namespace std;
 
-
-#include<vector>;
-#include<algorithm>;
 class Solution {
 public:
-	vector<int> grayCode(int n) {
-		if (n == 0) {
-			return vector<int>(1, 0);
-		}
-		int len = pow(2, n);
-		vector<int> res(len, 0);
-		vector<int> ress(len, 0);
-		vector<int> log(n, 1);
-		for (int i = 1; i < len; i++) {
-			res[i] = i;
-			if (i < n) {
-				log[i] = log[i - 1] * 10;
-			}
-			//string tmpres = "";
-			int tmpres = 0;
-			int t = i;
-			int l = len / 2;
-			while (l>0) {
-				//tmpres += t / tmp;
-				tmpres *= 10;
-				tmpres += (int)(t / l);
-				t = t % l;
-				l /= 2;
-			}
-			ress[i] = tmpres;
-		}
-
-		int i = 1, j = 2;
-		int tmp = 0;
-		while (i < len-1) {
-			tmp = ress[j] - ress[i];
-			tmp = (tmp > 0) ? tmp : (-tmp);
-			int k = 0;
-			for (k = 0; k < n; k++) {
-				if (tmp == log[k]) {
-					break;
-				}
-			}
-			if (k < n) {
-				i++;
-			}
-			else {
-				j = i + 1;
-				tmp = ress[j] - ress[i];
-				tmp = (tmp > 0) ? tmp : (-tmp);
-				for (k = 0; k < n; k++) {
-					if (tmp == log[k]) {
-						break;
-					}
-				}
-				while (j < len - 1 && k == n) {
-					j++;
-					tmp = ress[j] - ress[i];
-					tmp = (tmp > 0) ? tmp : (-tmp);
-					for (k = 0; k < n; k++) {
-						if (tmp == log[k]) {
-							break;
-						}
-					}
-				}
-				cout << i << " " << j << endl;
-				int t = res[i+1];
-				res[i + 1] = res[j];
-				res[j] = t;
-				t = ress[i + 1];
-				ress[i + 1] = ress[j];
-				ress[j] = t;
-				i++;
-				j = i + 1;
-			}
-		}
-		for (int i = 0; i < len; i++) {
-			cout << res[i] << "  ";
-		}
+	int numDecodings(string s) {
+		int len = s.length();
+		if ((len == 1 && s == "0") || len == 0)
+			return 0;
+		if (len == 1 && s != "0")
+			return 1;
+		int res = 0;
+		int* r = &res;
+		count(s, r, 0);
+		cout << res;
 		return res;
+	}
+	void count(string s, int* res, int ind) {
+		if (s[ind] == '0') {
+			if (ind == 0 || (ind > 0 && s[ind - 1]-'0' > 2)) {
+				(*res) = 0;
+				return;
+			}
+			return;
+		}
+		int len = s.length();
+		int t = (s[ind] - '0') * 10 + s[ind + 1] - '0';
+		if (ind == len - 1) {
+			if (s[ind] != '0') {
+				(*res)++;
+			}
+		}
+		else if (ind == len - 2) {
+			if (t <= 26 && t > 0) {
+				(*res)++;
+			}
+			if (s[ind]!='0' && s[ind+1] != '0') {
+				(*res)++;
+			}
+		}
+		else {
+			if (t <= 26 && t > 0) {
+				count(s, res, ind + 2);
+			}
+			count(s, res, ind + 1);
+		}
 	}
 };
 
 int main() {
 	Solution s;
-	s.grayCode(5);
+	string ss = "1787897759966261825913315262377298132516969578441236833255596967132573482281598412163216914566534565";
+	s.numDecodings(ss);
 	system("pause");
 	return 0;
 }
+
+
+/****************************************第九十题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+//		int len = nums.size();
+//		sort(nums.begin(), nums.end());
+//
+//		vector<vector<int>> res;
+//		res.push_back(vector<int>{});
+//		vector<int> max;
+//		for (int i = 0; i < len; i++) {
+//			res.push_back(vector<int>{nums[i]});
+//			max.push_back(nums[i]);
+//			while (i < len - 1 && nums[i] == nums[i + 1]) {
+//				i++;
+//				max.push_back(nums[i]);
+//			}
+//		}
+//		if (len > 1) {
+//			res.push_back(max);
+//		}
+//		vector<int> tmp;
+//		vector<int> nextnums = nums;
+//		//i是结果的长度
+//		for (int i = 2; i < len; i++) {
+//			getsubsets(res, tmp, nextnums, i);
+//		}
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//
+//	//res是结果，tmp是暂存的当前数组，nums是剩下的可用的数组，k是还剩几个名额
+//	void getsubsets(vector<vector<int>> &res, vector<int> &tmp, vector<int>& nums, int k) {
+//		int len = nums.size();
+//		if (k == 1) {
+//			for (int j =len-1; j >=0; j--) {
+//				tmp.push_back(nums[j]);
+//				res.push_back(tmp);
+//				tmp.pop_back();
+//				while (j >0 && nums[j] == nums[j - 1]) {
+//					j--;
+//				}
+//			}
+//			return;
+//		}
+//		vector<int> nextnums = nums;
+//		for (int j = len; j >= k; j--) {
+//			tmp.push_back(nums[j-1]);
+//			nextnums.pop_back();
+//			getsubsets(res, tmp, nextnums, k - 1);
+//			tmp.pop_back();
+//			while (j > k&&nums[j-2] == nums[j - 1]) {
+//				j--;
+//				nextnums.pop_back();
+//			}
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> nums{ 1,4,3,4,4,0};
+//	s.subsetsWithDup(nums);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第八十九题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<int> grayCode(int n) {
+//		//交换的思路不对
+//		//if (n == 0) {
+//		//	return vector<int>(1, 0);
+//		//}
+//		//int len = pow(2, n);
+//		//vector<int> res(len, 0);
+//		//vector<int> ress(len, 0);
+//		//vector<int> log(n, 1);
+//		//for (int i = 1; i < len; i++) {
+//		//	res[i] = i;
+//		//	if (i < n) {
+//		//		log[i] = log[i - 1] * 10;
+//		//	}
+//		//	//string tmpres = "";
+//		//	int tmpres = 0;
+//		//	int t = i;
+//		//	int l = len / 2;
+//		//	while (l>0) {
+//		//		//tmpres += t / tmp;
+//		//		tmpres *= 10;
+//		//		tmpres += (int)(t / l);
+//		//		t = t % l;
+//		//		l /= 2;
+//		//	}
+//		//	ress[i] = tmpres;
+//		//}
+//
+//		//int i = 1, j = 2;
+//		//int tmp = 0;
+//		//while (i < len-1) {
+//		//	tmp = ress[j] - ress[i];
+//		//	tmp = (tmp > 0) ? tmp : (-tmp);
+//		//	int k = 0;
+//		//	for (k = 0; k < n; k++) {
+//		//		if (tmp == log[k]) {
+//		//			break;
+//		//		}
+//		//	}
+//		//	if (k < n) {
+//		//		i++;
+//		//	}
+//		//	else {
+//		//		j = i + 1;
+//		//		tmp = ress[j] - ress[i];
+//		//		tmp = (tmp > 0) ? tmp : (-tmp);
+//		//		for (k = 0; k < n; k++) {
+//		//			if (tmp == log[k]) {
+//		//				break;
+//		//			}
+//		//		}
+//		//		while (j < len - 1 && k == n) {
+//		//			j++;
+//		//			tmp = ress[j] - ress[i];
+//		//			tmp = (tmp > 0) ? tmp : (-tmp);
+//		//			for (k = 0; k < n; k++) {
+//		//				if (tmp == log[k]) {
+//		//					break;
+//		//				}
+//		//			}
+//		//		}
+//		//		cout << i << " " << j << endl;
+//		//		int t = res[i+1];
+//		//		res[i + 1] = res[j];
+//		//		res[j] = t;
+//		//		t = ress[i + 1];
+//		//		ress[i + 1] = ress[j];
+//		//		ress[j] = t;
+//		//		i++;
+//		//		j = i + 1;
+//		//	}
+//		//}
+//		//for (int i = 0; i < len; i++) {
+//		//	cout << res[i] << "  ";
+//		//}
+//		//return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.grayCode(5);
+//	system("pause");
+//	return 0;
+//}
 
 
 
