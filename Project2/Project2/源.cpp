@@ -1,59 +1,240 @@
 #include <iostream>;
 using namespace std;
 
+#include<vector>;
 class Solution {
 public:
-	int numDecodings(string s) {
+	vector<string> restoreIpAddresses(string s) {
 		int len = s.length();
-		if ((len == 1 && s == "0") || len == 0)
-			return 0;
-		if (len == 1 && s != "0")
-			return 1;
-		int res = 0;
-		int* r = &res;
-		count(s, r, 0);
-		cout << res;
-		return res;
-	}
-	void count(string s, int* res, int ind) {
-		if (s[ind] == '0') {
-			if (ind == 0 || (ind > 0 && s[ind - 1]-'0' > 2)) {
-				(*res) = 0;
-				return;
-			}
-			return;
+		vector<string> res;
+		if (len < 4) {
+			return res;
 		}
-		int len = s.length();
-		int t = (s[ind] - '0') * 10 + s[ind + 1] - '0';
-		if (ind == len - 1) {
-			if (s[ind] != '0') {
-				(*res)++;
+		if (len == 12) {
+			string tmp;
+			for (int i = 0; i < 12; i+=3) {
+				int t = (s[i] - '0') * 100 + (s[i + 1] - '0') * 10 + s[i + 2] - '0';
+				if (t > 255 || t < 1) {
+					cout << t<<" ";
+					return res;
+				}
+				else {
+					tmp = tmp + s[i] + s[i + 1] + s[i + 2];
+					if (i < 9) {
+						tmp += ".";
+					}
+				}
 			}
-		}
-		else if (ind == len - 2) {
-			if (t <= 26 && t > 0) {
-				(*res)++;
-			}
-			if (s[ind]!='0' && s[ind+1] != '0') {
-				(*res)++;
-			}
+			res.push_back(tmp);
 		}
 		else {
-			if (t <= 26 && t > 0) {
-				count(s, res, ind + 2);
+			string tmp = "";
+			getip(&res,s, tmp, 0, 0, len);
+		}
+		for(int i = 0; i < res.size(); i++) {
+			for (int j = 0; j < res[i].size(); j++) {
+				cout << res[i][j];
 			}
-			count(s, res, ind + 1);
+			cout << endl;
+		}
+		return res;
+	}
+	void getip(vector<string>* res,string s,string tmp,int ind,int index, int len) {
+		if (index==len) {			
+			tmp = tmp.substr(0, tmp.size() - 1);
+			(*res).push_back(tmp);
+			return;
+		}
+		if (ind > 3) {
+			return;
+		}
+		int left = len - 1 - index;
+		if (left > 3 * (4 - ind) || left < 1 * (4 - ind)) {
+			return;
+		}
+		string t = tmp;
+		if (s[index] - '0' >=0) {
+			tmp = tmp + s[index] + ".";
+			getip(res, s, tmp, ind + 1, index + 1, len);
+			tmp = t;
+		}
+		if (index < len - 1 && s[index] - '0'>0) {
+			tmp = tmp + s[index] + s[index + 1] + ".";
+			getip(res, s, tmp, ind + 1, index + 2, len);
+			tmp = t;
+		}
+		if (index < len - 2 && s[index] - '0'>0 && s[index+1] - '0'>0 && ((s[index] - '0') * 100 + (s[index + 1] - '0') * 10 + s[index + 2] - '0') < 256) {
+			tmp = tmp + s[index] + s[index + 1] + s[index + 2] + ".";
+			getip(res, s, tmp, ind + 1, index + 3, len);
+			tmp = t;
 		}
 	}
 };
 
 int main() {
+	string ss = "25525511135";
 	Solution s;
-	string ss = "1787897759966261825913315262377298132516969578441236833255596967132573482281598412163216914566534565";
-	s.numDecodings(ss);
+	s.restoreIpAddresses(ss);
 	system("pause");
 	return 0;
 }
+
+
+
+/****************************************第九十二题*********************************************/
+//Definition for singly-linked list.
+//struct ListNode {
+//    int val;
+//    ListNode *next;
+//    ListNode(int x) : val(x), next(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	ListNode * reverseBetween(ListNode* head, int m, int n) {
+//		if (m == n)
+//			return head;
+//		ListNode* res = head;
+//		ListNode reverse = NULL;
+//		ListNode* reversefirst = head;
+//		ListNode tmp = NULL;
+//		ListNode* before = NULL;
+//		ListNode* later = head;
+//		int ind = 1;
+//		while (head&&ind <= n+1) {
+//			if (ind == m - 1) {
+//				before = head;
+//				ind++;
+//				head = head->next;
+//			}
+//			if (ind >= m && ind <= n) {
+//				if (ind == m) {
+//					reversefirst = head;
+//				}	
+//				tmp = ListNode(head->val);
+//				head = head->next;
+//				tmp.next = &reverse;
+//				ListNode tmpp = tmp;
+//
+//				int t = tmp.val;
+//				reverse.val = t;
+//				cout << tmpp.val << endl;
+//				if (ind > m) {
+//					cout << tmpp.next->val << endl;
+//				}
+//				reverse.next = &tmpp;
+//				//cout << tmp.val << " " << tmp.next->val << endl;
+//				//cout << reverse.val << " " << reverse.next->val << " ";
+//				if (ind > m + 1) {
+//					//cout << reverse.next->next->val << endl;
+//				}
+//				cout << tmpp.val << endl;
+//				if (ind > m) {
+//					cout << tmpp.next->val << endl;
+//				}
+//				//tmp = *head;
+//				//head = head->next;
+//				//tmp.next = &reverse;
+//				//reverse.next = tmp.next;
+//				//cout << tmp.val << " " << tmp.next->val << endl;
+//				//cout << reverse.val << " " << tmp.val << endl;
+//				//int t = tmp.val;
+//				//reverse.val = t;
+//				//cout << tmp.val << " " << tmp.next->val << endl;
+//				//cout << reverse.val << " " << reverse.next->val << " " << reverse.next->next->val << endl;
+//				ind++;
+//			}
+//			if (ind == n + 1) {
+//				later = head;
+//				break;
+//			}
+//		}
+//		cout << reverse.val << " " << reverse.next->val << " " << reverse.next->next->val << endl;
+//		before->next = &reverse;
+//		reversefirst->next = later;
+//		
+//		//while (reverse.next) {
+//		//	cout << reverse.val << " ";
+//		//	reverse = *reverse.next;
+//		//}
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	ListNode l1(1);
+//	ListNode l2(2);
+//	ListNode l3(3);
+//	ListNode l4(4);
+//	ListNode l5(5);
+//	ListNode l6(6);
+//	l1.next = &l2;
+//	l2.next = &l3;
+//	l3.next = &l4;
+//	l4.next = &l5;
+//	l5.next = &l6;
+//
+//	Solution s;
+//	s.reverseBetween(&l1,2,5);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第九十一题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	int numDecodings(string s) {
+//		int len = s.length();
+//		vector<int> res(len + 1, 0);
+//		if (len == 0)
+//			return 0;
+//		if (s[0] == '0')
+//			return 0;
+//		if (len == 1) {
+//			return 1;
+//		}
+//
+//		res[0] = 1;
+//		for (int i = 1; i < len; i++) {
+//			if (s[i] == '0') {
+//				if (s[i - 1] - '0' > 2 || s[i - 1] == '0') {
+//					return 0;
+//				}
+//				else {
+//					if (i == 1) {
+//						res[i] = 1;
+//					}
+//					else res[i] = res[i - 2];
+//				}
+//			}
+//			else {
+//				if ((s[i - 1] - '0') * 10 + s[i] - '0'>26 || s[i - 1] == '0') {
+//					res[i] = res[i - 1];
+//				}
+//				else {
+//					if (i == 1) {
+//						res[i] = 2;
+//					}
+//					else res[i] = res[i - 1] + res[i - 2];
+//				}
+//			}
+//		}
+//
+//		return res[len - 1];
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	string ss = "1022";
+//	s.numDecodings(ss);
+//	system("pause");
+//	return 0;
+//}
+
 
 
 /****************************************第九十题*********************************************/
@@ -139,87 +320,41 @@ int main() {
 //class Solution {
 //public:
 //	vector<int> grayCode(int n) {
-//		//交换的思路不对
-//		//if (n == 0) {
-//		//	return vector<int>(1, 0);
-//		//}
-//		//int len = pow(2, n);
-//		//vector<int> res(len, 0);
-//		//vector<int> ress(len, 0);
-//		//vector<int> log(n, 1);
-//		//for (int i = 1; i < len; i++) {
-//		//	res[i] = i;
-//		//	if (i < n) {
-//		//		log[i] = log[i - 1] * 10;
-//		//	}
-//		//	//string tmpres = "";
-//		//	int tmpres = 0;
-//		//	int t = i;
-//		//	int l = len / 2;
-//		//	while (l>0) {
-//		//		//tmpres += t / tmp;
-//		//		tmpres *= 10;
-//		//		tmpres += (int)(t / l);
-//		//		t = t % l;
-//		//		l /= 2;
-//		//	}
-//		//	ress[i] = tmpres;
-//		//}
-//
-//		//int i = 1, j = 2;
-//		//int tmp = 0;
-//		//while (i < len-1) {
-//		//	tmp = ress[j] - ress[i];
-//		//	tmp = (tmp > 0) ? tmp : (-tmp);
-//		//	int k = 0;
-//		//	for (k = 0; k < n; k++) {
-//		//		if (tmp == log[k]) {
-//		//			break;
-//		//		}
-//		//	}
-//		//	if (k < n) {
-//		//		i++;
-//		//	}
-//		//	else {
-//		//		j = i + 1;
-//		//		tmp = ress[j] - ress[i];
-//		//		tmp = (tmp > 0) ? tmp : (-tmp);
-//		//		for (k = 0; k < n; k++) {
-//		//			if (tmp == log[k]) {
-//		//				break;
-//		//			}
-//		//		}
-//		//		while (j < len - 1 && k == n) {
-//		//			j++;
-//		//			tmp = ress[j] - ress[i];
-//		//			tmp = (tmp > 0) ? tmp : (-tmp);
-//		//			for (k = 0; k < n; k++) {
-//		//				if (tmp == log[k]) {
-//		//					break;
-//		//				}
-//		//			}
-//		//		}
-//		//		cout << i << " " << j << endl;
-//		//		int t = res[i+1];
-//		//		res[i + 1] = res[j];
-//		//		res[j] = t;
-//		//		t = ress[i + 1];
-//		//		ress[i + 1] = ress[j];
-//		//		ress[j] = t;
-//		//		i++;
-//		//		j = i + 1;
-//		//	}
-//		//}
-//		//for (int i = 0; i < len; i++) {
-//		//	cout << res[i] << "  ";
-//		//}
-//		//return res;
+//		vector<int> res;
+//		if (n == 0) {
+//			return vector<int>{0};
+//		}
+//		vector<vector<int>> restwo;
+//		restwo.push_back(vector<int>{0});
+//		restwo.push_back(vector<int>{1});
+//		for (int i = 2; i <= n; i++) {
+//			int len = restwo.size();
+//			for (int j = len-1; j >=0; j--) {
+//				vector<int> tmp = restwo[j];
+//				restwo[j].push_back(0);
+//				tmp.push_back(1);
+//				restwo.push_back(tmp);
+//			}
+//		}
+//		for (int i = 0; i < restwo.size(); i++) {
+//			res.push_back(twoToten(restwo[i]));
+//		}
+//		return res;
+//	}
+//	int twoToten(vector<int> nums) {
+//		int len = nums.size();
+//		int res = 0;
+//		for (int i = 0; i < len; i++) {
+//			res *= 2;
+//			res += nums[i];
+//		}
+//		return res;
 //	}
 //};
 //
 //int main() {
 //	Solution s;
-//	s.grayCode(5);
+//	s.grayCode(0);
 //	system("pause");
 //	return 0;
 //}
