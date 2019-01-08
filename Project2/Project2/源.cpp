@@ -10,6 +10,12 @@ public:
 		if (len < 4) {
 			return res;
 		}
+		//if (len == 4) {
+		//	string tmp = s[0] + "." + s[1];
+		//	tmp=tmp +"." + s[2] + "." + s[3];
+		//	res.push_back(tmp);
+		//	return res;
+		//}
 		if (len == 12) {
 			string tmp;
 			for (int i = 0; i < 12; i+=3) {
@@ -48,8 +54,9 @@ public:
 		if (ind > 3) {
 			return;
 		}
-		int left = len - 1 - index;
+		int left = len - index;
 		if (left > 3 * (4 - ind) || left < 1 * (4 - ind)) {
+			//cout << left<<"!";
 			return;
 		}
 		string t = tmp;
@@ -72,7 +79,7 @@ public:
 };
 
 int main() {
-	string ss = "25525511135";
+	string ss = "11011011";
 	Solution s;
 	s.restoreIpAddresses(ss);
 	system("pause");
