@@ -2,93 +2,195 @@
 using namespace std;
 
 #include<vector>;
+#include<stack>;
+//Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 class Solution {
 public:
-	vector<string> restoreIpAddresses(string s) {
-		int len = s.length();
-		vector<string> res;
-		if (len < 4) {
-			return res;
-		}
-		//if (len == 4) {
-		//	string tmp = s[0] + "." + s[1];
-		//	tmp=tmp +"." + s[2] + "." + s[3];
-		//	res.push_back(tmp);
-		//	return res;
+	vector<int> inorderTraversal(TreeNode* root) {		
+		//递归
+		//vector<int> res;
+		//if (root) {
+		//	travel(root, &res);
 		//}
-		if (len == 12) {
-			string tmp;
-			for (int i = 0; i < 12; i+=3) {
-				int t = (s[i] - '0') * 100 + (s[i + 1] - '0') * 10 + s[i + 2] - '0';
-				if (t > 255 || t < 1) {
-					cout << t<<" ";
-					return res;
+
+		//迭代，用栈
+		vector<int> res;
+		stack<TreeNode*> tree;
+		TreeNode* tmp = root;
+		tree.push(root);
+		//前序
+		//while (!tree.empty()) {
+		//	tmp = tree.top();
+		//	tree.pop();
+		//	if (tmp->right) {
+		//		tree.push(tmp->right);
+		//	}
+		//	if (tmp->left) {
+		//		tree.push(tmp->left);
+		//	}
+		//	res.push_back(tmp->val);
+		//}
+
+		//中序
+		//while (tmp || !tree.empty()) {
+		//	if (tmp) {
+		//		tree.push(tmp);
+		//		tmp = tmp->left;
+		//	}
+		//	else {
+		//		tmp = tree.top();
+		//		tree.pop();
+		//		res.push_back(tmp->val);
+		//		tmp = tmp->right;
+		//	}
+		//}
+
+		//后序
+		while (tmp || !tree.empty()) {
+			if () {
+
+			}			
+			else {
+				if (tmp->right) {
+					tree.push(tmp->right);
 				}
-				else {
-					tmp = tmp + s[i] + s[i + 1] + s[i + 2];
-					if (i < 9) {
-						tmp += ".";
-					}
+				if (tmp->left) {
+					tmp = tmp->left;
 				}
 			}
-			res.push_back(tmp);
 		}
-		else {
-			string tmp = "";
-			getip(&res,s, tmp, 0, 0, len);
-		}
-		for(int i = 0; i < res.size(); i++) {
-			for (int j = 0; j < res[i].size(); j++) {
-				cout << res[i][j];
-			}
-			cout << endl;
+
+		for (int i = 0; i < res.size(); i++) {
+			cout << res[i] << " ";
 		}
 		return res;
 	}
-	void getip(vector<string>* res,string s,string tmp,int ind,int index, int len) {
-		if (index==len) {			
-			tmp = tmp.substr(0, tmp.size() - 1);
-			(*res).push_back(tmp);
-			return;
-		}
-		if (ind > 3) {
-			return;
-		}
-		int left = len - index;
-		if (left > 3 * (4 - ind) || left < 1 * (4 - ind)) {
-			//cout << left<<"!";
-			return;
-		}
-		string t = tmp;
-		if (s[index] - '0' >=0) {
-			tmp = tmp + s[index] + ".";
-			getip(res, s, tmp, ind + 1, index + 1, len);
-			tmp = t;
-		}
-		if (index < len - 1 && s[index] - '0'>0) {
-			tmp = tmp + s[index] + s[index + 1] + ".";
-			getip(res, s, tmp, ind + 1, index + 2, len);
-			tmp = t;
-		}
-		if (index < len - 2 && s[index] - '0'>0 && s[index+1] - '0'>0 && ((s[index] - '0') * 100 + (s[index + 1] - '0') * 10 + s[index + 2] - '0') < 256) {
-			tmp = tmp + s[index] + s[index + 1] + s[index + 2] + ".";
-			getip(res, s, tmp, ind + 1, index + 3, len);
-			tmp = t;
-		}
-	}
+
+	//递归
+	//void travel(TreeNode* root, vector<int>* res) {
+	//	if (root->left) {
+	//		travel(root->left, res);
+	//	}
+	//	res->push_back(root->val);
+	//	if (root->right) {
+	//		travel(root->right, res);
+	//	}
+	//}
 };
 
 int main() {
-	string ss = "11011011";
+	TreeNode root(1);
+	TreeNode r(3);
+	TreeNode rr(6);
+	TreeNode l(2);
+	TreeNode lr(5);
+	TreeNode ll(4);
+	root.right = &r;
+	root.left = &l;
+	r.left = &rr;
+	l.left = &ll;
+	l.right = &lr;
 	Solution s;
-	s.restoreIpAddresses(ss);
+	s.inorderTraversal(&root);
 	system("pause");
 	return 0;
 }
 
 
+/****************************************第九十三题*********************************************/
+//#include<vector>;
+//#include<string>;
+//class Solution {
+//public:
+//	vector<string> restoreIpAddresses(string s) {
+//		int len = s.length();
+//		vector<string> res;
+//		if (len < 4) {
+//			return res;
+//		}
+//		if (len == 4) {
+//			string tmp;
+//			tmp = tmp + s[0] + '.' + s[1] + '.' + s[2] + '.' + s[3];
+//			res.push_back(tmp);
+//			return res;
+//		}
+//		if (len == 12) {
+//			string tmp;
+//			for (int i = 0; i < 12; i+=3) {
+//				int t = (s[i] - '0') * 100 + (s[i + 1] - '0') * 10 + s[i + 2] - '0';
+//				if (t > 255 || t < 1) {
+//					return res;
+//				}
+//				else {
+//					tmp = tmp + s[i] + s[i + 1] + s[i + 2];
+//					if (i < 9) {
+//						tmp += ".";
+//					}
+//				}
+//			}
+//			res.push_back(tmp);
+//		}
+//		else {
+//			string tmp = "";
+//			getip(&res,s, tmp, 0, 0, len);
+//		}
+//		for(int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j];
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//	void getip(vector<string>* res,string s,string tmp,int ind,int index, int len) {
+//		if (index == len && ind == 4) {
+//			tmp = tmp.substr(0, tmp.size() - 1);
+//			(*res).push_back(tmp);
+//			return;
+//		}
+//		if (ind > 3) {
+//			return;
+//		}
+//		int left = len - index;
+//		if (left > 3 * (4 - ind) || left < 1 * (4 - ind)) {
+//			return;
+//		}
+//		string t = tmp;
+//		tmp = tmp + s[index] + ".";
+//		getip(res, s, tmp, ind + 1, index + 1, len);
+//		tmp = t;
+//
+//		if (index < len - 1 && s[index] - '0'>0) {
+//			tmp = tmp + s[index] + s[index + 1] + ".";
+//			getip(res, s, tmp, ind + 1, index + 2, len);
+//			tmp = t;
+//		}
+//		if (index < len - 2 && s[index] - '0'>0 && ((s[index] - '0') * 100 + (s[index + 1] - '0') * 10 + s[index + 2] - '0') < 256) {
+//			tmp = tmp + s[index] + s[index + 1] + s[index + 2] + ".";
+//			getip(res, s, tmp, ind + 1, index + 3, len);
+//			tmp = t;
+//		}
+//	}
+//};
+//
+//int main() {
+//	string ss = "0100";
+//	Solution s;
+//	s.restoreIpAddresses(ss);
+//	system("pause");
+//	return 0;
+//}
 
-/****************************************第九十二题*********************************************/
+
+
+/****************************************第九十二题??????????*********************************************/
 //Definition for singly-linked list.
 //struct ListNode {
 //    int val;
