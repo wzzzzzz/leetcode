@@ -1,107 +1,111 @@
 #include <iostream>;
 using namespace std;
 
-#include<vector>;
-#include<stack>;
-//Definition for a binary tree node.
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-
-class Solution {
-public:
-	vector<int> inorderTraversal(TreeNode* root) {		
-		//递归
-		//vector<int> res;
-		//if (root) {
-		//	travel(root, &res);
-		//}
-
-		//迭代，用栈
-		vector<int> res;
-		stack<TreeNode*> tree;
-		TreeNode* tmp = root;
-		tree.push(root);
-		//前序
-		//while (!tree.empty()) {
-		//	tmp = tree.top();
-		//	tree.pop();
-		//	if (tmp->right) {
-		//		tree.push(tmp->right);
-		//	}
-		//	if (tmp->left) {
-		//		tree.push(tmp->left);
-		//	}
-		//	res.push_back(tmp->val);
-		//}
-
-		//中序
-		//while (tmp || !tree.empty()) {
-		//	if (tmp) {
-		//		tree.push(tmp);
-		//		tmp = tmp->left;
-		//	}
-		//	else {
-		//		tmp = tree.top();
-		//		tree.pop();
-		//		res.push_back(tmp->val);
-		//		tmp = tmp->right;
-		//	}
-		//}
-
-		//后序
-		while (tmp || !tree.empty()) {
-			if () {
-
-			}			
-			else {
-				if (tmp->right) {
-					tree.push(tmp->right);
-				}
-				if (tmp->left) {
-					tmp = tmp->left;
-				}
-			}
-		}
-
-		for (int i = 0; i < res.size(); i++) {
-			cout << res[i] << " ";
-		}
-		return res;
-	}
-
-	//递归
-	//void travel(TreeNode* root, vector<int>* res) {
-	//	if (root->left) {
-	//		travel(root->left, res);
-	//	}
-	//	res->push_back(root->val);
-	//	if (root->right) {
-	//		travel(root->right, res);
-	//	}
-	//}
-};
-
-int main() {
-	TreeNode root(1);
-	TreeNode r(3);
-	TreeNode rr(6);
-	TreeNode l(2);
-	TreeNode lr(5);
-	TreeNode ll(4);
-	root.right = &r;
-	root.left = &l;
-	r.left = &rr;
-	l.left = &ll;
-	l.right = &lr;
-	Solution s;
-	s.inorderTraversal(&root);
-	system("pause");
-	return 0;
-}
+//#include<vector>;
+//#include<stack>;
+////Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	vector<int> inorderTraversal(TreeNode* root) {		
+//		//递归
+//		//vector<int> res;
+//		//if (root) {
+//		//	travel(root, &res);
+//		//}
+//
+//		//迭代，用栈
+//		vector<int> res;
+//		stack<TreeNode*> tree;
+//		TreeNode* tmp = root;
+//		tree.push(root);
+//		//前序
+//		//while (!tree.empty()) {
+//		//	tmp = tree.top();
+//		//	tree.pop();
+//		//	if (tmp->right) {
+//		//		tree.push(tmp->right);
+//		//	}
+//		//	if (tmp->left) {
+//		//		tree.push(tmp->left);
+//		//	}
+//		//	res.push_back(tmp->val);
+//		//}
+//
+//		//中序
+//		while (tmp || !tree.empty()) {
+//			if (tmp) {
+//				tree.push(tmp);
+//				tmp = tmp->left;
+//			}
+//			else {
+//				tmp = tree.top();
+//				tree.pop();
+//				res.push_back(tmp->val);
+//				tmp = tmp->right;
+//			}
+//		}
+//
+//		//后序
+//		//TreeNode* pre = nullptr;
+//		//while (!tree.empty()) {
+//		//	tmp = tree.top();
+//		//	if ((!tmp->left && !tmp->right) || (pre && (pre == tmp->right || pre == tmp->left))) {
+//		//		res.push_back(tmp->val);
+//		//		tree.pop();
+//		//		pre = tmp;
+//		//	}			
+//		//	else {
+//		//		if (tmp->right) {
+//		//			tree.push(tmp->right);
+//		//		}
+//		//		if (tmp->left) {
+//		//			tree.push(tmp->left);
+//		//		}
+//		//	}
+//		//}
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			cout << res[i] << " ";
+//		}
+//		return res;
+//	}
+//
+//	//递归
+//	//void travel(TreeNode* root, vector<int>* res) {
+//	//	if (root->left) {
+//	//		travel(root->left, res);
+//	//	}
+//	//	res->push_back(root->val);
+//	//	if (root->right) {
+//	//		travel(root->right, res);
+//	//	}
+//	//}
+//};
+//
+//int main() {
+//	TreeNode root(1);
+//	TreeNode r(3);
+//	TreeNode rr(6);
+//	TreeNode l(2);
+//	TreeNode lr(5);
+//	TreeNode ll(4);
+//	root.right = &r;
+//	root.left = &l;
+//	r.left = &rr;
+//	l.left = &ll;
+//	l.right = &lr;
+//	Solution s;
+//	s.inorderTraversal(&root);
+//	system("pause");
+//	return 0;
+//}
 
 
 /****************************************第九十三题*********************************************/
