@@ -1,6 +1,9 @@
 #include <iostream>;
 using namespace std;
 
+
+
+/****************************************第九十四题*********************************************/
 //#include<vector>;
 //#include<stack>;
 ////Definition for a binary tree node.
@@ -106,6 +109,7 @@ using namespace std;
 //	system("pause");
 //	return 0;
 //}
+
 
 
 /****************************************第九十三题*********************************************/
@@ -301,7 +305,7 @@ using namespace std;
 //public:
 //	int numDecodings(string s) {
 //		int len = s.length();
-//		vector<int> res(len + 1, 0);
+//		vector<int> res(len+1, 0);
 //		if (len == 0)
 //			return 0;
 //		if (s[0] == '0')
@@ -313,7 +317,7 @@ using namespace std;
 //		res[0] = 1;
 //		for (int i = 1; i < len; i++) {
 //			if (s[i] == '0') {
-//				if (s[i - 1] - '0' > 2 || s[i - 1] == '0') {
+//				if (s[i - 1]-'0' > 2||s[i-1]=='0') {
 //					return 0;
 //				}
 //				else {
@@ -324,7 +328,7 @@ using namespace std;
 //				}
 //			}
 //			else {
-//				if ((s[i - 1] - '0') * 10 + s[i] - '0'>26 || s[i - 1] == '0') {
+//				if ((s[i-1]-'0')*10+s[i]-'0'>26||s[i-1]=='0') {
 //					res[i] = res[i - 1];
 //				}
 //				else {
@@ -335,14 +339,17 @@ using namespace std;
 //				}
 //			}
 //		}
-//
-//		return res[len - 1];
+//		for (int i = 0; i < len; i++) {
+//			cout << res[i] << " ";
+//		}
+//		cout << res[len-1];
+//		return res[len-1];
 //	}
 //};
 //
 //int main() {
 //	Solution s;
-//	string ss = "1022";
+//	string ss = "1000";
 //	s.numDecodings(ss);
 //	system("pause");
 //	return 0;
@@ -550,6 +557,123 @@ using namespace std;
 //
 //	Solution s;
 //	s.partition(&l1,3);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第八十二题*********************************************/
+//Definition for singly-linked list.
+//struct ListNode {
+//    int val;
+//    ListNode *next;
+//    ListNode(int x) : val(x), next(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	ListNode * deleteDuplicates(ListNode* head) {
+//		if (head == NULL || head->next == NULL)
+//			return head;
+//		ListNode* dif = head;
+//		ListNode* last = head;
+//		ListNode* nextnode = head->next;
+//		while (nextnode) {
+//			if (nextnode->val != last->val) {
+//				dif = last;
+//				last = nextnode;
+//				nextnode = nextnode->next;
+//			}
+//			else {
+//				while (nextnode && nextnode->val == last->val) {
+//					nextnode = nextnode->next;
+//				}
+//				if (last == head) {
+//					head = nextnode;
+//					dif = head;
+//					last = head;
+//				}
+//				else {
+//					dif->next = nextnode;
+//					last = nextnode;
+//				}
+//
+//				if (nextnode)
+//					nextnode = nextnode->next;
+//			}
+//		}
+//		while (head) {
+//			cout << head->val << " ";
+//			head = head->next;
+//		}
+//		return head;
+//	}
+//};
+//
+//int main() {
+//	ListNode l1(3);
+//	ListNode l2(3);
+//	ListNode l3(3);
+//	ListNode l4(4);
+//	ListNode l5(4);
+//	ListNode l6(5);
+//	ListNode l7(5);
+//	l1.next = &l2;
+//	l2.next = &l3;
+//	l3.next = &l4;
+//	l4.next = &l5;
+//	l5.next = &l6;
+//	l6.next = &l7;
+//
+//	Solution s;
+//	s.deleteDuplicates(&l1);
+//	system("pause");
+//	return 0;	
+//}
+
+
+
+/****************************************第八十一题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	bool search(vector<int>& nums, int target) {
+//		int len = nums.size();
+//		if (len == 0)
+//			return false;
+//		if (nums[0] == target)
+//			return true;
+//		if (nums[0] < target) {
+//			for (int i = 1; i < len; i++) {
+//				if (nums[i] == target) {
+//					cout << "1";
+//					return true;
+//				}
+//				else if (nums[i] < nums[0]) {
+//					return false;
+//				}
+//			}
+//		}
+//		else{
+//			for (int i = len - 1; i > 0; i--) {
+//				if (nums[i] == target) {
+//					cout << "1";
+//					return true;
+//				}
+//				else if (nums[i] > nums[0]) {
+//					return false;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	vector<int> nums = { 2 };
+//	Solution s;
+//	s.search(nums, 5);
 //	system("pause");
 //	return 0;
 //}
