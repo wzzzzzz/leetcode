@@ -3,6 +3,73 @@ using namespace std;
 
 
 
+/****************************************第九十六题*********************************************/
+//#include<vector>;
+//class Solution {
+//public:
+//	int numTrees(int n) {
+//		vector<int> res;
+//		if (n == 0 || n == 1) {
+//			return 1;
+//		}
+//		if (n == 2) {
+//			return 2;
+//		}
+//		res.push_back(1);
+//		res.push_back(1);
+//		res.push_back(2);
+//		for (int i = 3; i <= n; i++) {
+//			int tmp = 0;
+//			int j = 1;
+//			for (j = 1; j <= i / 2; j++) {
+//				tmp += res[j-1] * res[i - j];
+//			}
+//			tmp *= 2;
+//			if (i%2==1) {
+//				tmp += res[j - 1] * res[i - j];
+//			}
+//			cout << tmp << " ";
+//			res.push_back(tmp);
+//		}
+//		return res[n];
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.numTrees(5);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/****************************************第九十五题*********************************************/
+#include<vector>;
+//Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+class Solution {
+public:
+	vector<TreeNode*> generateTrees(int n) {
+
+	}
+};
+
+int mian() {
+	Solution s;
+	s.generateTrees(3);
+	system("pause");
+	return 0;
+}
+
+
+
 /****************************************第九十四题*********************************************/
 //#include<vector>;
 //#include<stack>;
@@ -198,7 +265,7 @@ using namespace std;
 
 
 
-/****************************************第九十二题??????????*********************************************/
+/****************************************第九十二题*********************************************/
 //Definition for singly-linked list.
 //struct ListNode {
 //    int val;
