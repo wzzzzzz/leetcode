@@ -45,28 +45,145 @@ using namespace std;
 
 
 /****************************************第九十五题*********************************************/
-#include<vector>;
-//Definition for a binary tree node.
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-
-class Solution {
-public:
-	vector<TreeNode*> generateTrees(int n) {
-
-	}
-};
-
-int mian() {
-	Solution s;
-	s.generateTrees(3);
-	system("pause");
-	return 0;
-}
+//#include<vector>;
+////Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	vector<TreeNode*> generateTrees(int n) {
+//		vector<TreeNode*> res;
+//		if (n == 0) {
+//			return res;
+//		}
+//		if (n == 1) {
+//			TreeNode tmp(1);
+//			res.push_back(&tmp);
+//			return res;
+//		}
+//		if (n == 2) {
+//			TreeNode tmp1(1);
+//			TreeNode tmp2(2);
+//			tmp1.right = &tmp2;
+//			res.push_back(&tmp1);
+//			TreeNode tmp21(1);
+//			TreeNode tmp22(2);
+//			tmp22.left = &tmp21;
+//			res.push_back(&tmp22);
+//			return res;
+//		}
+//		res = generateTree(1, n);
+//
+//		cout << res.size()<<endl;
+//		for (int i = 0; i < res.size(); i++) {
+//			while (res[i]) {
+//				cout << (*res[i]).val << " ";
+//				res[i] = res[i]->right;
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//
+//	vector<TreeNode*> generateTree(int start, int end) {
+//		vector<TreeNode*> res;
+//		if (start == end) {
+//			TreeNode* tmp = new TreeNode(start);
+//			res.push_back(tmp);
+//		}
+//		else if (start == end-1) {
+//			TreeNode* tmp11 = new TreeNode(start);
+//			TreeNode* tmp12 = new TreeNode(end);
+//			tmp11->right = tmp12;
+//			res.push_back(tmp11);
+//			TreeNode* tmp21 = new TreeNode(start);
+//			TreeNode* tmp22 = new TreeNode(end);
+//			tmp22->left = tmp21;
+//			res.push_back(tmp22);
+//		}
+//		else {
+//			for (int i = start; i <= end; i++) {
+//				if (i == start) {
+//					vector<TreeNode*> allright = generateTree(start + 1, end);
+//					int rightlen = allright.size();
+//					for (int j = 0; j < rightlen; j++) {
+//						TreeNode* tmp = new TreeNode(i);
+//						tmp->right = allright[j];
+//						res.push_back(tmp);
+//					}
+//				}
+//				else if (i == start + 1) {
+//					TreeNode* tmpleft=new TreeNode(start);
+//					vector<TreeNode*> allright = generateTree(start + 2, end);
+//					int rightlen = allright.size();
+//					for (int j = 0; j < rightlen; j++) {
+//						TreeNode* tmp = new TreeNode(i);
+//						tmp->left = tmpleft;
+//						tmp->right = allright[j];
+//						res.push_back(tmp);
+//					}
+//				}
+//				else if (i == end - 1) {
+//					TreeNode* tmpright=new TreeNode(end);
+//					vector<TreeNode*> allleft = generateTree(start, end - 2);
+//					int leftlen = allleft.size();
+//					for (int j = 0; j < leftlen; j++) {
+//						TreeNode* tmp = new TreeNode(i);
+//						tmp->right = tmpright;
+//						tmp->left = allleft[j];
+//						res.push_back(tmp);
+//					}
+//				}
+//				else if (i == end) {
+//					vector<TreeNode*> allleft = generateTree(start, end - 1);
+//					int leftlen = allleft.size();
+//					for (int j = 0; j < leftlen; j++) {
+//						TreeNode* tmp = new TreeNode(i);
+//						tmp->left = allleft[j];
+//						res.push_back(tmp);
+//					}
+//				}
+//				else {
+//					vector<TreeNode*> allleft = generateTree(start, i - 1);
+//					int leftlen = allleft.size();
+//					vector<TreeNode*> allright = generateTree(i + 1, end);
+//					int rightlen = allright.size();
+//					cout << leftlen << " " << rightlen << endl;
+//					for (int j = 0; j < leftlen; j++) {
+//						for (int k = 0; k < rightlen; k++) {
+//							TreeNode* tmp = new TreeNode(i);
+//							tmp->left = allleft[j];
+//							tmp->right = allright[k];
+//							res.push_back(tmp);
+//						}
+//					}
+//				}
+//			}
+//		}
+//		//for (int i = 0; i < res.size(); i++)
+//		//{
+//		//	while (res[i]) {
+//		//		cout << (*res[i]).val << " ";
+//		//		res[i] = (res[i])->right;
+//		//	}
+//		//	cout << endl;
+//		//}
+//		//cout << endl;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.generateTrees(5);
+//	system("pause");
+//	return 0;
+//}
 
 
 
