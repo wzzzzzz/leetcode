@@ -3,6 +3,114 @@ using namespace std;
 
 
 
+/****************************************第九十八题*********************************************/
+//#include<vector>;
+//#include<stack>;
+//#include<algorithm>;
+////Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	bool isValidBST(TreeNode* root) {
+//		//思路2:中序遍历检查结果
+//		bool flag = true;
+//		vector<int> res;
+//		stack<TreeNode*> tree;
+//		TreeNode* tmp = root;
+//		while (tmp || !tree.empty()) {
+//			if (tmp) {
+//				tree.push(tmp);
+//				tmp = tmp->left;
+//			}
+//			else {
+//				tmp = tree.top();
+//				tree.pop();
+//				res.push_back(tmp->val);
+//				tmp = tmp->right;
+//			}
+//		}
+//		for (int i = 1; i < res.size(); i++) {
+//			if (res[i] <= res[i - 1]) {
+//				return false;
+//			}
+//		}
+//		return flag;
+//		//思路1:遍历检查
+//		//if (!root) {
+//		//	return true;
+//		//}
+//		//bool flag = true;
+//		//int minn = NULL;
+//		//int maxx = NULL;
+//		////cout << min(maxx, 5)<<" "<<min(maxx, -1)<<" "<<max(maxx, 5)<<" "<<max(maxx, -5) << endl;//证明null在计算时是当做0来处理的
+//		//validBST(root,maxx, minn, &flag);
+//		//return flag;
+//	}
+//
+//	//void validBST(TreeNode* root,int maxx,int minn,bool* flag) {
+//	//	if (root->left) {
+//	//		if (root->left->val >= root->val || (minn!=NULL && root->left->val <= minn)) {
+//	//			(*flag) = false;
+//	//			return;
+//	//		}
+//	//		else {
+//	//			int nextmax;
+//	//			if (maxx == NULL) {
+//	//				nextmax = root->val;
+//	//			}
+//	//			else {
+//	//				nextmax = min(maxx, root->val);
+//	//			}
+//	//			validBST(root->left, nextmax, minn, flag);
+//	//		}
+//	//	}
+//	//	if (root->right) {
+//	//		if (root->right->val <= root->val || (maxx!=NULL && root->right->val >= maxx)) {
+//	//			(*flag) = false;
+//	//			return;
+//	//		}
+//	//		else {
+//	//			int nextmin;
+//	//			if (minn == NULL) {
+//	//				nextmin = root->val;
+//	//			}
+//	//			else nextmin = max(minn, root->val);
+//	//			validBST(root->right, maxx, nextmin, flag);
+//	//		}
+//	//	}
+//	//}
+//};
+//
+//int main() {
+//	TreeNode t0(0);
+//	TreeNode t1(1);
+//	TreeNode t2(2);
+//	TreeNode t3(3);
+//	TreeNode t4(4);
+//	TreeNode t5(5);
+//	TreeNode t6(6);
+//	TreeNode t7(3);
+//	t3.left = &t1;
+//	t3.right = &t5;
+//	t1.left = &t0;
+//	t1.right = &t2;
+//	t5.left = &t4;
+//	t5.right = &t6;
+//	t4.left = &t7;
+//	Solution s;
+//	s.isValidBST(&t3);
+//	system("pause");
+//	return 0;
+//}
+
+
+
 /****************************************第九十六题*********************************************/
 //#include<vector>;
 //class Solution {
