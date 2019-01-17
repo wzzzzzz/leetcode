@@ -2310,53 +2310,61 @@ using namespace std;
 
 
 /****************************************第四十七题*********************************************/
-//#include<vector>;
-//#include<algorithm>;
-//class Solution {
-//public:
-//	vector<vector<int>> permuteUnique(vector<int>& nums) {
-//		vector<int> tmp = nums;
-//		vector<vector<int>> res;
-//		int len = nums.size();
-//		sort(nums.begin(), nums.end());
-//		getpermute( 0, len, tmp, res);
-//
-//		for (int i = 0; i < res.size(); i++) {
-//			for (int j = 0; j < res[i].size(); j++) {
-//				cout << res[i][j] << " ";
-//			}
-//			cout << endl;
-//		}
-//		return res;
-//	}
-//
-//	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
-//		if (ind >= len - 1) {
-//			res.push_back(tmp);
-//			return;
-//		}
-//
-//		for (int i = ind; i < len; i++) {
-//			if (i>ind && i < len - 1 && tmp[i] == tmp[i + 1]) {
-//				continue;
-//			}
-//			if (i==ind||tmp[i] != tmp[ind]) {
-//				swap(tmp[ind], tmp[i]);
-//				getpermute(ind + 1, len, tmp, res);
-//				swap(tmp[ind], tmp[i]);
-//			}
-//		}
-//	}
-//};
-//
-//int main() {
-//	Solution s;
-//	int n[5] = { -1,2,-1,2 ,-1};
-//	vector<int> nums(n, n + 3);
-//	s.permuteUnique(nums);
-//	system("pause");
-//	return 0;
-//}
+#include<vector>;
+#include<algorithm>;
+class Solution {
+public:
+	vector<vector<int>> permuteUnique(vector<int>& nums) {
+		vector<vector<int>> res;
+		int len = nums.size();
+		sort(nums.begin(), nums.end());
+		vector<int> tmp = nums;
+		getpermute( 0, len, tmp, res);
+		cout << endl;
+		for (int i = 0; i < res.size(); i++) {
+			for (int j = 0; j < res[i].size(); j++) {
+				cout << res[i][j] << " ";
+			}
+			cout << endl;
+		}
+		return res;
+	}
+	//问题在于可能会出现交换后再交换后相同的情况
+	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
+		for (int i = 0; i < tmp.size(); i++) {
+			cout << tmp[i] << " ";
+		}
+		cout <<ind<< endl;
+		if (ind == len - 1) {
+			res.push_back(tmp);
+			return;
+		}
+		vector<int> t = tmp;
+		getpermute(ind + 1, len, t, res);
+		for (int i = ind+1; i < len; i++) {
+			cout << ind<<" "<<i << " " << endl;
+			if (tmp[i] == tmp[ind]) {
+				cout << i << " " << endl;
+				//continue;
+			}
+			else {
+				
+				swap(tmp[ind], tmp[i]);
+				getpermute(ind + 1, len, tmp, res);
+				swap(t[ind], t[i]);
+			}
+		}
+	}
+};
+
+int main() {
+	Solution s;
+	int n[5] = { -1,2,-1,2 ,-1};
+	vector<int> nums(n, n + 5);
+	s.permuteUnique(nums);
+	system("pause");
+	return 0;
+}
 
 
 
