@@ -2330,29 +2330,20 @@ public:
 		return res;
 	}
 	//问题在于可能会出现交换后再交换后相同的情况
-	void getpermute(int ind, int len, vector<int>& tmp, vector<vector<int>>& res) {
-		for (int i = 0; i < tmp.size(); i++) {
-			cout << tmp[i] << " ";
-		}
-		cout <<ind<< endl;
+	void getpermute(int ind, int len, vector<int> tmp, vector<vector<int>>& res) {
 		if (ind == len - 1) {
 			res.push_back(tmp);
 			return;
 		}
-		vector<int> t = tmp;
-		getpermute(ind + 1, len, t, res);
-		for (int i = ind+1; i < len; i++) {
-			cout << ind<<" "<<i << " " << endl;
-			if (tmp[i] == tmp[ind]) {
-				cout << i << " " << endl;
-				//continue;
-			}
-			else {
-				
-				swap(tmp[ind], tmp[i]);
-				getpermute(ind + 1, len, tmp, res);
-				swap(t[ind], t[i]);
-			}
+		for (int i = ind; i < len; i++) {
+			//cout << ind<<" "<<i << " " << endl;
+			if (i!=ind&&tmp[i] == tmp[ind]) {
+				//cout << i << " " << endl;
+				continue;
+			}				
+			swap(tmp[ind], tmp[i]);
+			getpermute(ind + 1, len, tmp, res);
+			//swap(tmp[ind], tmp[i]);//把这一行注释掉就对了？？？？？为啥？？？
 		}
 	}
 };
