@@ -504,11 +504,10 @@ using namespace std;
 //		if (m == n)
 //			return head;
 //		ListNode* res = head;
-//		ListNode reverse = NULL;
+//		ListNode* reverse = NULL;
 //		ListNode* reversefirst = head;
-//		ListNode tmp = NULL;
 //		ListNode* before = NULL;
-//		ListNode* later = head;
+//		ListNode* later = NULL;
 //		int ind = 1;
 //		while (head&&ind <= n+1) {
 //			if (ind == m - 1) {
@@ -516,56 +515,41 @@ using namespace std;
 //				ind++;
 //				head = head->next;
 //			}
-//			if (ind >= m && ind <= n) {
+//			else if (ind >= m && ind <= n) {
+//				ListNode* tmp = new ListNode(head->val);
 //				if (ind == m) {
-//					reversefirst = head;
-//				}	
-//				tmp = ListNode(head->val);
+//					reversefirst = tmp;
+//				}
 //				head = head->next;
-//				tmp.next = &reverse;
-//				ListNode tmpp = tmp;
-//
-//				int t = tmp.val;
-//				reverse.val = t;
-//				cout << tmpp.val << endl;
-//				if (ind > m) {
-//					cout << tmpp.next->val << endl;
-//				}
-//				reverse.next = &tmpp;
-//				//cout << tmp.val << " " << tmp.next->val << endl;
-//				//cout << reverse.val << " " << reverse.next->val << " ";
-//				if (ind > m + 1) {
-//					//cout << reverse.next->next->val << endl;
-//				}
-//				cout << tmpp.val << endl;
-//				if (ind > m) {
-//					cout << tmpp.next->val << endl;
-//				}
-//				//tmp = *head;
-//				//head = head->next;
-//				//tmp.next = &reverse;
-//				//reverse.next = tmp.next;
-//				//cout << tmp.val << " " << tmp.next->val << endl;
-//				//cout << reverse.val << " " << tmp.val << endl;
-//				//int t = tmp.val;
-//				//reverse.val = t;
-//				//cout << tmp.val << " " << tmp.next->val << endl;
-//				//cout << reverse.val << " " << reverse.next->val << " " << reverse.next->next->val << endl;
+//				tmp->next = reverse;
+//				reverse = tmp;
 //				ind++;
 //			}
-//			if (ind == n + 1) {
+//			else if (ind == n + 1) {
 //				later = head;
+//
 //				break;
 //			}
+//			else {
+//				head = head->next;
+//				ind++;
+//			}
 //		}
-//		cout << reverse.val << " " << reverse.next->val << " " << reverse.next->next->val << endl;
-//		before->next = &reverse;
 //		reversefirst->next = later;
-//		
-//		//while (reverse.next) {
-//		//	cout << reverse.val << " ";
-//		//	reverse = *reverse.next;
-//		//}
+//		if (m==1) {
+//			return reverse;
+//		}
+//		before->next = reverse;
+//
+//		while (reverse) {
+//			cout << reverse->val << " ";
+//			reverse = reverse->next;
+//		}
+//		cout << endl;
+//		while (res) {
+//			cout << res->val << " ";
+//			res = res->next;
+//		}
 //		return res;
 //	}
 //};
@@ -584,7 +568,7 @@ using namespace std;
 //	l5.next = &l6;
 //
 //	Solution s;
-//	s.reverseBetween(&l1,2,5);
+//	s.reverseBetween(&l1,1,6);
 //	system("pause");
 //	return 0;
 //}
@@ -1035,7 +1019,7 @@ using namespace std;
 
 
 
-/****************************************第七十九题？？？？？？？？？？？？？？*********************************************/
+/****************************************第七十九题*********************************************/
 //#include<vector>;
 //class Solution {
 //public:
@@ -1043,17 +1027,16 @@ using namespace std;
 //		int m = board.size();
 //		int n = board[0].size();
 //		int len = word.length();
-//		int res = 0;
+//		bool res = false;
 //		if (len > m*n)
 //			return false;
-//		vector<vector<int>> flag( m,vector<int>(n,0) );
+//		vector<vector<int>> flag(m, vector<int>(n, 0));
 //		for (int i = 0; i < m; i++) {
 //			for (int j = 0; j < n; j++) {
 //				if (board[i][j] == word[0]) {
 //					board[i][j] = ' ';
-//					findcharactor(board, word, 1, i, j, res);
-//					//cout << res << "   ";
-//					if (res==1) {
+//					if (findcharactor(board, word, 1, i, j, res) == true) {
+//						cout << " ";
 //						return true;
 //					}
 //					board[i][j] = word[0];
@@ -1063,69 +1046,42 @@ using namespace std;
 //		return false;
 //	}
 //
-//	void findcharactor(vector<vector<char>>& board, string word, int ind, int xind, int yind, int &res) {
+//	bool findcharactor(vector<vector<char>>& board, string word, int ind, int xind, int yind, bool &res) {
 //		int m = board.size();
 //		int n = board[0].size();
-//		//for (int i = 0; i < m; i++) {
-//		//	for (int j = 0; j < n; j++) {
-//		//		cout << board[i][j] << "  ";
-//		//	}
-//		//	cout << endl;
-//		//}
-//		//cout << endl;
 //		char target = word[ind];
 //		if (ind > word.size() - 1) {
-//			res = 1;
-//			return;
+//			return true;
 //		}
-//		if (ind == word.size()-1) {
-//			if (xind>0 && board[xind - 1][yind] == target) {
-//				res = 1;
-//				return;
-//			}
-//			else if (xind<m-1 && board[xind + 1][yind] == target) {
-//				res = 1;
-//				return;
-//			}
-//			else if (yind>0 && board[xind][yind - 1] == target) {
-//				res = 1;
-//				return;
-//			}
-//			else if (yind<n-1 && board[xind][yind + 1] == target) {
-//				res = 1;
-//				return;
-//			}
-//			return;
+//		int flag = 0;
+//		if (xind>0 && board[xind - 1][yind] == target) {
+//			board[xind - 1][yind] = ' ';
+//			if (findcharactor(board, word, ind + 1, xind - 1, yind, res) == true)
+//				return true;
+//			board[xind - 1][yind] = target;
 //		}
-//		else {	
-//			int flag = 0;
-//			if (xind>0 && board[xind - 1][yind] == target) {
-//				board[xind - 1][yind] = ' ';
-//				findcharactor(board, word, ind + 1, xind - 1, yind, res);
-//				board[xind - 1][yind] = target;
-//				flag = 1;
-//			}
-//			if (xind<m-1 && board[xind + 1][yind] == target) {
-//				board[xind + 1][yind] = ' ';
-//				findcharactor(board, word, ind + 1, xind + 1, yind, res);
-//				board[xind + 1][yind] = target;
-//				flag = 1;
-//			}
-//			if (yind>0 && board[xind][yind - 1] == target) {
-//				board[xind][yind - 1] = ' ';
-//				findcharactor(board, word, ind + 1, xind, yind - 1, res);
-//				board[xind][yind - 1] = target;
-//				flag = 1;
-//			}
-//			if (yind<n-1 && board[xind][yind + 1] == target) {
-//				board[xind][yind + 1] = ' ';
-//				findcharactor(board, word, ind + 1, xind, yind + 1, res);
-//				board[xind][yind + 1] = target;
-//				flag = 1;
-//			}
-//			if(flag==0)
-//				return;
+//		if (xind<m - 1 && board[xind + 1][yind] == target) {
+//			board[xind + 1][yind] = ' ';
+//			if (findcharactor(board, word, ind + 1, xind + 1, yind, res) == true)
+//				return true;
+//			board[xind + 1][yind] = target;
+//			flag = 1;
 //		}
+//		if (yind>0 && board[xind][yind - 1] == target) {
+//			board[xind][yind - 1] = ' ';
+//			if (findcharactor(board, word, ind + 1, xind, yind - 1, res) == true)
+//				return true;
+//			board[xind][yind - 1] = target;
+//			flag = 1;
+//		}
+//		if (yind<n - 1 && board[xind][yind + 1] == target) {
+//			board[xind][yind + 1] = ' ';
+//			if (findcharactor(board, word, ind + 1, xind, yind + 1, res) == true)
+//				return true;
+//			board[xind][yind + 1] = target;
+//			flag = 1;
+//		}
+//		return false;
 //	}
 //};
 //
@@ -2089,67 +2045,30 @@ using namespace std;
 //class Solution {
 //public:
 //	double myPow(double x, int n) {
+//		if (n == 0)
+//			return 1;
 //		if (n == 1)
 //			return x;
 //		if (n == -1)
 //			return 1/x;
-//		if (n == 0)
-//			return 1;
-//
-//		long double res;
-//		if (n > 0) {
-//			res = x * x;
-//			double last = x;
-//			int lasti = 1;
-//			int i = 2;
-//			while (i < n) {
-//				if (i <= n / 2) {
-//					last = res;
-//					lasti = i;
-//					res *= res;
-//					i *= 2;
-//				}
-//				else if (i + lasti <= n) {
-//					res *= last;
-//					i += lasti;
-//				}
-//				else {
-//					res *= x;
-//					i++;
-//				}
-//				cout << res << " ";
-//			}
+//		long double res = 1;
+//		long double tmp = myPow(x, n / 2);
+//		if (n % 2==0) {
+//			res = tmp * tmp;
 //		}
 //		else {
-//			res = 1 / (x * x);
-//			double last = 1 / x;
-//			int lasti = -1;
-//			int i = -2;
-//			while (i > n) {
-//				if (i >= n / 2) {
-//					last = res;
-//					lasti = i;
-//					res *= res;
-//					i *= 2;
-//				}
-//				else if (i + lasti >= n) {
-//					res *= last;
-//					i += lasti;
-//				}
-//				else {
-//					res /= x;
-//					i--;
-//				}
-//			}
-//		}		
-//		cout << res;
+//			x = n > 0 ? x : 1 / x;
+//			res = tmp * tmp*x;
+//		}
+//
+//		cout << res<<" ";
 //		return res;
 //	}
 //};
 //
 //int main() {
-//	double x = 0.01;
-//	int n = 21474;
+//	double x = 2;
+//	int n = 3;
 //	Solution s;
 //	s.myPow(x, n);
 //	system("pause");
@@ -2310,52 +2229,83 @@ using namespace std;
 
 
 /****************************************第四十七题*********************************************/
-#include<vector>;
-#include<algorithm>;
-class Solution {
-public:
-	vector<vector<int>> permuteUnique(vector<int>& nums) {
-		vector<vector<int>> res;
-		int len = nums.size();
-		sort(nums.begin(), nums.end());
-		vector<int> tmp = nums;
-		getpermute( 0, len, tmp, res);
-		cout << endl;
-		for (int i = 0; i < res.size(); i++) {
-			for (int j = 0; j < res[i].size(); j++) {
-				cout << res[i][j] << " ";
-			}
-			cout << endl;
-		}
-		return res;
-	}
-	//问题在于可能会出现交换后再交换后相同的情况
-	void getpermute(int ind, int len, vector<int> tmp, vector<vector<int>>& res) {
-		if (ind == len - 1) {
-			res.push_back(tmp);
-			return;
-		}
-		for (int i = ind; i < len; i++) {
-			//cout << ind<<" "<<i << " " << endl;
-			if (i!=ind&&tmp[i] == tmp[ind]) {
-				//cout << i << " " << endl;
-				continue;
-			}				
-			swap(tmp[ind], tmp[i]);
-			getpermute(ind + 1, len, tmp, res);
-			//swap(tmp[ind], tmp[i]);//把这一行注释掉就对了？？？？？为啥？？？
-		}
-	}
-};
-
-int main() {
-	Solution s;
-	int n[5] = { -1,2,-1,2 ,-1};
-	vector<int> nums(n, n + 5);
-	s.permuteUnique(nums);
-	system("pause");
-	return 0;
-}
+//#include<vector>;
+//#include<algorithm>;
+//class Solution {
+//public:
+//	vector<vector<int>> permuteUnique(vector<int>& nums) {
+//		vector<vector<int>> res;
+//		int len = nums.size();
+//		sort(nums.begin(), nums.end());
+//		res.push_back(nums);
+//		//思路2
+//		int i = len - 1;
+//		int j = 0;
+//		while (1) {
+//			for (i = len - 1; i > 0; i--) {
+//				if (nums[i] > nums[i - 1])
+//					break;
+//			}
+//			if (i == 0)
+//				break;
+//			for (j = len - 1; j >= i; j--) {
+//				if (nums[j] > nums[i - 1])
+//					break;
+//			}
+//			swap(nums[i - 1], nums[j]);
+//			reverse(nums, i, len - 1);
+//			res.push_back(nums);
+//		}
+//
+//		//思路1
+//		//getpermute( 0, len, nums, res);
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//
+//	//思路2
+//	void reverse(vector<int>& t, int s, int e) {
+//		while (s < e) {
+//			swap(t[s], t[e]);
+//			s++;
+//			e--;
+//		}
+//	}
+//
+//	//思路1
+//	//问题在于可能会出现交换后再交换后相同的情况
+//	//void getpermute(int ind, int len, vector<int> tmp, vector<vector<int>>& res) {
+//	//	if (ind == len - 1) {
+//	//		res.push_back(tmp);
+//	//		return;
+//	//	}
+//	//	for (int i = ind; i < len; i++) {
+//	//		//cout << ind<<" "<<i << " " << endl;
+//	//		if (i!=ind&&tmp[i] == tmp[ind]) {
+//	//			//cout << i << " " << endl;
+//	//			continue;
+//	//		}				
+//	//		swap(tmp[ind], tmp[i]);
+//	//		getpermute(ind + 1, len, tmp, res);
+//	//		//swap(tmp[ind], tmp[i]);//把这一行注释掉就对了？？？？？为啥？？？
+//	//	}
+//	//}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n[5] = { -1,2,-1,2 ,-1};
+//	vector<int> nums(n, n + 5);
+//	s.permuteUnique(nums);
+//	system("pause");
+//	return 0;
+//}
 
 
 
