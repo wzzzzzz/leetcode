@@ -747,41 +747,52 @@ using namespace std;
 
 
 /****************************************第二十六题*********************************************/
+//#include<vector>;
+//#include<algorithm>;
 //class Solution {
 //public:
 //	int removeDuplicates(vector<int>& nums) {
 //		int length = nums.size();
-//		int tmp = 0;
-//		for (int i = 0; i < length; i++) {
-//			tmp = 0;
+//		if (length == 0 || length == 1)
+//			return length;
+//		int tmp = nums[length - 1];
+//		int same = 0;
+//		int last = nums[0];
+//		int i;
+//		for (i = 1; i < length;) {
+//			//for (int j = 0; j < length; j++) {
+//			//	cout << nums[j] <<" ";
+//			//}
+//			//cout << endl;
 //			//算出有几个和num[i]相等的
-//			for (int j = i + 1; j < length; j++)
-//			{
-//				if (nums[i] == nums[j]) {
-//					tmp++;
+//			if (nums[i] == last) {
+//				int j = i;
+//				while (j < length && nums[j] == last) {
+//					nums[j] = tmp;
+//					same++;
+//					j++;
 //				}
-//				else break;
+//				i = j;
 //			}
-//			if (tmp != 0) {
-//				for (int k = i + 1; k < length - tmp; k++) {
-//					nums[k] = nums[k + tmp];
-//				}
+//			else {
+//				last = nums[i];
+//				i++;
 //			}
-//			length -= tmp;
 //		}
 //
-//		for (int i = 0; i < nums.size(); i++) {
+//		sort(nums.begin(), nums.end());
+//		for (i = 0; i < length; i++) {
 //			cout << nums[i] << endl;
 //		}
-//		cout << length;
-//		return length;
+//		cout << " "<<same<<" "<<length-same;
+//		return length - same;
 //	}
 //};
 //
 //int main() {
 //	Solution s;
-//	int tmp[] = {-3,-3,-2,-1,-1,0,0,0,0,0 };
-//	vector<int> n(tmp, tmp + 10);
+//	int tmp[] = {-1,0,0,1,1,2,2,3,3,4};
+//	vector<int> n(tmp, tmp + 3);
 //	s.removeDuplicates(n);
 //
 //	system("pause");

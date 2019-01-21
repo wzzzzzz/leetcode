@@ -1,3 +1,5 @@
 ﻿  源.cpp
-e:\课程\leetcode\project1\project1\源.cpp(1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-  Project1.vcxproj -> E:\课程\leetcode\Project1\Debug\Project1.exe
+e:\class\leetcode\project1\project1\源.cpp(1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+e:\class\leetcode\project1\project1\源.cpp(750): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+e:\class\leetcode\project1\project1\源.cpp(751): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+  Project1.vcxproj -> E:\class\leetcode\Project1\Debug\Project1.exe
