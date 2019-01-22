@@ -675,32 +675,33 @@ using namespace std;
 //class Solution {
 //public:
 //	int strStr(string haystack, string needle) {
-//		if (needle == "") {
+//		int length = haystack.size();
+//		int len = needle.size();
+//		if (len == 0) {
 //			return 0;
 //		}
+//		if (length < len)
+//			return -1;
 //		int i;
-//		for (i = 0; i < haystack.length(); i++) {
+//		for (i = 0; i < length-len+1; i++) {
 //			if (haystack[i] == needle[0]) {
 //				int j;
-//				for (j = 1; j < needle.length(); j++) {
+//				for (j = 1; j < len; j++) {
 //					if (haystack[i + j] != needle[j])
 //						break;
 //				}
-//				if (j == needle.length()){
-//					break;
+//				if (j == len){
+//					return i;
 //				}
 //			}
 //		}
-//		//cout << i << endl;
-//		if (i == haystack.length())
-//			return -1;
-//		else return i;
+//		return -1;
 //	}
 //};
 //
 //int main() {
-//	string haystack = "aaaab";
-//	string needle = "b";
+//	string haystack = "abb";
+//	string needle = "abaaa";
 //	Solution s;
 //	s.strStr(haystack, needle);
 //
@@ -1080,7 +1081,7 @@ using namespace std;
 //	//printf("1");
 //	return true;
 //}
-
+//
 //bool isPalindrome(int x) {
 //	if (x < 0)
 //		return false;
@@ -1109,7 +1110,7 @@ using namespace std;
 //	printf("1");
 //	return true;
 //}
-
+//
 //bool isPalindrome(int x) {
 //		if (x < 0)
 //			return false;
@@ -1147,7 +1148,7 @@ using namespace std;
 //			return true;
 //		}
 //}
-
+//
 //int main() {
 //	int x = 10200;
 //	isPalindrome(x);
