@@ -1,0 +1,90 @@
+# 第五十三题-最大子串和
+
+### 题目
+
+> 给定一个整数数组 `nums` ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+
+### 举例
+
+> ```
+> Input: [-2,1,-3,4,-1,2,1,-5,4],
+> Output: 6
+> Explanation: [4,-1,2,1] has the largest sum = 6.
+> ```
+
+### 思路
+
+* 基础思路：首先考虑基础的，两层循环来求。
+* solution1：要求的是最大的和。最大和计算之前，旧的最大和是一定为零的。因此，一遍循环，当前最大值每次加上当前值，最大值每次和当前最大进行比较，然后检查当前最大是否<0，是就进行清零，这样能保证下一个当前最大一定是大于现在的当前最大。
+* solution2：一个循环，每次比较当前值和当前最大加当前值，取胜者作为当前最大（与上一个思路相似，保证了最大值前面一定是>0的），然后比较最大值和当前最大，取胜者最为最大值。
+
+
+
+### 源码
+
+* 基础思路
+
+  ```c++
+  class Solution {
+  public:
+      int maxSubArray(vector<int>& nums) {
+  		int res = nums[0];
+  		int len = nums.size();
+  		int tmp = 0;
+  		for (int i = 0; i < len; i++) {
+  			tmp = nums[i];
+  			res = max(res, tmp);
+  			if (tmp < 0) {
+  				continue;
+  			}
+  			for (int j = i + 1; j < len; j++) {
+  				tmp += nums[j];
+  				res = max(res, tmp);
+  			}
+  			//cout << res << tmp << endl;
+  		}
+  		//cout << res;
+  		return res;
+      }
+  };
+  ```
+
+* solution1：
+
+  ```c++
+  class Solution {
+  public:
+      int maxSubArray(vector<int>& nums) {
+  		int res = nums[0];
+  		int len = nums.size();
+  		int tmp = 0;
+  		for (int i = 0; i < len; i++) {
+  			tmp += nums[i];
+  			res = max(res, tmp);
+  			tmp = max(0, tmp);			
+  			//cout << res << tmp << endl;
+  		}
+  		cout << res;
+  		return res;
+      }
+  };
+  ```
+
+- solution3
+
+  ```c++
+  class Solution {
+  public:
+      int maxSubArray(vector<int>& nums) {
+  		int res = nums[0];
+  		int tmp = nums[0];
+  		int len = nums.size();
+  		for (int i = 1; i < len; i++) {
+  			tmp = max(nums[i], nums[i] + tmp);
+  			res = max(tmp, res);
+  		}
+  		//cout << res;
+  		return res;
+      }
+  };
+  ```
