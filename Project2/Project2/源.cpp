@@ -1428,9 +1428,34 @@ using namespace std;
 //#include<string>;
 //#include<vector>;
 //#include<stack>;
+//#include<sstream>;
 //class Solution {
 //public:
 //	string simplifyPath(string path) {
+//		//solution
+//		//vector<string> paths;
+//		//string tmp;
+//		//string res = "";
+//		//stringstream ss(path);
+//		//while (getline(ss, tmp, '/')) {
+//		//	if (tmp == "" || tmp == ".") {
+//		//		tmp = "";
+//		//		continue;
+//		//	}
+//		//	if (tmp != "..") {
+//		//		paths.push_back(tmp);
+//		//	}
+//		//	else if (!paths.empty())
+//		//		paths.pop_back();
+//		//}
+//		//for (string t : paths) {
+//		//	res = res + '/' + t;
+//		//}
+//		//res = res.empty() ? "/" : res;
+//		//cout << res;
+//		//return res;
+//
+//		//思路1
 //		stack<string> paths;
 //		string tmp;
 //		string res = "";
@@ -1440,7 +1465,7 @@ using namespace std;
 //				if (tmp != "")
 //				{
 //					if (tmp == "..") {
-//						if (!paths.empty()) 
+//						if (!paths.empty())
 //							paths.pop();
 //					}
 //					else if (tmp != "." && tmp != "")
@@ -1462,13 +1487,12 @@ using namespace std;
 //		}
 //		if (res == "")
 //			res = "/";
-//		cout << res;
 //		return res;
 //	}
 //};
 //
 //int main() {
-//	string path = "/...";
+//	string path = "/";
 //	Solution s;
 //	s.simplifyPath(path);
 //	system("pause");
@@ -3826,76 +3850,76 @@ using namespace std;
 
 
 /****************************************第五题*********************************************/
-#include <string.h>;
-#include <vector>;
-#include <string>;
-class Solution {
-public:
-	string longestPalindrome(string s) {
-		string res = "";
-        //
-		//倒序字符串
-		string s0 = s;
-		int len = s.length();
-		for (int i = 0; i < len; i++) {
-			s0[len - i-1] = s[i];
-		}
-		//cout << s0.c_str() << endl;
-		for (int i = 0; i < len-res.length(); i++) {
-			for (int j = len-1; j >=0; j--) {
-				string tmp = s.substr(i, j - i+1);
-				if (s0.find(tmp) != s0.npos) {
-					if (j = i + 1) {
-						string tmprev = tmp;
-						int tmplen = tmp.length();
-						for (int k = 0; k < tmplen; k++) {
-							tmprev[tmplen - k - 1] = tmp[k];
-						}
-						if (s.find(tmp) == s.find(tmprev)) {
-							if (res.length() < tmp.length())
-								res = tmp;
-						}
-					}
-					else {
-						if (res.length() < tmp.length())
-							res = tmp;
-					}
-					break;
-				}
-			}
-		}
-		if (res == "")
-			res = s[0];
-		
-		//基础思路
-		//for (int i = 0; i < s.length() - res.length(); i++) {
-		//	for (int j = s.length(); j > (i+res.size()); j--) {
-		//		//判断s(i,j)是否回文
-		//		int k;
-		//		for (k = 0; k < ((j - i) / 2); k++) {	
-		//			if (s[i + k] != s[j - k - 1])
-		//				break;
-		//		}
-		//		if (k == (j - i) / 2) {
-		//			//cout << res.c_str() << " " << s.substr(i, j - i).c_str() << endl;
-		//			if(res.length()<(j-i))
-		//				res = s.substr(i, j - i);
-		//		}
-		//	}
-		//}
-		cout << res.c_str() << endl;
-		return res;
-	}
-};
-
-int main() {
-	string ss = "bcedcb";
-	Solution s;
-	s.longestPalindrome(ss);
-
-	system("pause");
-	return 0;
-}
+//#include <string.h>;
+//#include <vector>;
+//#include <string>;
+//class Solution {
+//public:
+//	string longestPalindrome(string s) {
+//		string res = "";
+//        //
+//		//倒序字符串
+//		string s0 = s;
+//		int len = s.length();
+//		for (int i = 0; i < len; i++) {
+//			s0[len - i-1] = s[i];
+//		}
+//		//cout << s0.c_str() << endl;
+//		for (int i = 0; i < len-res.length(); i++) {
+//			for (int j = len-1; j >=0; j--) {
+//				string tmp = s.substr(i, j - i+1);
+//				if (s0.find(tmp) != s0.npos) {
+//					if (j = i + 1) {
+//						string tmprev = tmp;
+//						int tmplen = tmp.length();
+//						for (int k = 0; k < tmplen; k++) {
+//							tmprev[tmplen - k - 1] = tmp[k];
+//						}
+//						if (s.find(tmp) == s.find(tmprev)) {
+//							if (res.length() < tmp.length())
+//								res = tmp;
+//						}
+//					}
+//					else {
+//						if (res.length() < tmp.length())
+//							res = tmp;
+//					}
+//					break;
+//				}
+//			}
+//		}
+//		if (res == "")
+//			res = s[0];
+//		
+//		//基础思路
+//		//for (int i = 0; i < s.length() - res.length(); i++) {
+//		//	for (int j = s.length(); j > (i+res.size()); j--) {
+//		//		//判断s(i,j)是否回文
+//		//		int k;
+//		//		for (k = 0; k < ((j - i) / 2); k++) {	
+//		//			if (s[i + k] != s[j - k - 1])
+//		//				break;
+//		//		}
+//		//		if (k == (j - i) / 2) {
+//		//			//cout << res.c_str() << " " << s.substr(i, j - i).c_str() << endl;
+//		//			if(res.length()<(j-i))
+//		//				res = s.substr(i, j - i);
+//		//		}
+//		//	}
+//		//}
+//		cout << res.c_str() << endl;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	string ss = "bcedcb";
+//	Solution s;
+//	s.longestPalindrome(ss);
+//
+//	system("pause");
+//	return 0;
+//}
 
 
 
