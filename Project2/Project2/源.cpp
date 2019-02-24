@@ -3850,76 +3850,109 @@ using namespace std;
 
 
 /****************************************第五题*********************************************/
-//#include <string.h>;
-//#include <vector>;
-//#include <string>;
-//class Solution {
-//public:
-//	string longestPalindrome(string s) {
-//		string res = "";
-//        //
-//		//倒序字符串
-//		string s0 = s;
-//		int len = s.length();
-//		for (int i = 0; i < len; i++) {
-//			s0[len - i-1] = s[i];
-//		}
-//		//cout << s0.c_str() << endl;
-//		for (int i = 0; i < len-res.length(); i++) {
-//			for (int j = len-1; j >=0; j--) {
-//				string tmp = s.substr(i, j - i+1);
-//				if (s0.find(tmp) != s0.npos) {
-//					if (j = i + 1) {
-//						string tmprev = tmp;
-//						int tmplen = tmp.length();
-//						for (int k = 0; k < tmplen; k++) {
-//							tmprev[tmplen - k - 1] = tmp[k];
-//						}
-//						if (s.find(tmp) == s.find(tmprev)) {
-//							if (res.length() < tmp.length())
-//								res = tmp;
-//						}
-//					}
-//					else {
-//						if (res.length() < tmp.length())
-//							res = tmp;
-//					}
-//					break;
-//				}
-//			}
-//		}
-//		if (res == "")
-//			res = s[0];
-//		
-//		//基础思路
-//		//for (int i = 0; i < s.length() - res.length(); i++) {
-//		//	for (int j = s.length(); j > (i+res.size()); j--) {
-//		//		//判断s(i,j)是否回文
-//		//		int k;
-//		//		for (k = 0; k < ((j - i) / 2); k++) {	
-//		//			if (s[i + k] != s[j - k - 1])
-//		//				break;
-//		//		}
-//		//		if (k == (j - i) / 2) {
-//		//			//cout << res.c_str() << " " << s.substr(i, j - i).c_str() << endl;
-//		//			if(res.length()<(j-i))
-//		//				res = s.substr(i, j - i);
-//		//		}
-//		//	}
-//		//}
-//		cout << res.c_str() << endl;
-//		return res;
-//	}
-//};
-//
-//int main() {
-//	string ss = "bcedcb";
-//	Solution s;
-//	s.longestPalindrome(ss);
-//
-//	system("pause");
-//	return 0;
-//}
+#include <string.h>;
+#include <vector>;
+#include <string>;
+class Solution {
+public:
+	string longestPalindrome(string s) {
+		string res = "";
+		string tmp = "";
+        //solution2:动态规划
+		int len = s.size();
+		for (int i = 0; i < len-1; i++) {
+			if (s[i] == s[i + 1]) {
+				int left = i;
+				int right = i + 1;
+				tmp = s.substr(left, right - left + 1);
+				while (left > 0 && right < len - 1 && s[left - 1] == s[right + 1]) {
+					tmp = s.substr(left, right - left + 1);
+					left--;
+					right++;
+				}
+				if (tmp.size() > res.size())
+					res = tmp;
+			}
+			if (i < len - 2 && s[i] == s[i + 2]) {
+				int left = i;
+				int right = i + 2;
+				tmp = s.substr(left, right - left + 1);
+				while (left > 0 && right < len - 1 && s[left - 1] == s[right + 1]) {
+					tmp = s.substr(left, right - left + 1);
+					left--;
+					right++;
+				}
+				if (tmp.size() > res.size())
+					res = tmp;
+			}
+		}
+		if (res == "")
+			res.push_back(s[0]);
+		cout << res;
+		return res;
+
+		//solution1:倒序字符串
+		//string s0 = s;
+		//int len = s.length();
+		//for (int i = 0; i < len; i++) {
+		//	s0[len - i-1] = s[i];
+		//}
+		////cout << s0.c_str() << endl;
+		//for (int i = 0; i < len-res.length(); i++) {
+		//	for (int j = len-1; j >=0; j--) {
+		//		string tmp = s.substr(i, j - i+1);
+		//		if (s0.find(tmp) != s0.npos) {
+		//			if (j = i + 1) {
+		//				string tmprev = tmp;
+		//				int tmplen = tmp.length();
+		//				for (int k = 0; k < tmplen; k++) {
+		//					tmprev[tmplen - k - 1] = tmp[k];
+		//				}
+		//				if (s.find(tmp) == s.find(tmprev)) {
+		//					if (res.length() < tmp.length())
+		//						res = tmp;
+		//				}
+		//			}
+		//			else {
+		//				if (res.length() < tmp.length())
+		//					res = tmp;
+		//			}
+		//			break;
+		//		}
+		//	}
+		//}
+		//if (res == "")
+		//	res = s[0];
+		
+		//基础思路
+		//for (int i = 0; i < s.length() - res.length(); i++) {
+		//	for (int j = s.length(); j > (i+res.size()); j--) {
+		//		//判断s(i,j)是否回文
+		//		int k;
+		//		for (k = 0; k < ((j - i) / 2); k++) {	
+		//			if (s[i + k] != s[j - k - 1])
+		//				break;
+		//		}
+		//		if (k == (j - i) / 2) {
+		//			//cout << res.c_str() << " " << s.substr(i, j - i).c_str() << endl;
+		//			if(res.length()<(j-i))
+		//				res = s.substr(i, j - i);
+		//		}
+		//	}
+		//}
+		cout << res.c_str() << endl;
+		return res;
+	}
+};
+
+int main() {
+	string ss = "aaaa";
+	Solution s;
+	s.longestPalindrome(ss);
+
+	system("pause");
+	return 0;
+}
 
 
 
