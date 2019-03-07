@@ -5,17 +5,18 @@ using namespace std;
 class Solution {
 public:
 	bool isMatch(string s, string p) {
-		if (s == "")
+		if (s == ""&&p == "")
 			return true;
 		if (p == "")
 			return false;
 		int plen = p.size();
 		int slen = s.size();
-		for (int i = 0; i < plen; i++) {
+		int i;
+		for (i = 0; i < plen; i++) {
 			cout << i << endl;
 			if (s[0] == p[i] || p[i] == '.') {
 				cout << "ii" << endl;
-				if (match(s, 0, p, i)) {
+				if (match(s, 1, p, i+1)) {
 					cout << "111";
 					return true;
 				}
@@ -33,6 +34,8 @@ public:
 			}
 			else break;
 		}
+		if (slen == 0 && i == plen)
+			return true;
 		cout << "0";
 		return false;
 	}
@@ -41,10 +44,13 @@ public:
 		int plen = p.size();
 		if (sind == s.size() && pind == plen)
 			return true;
-		else if (sind == s.size() || pind == plen)
+		else if (pind == plen)
+			return false;
+		else if (sind > s.size())
 			return false;
 		for (pind; pind < plen; pind++) {
-			if (s[sind] == p[pind] || p[pind] == '.') {
+			cout << "for"<<sind<<" "<<pind<<endl;
+			if ((sind<s.size()&&s[sind] == p[pind]) || p[pind] == '.') {
 				if (match(s, sind + 1, p, pind + 1))
 					return true;
 				else if (pind < plen - 1 && p[pind + 1] == '*') {
@@ -53,26 +59,32 @@ public:
 				else break;
 			}
 			else if (p[pind] == '*') {
-				if (pind > 0 && p[pind - 1] == '.' || p[pind - 1] == s[sind]) {
+				if (pind > 0 && (p[pind - 1] == '.' || p[pind - 1] == s[sind])) {
+					cout << "aaa" << endl;
 					if (match(s, sind + 1, p, pind) || match(s, sind + 1, p, pind + 1) || match(s, sind, p, pind + 1))
 						return true;
 					else break;
 				}
-				else pind++;
+				else {
+					cout << "bbb" << endl;
+					continue;
+				}
 			}
 			else if (pind < plen - 1 && p[pind + 1] == '*') {
 				continue;
 			}
 			else break;
 		}
+		if (sind == s.size() && pind == plen)
+			return true;
 		return false;
 	}
 };
 
 int main() {
 	Solution s;
-	string ss = "aaca";
-	string p = "ab*a*c*a";
+	string ss = "aaaab";
+	string p = "a*a*a*c";
 	s.isMatch(ss, p);
 	system("pause");
 	return 0;
