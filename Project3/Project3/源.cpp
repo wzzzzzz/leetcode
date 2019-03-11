@@ -14,10 +14,62 @@ public:
 	ListNode * mergeKLists(vector<ListNode*>& lists) {
 
 	}
+
+	ListNode * mergetwo(ListNode* list1, ListNode* list2) {
+		ListNode* m = list1;
+		ListNode* n = list2;
+		if (m == NULL)
+			return n;
+		if (n == NULL)
+			return m;
+		ListNode* res;
+		ListNode reshead(0);
+		res = &reshead;
+		while (m&&n) {
+			if (m->val <= n->val) {
+				cout << "a" << endl;
+				ListNode tmp(m->val);
+				res->next = &tmp;
+				m = m->next;
+			}
+			else
+			{
+				cout << "b" << endl;
+				ListNode tmp(n->val);
+				res->next = &tmp;
+				n = n->next;
+			}
+			res = res->next;
+		}
+		cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"<<endl;
+		res = &reshead;
+		while (res) {
+			cout << res->val << " ";
+			res = res->next;
+		}
+		return res;
+	}
 };
 
 int main() {
-
+	Solution s;
+	ListNode l00(0);
+	ListNode l01(3);
+	ListNode l02(4);
+	ListNode l03(8);
+	ListNode l04(9);
+	l00.next = &l01;
+	l01.next = &l02;
+	l02.next = &l03;
+	l03.next = &l04;
+	ListNode l10(1);
+	ListNode l11(2);
+	ListNode l12(10);
+	l10.next = &l11;
+	l11.next = &l12;
+	s.mergetwo(&l00, &l10);
+	system("pause");
+	return 0;
 }
 
 
