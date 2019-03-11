@@ -1,94 +1,133 @@
 #include<iostream>;
 using namespace std;
 
-#include<string>;
+#include<vector>;
+//Definition for singly-linked list.
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
 class Solution {
 public:
-	bool isMatch(string s, string p) {
-		if (s == ""&&p == "")
-			return true;
-		if (p == "")
-			return false;
-		int plen = p.size();
-		int slen = s.size();
-		int i;
-		for (i = 0; i < plen; i++) {
-			cout << i << endl;
-			if (s[0] == p[i] || p[i] == '.') {
-				cout << "ii" << endl;
-				if (match(s, 1, p, i+1)) {
-					cout << "111";
-					return true;
-				}
-				else if ((i < plen - 1 && p[i + 1] == '*')) {
-					continue;
-				}
-				else break;
-			}
-			else if (p[i] == '*')
-			{
-				continue;
-			}
-			else if (i < plen - 1 && p[i + 1] == '*') {
-				continue;
-			}
-			else break;
-		}
-		if (slen == 0 && i == plen)
-			return true;
-		cout << "0";
-		return false;
-	}
+	ListNode * mergeKLists(vector<ListNode*>& lists) {
 
-	bool match(string s, int sind, string p, int pind) {
-		int plen = p.size();
-		if (sind == s.size() && pind == plen)
-			return true;
-		else if (pind == plen)
-			return false;
-		else if (sind > s.size())
-			return false;
-		for (pind; pind < plen; pind++) {
-			cout << "for"<<sind<<" "<<pind<<endl;
-			if ((sind<s.size()&&s[sind] == p[pind]) || p[pind] == '.') {
-				if (match(s, sind + 1, p, pind + 1))
-					return true;
-				else if (pind < plen - 1 && p[pind + 1] == '*') {
-					continue;
-				}
-				else break;
-			}
-			else if (p[pind] == '*') {
-				if (pind > 0 && (p[pind - 1] == '.' || p[pind - 1] == s[sind])) {
-					cout << "aaa" << endl;
-					if (match(s, sind + 1, p, pind) || match(s, sind + 1, p, pind + 1) || match(s, sind, p, pind + 1))
-						return true;
-					else break;
-				}
-				else {
-					cout << "bbb" << endl;
-					continue;
-				}
-			}
-			else if (pind < plen - 1 && p[pind + 1] == '*') {
-				continue;
-			}
-			else break;
-		}
-		if (sind == s.size() && pind == plen)
-			return true;
-		return false;
 	}
 };
 
 int main() {
-	Solution s;
-	string ss = "aaaab";
-	string p = "a*a*a*c";
-	s.isMatch(ss, p);
-	system("pause");
-	return 0;
+
 }
+
+
+/**************************************第十题我觉得这题测试用例有问题***************************************/
+//#include<string>;
+//class Solution {
+//public:
+//	bool isMatch(string s, string p) {
+//		if (s == ""&&p == "")
+//			return true;
+//		if (p == "")
+//			return false;
+//		int plen = p.size();
+//		int slen = s.size();
+//		string pp = "";
+//		//简化p
+//		for (int i = 0; i < plen;) {
+//			if (i < plen - 1 && p[i] != '.'&&p[i + 1] == '*') {
+//				char t = p[i];
+//				pp += p[i];
+//				pp += p[i + 1];
+//				i += 2;
+//				while (i < plen&&(p[i] == t || p[i] == '*'))
+//					i++;
+//			}
+//			else {
+//				pp += p[i];
+//				i++;
+//			}
+//		}
+//		cout << pp << endl;
+//		int pplen = pp.size();
+//		int i;
+//		for (i = 0; i < pplen; i++) {
+//			cout << i << endl;
+//			if (s[0] == pp[i] || pp[i] == '.') {
+//				cout << "ii" << endl;
+//				if (match(s, 1, pp, i+1)) {
+//					cout << "111";
+//					return true;
+//				}
+//				else if ((i < pplen - 1 && pp[i + 1] == '*')) {
+//					continue;
+//				}
+//				else break;
+//			}
+//			else if (pp[i] == '*')
+//			{
+//				continue;
+//			}
+//			else if (i < pplen - 1 && pp[i + 1] == '*') {
+//				continue;
+//			}
+//			else break;
+//		}
+//		if (slen == 0 && i == pplen)
+//			return true;
+//		cout << "0";
+//		return false;
+//	}
+//
+//	bool match(string s, int sind, string p, int pind) {
+//		int plen = p.size();
+//		if (sind == s.size() && pind == plen)
+//			return true;
+//		else if (pind == plen)
+//			return false;
+//		else if (sind > s.size())
+//			return false;
+//		for (pind; pind < plen; pind++) {
+//			cout << "for"<<sind<<" "<<pind<<endl;
+//			if ((sind<s.size()&&s[sind] == p[pind]) || p[pind] == '.') {
+//				if (match(s, sind + 1, p, pind + 1))
+//					return true;
+//				else if (pind < plen - 1 && p[pind + 1] == '*') {
+//					continue;
+//				}
+//				else break;
+//			}
+//			else if (p[pind] == '*') {
+//				if (pind > 0 && (p[pind - 1] == '.' || p[pind - 1] == s[sind])) {
+//					cout << "aaa" << endl;
+//					if (match(s, sind + 1, p, pind + 1) || match(s, sind + 1, p, pind) || match(s, sind, p, pind + 1))
+//						return true;
+//					else break;
+//				}
+//				else {
+//					cout << "bbb" << endl;
+//					continue;
+//				}
+//			}
+//			else if (pind < plen - 1 && p[pind + 1] == '*') {
+//				continue;
+//			}
+//			else break;
+//		}
+//		if (sind == s.size() && pind == plen)
+//			return true;
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	string ss = "acaabbaccbbacaabbbb";
+//	string p = "a*.*b*.*a*aa*a*";
+//	s.isMatch(ss, p);
+//	system("pause");
+//	return 0;
+//}
 
 
 
