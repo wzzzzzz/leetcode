@@ -1,76 +1,160 @@
 #include<iostream>;
 using namespace std;
 
-#include<vector>;
-//Definition for singly-linked list.
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
 
-class Solution {
-public:
-	ListNode * mergeKLists(vector<ListNode*>& lists) {
 
-	}
 
-	ListNode * mergetwo(ListNode* list1, ListNode* list2) {
-		ListNode* m = list1;
-		ListNode* n = list2;
-		if (m == NULL)
-			return n;
-		if (n == NULL)
-			return m;
-		ListNode* res;
-		ListNode reshead(0);
-		res = &reshead;
-		while (m&&n) {
-			if (m->val <= n->val) {
-				cout << "a" << endl;
-				ListNode tmp(m->val);
-				res->next = &tmp;
-				m = m->next;
-			}
-			else
-			{
-				cout << "b" << endl;
-				ListNode tmp(n->val);
-				res->next = &tmp;
-				n = n->next;
-			}
-			res = res->next;
-		}
-		cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"<<endl;
-		res = &reshead;
-		while (res) {
-			cout << res->val << " ";
-			res = res->next;
-		}
-		return res;
-	}
-};
+/**************************************第二十三题***************************************/
+//#include<vector>;
+////Definition for singly-linked list.
+//struct ListNode {
+//    int val;
+//    ListNode *next;
+//    ListNode(int x) : val(x), next(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	ListNode * mergeKLists(vector<ListNode*>& lists) {
+//		int len = lists.size();
+//		//cout << len << endl;
+//		if (len == 0)
+//			return NULL;
+//		if (len == 1)
+//			return lists[0];
+//		//思路1
+//		while (len > 1) {
+//			vector<ListNode*> thislists;
+//			int i=0;
+//			for (i = 0; i < (len/2)*2; i+=2) {
+//				ListNode* tmp = mergetwo(lists[i], lists[i + 1]);
+//				thislists.push_back(tmp);
+//				//while (tmp) {
+//				//	cout << tmp->val << " ";
+//				//	tmp = tmp->next;
+//				//}
+//				//cout << i<<endl;
+//			}
+//			if (len % 2 != 0)
+//				thislists.push_back(lists[i]);
+//			lists = thislists;
+//			len = lists.size();
+//		}
+//		while (lists[0]) {
+//			cout << lists[0]->val << " ";
+//			lists[0] = lists[0]->next;
+//		}
+//		return lists[0];
+//		//思路2,结果太慢了
+//		//ListNode* res;
+//		//res = mergetwo(lists[0], lists[1]);
+//		//for (int i = 2; i < len; i++) {
+//		//	res = mergetwo(res, lists[i]);
+//		//}
+//		//while (res) {
+//		//	cout << res->val << " ";
+//		//	res = res->next;
+//		//}
+//		//return res;
+//		//思路3
+//		//ListNode reshead = *(lists[0]);
+//		//ListNode* res = &reshead;
+//		//int alllen = 1;
+//		//while (res->next) {
+//		//	res = res->next;
+//		//	alllen++;
+//		//}
+//		//for (int i = 1; i < len; i++) {
+//		//	res->next = lists[i];
+//		//	while (lists[i]) {
+//		//		lists[i] = lists[i]->next;
+//		//		res = res->next;
+//		//		alllen++;
+//		//	}
+//		//}
+//		////排序？？？没想好
+//		//
+//		//while (reshead.next) {
+//		//	cout << reshead.next->val << " ";
+//		//	reshead = *(reshead.next);
+//		//}
+//		//cout << endl;
+//		//return &reshead;
+//	}
+//
+//	ListNode * mergetwo(ListNode* list1, ListNode* list2) {
+//		ListNode* m = list1;
+//		ListNode* n = list2;
+//		if (m == NULL)
+//			return n;
+//		if (n == NULL)
+//			return m;
+//		ListNode* reshead;
+//		ListNode res(-1);
+//		reshead = &res;
+//		//cout << reshead->val << " ";
+//		while (m&&n) {
+//			if (m->val <= n->val) {
+//				ListNode* tmp = new ListNode(m->val);
+//				reshead->next = tmp;
+//				m = m->next;
+//			}
+//			else
+//			{
+//				ListNode* tmp = new ListNode(n->val);
+//				reshead->next = tmp;
+//				n = n->next;
+//			}			
+//			reshead = reshead->next;
+//		}
+//		if (m) {
+//			reshead->next = m;
+//		}
+//		if (n) {
+//			reshead->next = n;
+//		}
+//		//while (res.next) {
+//		//	cout << res.next->val << " ";
+//		//	res = *(res.next);
+//		//}
+//		//cout << endl;
+//		return res.next;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	ListNode l00(0);
+//	ListNode l01(3);
+//	ListNode l02(4);
+//	ListNode l03(8);
+//	ListNode l04(9);
+//	l00.next = &l01;
+//	l01.next = &l02;
+//	l02.next = &l03;
+//	l03.next = &l04;
+//	ListNode l10(1);
+//	ListNode l11(2);
+//	ListNode l12(10);
+//	l10.next = &l11;
+//	l11.next = &l12;
+//	ListNode l20(-1);
+//	ListNode l21(2);
+//	ListNode l22(5);
+//	l20.next = &l21;
+//	l21.next = &l22;
+//	ListNode l30(-2);
+//	ListNode l31(3);
+//	ListNode l32(6);
+//	l30.next = &l31;
+//	l31.next = &l32;
+//	//s.mergetwo(&l00, &l20);
+//	vector<ListNode*> lists{&l00,&l10,&l20,&l30};
+//	s.mergeKLists(lists);
+//	system("pause");
+//	return 0;
+//}
 
-int main() {
-	Solution s;
-	ListNode l00(0);
-	ListNode l01(3);
-	ListNode l02(4);
-	ListNode l03(8);
-	ListNode l04(9);
-	l00.next = &l01;
-	l01.next = &l02;
-	l02.next = &l03;
-	l03.next = &l04;
-	ListNode l10(1);
-	ListNode l11(2);
-	ListNode l12(10);
-	l10.next = &l11;
-	l11.next = &l12;
-	s.mergetwo(&l00, &l10);
-	system("pause");
-	return 0;
-}
 
 
 /**************************************第十题我觉得这题测试用例有问题***************************************/
