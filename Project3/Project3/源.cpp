@@ -1,6 +1,96 @@
 #include<iostream>;
 using namespace std;
 
+//Definition for singly-linked list.
+#include<stack>;
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
+class Solution {
+public:
+	ListNode * reverseKGroup(ListNode* head, int k) {
+		if (k == 1 || k == 0)
+			return head;
+		ListNode* later = head->next;
+		ListNode* first = NULL;
+		ListNode* beforefirst = NULL;
+		int i;
+		for (i = 0; i < k-2, later; i++) {
+			later = later->next;
+		}
+		if (i == k - 2 && later)
+			first = head;
+		head = reversek(first, k);
+		cout << "first" << endl;
+		int j = 0;
+		while (later) {
+			j++;
+			later = later->next;
+			beforefirst = first;
+			first = first->next;
+			if (j == k) {
+				beforefirst->next=reversek(first, k);
+				j = 0;
+			}
+		}
+		while (head) {
+			cout << head->val << " ";
+			head = head->next;
+		}
+		return head;
+	}
+	ListNode * reversek(ListNode* first, int k) {
+		stack<ListNode* > stacks;
+		ListNode* nextnode = first;
+		ListNode* after;
+		while (k > 0) {
+			k--;
+			first = nextnode;
+			nextnode = nextnode->next;
+			first->next = NULL;
+			stacks.push(first);
+		}
+		after = nextnode;
+		first = stacks.top();
+		nextnode = NULL;	
+		stacks.pop();
+		while (!stacks.empty()) {
+			if (nextnode == NULL) {
+				first->next = stacks.top();
+				nextnode = first->next;
+			}
+			else {
+				nextnode->next = stacks.top();
+				nextnode = nextnode->next;
+			}
+			stacks.pop();
+		}
+		nextnode->next = after;
+		//while (first) {
+		//	cout << first->val;
+		//	first = first->next;
+		//}
+		return first;
+	}
+};
+int main() {
+	Solution s;
+	ListNode l0(0);
+	ListNode l1(3);
+	ListNode l2(4);
+	ListNode l3(8);
+	ListNode l4(9);
+	l0.next = &l1;
+	l1.next = &l2;
+	l2.next = &l3;
+	l3.next = &l4;
+	s.reverseKGroup(&l0,2);
+	system("pause");
+	return 0;
+}
 
 
 
