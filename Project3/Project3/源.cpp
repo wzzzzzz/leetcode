@@ -1,15 +1,17 @@
-#include<iostream>;
+#include<iostream>
 using namespace std;
 
-#include<vector>;
-#include<string>;
-#include<map>;
+#include<vector>
+#include<string>
+#include<map>
 class Solution {
 public:
 	vector<int> findSubstring(string s, vector<string>& words) {
-		int len = words.size();
-		int ilen = words[0].size();
 		vector<int> res;
+		int len = words.size();
+		if (len == 0)
+			return res;
+		int ilen = words[0].size();
 		map<int, string> w;
 		while (s.length() > ilen*len) {
 			cout << s << endl;
@@ -19,18 +21,13 @@ public:
 				if (found == -1) {
 					return res;
 				}
-				if (w.find(found) == w.end()) {
-					w[found] = words[i];
-				}
-				else {
-					while (w.find(found) != w.end()) {
-						found = s.find(words[i],found+1);
-						if (found == -1) {
-							return res;
-						}
+				while (w.find(found) != w.end()) {
+					found = s.find(words[i],found+1);
+					if (found == -1) {
+						return res;
 					}
-					w[found] = words[i];
 				}
+				w[found] = words[i];
 			}
 			for (map<int, string>::iterator i = w.begin(); i != w.end(); i++) {
 				cout << i->first << " " << i->second << endl;
@@ -39,42 +36,48 @@ public:
 			map<int, string>::iterator it = w.begin();
 			map<int, string>::iterator next = w.begin();
 			next++;
+			int flag = 1;
 			while (next != w.end()) {
 				//cout << it->first << " " << next->first << endl;
 				if (it->first + ilen == next->first) {
 					it = next;
 					next++;
+					flag++;
 				}
 				else {
 					cout << it->first <<"xxx"<< endl;
 					map<int, string>::iterator itt = w.begin();
-					do{
+					//把it前面的都删掉并重新往后找下一个索引
+					for (int j = 0; j < flag; j++) {
 						int tmp = s.find(itt->second, itt->first + 1);
 						if (tmp == -1) {
 							return res;
 						}
+						//这里关键是重复的检查位置，如果是原来要被销毁的就可以重复，新加的或者原来有但不被销毁的就不能重复也就是要做while
+						while (w.find(tmp) != w.end()) {
+							tmp = s.find(itt->second, tmp + 1);
+							if (tmp == -1) {
+								return res;
+							}
+						}
+						cout << tmp <<  " "<< itt->second << endl;
 						w.insert(pair<int, string>(tmp, itt->second));
 						w.erase(itt);
-						itt = w.begin();
-					} while (it== NULL || itt != it);
-					//int tmp = s.find(itt->second, itt->first + 1);
-					//if (tmp == -1) {
-					//	return res;
-					//}
-					//w.insert(pair<int, string>(tmp, itt->second));
-					//w.erase(itt);
+						itt = w.begin();					
+					}
 					//从头检查
 					it = w.begin();
 					cout << it->first << endl;
 					next = it;
 					next++;
+					flag = 1;
 				}
 			}
 			res.push_back(w.begin()->first);
 			cout << "res" << w.begin()->first << endl;
 
-			map<int, string>::reverse_iterator lastind = w.rbegin();
-			for (int j = 0; j < lastind->first + ilen; j++) {
+			int fi = w.begin()->first;
+			for (int j = 0; j < fi + ilen; j++) {
 				s.replace(j, 1, "0");
 			}
 			w.clear();
@@ -99,8 +102,8 @@ public:
 
 int main() {
 	Solution s;
-	string ss = "barsfoothefoobarman";
-	vector<string> words = { "foo","bar" };
+	string ss = "wordgoodgoodgoodbestwordssssssssswordgoodgoodgoodgoodbestword";
+	vector<string> words = { "word","good","best","good" };
 	s.findSubstring(ss, words);
 	system("pause");
 	return 0;
