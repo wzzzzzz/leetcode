@@ -1,113 +1,474 @@
 #include<iostream>
 using namespace std;
 
-#include<vector>
-#include<string>
-#include<map>
-class Solution {
-public:
-	vector<int> findSubstring(string s, vector<string>& words) {
-		vector<int> res;
-		int len = words.size();
-		if (len == 0)
-			return res;
-		int ilen = words[0].size();
-		map<int, string> w;
-		while (s.length() > ilen*len) {
-			cout << s << endl;
-			//找出每个单词的最近位置并排序
-			for (int i = 0; i < len; i++) {
-				int found = s.find(words[i]);
-				if (found == -1) {
-					return res;
-				}
-				while (w.find(found) != w.end()) {
-					found = s.find(words[i],found+1);
-					if (found == -1) {
-						return res;
-					}
-				}
-				w[found] = words[i];
-			}
-			for (map<int, string>::iterator i = w.begin(); i != w.end(); i++) {
-				cout << i->first << " " << i->second << endl;
-			}
-			//检查
-			map<int, string>::iterator it = w.begin();
-			map<int, string>::iterator next = w.begin();
-			next++;
-			int flag = 1;
-			while (next != w.end()) {
-				//cout << it->first << " " << next->first << endl;
-				if (it->first + ilen == next->first) {
-					it = next;
-					next++;
-					flag++;
-				}
-				else {
-					cout << it->first <<"xxx"<< endl;
-					map<int, string>::iterator itt = w.begin();
-					//把it前面的都删掉并重新往后找下一个索引
-					for (int j = 0; j < flag; j++) {
-						int tmp = s.find(itt->second, itt->first + 1);
-						if (tmp == -1) {
-							return res;
-						}
-						//这里关键是重复的检查位置，如果是原来要被销毁的就可以重复，新加的或者原来有但不被销毁的就不能重复也就是要做while
-						while (w.find(tmp) != w.end()) {
-							tmp = s.find(itt->second, tmp + 1);
-							if (tmp == -1) {
-								return res;
-							}
-						}
-						cout << tmp <<  " "<< itt->second << endl;
-						w.insert(pair<int, string>(tmp, itt->second));
-						w.erase(itt);
-						itt = w.begin();					
-					}
-					//从头检查
-					it = w.begin();
-					cout << it->first << endl;
-					next = it;
-					next++;
-					flag = 1;
-				}
-			}
-			res.push_back(w.begin()->first);
-			cout << "res" << w.begin()->first << endl;
 
-			int fi = w.begin()->first;
-			for (int j = 0; j < fi + ilen; j++) {
-				s.replace(j, 1, "0");
-			}
-			w.clear();
-		}
-		for (int j = 0; j < res.size(); j++) {
-			cout << res[j] << " ";
-		}
-		return res;
-		//这个思路不太行
-		//string sr = s;
-		//for (int i = 0; i < len; i++) {
-		//	size_t found = sr.find(words[i]);
-		//	while (found != string::npos) {
-		//		sr.replace(found, ilen, to_string(i));
-		//		found = sr.find(words[i]);
-		//		cout << sr << endl;
-		//	}
-		//}
-		//return res;
-	}
-};
 
-int main() {
-	Solution s;
-	string ss = "wordgoodgoodgoodbestwordssssssssswordgoodgoodgoodgoodbestword";
-	vector<string> words = { "word","good","best","good" };
-	s.findSubstring(ss, words);
-	system("pause");
-	return 0;
-}
+/**************************************第四十二题***************************************/
+//#include<vector>
+//#include<stack>
+//class Solution {
+//public:
+//	int trap(vector<int>& height) {
+//		int len = height.size();
+//		if (len < 3)
+//			return 0;
+//		int res = 0;
+//		int left = 0;
+//		int down;
+//		int right;
+//		stack<int> downflag;
+//		while (height[left] == 0) {
+//			left++;
+//		}
+//		int tmp;
+//		//用来标记是否更新三个索引的位置
+//		int flag = 0;
+//		while (left < len) {
+//			if (flag == 0) {
+//				tmp = 0;
+//				//让左指针指向平着的最后一个
+//				while (left < len - 1 && height[left] == height[left + 1]) {
+//					left++;
+//				}
+//				downflag.push(left);
+//				//找下一个低的，遇到更高的就加入栈
+//				down = left + 1;
+//				if (down >= len)
+//					break;
+//				if (height[down] < height[left]){
+//					//让中间指针指向平着的最后一个，为了保证右指针和中间指针不等
+//					while (down < len - 1 && height[down] == height[down + 1]) {
+//						down++;
+//					}
+//					right = down + 1;
+//					if (right >= len)
+//						break;
+//				}
+//				else {
+//					right = down;
+//					down = left;
+//				}
+//			}
+//			cout << left << " " << down << " " << right << " ";
+//			if (height[right] < height[down]) {					
+//				left = down;
+//				continue;
+//			}
+//			else {
+//				if (height[right] <= height[left]) {
+//					tmp += (height[right] - height[down])*(right - left - 1);					
+//					res += tmp;
+//					if (height[right] == height[left])
+//						downflag.pop();
+//					left = right;
+//					flag = 0;
+//				}
+//				else {
+//					tmp += (height[left] - height[down])*(right - left - 1);
+//					downflag.pop();
+//					if (!downflag.empty()) {
+//						down = left;
+//						left = downflag.top();
+//						flag = 1;
+//					}
+//					else {
+//						left = right;
+//						res += tmp;
+//						flag = 0;
+//					}					
+//					continue;
+//				}
+//			}
+//			cout << res << endl;
+//		}
+//		cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> h{ 0,1,0,2,1,0,1,3,2,1,2,1 };
+//	s.trap(h);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************第四十一题***************************************/
+//#include<vector>
+//#include<algorithm>
+//class Solution {
+//public:
+//	int firstMissingPositive(vector<int>& nums) {
+//		//思路1
+//		//int len = nums.size();
+//		//vector<int> n (len,0);
+//		//for (int i = 0; i < len; i++) {
+//		//	if (nums[i] > 0 && nums[i] <= len) {
+//		//		n[nums[i]-1] = 1;
+//		//	}
+//		//}
+//		//for (int i = 0; i < len; i++) {
+//		//	if (n[i] == 0)
+//		//		return i+1;
+//		//}
+//		//return len + 1;
+//		
+//		//思路2
+//		//int len = nums.size();
+//		//int res = 1;
+//		//sort(nums.begin(), nums.end());
+//		//for (int i = 0; i < len; i++) {
+//		//	if (nums[i] > 0) {
+//		//		if (nums[i] > res) {
+//		//			cout << res;
+//		//			return res;
+//		//		}
+//		//		if (nums[i] == res)
+//		//			res++;
+//		//	}
+//		//}
+//		//cout << res;
+//		//return res;
+//
+//		//思路3
+//		int len = nums.size();
+//		int tmp = 0;
+//		for (int i = 0; i < len; i++) {
+//			tmp = nums[i];
+//			while (tmp < len &&tmp != (nums[tmp]-1)) {
+//				if (nums[tmp] > 0 && nums[tmp] <= len) {
+//					int t = nums[tmp]-1;
+//					nums[tmp] = 1;
+//					tmp = t;
+//				}
+//				else {
+//					nums[tmp] = 0;
+//					break;
+//				}
+//			}
+//			for (int i = 0; i < len; i++) {
+//				cout << nums[i];
+//			}
+//			cout << endl;
+//		}
+//		for (int i = 0; i < len; i++) {
+//			cout << nums[i];
+//		}
+//		for (int i = 0; i < len; i++) {
+//			if (nums[i] == 0) {
+//				cout << " " << i+1;
+//				return i+1;
+//			}				
+//		}
+//		return len + 1;
+//	}
+//};
+//
+//int main() {
+//	vector<int> nums{ 1,2,3,4};
+//	Solution s;
+//	s.firstMissingPositive(nums);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************第三十七题***************************************/
+//#include<vector>
+//class Solution {
+//public:
+//	void solveSudoku(vector<vector<char>>& board) {
+//		vector<vector<int>> row(9,vector<int>(9,0));
+//		vector<vector<int>> col(9, vector<int>(9, 0));
+//		vector<vector<int>> block(9, vector<int>(9, 0));
+//		for (int i = 0; i < 9; i++) {
+//			for (int j = 0; j < 9; j++) {
+//				if (board[i][j] != '.') {
+//					int tmp = board[i][j] - '1';
+//					row[i][tmp] = 1;
+//					col[j][tmp] = 1;
+//					int blockind = 3 * (i / 3) + j / 3;
+//					block[blockind][tmp] = 1;
+//				}
+//			}
+//		}
+//		shudu(board, row, col, block);
+//		//for (int i = 0; i < 9; i++) {
+//		//	for (int j = 0; j < 9; j++) {
+//		//		cout << board[i][j] << " ";
+//		//	}
+//		//	cout << endl;
+//		//}
+//	}
+//
+//	bool shudu(vector<vector<char>>& board, vector<vector<int>>& row, vector<vector<int>>& col, vector<vector<int>>& block) {
+//		int i,j;
+//		int flag = 0;
+//		for (i = 0; i < 9; i++) {
+//			for (j = 0; j < 9; j++) {
+//				if (board[i][j] == '.') {
+//					flag = 1;
+//					break;
+//				}
+//			}
+//			if (flag == 1)
+//				break;
+//		}
+//		if (flag == 0)
+//			return true;
+//		int x;
+//		for (x = 0; x < 9; x++) {
+//			if (row[i][x] == 0) {
+//				if (col[j][x] == 0) {
+//					if (block[3 * (i / 3) + j / 3][x] == 0) {
+//						board[i][j] = x + '1';
+//						row[i][x] = 1;
+//						col[j][x] = 1;
+//						block[3 * (i / 3) + j / 3][x] = 1;
+//						if (shudu(board, row, col, block))
+//							return true;
+//						else {
+//							board[i][j] = '.';
+//							row[i][x] = 0;
+//							col[j][x] = 0;
+//							block[3 * (i / 3) + j / 3][x] = 0;
+//							continue;
+//						}
+//					}
+//					else continue;
+//				}
+//				else continue;
+//			}
+//			else continue;
+//		}
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<char>> b = {
+//		{ '5','3','.','.','7','.','.','.','.' },
+//		{ '6','.','.','1','9','5','.','.','.' },
+//		{ '.','9','8','.','.','.','.','6','.' },
+//		{ '8','.','.','.','6','.','.','.','3' },
+//		{ '4','.','.','8','.','3','.','.','1' },
+//		{ '7','.','.','.','2','.','.','.','6' },
+//		{ '.','6','.','.','.','.','2','8','.' },
+//		{ '.','.','.','4','1','9','.','.','5' },
+//		{ '.','.','.','.','8','.','.','7','9' },
+//	};
+//	s.solveSudoku(b);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************第三十二题***************************************/
+//#include<stack>
+//#include<vector>
+//class Solution {
+//public:
+//	int longestValidParentheses(string s) {
+//		int res = 0;
+//		stack<int> hhh;
+//		int len = s.length();
+//		if (len == 0)
+//			return res;
+//
+//		int i;
+//		for (i = 0; i < len; i++) {
+//			if (s[i] == '(') {
+//				hhh.push(i);
+//				s[i] = '0';
+//				break;
+//			}
+//			else s[i] = '0';
+//		}
+//		if (i == len)
+//			return res;
+//
+//		int tmp = 0;
+//		int thisin = 0;
+//		for (int j = i+1; j < len; j++) {
+//			if (s[j] == ')') {
+//				if (hhh.empty()) {
+//					s[j] = '0';
+//					continue;
+//				}		
+//				thisin = hhh.top();
+//				s[thisin] = '1';
+//				s[j] = '1';
+//				int k;
+//				for (k = thisin; k > 0; k--) {
+//					if (s[k-1] == '0') {
+//						tmp = j - k + 1;
+//						break;
+//					}
+//				}
+//				if (k == 0)
+//					tmp = j + 1;
+//				if (tmp > res)
+//					res = tmp;
+//				hhh.pop();
+//			}
+//			else {
+//				hhh.push(j);
+//				s[j] = '0';
+//			}
+//		}
+//		cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	string ss = ")()())()()(";
+//	s.longestValidParentheses(ss);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************第二十五题***************************************/
+//#include<vector>
+//#include<string>
+//#include<map>
+//#include<algorithm>
+//class Solution {
+//public:
+//	vector<int> findSubstring(string s, vector<string>& words) {
+//		vector<int> res;
+//		int len = words.size();
+//		if (len == 0)
+//			return res;
+//		int ilen = words[0].size();
+//		int slen = s.length();
+//		map<int, string> w;
+//		while (slen >= ilen*len) {
+//			cout << s << endl;
+//			//找出每个单词的最近位置并排序
+//			int found = s.find(words[0]);
+//			if (found == -1) {
+//				return res;
+//			}
+//			w[found] = words[0];
+//			for (int i = 1; i < len; i++) {
+//				found = s.find(words[i]);
+//				if (found == -1) {
+//					return res;
+//				}
+//				map<int, string>::iterator tmpind = w.find(found);
+//				while (tmpind != w.end()) {
+//					int nextind = max(tmpind->first + ilen, found + 1);
+//					found = s.find(words[i], nextind);
+//					if (found == -1) {
+//						return res;
+//					}
+//					tmpind = w.find(found);
+//				}
+//				w[found] = words[i];
+//			}
+//			for (map<int, string>::iterator i = w.begin(); i != w.end(); i++) {
+//				cout << i->first << " " << i->second << endl;
+//			}
+//			//检查
+//			map<int, string>::iterator it = w.begin();
+//			map<int, string>::iterator next = w.begin();
+//			next++;
+//			int flag = 1;
+//			while (next != w.end()) {
+//				//cout << it->first << " " << next->first << endl;
+//				if (it->first + ilen == next->first) {
+//					it = next;
+//					next++;
+//					flag++;
+//				}
+//				else {
+//					cout << it->first <<"xxx"<< endl;
+//					map<int, string>::iterator itt = w.begin();
+//					//把前面要删掉的都挪到另一个map
+//					map<int, string> move;
+//					for (int j = 0; j < flag; j++) {
+//						move[itt->first] = itt->second;
+//						w.erase(itt);
+//						itt = w.begin();
+//					}
+//					itt = move.begin();
+//					//对move里面的都删掉并重新往后找下一个索引
+//					for (int j = 0; j < flag; j++) {
+//						int tmp = s.find(itt->second, itt->first + 1);
+//						if (tmp == -1) {
+//							return res;
+//						}
+//						//这里关键是重复的检查位置，如果是原来要被销毁的就可以重复，新加的或者原来有但不被销毁的就不能重复也就是要做while
+//						//现在w里只有新加的或者原来有但不被销毁的
+//						map<int, string>::iterator tmpind=w.find(tmp);
+//						while (tmpind != w.end()) {
+//							int nextind = max(tmpind->first + ilen, tmp + 1);
+//							tmp = s.find(itt->second, nextind);
+//							if (tmp == -1) {
+//								return res;
+//							}
+//							tmpind = w.find(tmp);
+//						}
+//						cout << tmp <<  " "<< itt->second << endl;
+//						w.insert(pair<int, string>(tmp, itt->second));
+//						itt++;
+//					}
+//					//从头检查
+//					it = w.begin();
+//					cout << it->first << endl;
+//					next = it;
+//					next++;
+//					flag = 1;
+//				}
+//			}
+//			res.push_back(w.begin()->first);
+//			cout << "res" << w.begin()->first << endl;
+//
+//			int fi = w.begin()->first;
+//			for (int j = 0; j < fi+1; j++) {
+//				s.replace(j, 1, "0");
+//			}
+//			slen = s.length() - fi - 1;
+//			w.clear();
+//		}
+//		for (int j = 0; j < res.size(); j++) {
+//			cout << res[j] << " ";
+//		}
+//		return res;
+//		//这个思路不太行
+//		//string sr = s;
+//		//for (int i = 0; i < len; i++) {
+//		//	size_t found = sr.find(words[i]);
+//		//	while (found != string::npos) {
+//		//		sr.replace(found, ilen, to_string(i));
+//		//		found = sr.find(words[i]);
+//		//		cout << sr << endl;
+//		//	}
+//		//}
+//		//return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	//这个测试用例过不了
+//	string ss = "ababaab";
+//	vector<string> words = { "ab","ba","ba"};
+//	s.findSubstring(ss, words);
+//	system("pause");
+//	return 0;
+//}
+
 
 
 /**************************************第二十五题***************************************/
