@@ -1,6 +1,90 @@
 #include<iostream>
 using namespace std;
 
+#include<string>;
+class Solution {
+public:
+	bool isMatch(string s, string p) {
+		if (p == "*")
+			return true;
+		if (s == "") {
+			if (p == "") {
+				return true;
+			}
+			else return false;
+		}
+		else if (p == "")
+			return false;
+		bool res = match(s, 0, p, 0);
+		cout << res;
+		return res;
+	}
+
+	bool match(string s, int sind, string p, int pind) {
+		cout << sind << " " << pind << endl;
+		int slen = s.length();
+		int plen = p.length();
+		if (pind > plen || sind > slen)
+			return false;
+		if (pind == plen) {
+			if(sind == slen)
+				return true;
+			else return false;
+		}
+		if (p[pind] == '?') {
+			return match(s, sind + 1, p, pind + 1);
+		}
+		else if (p[pind] != '*') {
+			if (s[sind] == p[pind]) {
+				return match(s, sind + 1, p, pind + 1);
+			}
+			else return false;
+		}
+		else {
+			while (pind < plen - 1 && p[pind + 1] == '*') {
+				pind++;
+			}
+			if (pind == plen - 1)
+				return true;
+			if (match(s, sind, p, pind + 1))
+				return true;
+
+			pind++;
+			char tmp = p[pind];
+			size_t ind = sind;
+			while (p[pind] == '?') {
+				pind++;
+				ind++;
+				if (ind >= slen)
+					return false;
+				if (pind == plen)
+					return true;
+
+			}
+			tmp = p[pind];
+			while (ind < slen) {
+				ind = s.find(tmp, ind);
+				if (ind != s.npos) {
+					if (match(s, ind, p, pind))
+						return true;
+					ind++;
+				}
+				else return false;
+			}
+		}
+		return false;
+	}
+};
+
+int main() {
+	Solution ss;
+	string s = "babbbaabbaaaaabbababaaaabbbbbbbbbbabbaaaabbababbabaa";
+	string p = "**a****a**b***ab***a*bab";
+	ss.isMatch(s, p);
+	system("pause");
+	return 0;
+}
+
 
 
 /**************************************第四十二题***************************************/
