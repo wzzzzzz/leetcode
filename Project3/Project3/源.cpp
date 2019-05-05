@@ -1,179 +1,162 @@
 #include<iostream>
 using namespace std;
 
-//#include<vector>
-//class Solution {
-//public:
-//	int minScoreTriangulation(vector<int>& A) {
-//		int len = A.size();
-//		if (len == 3)
-//			return A[0] * A[1] * A[2];
-//		vector<int> min;
-//		min.push_back(0);
-//		for (int i = 1; i < len; i++) {
-//			if (A[i] < A[min[0]]) {
-//				min.clear();
-//				min.push_back(i);
-//			}
-//			else if (A[i] == A[min[0]]) {
-//				min.push_back(i);
-//			}
-//		}
-//		//for (int i = 0; i < min.size(); i++)
-//		//	cout << min[i] << " ";
-//
-//		//根据最小值分成几个区域
-//		vector<vector<int>> tras = {};//这个里面保存的是A的这种值，而不是ind
-//		vector<vector<int>> mins = {};
-//		for (int i = 1; i < min.size(); i++) {
-//			if (min[i] - min[i - 1] > 1) {
-//				vector<int> tra;
-//				for (int j = min[i - 1]; j <= min[i]; j++) {
-//					tra.push_back(A[j]);
-//				}
-//				mins.push_back({ 0,min[i]-min[i-1] });
-//				tras.push_back(tra);
-//			}
-//		}
-//
-//		int res = 0;
-//		//只有一个区域直接求
-//		if (tras.size()==0)
-//			res = getscore(A, min);
-//		//有不止一个区域，就分别求值，然后加起来
-//		else {
-//			vector<int> tra;
-//			int ind = 0;
-//			int lastmin = min[min.size() - 1];
-//			for (int i = 0; i < min[0]; i++) {
-//				tra.push_back(A[i]);
-//				ind++;
-//			}
-//			for (int i = 0; i < min.size(); i++) {
-//				tra.push_back(A[min[i]]);
-//				min[i] = ind++;
-//			}
-//			for (int i = lastmin + 1; i < len; i++) {
-//				tra.push_back(A[i]);
-//			}
-//			tras.push_back(tra);
-//			mins.push_back(min);
-//
-//			for (int k = 0; k < tras.size(); k++) {
-//				cout <<"         "<<k << endl;
-//				res += getscore(tras[k], mins[k]);
-//				cout << endl;
-//			}
-//		}
-//		cout << res;
-//		return res;
-//	}
-//
-//	int getscore(vector<int>& t, vector<int> min) {
-//		int len = t.size();
-//		int res = 48000000;
-//		for (int i = 0; i < min.size(); i++) {
-//			int tmp = 0;
-//			int a = min[i];
-//			for (int j = 0; j < len - 2; j++) {
-//				int b = a + j + 1;
-//				int c = a + j + 2;
-//				if (b >= len) b -= len;
-//				if (c >= len) c -= len;
-//				tmp += t[a] * t[b] * t[c];
-//			}
-//			//cout << tmp << endl;
-//			if (tmp <= res)
-//				res = tmp;
-//		}
-//		cout << res<<" ";
-//		return res;
-//	}
-//};
-//
-//int main() {
-//	Solution s;
-//	vector<int> a = { 3,5,2,5,2,6 };
-//	s.minScoreTriangulation(a);
-//	system("pause");
-//	return 0;
-//}
-
-
-
-//Definition for a binary tree node.
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-
+#include<vector>
 class Solution {
 public:
-	TreeNode * bstToGst(TreeNode* root) {
-		Gst(root, 0);
-		return root;
+	int minScoreTriangulation(vector<int>& A) {
+		int len = A.size();
+		if (len == 3)
+			return A[0] * A[1] * A[2];
+		vector<int> min;
+		min.push_back(0);
+		for (int i = 1; i < len; i++) {
+			if (A[i] < A[min[0]]) {
+				min.clear();
+				min.push_back(i);
+			}
+			else if (A[i] == A[min[0]]) {
+				min.push_back(i);
+			}
+		}
+		//for (int i = 0; i < min.size(); i++)
+		//	cout << min[i] << " ";
+
+		//根据最小值分成几个区域
+		vector<vector<int>> tras = {};//这个里面保存的是A的这种值，而不是ind
+		vector<vector<int>> mins = {};
+		for (int i = 1; i < min.size(); i++) {
+			if (min[i] - min[i - 1] > 1) {
+				vector<int> tra;
+				for (int j = min[i - 1]; j <= min[i]; j++) {
+					tra.push_back(A[j]);
+				}
+				mins.push_back({ 0,min[i]-min[i-1] });
+				tras.push_back(tra);
+			}
+		}
+
+		int res = 0;
+		//只有一个区域直接求
+		if (tras.size()==0)
+			res = getscore(A, min);
+		//有不止一个区域，就分别求值，然后加起来
+		else {
+			vector<int> tra;
+			int ind = 0;
+			int lastmin = min[min.size() - 1];
+			for (int i = 0; i < min[0]; i++) {
+				tra.push_back(A[i]);
+				ind++;
+			}
+			for (int i = 0; i < min.size(); i++) {
+				tra.push_back(A[min[i]]);
+				min[i] = ind++;
+			}
+			for (int i = lastmin + 1; i < len; i++) {
+				tra.push_back(A[i]);
+			}
+			tras.push_back(tra);
+			mins.push_back(min);
+
+			for (int k = 0; k < tras.size(); k++) {
+				cout <<"         "<<k << endl;
+				res += getscore(tras[k], mins[k]);
+				cout << endl;
+			}
+		}
+		cout << res;
+		return res;
 	}
 
-	TreeNode * Gst(TreeNode* root,int v) {
-		if (!(root->right || root->left)) {
-			if(v==0)
-				root->val = root->val;
-			else root->val +=v;
-			return root;
+	int getscore(vector<int>& t, vector<int> min) {
+		int len = t.size();
+		int res = 48000000;
+		for (int i = 0; i < min.size(); i++) {
+			int tmp = 0;
+			int a = min[i];
+			for (int j = 0; j < len - 2; j++) {
+				int b = a + j + 1;
+				int c = a + j + 2;
+				if (b >= len) b -= len;
+				if (c >= len) c -= len;
+				tmp += t[a] * t[b] * t[c];
+			}
+			//cout << tmp << endl;
+			if (tmp <= res)
+				res = tmp;
 		}
-
-		if (root->right) {
-			root->right = Gst(root->right, v);
-			root->val = root->val + root->right->val;
-			cout << "r ";
-		}
-		if (root->left) {
-			root->left = add(root->left, root->val);
-			root->left = Gst(root->left,v);
-			cout << "l ";
-		}
-
-		cout << root->val << endl;
-		return root;
-	}
-	TreeNode * add(TreeNode* root,int v) {
-		root->val += v;
-		if (root->right) {
-			root->right = add(root->right,v);
-		}
-		if (root->left) {
-			root->left = add(root->left,root->val);
-		}
-		return root;
+		cout << res<<" ";
+		return res;
 	}
 };
 
 int main() {
 	Solution s;
-	TreeNode t4(4);
-	TreeNode t0(0);
-	TreeNode t1(1);
-	TreeNode t2(2);
-	TreeNode t3(3);
-	TreeNode t5(5);
-	TreeNode t6(6);
-	TreeNode t7(7);
-	TreeNode t8(8);
-	t4.left = &t1;
-	t4.right = &t6;
-	t1.left = &t0;
-	t1.right = &t2;
-	t2.right = &t3;
-	t6.left = &t5;
-	t6.right = &t7;
-	t7.right = &t8;
-	s.bstToGst(&t4);
-	cout << t0.val << " " << t1.val << " " << t2.val << " " << t3.val << " " << t4.val << " " << t5.val << " " << t6.val << " " << t7.val << " " << t8.val << " ";
+	vector<int> a = { 3,5,2,5,2,6 };
+	s.minScoreTriangulation(a);
 	system("pause");
 	return 0;
 }
+
+
+
+//Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	TreeNode * bstToGst(TreeNode* root) {
+//		Gst(root,0);
+//
+//		return root;
+//	}
+//	int Gst(TreeNode* root,int v) {
+//		if (!(root->left || root->right)) {
+//			root->val += v;
+//			return root->val;
+//		}
+//		if (root->right) {
+//			v = Gst(root->right,v);
+//		}
+//		root->val += v;
+//		v = root->val;
+//		if (root->left) {
+//			v = Gst(root->left, v);
+//		}
+//		return v;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	TreeNode t4(4);
+//	TreeNode t0(0);
+//	TreeNode t1(1);
+//	TreeNode t2(2);
+//	TreeNode t3(3);
+//	TreeNode t5(5);
+//	TreeNode t6(6);
+//	TreeNode t7(7);
+//	TreeNode t8(8);
+//	t4.left = &t1;
+//	t4.right = &t6;
+//	t1.left = &t0;
+//	t1.right = &t2;
+//	t2.right = &t3;
+//	t6.left = &t5;
+//	t6.right = &t7;
+//	t7.right = &t8;
+//	s.bstToGst(&t4);
+//	cout << t0.val << " " << t1.val << " " << t2.val << " " << t3.val << " " << t4.val << " " << t5.val << " " << t6.val << " " << t7.val << " " << t8.val << " ";
+//	system("pause");
+//	return 0;
+//}
 
 
 //#include<vector>
