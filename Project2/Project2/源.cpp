@@ -1,7 +1,5 @@
-#include <iostream>;
+#include <iostream>
 using namespace std;
-
-
 
 /****************************************µÚ¾ÅÊ®°ËÌâ*********************************************/
 //#include<vector>;

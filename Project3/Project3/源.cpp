@@ -1,89 +1,297 @@
 #include<iostream>
 using namespace std;
 
-#include<string>;
+//#include<vector>
+//class Solution {
+//public:
+//	int minScoreTriangulation(vector<int>& A) {
+//		int len = A.size();
+//		if (len == 3)
+//			return A[0] * A[1] * A[2];
+//		vector<int> min;
+//		min.push_back(0);
+//		for (int i = 1; i < len; i++) {
+//			if (A[i] < A[min[0]]) {
+//				min.clear();
+//				min.push_back(i);
+//			}
+//			else if (A[i] == A[min[0]]) {
+//				min.push_back(i);
+//			}
+//		}
+//		//for (int i = 0; i < min.size(); i++)
+//		//	cout << min[i] << " ";
+//
+//		//根据最小值分成几个区域
+//		vector<vector<int>> tras = {};//这个里面保存的是A的这种值，而不是ind
+//		vector<vector<int>> mins = {};
+//		for (int i = 1; i < min.size(); i++) {
+//			if (min[i] - min[i - 1] > 1) {
+//				vector<int> tra;
+//				for (int j = min[i - 1]; j <= min[i]; j++) {
+//					tra.push_back(A[j]);
+//				}
+//				mins.push_back({ 0,min[i]-min[i-1] });
+//				tras.push_back(tra);
+//			}
+//		}
+//
+//		int res = 0;
+//		//只有一个区域直接求
+//		if (tras.size()==0)
+//			res = getscore(A, min);
+//		//有不止一个区域，就分别求值，然后加起来
+//		else {
+//			vector<int> tra;
+//			int ind = 0;
+//			int lastmin = min[min.size() - 1];
+//			for (int i = 0; i < min[0]; i++) {
+//				tra.push_back(A[i]);
+//				ind++;
+//			}
+//			for (int i = 0; i < min.size(); i++) {
+//				tra.push_back(A[min[i]]);
+//				min[i] = ind++;
+//			}
+//			for (int i = lastmin + 1; i < len; i++) {
+//				tra.push_back(A[i]);
+//			}
+//			tras.push_back(tra);
+//			mins.push_back(min);
+//
+//			for (int k = 0; k < tras.size(); k++) {
+//				cout <<"         "<<k << endl;
+//				res += getscore(tras[k], mins[k]);
+//				cout << endl;
+//			}
+//		}
+//		cout << res;
+//		return res;
+//	}
+//
+//	int getscore(vector<int>& t, vector<int> min) {
+//		int len = t.size();
+//		int res = 48000000;
+//		for (int i = 0; i < min.size(); i++) {
+//			int tmp = 0;
+//			int a = min[i];
+//			for (int j = 0; j < len - 2; j++) {
+//				int b = a + j + 1;
+//				int c = a + j + 2;
+//				if (b >= len) b -= len;
+//				if (c >= len) c -= len;
+//				tmp += t[a] * t[b] * t[c];
+//			}
+//			//cout << tmp << endl;
+//			if (tmp <= res)
+//				res = tmp;
+//		}
+//		cout << res<<" ";
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> a = { 3,5,2,5,2,6 };
+//	s.minScoreTriangulation(a);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 class Solution {
 public:
-	bool isMatch(string s, string p) {
-		if (p == "*")
-			return true;
-		if (s == "") {
-			if (p == "") {
-				return true;
-			}
-			else return false;
-		}
-		else if (p == "")
-			return false;
-		bool res = match(s, 0, p, 0);
-		cout << res;
-		return res;
+	TreeNode * bstToGst(TreeNode* root) {
+		Gst(root, 0);
+		return root;
 	}
 
-	bool match(string s, int sind, string p, int pind) {
-		cout << sind << " " << pind << endl;
-		int slen = s.length();
-		int plen = p.length();
-		if (pind > plen || sind > slen)
-			return false;
-		if (pind == plen) {
-			if(sind == slen)
-				return true;
-			else return false;
+	TreeNode * Gst(TreeNode* root,int v) {
+		if (!(root->right || root->left)) {
+			if(v==0)
+				root->val = root->val;
+			else root->val +=v;
+			return root;
 		}
-		if (p[pind] == '?') {
-			return match(s, sind + 1, p, pind + 1);
-		}
-		else if (p[pind] != '*') {
-			if (s[sind] == p[pind]) {
-				return match(s, sind + 1, p, pind + 1);
-			}
-			else return false;
-		}
-		else {
-			while (pind < plen - 1 && p[pind + 1] == '*') {
-				pind++;
-			}
-			if (pind == plen - 1)
-				return true;
-			if (match(s, sind, p, pind + 1))
-				return true;
 
-			pind++;
-			char tmp = p[pind];
-			size_t ind = sind;
-			while (p[pind] == '?') {
-				pind++;
-				ind++;
-				if (ind >= slen)
-					return false;
-				if (pind == plen)
-					return true;
-
-			}
-			tmp = p[pind];
-			while (ind < slen) {
-				ind = s.find(tmp, ind);
-				if (ind != s.npos) {
-					if (match(s, ind, p, pind))
-						return true;
-					ind++;
-				}
-				else return false;
-			}
+		if (root->right) {
+			root->right = Gst(root->right, v);
+			root->val = root->val + root->right->val;
+			cout << "r ";
 		}
-		return false;
+		if (root->left) {
+			root->left = add(root->left, root->val);
+			root->left = Gst(root->left,v);
+			cout << "l ";
+		}
+
+		cout << root->val << endl;
+		return root;
+	}
+	TreeNode * add(TreeNode* root,int v) {
+		root->val += v;
+		if (root->right) {
+			root->right = add(root->right,v);
+		}
+		if (root->left) {
+			root->left = add(root->left,root->val);
+		}
+		return root;
 	}
 };
 
 int main() {
-	Solution ss;
-	string s = "babbbaabbaaaaabbababaaaabbbbbbbbbbabbaaaabbababbabaa";
-	string p = "**a****a**b***ab***a*bab";
-	ss.isMatch(s, p);
+	Solution s;
+	TreeNode t4(4);
+	TreeNode t0(0);
+	TreeNode t1(1);
+	TreeNode t2(2);
+	TreeNode t3(3);
+	TreeNode t5(5);
+	TreeNode t6(6);
+	TreeNode t7(7);
+	TreeNode t8(8);
+	t4.left = &t1;
+	t4.right = &t6;
+	t1.left = &t0;
+	t1.right = &t2;
+	t2.right = &t3;
+	t6.left = &t5;
+	t6.right = &t7;
+	t7.right = &t8;
+	s.bstToGst(&t4);
+	cout << t0.val << " " << t1.val << " " << t2.val << " " << t3.val << " " << t4.val << " " << t5.val << " " << t6.val << " " << t7.val << " " << t8.val << " ";
 	system("pause");
 	return 0;
 }
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	bool isBoomerang(vector<vector<int>>& points) {
+//		if (checksame(points[0], points[1])|| checksame(points[1], points[2])|| checksame(points[0], points[2]))
+//			return false;
+//
+//		float m = (float)(points[0][1] - points[1][1]) / (float)(points[0][0] - points[1][0]);
+//		float n = (float)(points[0][1] - points[2][1]) / (float)(points[0][0] - points[2][0]);
+//		cout << m << " " << n << endl;
+//		if (m == n) {
+//			cout << "1";
+//			return false;
+//		}
+//		return true;
+//	}
+//
+//	bool checksame(vector<int>&a, vector<int>&b) {
+//		if (a[0] == b[0] && a[1] == b[1])
+//			return true;
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> p = { { 1,1 },{ 2,2 },{ -1,-2 } };
+//	s.isBoomerang(p);
+//	system("pause");
+//	return 0;
+//}
+
+
+//#include<string>;
+//class Solution {
+//public:
+//	bool isMatch(string s, string p) {
+//		if (p == "*")
+//			return true;
+//		if (s == "") {
+//			if (p == "") {
+//				return true;
+//			}
+//			else return false;
+//		}
+//		else if (p == "")
+//			return false;
+//		bool res = match(s, 0, p, 0);
+//		cout << res;
+//		return res;
+//	}
+//
+//	bool match(string s, int sind, string p, int pind) {
+//		cout << sind << " " << pind << endl;
+//		int slen = s.length();
+//		int plen = p.length();
+//		if (pind > plen || sind > slen)
+//			return false;
+//		if (pind == plen) {
+//			if(sind == slen)
+//				return true;
+//			else return false;
+//		}
+//		if (p[pind] == '?') {
+//			return match(s, sind + 1, p, pind + 1);
+//		}
+//		else if (p[pind] != '*') {
+//			if (s[sind] == p[pind]) {
+//				return match(s, sind + 1, p, pind + 1);
+//			}
+//			else return false;
+//		}
+//		else {
+//			while (pind < plen - 1 && p[pind + 1] == '*') {
+//				pind++;
+//			}
+//			if (pind == plen - 1)
+//				return true;
+//			if (match(s, sind, p, pind + 1))
+//				return true;
+//
+//			pind++;
+//			char tmp = p[pind];
+//			size_t ind = sind;
+//			while (p[pind] == '?') {
+//				pind++;
+//				ind++;
+//				if (ind >= slen)
+//					return false;
+//				if (pind == plen)
+//					return true;
+//
+//			}
+//			tmp = p[pind];
+//			while (ind < slen) {
+//				ind = s.find(tmp, ind);
+//				if (ind != s.npos) {
+//					if (match(s, ind, p, pind))
+//						return true;
+//					ind++;
+//				}
+//				else return false;
+//			}
+//		}
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	Solution ss;
+//	string s = "babbbaabbaaaaabbababaaaabbbbbbbbbbabbaaaabbababbabaa";
+//	string p = "**a****a**b***ab***a*bab";
+//	ss.isMatch(s, p);
+//	system("pause");
+//	return 0;
+//}
 
 
 
