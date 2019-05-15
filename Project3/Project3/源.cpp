@@ -4,100 +4,246 @@ using namespace std;
 #include<vector>
 class Solution {
 public:
-	int minScoreTriangulation(vector<int>& A) {
-		int len = A.size();
-		if (len == 3)
-			return A[0] * A[1] * A[2];
-		vector<int> min;
-		min.push_back(0);
-		for (int i = 1; i < len; i++) {
-			if (A[i] < A[min[0]]) {
-				min.clear();
-				min.push_back(i);
-			}
-			else if (A[i] == A[min[0]]) {
-				min.push_back(i);
-			}
-		}
-		//for (int i = 0; i < min.size(); i++)
-		//	cout << min[i] << " ";
+	int maxSumAfterPartitioning(vector<int>& A, int K) {
 
-		//根据最小值分成几个区域
-		vector<vector<int>> tras = {};//这个里面保存的是A的这种值，而不是ind
-		vector<vector<int>> mins = {};
-		for (int i = 1; i < min.size(); i++) {
-			if (min[i] - min[i - 1] > 1) {
-				vector<int> tra;
-				for (int j = min[i - 1]; j <= min[i]; j++) {
-					tra.push_back(A[j]);
-				}
-				mins.push_back({ 0,min[i]-min[i-1] });
-				tras.push_back(tra);
-			}
-		}
-
-		int res = 0;
-		//只有一个区域直接求
-		if (tras.size()==0)
-			res = getscore(A, min);
-		//有不止一个区域，就分别求值，然后加起来
-		else {
-			vector<int> tra;
-			int ind = 0;
-			int lastmin = min[min.size() - 1];
-			for (int i = 0; i < min[0]; i++) {
-				tra.push_back(A[i]);
-				ind++;
-			}
-			for (int i = 0; i < min.size(); i++) {
-				tra.push_back(A[min[i]]);
-				min[i] = ind++;
-			}
-			for (int i = lastmin + 1; i < len; i++) {
-				tra.push_back(A[i]);
-			}
-			tras.push_back(tra);
-			mins.push_back(min);
-
-			for (int k = 0; k < tras.size(); k++) {
-				cout <<"         "<<k << endl;
-				res += getscore(tras[k], mins[k]);
-				cout << endl;
-			}
-		}
-		cout << res;
-		return res;
-	}
-
-	int getscore(vector<int>& t, vector<int> min) {
-		int len = t.size();
-		int res = 48000000;
-		for (int i = 0; i < min.size(); i++) {
-			int tmp = 0;
-			int a = min[i];
-			for (int j = 0; j < len - 2; j++) {
-				int b = a + j + 1;
-				int c = a + j + 2;
-				if (b >= len) b -= len;
-				if (c >= len) c -= len;
-				tmp += t[a] * t[b] * t[c];
-			}
-			//cout << tmp << endl;
-			if (tmp <= res)
-				res = tmp;
-		}
-		cout << res<<" ";
-		return res;
 	}
 };
 
 int main() {
 	Solution s;
-	vector<int> a = { 3,5,2,5,2,6 };
-	s.minScoreTriangulation(a);
+	vector<int> a = { 1,15,7,9,2,5,10 };
+	s.maxSumAfterPartitioning(a, 3);
 	system("pause");
 	return 0;
 }
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	vector<int> gardenNoAdj(int N, vector<vector<int>>& paths) {
+//		vector<int> res(N);
+//		if (N < 5) {
+//			for (int i = 1; i <= N; i++) {
+//				res[i-1]=i;
+//			}
+//			return res;
+//		}
+//		res[0] = 1;
+//		res[1] = 2;
+//		res[2] = 3;
+//		res[3] = 4;
+//
+//		vector<vector<int>> p(N);
+//		int len = paths.size();
+//		int x, y;
+//		for (int i = 0; i < len; i++) {
+//			x = paths[i][0];
+//			y = paths[i][1];
+//			p[x-1].push_back(y);
+//			p[y-1].push_back(x);
+//		}
+//
+//		for (int i = 0; i < N; i++) {
+//			for (int j = 0; j < p[i].size(); j++) {
+//				cout << p[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		
+//		for (int i = 4; i < N; i++) {
+//			int choose[5] = { 0,0,0,0,0 };
+//			for (int j = 0; j < p[i].size(); j++) {
+//				int tmp = p[i][j];
+//				if (tmp < i+1) {
+//					choose[res[tmp-1]] = -1;
+//				}
+//			}
+//			for (int j = 1; j < 5; j++) {
+//				cout << choose[j] << " ";
+//				if (choose[j] == 0) {
+//					res[i] = j;
+//					break;
+//				}
+//			}
+//			cout << endl;
+//			cout << res[i] << " ";
+//		}
+//
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> p = { { 4,2},{6,2},{6,3},{2,3},{5,3},{6,5},{5,4},{4,1}};
+//	s.gardenNoAdj(6, p);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	bool isRobotBounded(string instructions) {
+//		int p[2] = { 0,0 };
+//		int d = 0;
+//		int len = instructions.length();
+//		for (int j = 0; j < 4; j++) {
+//			for (int i = 0; i < len; i++) {
+//				int tmp = instructions[i];
+//				switch (tmp)
+//				{
+//				case 'G': {
+//					if (d == 0) {
+//						p[1]++;
+//					}
+//					else if (d == 1) {
+//						p[0]--;
+//					}
+//					else if (d == 2) {
+//						p[1]--;
+//					}
+//					else {
+//						p[0]++;
+//					}
+//					break;
+//				}
+//				case 'L': {
+//					d++;
+//					d %= 4;
+//					break;
+//				}
+//				case 'R': {
+//					d--;
+//					d %= 4;
+//					d = d < 0 ? d + 4 : d;
+//					break;
+//				}
+//				default:
+//					break;
+//				}
+//			}
+//			if (p[0] == 0 && p[1] == 0) {
+//				cout << "loop";
+//				return true;
+//			}
+//		}
+//		cout << "noloop";
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	string ins = "GLGLLGLGRGLGL";
+//	s.isRobotBounded(ins);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************周赛0512***************************************/
+//#include<vector>
+//class Solution {
+//public:
+//	int minScoreTriangulation(vector<int>& A) {
+//		int len = A.size();
+//		if (len == 3)
+//			return A[0] * A[1] * A[2];
+//		vector<int> min;
+//		min.push_back(0);
+//		for (int i = 1; i < len; i++) {
+//			if (A[i] < A[min[0]]) {
+//				min.clear();
+//				min.push_back(i);
+//			}
+//			else if (A[i] == A[min[0]]) {
+//				min.push_back(i);
+//			}
+//		}
+//		//for (int i = 0; i < min.size(); i++)
+//		//	cout << min[i] << " ";
+//
+//		//根据最小值分成几个区域
+//		vector<vector<int>> tras = {};//这个里面保存的是A的这种值，而不是ind
+//		vector<vector<int>> mins = {};
+//		for (int i = 1; i < min.size(); i++) {
+//			if (min[i] - min[i - 1] > 1) {
+//				vector<int> tra;
+//				for (int j = min[i - 1]; j <= min[i]; j++) {
+//					tra.push_back(A[j]);
+//				}
+//				mins.push_back({ 0,min[i]-min[i-1] });
+//				tras.push_back(tra);
+//			}
+//		}
+//
+//		int res = 0;
+//		//只有一个区域直接求
+//		if (tras.size()==0)
+//			res = getscore(A, min);
+//		//有不止一个区域，就分别求值，然后加起来
+//		else {
+//			vector<int> tra;
+//			int ind = 0;
+//			int lastmin = min[min.size() - 1];
+//			for (int i = 0; i < min[0]; i++) {
+//				tra.push_back(A[i]);
+//				ind++;
+//			}
+//			for (int i = 0; i < min.size(); i++) {
+//				tra.push_back(A[min[i]]);
+//				min[i] = ind++;
+//			}
+//			for (int i = lastmin + 1; i < len; i++) {
+//				tra.push_back(A[i]);
+//			}
+//			tras.push_back(tra);
+//			mins.push_back(min);
+//
+//			for (int k = 0; k < tras.size(); k++) {
+//				cout <<"         "<<k << endl;
+//				res += getscore(tras[k], mins[k]);
+//				cout << endl;
+//			}
+//		}
+//		cout << res;
+//		return res;
+//	}
+//
+//	int getscore(vector<int>& t, vector<int> min) {
+//		int len = t.size();
+//		int res = 48000000;
+//		for (int i = 0; i < min.size(); i++) {
+//			int tmp = 0;
+//			int a = min[i];
+//			for (int j = 0; j < len - 2; j++) {
+//				int b = a + j + 1;
+//				int c = a + j + 2;
+//				if (b >= len) b -= len;
+//				if (c >= len) c -= len;
+//				tmp += t[a] * t[b] * t[c];
+//			}
+//			//cout << tmp << endl;
+//			if (tmp <= res)
+//				res = tmp;
+//		}
+//		cout << res<<" ";
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> a = { 3,5,2,5,2,6 };
+//	s.minScoreTriangulation(a);
+//	system("pause");
+//	return 0;
+//}
 
 
 
