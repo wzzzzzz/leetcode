@@ -1,25 +1,475 @@
 #include<iostream>
 using namespace std;
 
-#include<vector>
-class Solution {
-public:
-	bool isBoomerang(vector<vector<int>>& points) {
-
-	}
-};
-
-int main() {
-	Solution s;
-	vector<vector<int>> p = { { 1,1 },{ 2,3 },{ 3,2 } };
-	s.isBoomerang(p);
-	system("pause");
-	return 0;
-}
 
 
+/**************************************周赛0414***************************************/
+//#include<vector>
+////Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	int maxAncestorDiff(TreeNode* root) {
+//		vector<vector<int>> allres;
+//		getmax(root, allres);
+//		int max = 0;
+//		for (int i = 0; i < allres.size(); i++) {
+//			//cout << allres[i][0] << " " << allres[i][1] << endl;
+//			int thismax = allres[i][0] > (-allres[i][1]) ? allres[i][0] : -allres[i][1];
+//			max = max > thismax ? max : thismax;
+//		}
+//		cout << max;
+//		return max;
+//	}
+//
+//	vector<int> getmax(TreeNode* r,vector<vector<int>>& allres) {
+//		vector<int> res(2, 0);
+//		if (!(r->left||r->right)) {
+//			return res;
+//		}
+//		int max = 0;
+//		int min = 0;
+//		if (r->left) {
+//			int minus = r->val - r->left->val;
+//			vector<int> leftres = getmax(r->left, allres);
+//			//cout <<minus<<" "<< leftres[0] << " " << leftres[1] << endl;
+//			//cout << "minus>0" << endl;
+//			max = minus > (minus + leftres[0]) ? minus : (minus + leftres[0]);	
+//			min = minus < (minus + leftres[1]) ? minus : (minus + leftres[1]);
+//		}
+//		if (r->right) {
+//			int minus = r->val - r->right->val;
+//			vector<int> rightres = getmax(r->right, allres);
+//			//cout << minus << " " << rightres[0] << " " << rightres[1] << endl;
+//			//cout << "minus>0" << endl;
+//			int thismax = minus > (minus + rightres[0]) ? minus : (minus + rightres[0]);	
+//			max = thismax > max ? thismax : max;
+//			int thismin = minus < (minus + rightres[1]) ? minus : (minus + rightres[1]);
+//			min = thismin < min ? thismin : min;
+//		}
+//		res[0] = max;
+//		res[1] = min;
+//		allres.push_back(res);
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	TreeNode r(8);
+//	TreeNode t1(1);
+//	TreeNode t2(5);
+//	TreeNode t3(6);
+//	TreeNode t4(2);
+//	TreeNode t5(4);
+//	TreeNode t6(0);
+//	TreeNode t7(7);
+//	TreeNode t8(3);
+//	r.right = &t1;
+//	t1.left = &t2;
+//	t1.right = &t3;
+//	t2.left = &t4;
+//	t2.right = &t5;
+//	t4.left = &t7;
+//	t4.right = &t8;
+//	t3.left = &t6;
+//	s.maxAncestorDiff(&r);
+//	system("pause");
+//	return 0;
+//}
 
-/**********************************************周赛02******************************************************/
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	bool divisorGame(int N) {
+//		if (N == 1)
+//			return false;
+//		if (N == 2)
+//			return true;
+//		vector<int> res(N+1, 0);
+//		res[2] = 1;
+//		res[3] = -1;
+//		res[1] = -1;
+//		for (int i = 4; i < N+1; i++) {
+//			for (int j = 1; j < i; j++) {
+//				if (i%j == 0) {
+//					if (res[i - j] == -1)
+//					{
+//						cout << "1" << endl;
+//						res[i] = 1;
+//						break;
+//					}
+//				}
+//			}
+//			if (res[i] == 0) {
+//				cout << "-1" << endl;
+//				res[i] = -1;
+//			}
+//		}
+//		if (res[N] == -1)
+//			return false;
+//		else return true;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	int n = 3;
+//	s.divisorGame(n);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************周赛0512***************************************/
+//#include<vector>
+//class Solution {
+//public:
+//	int maxSumAfterPartitioning(vector<int>& A, int K) {
+//
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> a = { 1,15,7,9,2,5,10 };
+//	s.maxSumAfterPartitioning(a, 3);
+//	system("pause");
+//	return 0;
+//}
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	vector<int> gardenNoAdj(int N, vector<vector<int>>& paths) {
+//		vector<int> res(N);
+//		if (N < 5) {
+//			for (int i = 1; i <= N; i++) {
+//				res[i-1]=i;
+//			}
+//			return res;
+//		}
+//		res[0] = 1;
+//		res[1] = 2;
+//		res[2] = 3;
+//		res[3] = 4;
+//
+//		vector<vector<int>> p(N);
+//		int len = paths.size();
+//		int x, y;
+//		for (int i = 0; i < len; i++) {
+//			x = paths[i][0];
+//			y = paths[i][1];
+//			p[x-1].push_back(y);
+//			p[y-1].push_back(x);
+//		}
+//
+//		for (int i = 0; i < N; i++) {
+//			for (int j = 0; j < p[i].size(); j++) {
+//				cout << p[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		
+//		for (int i = 4; i < N; i++) {
+//			int choose[5] = { 0,0,0,0,0 };
+//			for (int j = 0; j < p[i].size(); j++) {
+//				int tmp = p[i][j];
+//				if (tmp < i+1) {
+//					choose[res[tmp-1]] = -1;
+//				}
+//			}
+//			for (int j = 1; j < 5; j++) {
+//				cout << choose[j] << " ";
+//				if (choose[j] == 0) {
+//					res[i] = j;
+//					break;
+//				}
+//			}
+//			cout << endl;
+//			cout << res[i] << " ";
+//		}
+//
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> p = { { 4,2},{6,2},{6,3},{2,3},{5,3},{6,5},{5,4},{4,1}};
+//	s.gardenNoAdj(6, p);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	bool isRobotBounded(string instructions) {
+//		int p[2] = { 0,0 };
+//		int d = 0;
+//		int len = instructions.length();
+//		for (int j = 0; j < 4; j++) {
+//			for (int i = 0; i < len; i++) {
+//				int tmp = instructions[i];
+//				switch (tmp)
+//				{
+//				case 'G': {
+//					if (d == 0) {
+//						p[1]++;
+//					}
+//					else if (d == 1) {
+//						p[0]--;
+//					}
+//					else if (d == 2) {
+//						p[1]--;
+//					}
+//					else {
+//						p[0]++;
+//					}
+//					break;
+//				}
+//				case 'L': {
+//					d++;
+//					d %= 4;
+//					break;
+//				}
+//				case 'R': {
+//					d--;
+//					d %= 4;
+//					d = d < 0 ? d + 4 : d;
+//					break;
+//				}
+//				default:
+//					break;
+//				}
+//			}
+//			if (p[0] == 0 && p[1] == 0) {
+//				cout << "loop";
+//				return true;
+//			}
+//		}
+//		cout << "noloop";
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	string ins = "GLGLLGLGRGLGL";
+//	s.isRobotBounded(ins);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************周赛0505***************************************/
+//#include<vector>
+//class Solution {
+//public:
+//	int minScoreTriangulation(vector<int>& A) {
+//		int len = A.size();
+//		if (len == 3)
+//			return A[0] * A[1] * A[2];
+//		vector<int> min;
+//		min.push_back(0);
+//		for (int i = 1; i < len; i++) {
+//			if (A[i] < A[min[0]]) {
+//				min.clear();
+//				min.push_back(i);
+//			}
+//			else if (A[i] == A[min[0]]) {
+//				min.push_back(i);
+//			}
+//		}
+//		//for (int i = 0; i < min.size(); i++)
+//		//	cout << min[i] << " ";
+//
+//		//根据最小值分成几个区域
+//		vector<vector<int>> tras = {};//这个里面保存的是A的这种值，而不是ind
+//		vector<vector<int>> mins = {};
+//		for (int i = 1; i < min.size(); i++) {
+//			if (min[i] - min[i - 1] > 1) {
+//				vector<int> tra;
+//				for (int j = min[i - 1]; j <= min[i]; j++) {
+//					tra.push_back(A[j]);
+//				}
+//				mins.push_back({ 0,min[i]-min[i-1] });
+//				tras.push_back(tra);
+//			}
+//		}
+//
+//		int res = 0;
+//		//只有一个区域直接求
+//		if (tras.size()==0)
+//			res = getscore(A, min);
+//		//有不止一个区域，就分别求值，然后加起来
+//		else {
+//			vector<int> tra;
+//			int ind = 0;
+//			int lastmin = min[min.size() - 1];
+//			for (int i = 0; i < min[0]; i++) {
+//				tra.push_back(A[i]);
+//				ind++;
+//			}
+//			for (int i = 0; i < min.size(); i++) {
+//				tra.push_back(A[min[i]]);
+//				min[i] = ind++;
+//			}
+//			for (int i = lastmin + 1; i < len; i++) {
+//				tra.push_back(A[i]);
+//			}
+//			tras.push_back(tra);
+//			mins.push_back(min);
+//
+//			for (int k = 0; k < tras.size(); k++) {
+//				cout <<"         "<<k << endl;
+//				res += getscore(tras[k], mins[k]);
+//				cout << endl;
+//			}
+//		}
+//		cout << res;
+//		return res;
+//	}
+//
+//	int getscore(vector<int>& t, vector<int> min) {
+//		int len = t.size();
+//		int res = 48000000;
+//		for (int i = 0; i < min.size(); i++) {
+//			int tmp = 0;
+//			int a = min[i];
+//			for (int j = 0; j < len - 2; j++) {
+//				int b = a + j + 1;
+//				int c = a + j + 2;
+//				if (b >= len) b -= len;
+//				if (c >= len) c -= len;
+//				tmp += t[a] * t[b] * t[c];
+//			}
+//			//cout << tmp << endl;
+//			if (tmp <= res)
+//				res = tmp;
+//		}
+//		cout << res<<" ";
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> a = { 3,5,2,5,2,6 };
+//	s.minScoreTriangulation(a);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	TreeNode * bstToGst(TreeNode* root) {
+//		Gst(root,0);
+//
+//		return root;
+//	}
+//	int Gst(TreeNode* root,int v) {
+//		if (!(root->left || root->right)) {
+//			root->val += v;
+//			return root->val;
+//		}
+//		if (root->right) {
+//			v = Gst(root->right,v);
+//		}
+//		root->val += v;
+//		v = root->val;
+//		if (root->left) {
+//			v = Gst(root->left, v);
+//		}
+//		return v;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	TreeNode t4(4);
+//	TreeNode t0(0);
+//	TreeNode t1(1);
+//	TreeNode t2(2);
+//	TreeNode t3(3);
+//	TreeNode t5(5);
+//	TreeNode t6(6);
+//	TreeNode t7(7);
+//	TreeNode t8(8);
+//	t4.left = &t1;
+//	t4.right = &t6;
+//	t1.left = &t0;
+//	t1.right = &t2;
+//	t2.right = &t3;
+//	t6.left = &t5;
+//	t6.right = &t7;
+//	t7.right = &t8;
+//	s.bstToGst(&t4);
+//	cout << t0.val << " " << t1.val << " " << t2.val << " " << t3.val << " " << t4.val << " " << t5.val << " " << t6.val << " " << t7.val << " " << t8.val << " ";
+//	system("pause");
+//	return 0;
+//}
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	bool isBoomerang(vector<vector<int>>& points) {
+//		if (checksame(points[0], points[1])|| checksame(points[1], points[2])|| checksame(points[0], points[2]))
+//			return false;
+//
+//		float m = (float)(points[0][1] - points[1][1]) / (float)(points[0][0] - points[1][0]);
+//		float n = (float)(points[0][1] - points[2][1]) / (float)(points[0][0] - points[2][0]);
+//		cout << m << " " << n << endl;
+//		if (m == n) {
+//			cout << "1";
+//			return false;
+//		}
+//		return true;
+//	}
+//
+//	bool checksame(vector<int>&a, vector<int>&b) {
+//		if (a[0] == b[0] && a[1] == b[1])
+//			return true;
+//		return false;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> p = { { 1,1 },{ 2,2 },{ -1,-2 } };
+//	s.isBoomerang(p);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**********************************************周赛0428******************************************************/
 //#include<vector>
 //#include<list>
 //class Solution {
@@ -169,7 +619,7 @@ int main() {
 
 
 
-/**********************************************周赛01******************************************************/
+/**********************************************周赛0421******************************************************/
 //#include<vector>
 //#include<algorithm>
 //class Solution {
