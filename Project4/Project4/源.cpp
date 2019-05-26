@@ -1,6 +1,115 @@
 #include<iostream>
 using namespace std;
 
+/**************************************周赛0526***************************************/
+#include<vector>
+#include<algorithm>
+#include<map>
+class Solution {
+public:
+	vector<int> rearrangeBarcodes(vector<int>& barcodes) {
+		int len = barcodes.size();
+		sort(barcodes.begin(), barcodes.end());
+		map<int,int> count;
+		for (int i = 0; i < len; i++) {
+			if (count.find(barcodes[i]) == count.end()) {
+				count.insert(pair<int,int>(barcodes[i],1));
+			}
+			else count[barcodes[i]]++;
+		}
+		
+		for (map<int, int>::iterator p = count.begin(); p != count.end();p++) {
+			cout << p->first << " " << p->second << endl;
+		}
+		return barcodes;
+	}
+};
+
+int main() {
+	Solution s;
+	vector<int> b = { 1,2,3,1,2,3,1,2,3,3,3,3,3 };
+	s.rearrangeBarcodes(b);
+	system("pause");
+	return 0;
+}
+
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int X) {
+//		int res = 0;
+//		int len = customers.size();
+//		for (int i = 0; i < len; i++) {
+//			if (grumpy[i] == 0) {
+//				res += customers[i];
+//				customers[i] = 0;
+//			}
+//			cout << customers[i] << " ";
+//		}
+//		cout << res;
+//		int max = 0;
+//		for (int i = 0; i <= len-X; i++) {
+//			int t = 0;
+//			for (int j = 0; j < X; j++) {
+//				t += customers[i + j];
+//			}
+//			max = max > t ? max : t;
+//		}
+//		cout << max;
+//		return res + max;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> c = { 1,0,1,2,1,1,7,5 };
+//	vector<int> g = { 0,1,0,1,0,1,0,1 };
+//	s.maxSatisfied(c, g, 3);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	int heightChecker(vector<int>& heights) {
+//		int len = heights.size();
+//		if (len < 2)
+//			return 0;
+//		int res = 0;
+//		vector<int> t = heights;
+//		for (int i = 0; i < len; i++) {
+//			for (int j = i; j < len; j++) {
+//				if (heights[i] > heights[j]) {
+//					int tmp = heights[i];
+//					heights[i] = heights[j];
+//					heights[j] = tmp;
+//				}
+//			}
+//			//cout << heights[i] << " ";
+//			//cout << t[i] << " ";
+//			//cout << endl;
+//			if (t[i]!=heights[i]) {
+//				res++;
+//			}
+//		}
+//		//cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> h = { 1,1,4,2,1,3 };
+//	s.heightChecker(h);
+//	system("pause");
+//	return 0;
+//}
+
 
 
 /**************************************周赛0414***************************************/
