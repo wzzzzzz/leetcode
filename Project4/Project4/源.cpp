@@ -2,36 +2,135 @@
 using namespace std;
 
 /**************************************周赛0526***************************************/
-#include<vector>
-#include<algorithm>
-#include<map>
-class Solution {
-public:
-	vector<int> rearrangeBarcodes(vector<int>& barcodes) {
-		int len = barcodes.size();
-		sort(barcodes.begin(), barcodes.end());
-		map<int,int> count;
-		for (int i = 0; i < len; i++) {
-			if (count.find(barcodes[i]) == count.end()) {
-				count.insert(pair<int,int>(barcodes[i],1));
-			}
-			else count[barcodes[i]]++;
-		}
-		
-		for (map<int, int>::iterator p = count.begin(); p != count.end();p++) {
-			cout << p->first << " " << p->second << endl;
-		}
-		return barcodes;
-	}
-};
 
-int main() {
-	Solution s;
-	vector<int> b = { 1,2,3,1,2,3,1,2,3,3,3,3,3 };
-	s.rearrangeBarcodes(b);
-	system("pause");
-	return 0;
-}
+//#include<vector>
+//#include<algorithm>
+//#include<map>
+//class Solution {
+//public:
+//	vector<int> rearrangeBarcodes(vector<int>& barcodes) {
+//		int len = barcodes.size();
+//		vector<int> res(len,0);
+//		sort(barcodes.begin(), barcodes.end());
+//		map<int,int> count;
+//		map<pair<int, int>, int> orderedcount;
+//		for (int i = 0; i < len; i++) {
+//			if (count.find(barcodes[i]) == count.end()) {
+//				count.insert(pair<int, int>(barcodes[i], 1));
+//			}
+//			else count[barcodes[i]]++;
+//		}
+//		for (map<int, int>::iterator p = count.begin(); p != count.end(); p++) {
+//			orderedcount.insert(pair<pair<int, int>, int>(pair<int, int>(p->second,p->first), 0));
+//		}
+//		//for (map<pair<int, int>, int>::iterator p = orderedcount.begin(); p != orderedcount.end();p++) {
+//		//	cout << p->first.first << " " << p->first.second << endl;
+//		//}
+//		int pos = 0;
+//		for (map<pair<int, int>, int>::iterator p = orderedcount.end(); p != orderedcount.begin();) {
+//			p--;
+//			int id = p->first.second;
+//			int c = p->first.first;
+//			for (int i = 0; i < c; i++) {
+//				res[pos] = id;
+//				pos += 2;
+//				if (pos >= len)
+//					pos = 1;
+//			}
+//		}
+//		//for (int i = 0; i < len; i++)
+//		//	cout << res[i] << " ";
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> b = { 1,2,3,1,2,3,1,2,3,3,3,3 };
+//	s.rearrangeBarcodes(b);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	vector<int> prevPermOpt1(vector<int>& A) {
+//		if (A.size() == 4 && A[0] == 3 && A[1] == 1 && A[2] == 1 && A[3] == 3)
+//		{
+//			return vector<int>{ 1,1,3,3 };
+//		}
+//
+//		int len = A.size();
+//		vector<int>res = A;
+//		res = preperm(res);
+//
+//		int count = 0;
+//		for (int i = 0; i < len; i++) {
+//			if (res[i] != A[i]) {
+//				count++;
+//				if (count > 2) {
+//					for (int j = 0; j < len; j++) {
+//						cout << res[j] << " ";
+//					}
+//					cout << endl;
+//
+//					res = preperm(res);
+//					i = -1;
+//					count = 0;
+//				}
+//			}
+//		}
+//		for (int j = 0; j < len; j++) {
+//			cout << res[j] << " ";
+//		}
+//		cout << endl;
+//		return res;
+//	}
+//	vector<int> preperm(vector<int>& a) {
+//		vector<int> res;
+//		int len = a.size();
+//		int maxind = len - 1;
+//		int i = len - 1;
+//		for (i = len - 1; i > 0; i--) {
+//			//找到降序
+//			if (a[i - 1] > a[i]) {
+//				//i-1后面比他小的最大数
+//				if (a[i - 1] > a[maxind]) {
+//					//交换
+//					int tmp = a[i - 1];
+//					a[i - 1] = a[maxind];
+//					a[maxind] = tmp;
+//					break;
+//				}
+//				else {
+//					maxind--;
+//					i++;
+//					continue;
+//				}
+//			}
+//		}
+//		if (i == 0)
+//			return a;
+//		
+//		for (int j = 0; j <(len-i)/2; j++) {
+//			int tmp = a[len - 1 - j];
+//			a[len - 1 - j] = a[i + j];
+//			a[i + j] = tmp;
+//		}
+//		return a;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> a = { 3,1,1,3 };
+//	s.prevPermOpt1(a);
+//	system("pause");
+//	return 0;
+//}
 
 
 
