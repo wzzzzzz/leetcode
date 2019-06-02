@@ -1,6 +1,162 @@
 #include<iostream>
 using namespace std;
 
+#include<vector>
+class Solution {
+public:
+	int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
+		int m = matrix.size();
+		int n = matrix[0].size();
+		int res = m;
+		for (int i = 1; i < n; i++) {
+			int count = 0;
+			for (int j = 0; j < m; j++) {
+				if (matrix[j][0] == matrix[j][i])
+					count++;
+			}
+			cout << count <<" "<<res<< endl;
+			//这列要翻转
+			if (count <= res / 2) {
+				for (int j = 0; j < m; j++) {
+					matrix[j][i] = matrix[j][i] == 0 ? 1 : 0;
+					if (matrix[j][0] != matrix[j][i]) {
+						if (matrix[j][0] != 2) {
+							matrix[j][0] = 2;
+							res--;
+						}					
+					}
+				}
+			}
+
+			for (int i = 0; i < m; i++) {
+				for (int j = 0; j < n; j++) {
+					cout << matrix[i][j] << " ";
+				}
+				cout << endl;
+			}
+		}
+
+		//int res=0;
+		//for (int i = 0; i < m; i++) {
+		//	int j = 0;
+		//	for (j = 0; j < n; j++) {
+		//		if (matrix[i][0] != matrix[i][j])
+		//			break;
+		//	}
+		//	if (j == n)
+		//		res++;
+		//}
+		cout << res;
+
+		return res;
+	}
+};
+
+int main() {
+	vector<vector<int>> m = {
+		{ 1,0,0,0,1,1,1,0,1,1,1},{1,0,0,0,1,0,0,0,1,0,0},{1,0,0,0,1,1,1,0,1,1,1},{1,0,0,0,1,0,0,0,1,0,0},{1,1,1,0,1,1,1,0,1,1,1 }
+	};
+	Solution s;
+	s.maxEqualRowsAfterFlips(m);
+	system("pause");
+	return 0;
+}
+
+
+
+//#include<string>
+//class Solution {
+//public:
+//	string gcdOfStrings(string str1, string str2) {
+//		if (str1 == "" || str1 == str2)
+//			return str2;
+//		if (str2 == "")
+//			return str1;
+//
+//		int len1 = str1.length();
+//		int len2 = str2.length();
+//		string min = str1;
+//		string max = str2;
+//		if (len1 > len2) {
+//			max = str1;
+//			min = str2;
+//		}
+//		len1 = max.length();
+//		len2 = min.length();
+//		if (max.substr(0, len2) != min)
+//			return "";
+//		string res = "";
+//		res = gcdOfStrings(max.substr(len2, len1 - len2), min);
+//		cout << res << endl;
+//		return res;
+//	}
+//};
+//
+////没看清题目求的是最小公共串
+////#include<string>
+////class Solution {
+////public:
+////	string gcdOfStrings(string str1, string str2) {
+////		int len1 = str1.length();
+////		int len2 = str2.length();
+////		string min = str1;
+////		string max = str2;
+////		if (len1 > len2) {
+////			max = str1;
+////			min = str2;
+////		}
+////		cout << min << endl;
+////		string mingcd = findgcd(min);
+////		cout << mingcd << endl;
+////		if (verify(mingcd, max)) {
+////			cout << "找到结果" << mingcd << endl;
+////			return mingcd;
+////		}
+////		else return "";
+////	}
+////	string findgcd(string str) {
+////		int len = str.length();
+////		int i = 0;
+////		//for (i; i < len; i++) {
+////			int j = i+1;
+////			for (j = i+1; j < len; j++) {
+////				//相等且长度要能整除
+////				if (str[i] == str[j] && len % (j - i) == 0) {
+////					string sub = str.substr(i, j - i);
+////					//cout << sub << endl;
+////					if (verify(sub, str))
+////						return sub;
+////					else continue;
+////				}
+////			}
+////			//cout << "找不到子串" << endl;
+////			return str;
+////		//}
+////	}
+////	bool verify(string str1,string str2) {
+////		int len1 = str1.length();
+////		int len2 = str2.length();
+////		for (int i = 0; i < len2 / len1; i++) {
+////			for (int j = 0; j < len1; j++) {
+////				if (str1[j] != str2[len1*i + j])
+////					return false;
+////			}
+////		}
+////		return true;
+////	}
+////};
+//
+//int main() {
+//	Solution s;
+//	string str1 = "ABABAB";
+//	string str2 = "ABAB";
+//	s.gcdOfStrings(str1, str2);
+//	system("pause");
+//	return 0;
+//}
+
+
+
 /**************************************周赛0526***************************************/
 
 //#include<vector>
