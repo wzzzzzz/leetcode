@@ -1,66 +1,132 @@
 #include<iostream>
 using namespace std;
 
-#include<vector>
-class Solution {
-public:
-	int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
-		int m = matrix.size();
-		int n = matrix[0].size();
-		int res = m;
-		for (int i = 1; i < n; i++) {
-			int count = 0;
-			for (int j = 0; j < m; j++) {
-				if (matrix[j][0] == matrix[j][i])
-					count++;
-			}
-			cout << count <<" "<<res<< endl;
-			//这列要翻转
-			if (count <= res / 2) {
-				for (int j = 0; j < m; j++) {
-					matrix[j][i] = matrix[j][i] == 0 ? 1 : 0;
-					if (matrix[j][0] != matrix[j][i]) {
-						if (matrix[j][0] != 2) {
-							matrix[j][0] = 2;
-							res--;
-						}					
-					}
-				}
-			}
+//#include<vector>
+//class Solution {
+//public:
+//	vector<int> addNegabinary(vector<int>& arr1, vector<int>& arr2) {
+//		int len1 = arr1.size();
+//		int len2 = arr2.size();
+//		vector<int> res;
+//		//让arr1是较长的
+//		if (len1 < len2) {
+//			int t = len1;
+//			len1 = len2;
+//			len2 = t;
+//			res = arr2;
+//			arr2 = arr1;
+//			arr1 = res;
+//		}
+//
+//		int i = len1-1;
+//		int next = 0;
+//		for (i; i >= 0; i--) {
+//			if(i>= len1 - len2)
+//				arr1[i] += arr2[i-(len1-len2)];
+//			arr1[i] += next;
+//			next = 0;
+//			if (arr1[i] < 0) {
+//				next = 1;
+//				arr1[i] += 2;
+//			}
+//			if (arr1[i] > 1) {
+//				next = -1;
+//				arr1[i] -= 2;
+//			}
+//		}
+//
+//		while (next != 0) {
+//			arr1.insert(arr1.begin(), next);
+//			len1++;
+//			next = 0;
+//			if (arr1[0] < 0) {
+//				next = 1;
+//				arr1[0] += 2;
+//			}
+//			if (arr1[0] > 1) {
+//				next = -1;
+//				arr1[0] -= 2;
+//			}
+//		}
+//		
+//		while (len1>1 && arr1[0] == 0) {
+//			arr1.erase(arr1.begin());
+//			len1--;
+//		}
+//
+//		for (int j = 0; j < len1; j++)
+//			cout << arr1[j] << " ";
+//		cout << endl;
+//		return arr1;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> arr1 = {1,1 };
+//	vector<int> arr2 = { 1};
+//	s.addNegabinary(arr2, arr1);
+//	system("pause");
+//	return 0;
+//}
 
-			for (int i = 0; i < m; i++) {
-				for (int j = 0; j < n; j++) {
-					cout << matrix[i][j] << " ";
-				}
-				cout << endl;
-			}
-		}
 
-		//int res=0;
-		//for (int i = 0; i < m; i++) {
-		//	int j = 0;
-		//	for (j = 0; j < n; j++) {
-		//		if (matrix[i][0] != matrix[i][j])
-		//			break;
-		//	}
-		//	if (j == n)
-		//		res++;
-		//}
-		cout << res;
 
-		return res;
-	}
-};
-
-int main() {
-	vector<vector<int>> m = {
-		{ 1,0,0,0,1,1,1,0,1,1,1},{1,0,0,0,1,0,0,0,1,0,0},{1,0,0,0,1,1,1,0,1,1,1},{1,0,0,0,1,0,0,0,1,0,0},{1,1,1,0,1,1,1,0,1,1,1 }
-	};
-	Solution s;
-	s.maxEqualRowsAfterFlips(m);
-	system("pause");
-	return 0;
-}
+//#include<vector>
+//class Solution {
+//public:
+//	int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
+//		int m = matrix.size();
+//		int n = matrix[0].size();
+//		vector<vector<int>> pattern = matrix;
+//		for (int i = 0; i < m; i++) {
+//			for (int j = 0; j < n; j++) {
+//				pattern[i][j] = matrix[i][j] ^ matrix[i][0];
+//				cout << pattern[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//
+//		vector<int> res(m, 0);
+//		res[0] = 1;
+//		//当前比较行
+//		for (int k = 1; k < m; k++) {
+//			int i = 0;
+//			//和前面的每一行比较
+//			for ( i = 0; i < k; i++) {
+//				int j = 0;
+//				for (j = 0; j < n; j++) {
+//					if (pattern[k][j] != pattern[i][j])
+//						break;
+//				}
+//				if (j == n) {
+//					res[i]++;
+//					break;
+//				}
+//			}
+//			if (i == k)
+//				res[k]++;
+//		}
+//		int max = res[0];
+//		for (int i = 0; i < m; i++) {
+//			cout << res[i];
+//			if (res[i] > max)
+//				max = res[i];
+//		}
+//		cout << max;
+//		return max;
+//	}
+//};
+//
+//int main() {
+//	vector<vector<int>> m = {
+//		{ 1,0,0,0,1,1,1,0,1,1,1},{1,0,0,0,1,0,0,0,1,0,0},{1,0,0,0,1,1,1,0,1,1,1},{1,0,0,0,1,0,0,0,1,0,0},{1,1,1,0,1,1,1,0,1,1,1 }
+//	};
+//	Solution s;
+//	s.maxEqualRowsAfterFlips(m);
+//	system("pause");
+//	return 0;
+//}
 
 
 
