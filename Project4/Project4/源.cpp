@@ -1,6 +1,82 @@
 #include<iostream>
 using namespace std;
 
+#include<vector>;
+#include<string>
+class Solution {
+public:
+	vector<string> findOcurrences(string text, string first, string second) {
+		int len = text.size();
+		int lenf = first.size();
+		int lens = second.size();
+		vector<string> res;
+		if (len == 0)
+			return res;
+
+		vector<int> ind = findfirststring(text, first);
+		for (int i = 0; i < ind.size(); i++) {
+			string tmp = text.substr(ind[i] + lenf + 1, lens);
+			//cout << tmp << endl;
+			if (tmp == second) {
+				string t = "";
+				int j = ind[i] + lenf + lens + 2;
+				while (j < len && text[j] != ' ') {
+					t += text[j];
+					j++;
+				}
+				cout << t<<" ";
+				if(t!="")
+					res.push_back(t);
+			}
+		}
+
+		return res;
+	}
+
+	vector<int> findfirststring(string f,string s) {		
+		vector<int> res;
+		int lf = f.size();
+		int ls = s.size();
+		size_t ind = f.find_first_of(s[0]);
+		while (ind != string::npos&& ind < lf - ls) {
+			cout << ind;
+			int i = 0;
+			for (i ; i < ls; i++) {
+				if (f[ind+i] != s[i]) {
+					//cout <<i<<" "<< f[ind + i]<<" "<< s[i];
+					break;
+				}
+			}
+			cout << f[ind + i] << endl;
+			if (i == ls && f[ind + i]==' ') {
+				res.push_back(ind);				
+			}
+			ind = f.find_first_of(' ', ind + 1);
+			if (ind > lf - ls) break;
+			ind = f.find_first_of(s[0], ind + 1);
+		}
+
+		for (int i = 0; i < res.size(); i++) {
+			cout << res[i] << " ";
+		}
+		cout << endl;
+		return res;
+	}
+};
+
+int main() {
+	Solution s;
+	string t = "lxmji qktybghz spd qktybghz ka spd spd qktybghz qktybghz lxmji lxmji spd lxmji lxmji lxmji qktybghz spd ka qktybghz qktybghz ka lxmji ka qktybghz lxmji qktybghz qktybghz spd lxmji qktybghz";
+	string f = "ks";
+	string ss = "spd";
+	s.findOcurrences(t, f, ss);
+	system("pause");
+	return 0;
+}
+
+
+
+/**************************************ÖÜÈü0602***************************************/
 //#include<vector>
 //class Solution {
 //public:
