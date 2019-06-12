@@ -1,78 +1,205 @@
 #include<iostream>
 using namespace std;
 
-#include<vector>;
-#include<string>
+#include<vector>
+#include<queue>
+//Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 class Solution {
 public:
-	vector<string> findOcurrences(string text, string first, string second) {
-		int len = text.size();
-		int lenf = first.size();
-		int lens = second.size();
-		vector<string> res;
-		if (len == 0)
-			return res;
-
-		vector<int> ind = findfirststring(text, first);
-		for (int i = 0; i < ind.size(); i++) {
-			string tmp = text.substr(ind[i] + lenf + 1, lens);
-			//cout << tmp << endl;
-			if (tmp == second) {
-				string t = "";
-				int j = ind[i] + lenf + lens + 2;
-				while (j < len && text[j] != ' ') {
-					t += text[j];
-					j++;
+	TreeNode * sufficientSubset(TreeNode* root, int limit) {
+		vector<int> tree(10, 1000000);
+		queue<TreeNode> q;
+		q.push(*root);
+		tree[0] = root->val;
+		int ind = 1;
+		while (!q.empty()) {
+			TreeNode t = q.front();
+			q.pop();
+			//cout << ind << " ";
+			while (tree[ind-1] == 1000000){
+				ind++;
+			}
+			//cout << ind << "   ";
+			int len = tree.size();
+			if (len <= ind * 2) {
+				//把tree长度翻倍			
+				for (int k = 0; k < len; k++) {
+					tree.push_back(1000000);
 				}
-				cout << t<<" ";
-				if(t!="")
-					res.push_back(t);
+				tree.push_back(1000000);
+				len *= 2;
 			}
-		}
-
-		return res;
-	}
-
-	vector<int> findfirststring(string f,string s) {		
-		vector<int> res;
-		int lf = f.size();
-		int ls = s.size();
-		size_t ind = f.find_first_of(s[0]);
-		while (ind != string::npos&& ind < lf - ls) {
-			cout << ind;
-			int i = 0;
-			for (i ; i < ls; i++) {
-				if (f[ind+i] != s[i]) {
-					//cout <<i<<" "<< f[ind + i]<<" "<< s[i];
-					break;
-				}
+			if (t.left) {
+				tree[ind * 2 - 1] = t.left->val;
+				q.push(*t.left);
 			}
-			cout << f[ind + i] << endl;
-			if (i == ls && f[ind + i]==' ') {
-				res.push_back(ind);				
+			else {
+				tree[ind*2-1]=1000000;
 			}
-			ind = f.find_first_of(' ', ind + 1);
-			if (ind > lf - ls) break;
-			ind = f.find_first_of(s[0], ind + 1);
-		}
-
-		for (int i = 0; i < res.size(); i++) {
-			cout << res[i] << " ";
+			if (t.right) {
+				tree[ind * 2] = t.right->val;
+				q.push(*t.right);
+			}
+			else {
+				tree[ind * 2] = 1000000;
+			}
+			ind++;
 		}
 		cout << endl;
-		return res;
+		for (int k = 0; k < tree.size(); k++) {
+			cout << tree[k] << " ";
+		}
+		cout << ind;
+
+		vector<int> treeflag = tree;
+		//注意这里的i是从1开始算的而不是数组的下标
+		for (int i = ind / 2 ; i < ind; i++) {
+			int t = i;
+			int sum = 0;
+			while (t >= 1) {
+				sum += tree[t-1];
+				t /= 2;
+			}
+			cout << sum;
+			if (sum > limit) {
+				t = i / 2;
+				while (t >= 1) {
+					treeflag[t-1] = 1;
+					t /= 2;
+				}
+			}
+			else treeflag[i - 1] = 0;
+		}
+
+		for (int i = 1; i < ind; i++) {
+			cout << treeflag[i - 1] << " ";
+			if (treeflag[i - 1] == 0) {
+				tree[i - 1] = null;
+			}
+		}
+
+		return root;
 	}
 };
 
 int main() {
 	Solution s;
-	string t = "lxmji qktybghz spd qktybghz ka spd spd qktybghz qktybghz lxmji lxmji spd lxmji lxmji lxmji qktybghz spd ka qktybghz qktybghz ka lxmji ka qktybghz lxmji qktybghz qktybghz spd lxmji qktybghz";
-	string f = "ks";
-	string ss = "spd";
-	s.findOcurrences(t, f, ss);
+
+	TreeNode t1(1);
+	TreeNode t2(2);
+	TreeNode t3(3);
+	TreeNode t4(4);
+	TreeNode t5(-99);
+	TreeNode t6(-99);
+	TreeNode t7(7);
+	TreeNode t8(8);
+	TreeNode t9(9);
+	TreeNode t10(-99);
+	TreeNode t11(-99);
+	TreeNode t12(12);
+	TreeNode t13(13);
+	TreeNode t14(-99);
+	TreeNode t15(15);
+	t1.left = &t2;
+	t1.right = &t3;
+	t2.left = &t4;
+	//t2.right = &t5;
+	t3.right = &t7;
+	t3.left = &t6;
+	t4.left = &t8;
+	t4.right = &t9;
+	t5.left = &t10;
+	t5.right = &t11;
+	t6.left = &t12;
+	t6.right = &t13;
+	t7.left = &t14;
+	t7.right = &t15;
+	s.sufficientSubset(&t1,1);
 	system("pause");
 	return 0;
 }
+
+
+
+//#include<vector>;
+//#include<string>
+//class Solution {
+//public:
+//	vector<string> findOcurrences(string text, string first, string second) {
+//		int len = text.size();
+//		int lenf = first.size();
+//		int lens = second.size();
+//		vector<string> res;
+//		if (len == 0)
+//			return res;
+//
+//		vector<int> ind = findfirststring(text, first);
+//		for (int i = 0; i < ind.size(); i++) {
+//			string tmp = text.substr(ind[i] + lenf + 1, lens);
+//			//cout << tmp << endl;
+//			if (tmp == second) {
+//				string t = "";
+//				int j = ind[i] + lenf + lens + 2;
+//				while (j < len && text[j] != ' ') {
+//					t += text[j];
+//					j++;
+//				}
+//				cout << t<<" ";
+//				if(t!="")
+//					res.push_back(t);
+//			}
+//		}
+//
+//		return res;
+//	}
+//
+//	vector<int> findfirststring(string f,string s) {		
+//		vector<int> res;
+//		int lf = f.size();
+//		int ls = s.size();
+//		size_t ind = f.find_first_of(s[0]);
+//		while (ind != string::npos&& ind < lf - ls) {
+//			cout << ind;
+//			int i = 0;
+//			for (i ; i < ls; i++) {
+//				if (f[ind+i] != s[i]) {
+//					//cout <<i<<" "<< f[ind + i]<<" "<< s[i];
+//					break;
+//				}
+//			}
+//			cout << f[ind + i] << endl;
+//			if (i == ls && f[ind + i]==' ') {
+//				res.push_back(ind);				
+//			}
+//			ind = f.find_first_of(' ', ind + 1);
+//			if (ind > lf - ls) break;
+//			ind = f.find_first_of(s[0], ind + 1);
+//		}
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			cout << res[i] << " ";
+//		}
+//		cout << endl;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	string t = "lxmji qktybghz spd qktybghz ka spd spd qktybghz qktybghz lxmji lxmji spd lxmji lxmji lxmji qktybghz spd ka qktybghz qktybghz ka lxmji ka qktybghz lxmji qktybghz qktybghz spd lxmji qktybghz";
+//	string f = "ks";
+//	string ss = "spd";
+//	s.findOcurrences(t, f, ss);
+//	system("pause");
+//	return 0;
+//}
 
 
 
