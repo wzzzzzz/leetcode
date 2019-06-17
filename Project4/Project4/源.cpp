@@ -2,129 +2,399 @@
 using namespace std;
 
 #include<vector>
-#include<queue>
-//Definition for a binary tree node.
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-
+#include<algorithm>
 class Solution {
 public:
-	TreeNode * sufficientSubset(TreeNode* root, int limit) {
-		vector<int> tree(10, 1000000);
-		queue<TreeNode> q;
-		q.push(*root);
-		tree[0] = root->val;
-		int ind = 1;
-		while (!q.empty()) {
-			TreeNode t = q.front();
-			q.pop();
-			//cout << ind << " ";
-			while (tree[ind-1] == 1000000){
-				ind++;
-			}
-			//cout << ind << "   ";
-			int len = tree.size();
-			if (len <= ind * 2) {
-				//把tree长度翻倍			
-				for (int k = 0; k < len; k++) {
-					tree.push_back(1000000);
-				}
-				tree.push_back(1000000);
-				len *= 2;
-			}
-			if (t.left) {
-				tree[ind * 2 - 1] = t.left->val;
-				q.push(*t.left);
-			}
-			else {
-				tree[ind*2-1]=1000000;
-			}
-			if (t.right) {
-				tree[ind * 2] = t.right->val;
-				q.push(*t.right);
-			}
-			else {
-				tree[ind * 2] = 1000000;
-			}
-			ind++;
+	int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
+		int len = grid.size();
+		if (grid[0][0] == 1 || grid[len - 1][len - 1] == 1)
+			return -1;
+		if (len == 1)
+			return 1;
+
+		int res = -1;
+		res = path(grid, 0, 0, 1);
+		cout << res << endl;
+		return res;
+	}
+	int path(vector<vector<int>>& grid,int i,int j,int last) {
+		int len = grid.size();
+		if (i == len - 1 && j == len - 1)
+			return 1;
+		int count = 100000;
+		vector<int> flag(9, 0);
+		if (i == 0) {
+			flag[0] = 1;
+			flag[1] = 1;
+			flag[2] = 1;
 		}
+		if (j == 0) {
+			flag[0] = 1;
+			flag[3] = 1;
+			flag[5] = 1;
+		}
+		if (i == len - 1) {
+			flag[5] = 1;
+			flag[6] = 1;
+			flag[7] = 1;
+		}
+		if (j == len - 1) {
+			flag[2] = 1;
+			flag[4] = 1;
+			flag[7] = 1;
+		}
+		flag[last] = 1;
+		for (int k = 0; k < 8; k++)
+			cout << flag[k] << " ";
 		cout << endl;
-		for (int k = 0; k < tree.size(); k++) {
-			cout << tree[k] << " ";
+		if (flag[0] == 0 && grid[i - 1][j - 1] == 0) {
+			grid[i][j] = 1;
+			int c = path(grid, i - 1, j - 1, 7);
+			cout << c << " ";
+			if (c > 0)
+				count = min(count, c);
+			grid[i][j] = 0;
 		}
-		cout << ind;
-
-		vector<int> treeflag = tree;
-		//注意这里的i是从1开始算的而不是数组的下标
-		for (int i = ind / 2 ; i < ind; i++) {
-			int t = i;
-			int sum = 0;
-			while (t >= 1) {
-				sum += tree[t-1];
-				t /= 2;
-			}
-			cout << sum;
-			if (sum > limit) {
-				t = i / 2;
-				while (t >= 1) {
-					treeflag[t-1] = 1;
-					t /= 2;
-				}
-			}
-			else treeflag[i - 1] = 0;
+		if (flag[1] == 0 && grid[i - 1][j] == 0) {
+			grid[i][j] = 1;
+			int c = path(grid, i - 1, j, 6);
+			cout << c << " ";
+			if (c > 0)
+				count = min(count, c);
+			grid[i][j] = 0;
 		}
-
-		for (int i = 1; i < ind; i++) {
-			cout << treeflag[i - 1] << " ";
-			if (treeflag[i - 1] == 0) {
-				tree[i - 1] = null;
-			}
+		if (flag[2] == 0 && grid[i - 1][j + 1] == 0) {
+			grid[i][j] = 1;
+			int c = path(grid, i - 1, j + 1, 5);
+			cout << c << " ";
+			if (c > 0)
+				count = min(count, c);
+			grid[i][j] = 0;
 		}
-
-		return root;
+		if (flag[3] == 0 && grid[i][j - 1] == 0) {
+			grid[i][j] = 1;
+			int c = path(grid, i, j - 1, 4);
+			cout << c << " ";
+			if (c > 0)
+				count = min(count, c);
+			grid[i][j] = 0;
+		}
+		if (flag[4] == 0 && grid[i][j + 1] == 0) {
+			grid[i][j] = 1;
+			int c = path(grid, i, j + 1, 3);
+			cout << c << " ";
+			if (c > 0)
+				count = min(count, c);
+			grid[i][j] = 0;
+		}
+		if (flag[5] == 0 && grid[i + 1 ][j - 1] == 0) {
+			grid[i][j] = 1;
+			int c = path(grid, i + 1, j - 1, 2);
+			cout << c << " ";
+			if (c > 0)
+				count = min(count, c);
+			grid[i][j] = 0;
+		}
+		if (flag[6] == 0 && grid[i + 1][j] == 0) {
+			grid[i][j] = 1;
+			int c = path(grid, i + 1, j, 1);
+			cout << c << " ";
+			if (c > 0)
+				count = min(count, c);
+			grid[i][j] = 0;
+		}
+		if (flag[7] == 0 && grid[i + 1][j + 1] == 0) {
+			grid[i][j] = 1;
+			cout << "!";
+			int c = path(grid, i + 1, j + 1, 0);
+			cout << c << " ";
+			if (c > 0)
+				count = min(count, c);
+			grid[i][j] = 0;
+		}
+		if (count == 100000)
+			count = -2;
+		cout << count+1 << endl;
+		return count+1;
 	}
 };
 
 int main() {
 	Solution s;
-
-	TreeNode t1(1);
-	TreeNode t2(2);
-	TreeNode t3(3);
-	TreeNode t4(4);
-	TreeNode t5(-99);
-	TreeNode t6(-99);
-	TreeNode t7(7);
-	TreeNode t8(8);
-	TreeNode t9(9);
-	TreeNode t10(-99);
-	TreeNode t11(-99);
-	TreeNode t12(12);
-	TreeNode t13(13);
-	TreeNode t14(-99);
-	TreeNode t15(15);
-	t1.left = &t2;
-	t1.right = &t3;
-	t2.left = &t4;
-	//t2.right = &t5;
-	t3.right = &t7;
-	t3.left = &t6;
-	t4.left = &t8;
-	t4.right = &t9;
-	t5.left = &t10;
-	t5.right = &t11;
-	t6.left = &t12;
-	t6.right = &t13;
-	t7.left = &t14;
-	t7.right = &t15;
-	s.sufficientSubset(&t1,1);
+	vector<vector<int>> g = {
+		{ 0,0,0,0,1},{1,0,0,0,0},{0,1,0,1,0},{0,0,0,1,1},{0,0,0,1,0 }
+	};
+	s.shortestPathBinaryMatrix(g);
 	system("pause");
 	return 0;
 }
+
+
+//#include<vector>
+//#include<map>
+//#include<algorithm>
+//class Solution {
+//public:
+//	int largestValsFromLabels(vector<int>& values, vector<int>& labels, int num_wanted, int use_limit) {
+//		int len = values.size();
+//		int res = 0;
+//		//第一种情况
+//		if (num_wanted <= use_limit) {
+//			if (num_wanted != len) {
+//				sort(values.begin(), values.end());
+//			}
+//			for (int i = len-1; i >= len-num_wanted; i--) {
+//				res += values[i];
+//			}
+//			cout << res;
+//			return res;
+//		}
+//		
+//		map<int, map<pair<int, int>, int>> label;
+//		for (int i = 0; i < len; i++) {
+//			map<int, map<pair<int, int>, int>>::iterator it = label.find(labels[i]);
+//			if (it!=label.end()) {
+//				it->second.insert(pair<pair<int, int>, int > (pair<int, int>(values[i], i), 0));
+//			}
+//			else {
+//				label.insert(pair<int, map<pair<int, int>, int>>(labels[i], map<pair<int, int>, int> {pair<pair<int, int>, int>(pair<int, int>(values[i], i), 0)}));
+//			}
+//		}
+//		//for (auto i = label.begin(); i !=label.end(); i++) {
+//		//	cout << i->first << " " /*<< i->second*/<< endl;
+//		//	for (auto j = i->second.begin(); j != i->second.end(); j++) {
+//		//		cout << j->first.first << " " << j->first.second << endl;
+//		//	}
+//		//}
+//		int labelcount = label.size();
+//		if (num_wanted >= labelcount*use_limit) {
+//			cout << "0" << endl;
+//			for (auto i = label.begin(); i !=label.end(); i++) {
+//				//cout << i->first << " " /*<< i->second*/<< endl;
+//				int c = use_limit;
+//				for (auto j = i->second.rbegin(); j != i->second.rend()&&c > 0; j++,c--) {
+//					//cout << j->first.first << " " << j->first.second << endl;
+//					res += j->first.first;
+//					cout << c<<" ";
+//				}
+//			}
+//		}
+//		else {
+//			cout << "1" << endl;
+//			map<pair<int, int>, int> tmp;
+//			for (auto i = label.begin(); i != label.end(); i++) {
+//				//cout << i->first << " " /*<< i->second*/<< endl;
+//				int c = use_limit;
+//				for (auto j = i->second.rbegin(); j != i->second.rend() && c > 0; j++, c--) {
+//					//cout << j->first.first << " " << j->first.second << endl;
+//					tmp.insert(pair<pair<int,int>,int>(j->first,j->second));
+//				}
+//			}
+//			int c = num_wanted;
+//			for (auto i = tmp.rbegin(); i != tmp.rend()&& c>0 ; i++,c--) {
+//				res += i->first.first;
+//			}
+//		}
+//
+//		cout << res;
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	vector<int> values = { 2,6,1,2,6 };
+//		vector<int>	labels = { 2,2,2,1,1 };
+//		int	num_wanted = 1;
+//		int	use_limit = 1;
+//		Solution s;
+//		s.largestValsFromLabels(values, labels, num_wanted, use_limit);
+//		system("pause");
+//		return 0;
+//}
+
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	void duplicateZeros(vector<int>& arr) {
+//		int len = arr.size();
+//		int count = 0;
+//		for (int i = 0; i < len; i++) {
+//			if (arr[i] == 0)
+//				count++;
+//		}
+//		if (count == 0)
+//			return;
+//		//前一个指针的ind
+//		int j = len - 1;
+//		while(count > 0) {
+//			if (arr[j] == 0) {
+//				j --;
+//				count -= 2;
+//			}
+//			else {
+//				j--;
+//				count--;
+//			}
+//		}
+//		int i = len - 1;
+//		//特殊情况：最后一个是0，且刚好不重写
+//		if (count < 0) {
+//			arr[len - 1] = 0;
+//			i--;
+//		}
+//		cout << i << endl;
+//		for (i; i >= 0; i--,j--) {
+//			if (arr[j] == 0) {
+//				arr[i] = arr[j];
+//				i--;
+//				arr[i] = arr[j];
+//			}
+//			else arr[i] = arr[j];
+//		}
+//		for (int k = 0; k < len; k++)
+//			cout << arr[k] << " ";
+//
+//		return;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<int> a = { 1,2,3};
+//	s.duplicateZeros(a);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************周赛0602***************************************/
+//#include<vector>
+//#include<queue>
+////Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	TreeNode * sufficientSubset(TreeNode* root, int limit) {
+//		vector<int> tree(10, 1000000);
+//		queue<TreeNode> q;
+//		q.push(*root);
+//		tree[0] = root->val;
+//		int ind = 1;
+//		while (!q.empty()) {
+//			TreeNode t = q.front();
+//			q.pop();
+//			//cout << ind << " ";
+//			while (tree[ind-1] == 1000000){
+//				ind++;
+//			}
+//			//cout << ind << "   ";
+//			int len = tree.size();
+//			if (len <= ind * 2) {
+//				//把tree长度翻倍			
+//				for (int k = 0; k < len; k++) {
+//					tree.push_back(1000000);
+//				}
+//				tree.push_back(1000000);
+//				len *= 2;
+//			}
+//			if (t.left) {
+//				tree[ind * 2 - 1] = t.left->val;
+//				q.push(*t.left);
+//			}
+//			else {
+//				tree[ind*2-1]=1000000;
+//			}
+//			if (t.right) {
+//				tree[ind * 2] = t.right->val;
+//				q.push(*t.right);
+//			}
+//			else {
+//				tree[ind * 2] = 1000000;
+//			}
+//			ind++;
+//		}
+//		cout << endl;
+//		for (int k = 0; k < tree.size(); k++) {
+//			cout << tree[k] << " ";
+//		}
+//		cout << ind;
+//
+//		vector<int> treeflag = tree;
+//		//注意这里的i是从1开始算的而不是数组的下标
+//		for (int i = ind / 2 ; i < ind; i++) {
+//			int t = i;
+//			int sum = 0;
+//			while (t >= 1) {
+//				sum += tree[t-1];
+//				t /= 2;
+//			}
+//			cout << sum;
+//			if (sum > limit) {
+//				t = i / 2;
+//				while (t >= 1) {
+//					treeflag[t-1] = 1;
+//					t /= 2;
+//				}
+//			}
+//			else treeflag[i - 1] = 0;
+//		}
+//
+//		for (int i = 1; i < ind; i++) {
+//			cout << treeflag[i - 1] << " ";
+//			if (treeflag[i - 1] == 0) {
+//				tree[i - 1] = null;
+//			}
+//		}
+//
+//		return root;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//
+//	TreeNode t1(1);
+//	TreeNode t2(2);
+//	TreeNode t3(3);
+//	TreeNode t4(4);
+//	TreeNode t5(-99);
+//	TreeNode t6(-99);
+//	TreeNode t7(7);
+//	TreeNode t8(8);
+//	TreeNode t9(9);
+//	TreeNode t10(-99);
+//	TreeNode t11(-99);
+//	TreeNode t12(12);
+//	TreeNode t13(13);
+//	TreeNode t14(-99);
+//	TreeNode t15(15);
+//	t1.left = &t2;
+//	t1.right = &t3;
+//	t2.left = &t4;
+//	//t2.right = &t5;
+//	t3.right = &t7;
+//	t3.left = &t6;
+//	t4.left = &t8;
+//	t4.right = &t9;
+//	t5.left = &t10;
+//	t5.right = &t11;
+//	t6.left = &t12;
+//	t6.right = &t13;
+//	t7.left = &t14;
+//	t7.right = &t15;
+//	s.sufficientSubset(&t1,1);
+//	system("pause");
+//	return 0;
+//}
 
 
 
