@@ -1,75 +1,114 @@
 #include<iostream>
 using namespace std;
 
+#include<vector>
+#include<stack>
+class Solution {
+public:
+	vector<string> braceExpansionII(string expression) {
+		stack<int> kuohao;
+		stack<vector<string>> res;
+		int len = expression.length();
+		for (int i = 0; i < len; i++) {
+			if (expression[i] == '{') {
+				kuohao.push(i);
+				vector<string> *tmp = new vector<string>;
+				res.push(tmp);
+			}
+			else if (expression[i] == '}') {
+				int s = kuohao.top();
+				kuohao.pop();
+				string t = expression.substr(s, i - s);
+				vector<string> tmp = braceExpansionII(t);
+				tmp=plusvector(res.top(), tmp);
+				res.pop();
+				res.push(tmp);
+			}
+			else if (expression[i] == ',') {
+				res.push(new vector<string> *);
+			}
+			else {
+				res[res.size - 1] += expression[i];
+			}
+		}
+	}
+	vector<string> plusvector(vector<string> a,vector<string> b) {
+		
+	}
+};
+
+int main() {
+	Solution s;
+	s.braceExpansionII("{a,b}{c{d,e}}");
+	system("pause");
+	return 0;
+}
+
+
 
 // This is the MountainArray's API interface.
 // You should not implement it, or speculate about its implementation
-class MountainArray {
-  public:
-    int get(int index);
-    int length();
-};
-
-#include<vector>
-class Solution {
-public:
-	int findInMountainArray(int target, MountainArray &mountainArr) {
-		int len = mountainArr.length();
-		int peek = findPeek(target, mountainArr, 0, len - 1);
-		int res1 = findInSlop(target, mountainArr, 0, peek, 1);
-		int res2 = findInSlop(target, mountainArr, peek, len - 1, 2);
-
-		if (res1 == -1 && res2 == -1)
-			return -1;
-		else if (res1 == -1)
-			return res2;
-		else if (res2 == -1)
-			return res1;
-		else return res1 < res2 ? res1 : res2;
-	}
-	int findPeek(int target, MountainArray &mountainArr,int start,int end) {
-		int res = start;
-		int mid = (start + end) / 2;
-		while (start <= end) {
-			mid = (start + end) / 2;
-			if (mountainArr.get(mid) < mountainArr.get(mid + 1)) {
-				start = mid + 1;
-			}
-			else {
-				end = mid - 1;
-			}
-		}
-		res = start;
-		cout << res;
-		return res;
-	}
-	int findInSlop(int target, MountainArray &mountainArr, int start, int end, int ind) {
-		int res = start;
-		int mid = (start + end) / 2;
-		while (start <= end) {
-			mid = (start + end) / 2;
-			int m = mountainArr.get(mid);
-			if (m == target)
-				return m;
-			else if (m < target) {
-				if (ind == 1)
-					start = mid + 1;
-				else end = mid - 1;
-			}
-			else {
-				if(ind==1)
-					end = mid - 1;
-				else start = mid + 1;
-			}
-		}
-		return -1;
-	}
-};
-
-//int main() {
-//	Solution s;
-//	MountainArray m=
-//}
+//class MountainArray {
+//  public:
+//    int get(int index);
+//    int length();
+//};
+//
+//#include<vector>
+//class Solution {
+//public:
+//	int findInMountainArray(int target, MountainArray &mountainArr) {
+//		int len = mountainArr.length();
+//		int peek = findPeek(target, mountainArr, 0, len - 1);
+//		int res1 = findInSlop(target, mountainArr, 0, peek, 1);
+//		int res2 = findInSlop(target, mountainArr, peek, len - 1, 2);
+//
+//		if (res1 == -1 && res2 == -1)
+//			return -1;
+//		else if (res1 == -1)
+//			return res2;
+//		else if (res2 == -1)
+//			return res1;
+//		else return res1 < res2 ? res1 : res2;
+//	}
+//	int findPeek(int target, MountainArray &mountainArr,int start,int end) {
+//		int res = start;
+//		int mid = (start + end) / 2;
+//		while (start <= end) {
+//			mid = (start + end) / 2;
+//			if (mountainArr.get(mid) < mountainArr.get(mid + 1)) {
+//				start = mid + 1;
+//			}
+//			else {
+//				end = mid - 1;
+//			}
+//		}
+//		res = start;
+//		cout << res;
+//		return res;
+//	}
+//	int findInSlop(int target, MountainArray &mountainArr, int start, int end, int ind) {
+//		int res = start;
+//		int mid = (start + end) / 2;
+//		while (start <= end) {
+//			mid = (start + end) / 2;
+//			int m = mountainArr.get(mid);
+//			if (m == target)
+//				return m;
+//			else if (m < target) {
+//				if (ind == 1)
+//					start = mid + 1;
+//				else end = mid - 1;
+//			}
+//			else {
+//				if(ind==1)
+//					end = mid - 1;
+//				else start = mid + 1;
+//			}
+//		}
+//		return -1;
+//	}
+//};
 
 
 
