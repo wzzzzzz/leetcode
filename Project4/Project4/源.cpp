@@ -7,33 +7,82 @@ class Solution {
 public:
 	vector<string> braceExpansionII(string expression) {
 		stack<int> kuohao;
-		stack<vector<string>> res;
+		vector<vector<string>> res;
 		int len = expression.length();
 		for (int i = 0; i < len; i++) {
 			if (expression[i] == '{') {
-				kuohao.push(i);
-				vector<string> *tmp = new vector<string>;
-				res.push(tmp);
+				kuohao.push(i);				
+				string t = expression.substr(i, len - i);
+				vector<string> tmp = braceExpansionII(t);
+				if (*((*res.end()).end()) == "") {
+					res.push_back(tmp);
+				}
+				else {
+					res.push_back(plusvector(*res.end(), tmp));
+				}
+				//跳过已经处理的这一段
+
 			}
 			else if (expression[i] == '}') {
-				int s = kuohao.top();
 				kuohao.pop();
-				string t = expression.substr(s, i - s);
-				vector<string> tmp = braceExpansionII(t);
-				tmp=plusvector(res.top(), tmp);
-				res.pop();
-				res.push(tmp);
+				if (kuohao.empty()) {
+					//还没删除重复
+					int reslen = res.size();
+					if (reslen > 1) {
+						res[0].erase(res[0].end());
+						for (int k = 1; k < reslen; k++) {
+							if (*res[k - 1].end() == "") {
+								for (int s = 0; s < res[k].size()-1; s++) {
+									res[0].push_back(res[k][s]);
+								}
+							}
+						}
+						res[0].push_back(*res[reslen - 1].end());
+					}
+					else return res[0];
+				}
+				else {
+
+				}
 			}
 			else if (expression[i] == ',') {
-				res.push(new vector<string> *);
+				(*res.end()).push_back("");
 			}
 			else {
-				res[res.size - 1] += expression[i];
+				*(*res.end()).end() += expression[i];
 			}
 		}
 	}
+
+	vector<string> splice(string str) {
+		int len = str.length();
+		vector<string> res;
+		if (len == 0)
+			return res;
+		res.push_back("");
+		for (int i = 0; i < len; i++) {
+			if (str[i] == ',') {
+				res.push_back("");
+			}
+			else {
+				*res.end() += str[i];
+			}
+		}
+		return res;
+	}
+
 	vector<string> plusvector(vector<string> a,vector<string> b) {
-		
+		int l1 = a.size();
+		int l2 = b.size();
+		for (int i = 0; i < l1; i++) {
+			a.push_back(a[i] + b[0]);
+		}
+		for (int j = 1; j < l2; j++) {
+			for (int i = 0; i < l1; i++) {
+				a.push_back(a[i] + b[j]);
+			}
+		}
+		return a;
 	}
 };
 
