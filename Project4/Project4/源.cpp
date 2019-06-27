@@ -3,53 +3,52 @@ using namespace std;
 
 #include<vector>
 #include<stack>
+#include<map>
 class Solution {
 public:
 	vector<string> braceExpansionII(string expression) {
-		stack<int> kuohao;
-		vector<vector<string>> res;
+		stack<char> sign;
+		stack<vector<string>> res;
 		int len = expression.length();
+		vector<string> strs;
 		for (int i = 0; i < len; i++) {
 			if (expression[i] == '{') {
-				kuohao.push(i);				
-				string t = expression.substr(i, len - i);
-				vector<string> tmp = braceExpansionII(t);
-				if (*((*res.end()).end()) == "") {
-					res.push_back(tmp);
+				if (i > 0 && expression[i - 1] != ',') {
+					if (sign.top() == '*') {
+						vector<string> a = res.top();
+						res.pop();
+						vector<string> b = res.top();
+						res.pop();
+						res.push(plusvector(a, b));
+						i--;
+					}
+					else sign.push('*');
 				}
-				else {
-					res.push_back(plusvector(*res.end(), tmp));
-				}
-				//跳过已经处理的这一段
-
+				sign.push('{');
 			}
 			else if (expression[i] == '}') {
-				kuohao.pop();
-				if (kuohao.empty()) {
-					//还没删除重复
-					int reslen = res.size();
-					if (reslen > 1) {
-						res[0].erase(res[0].end());
-						for (int k = 1; k < reslen; k++) {
-							if (*res[k - 1].end() == "") {
-								for (int s = 0; s < res[k].size()-1; s++) {
-									res[0].push_back(res[k][s]);
-								}
-							}
-						}
-						res[0].push_back(*res[reslen - 1].end());
-					}
-					else return res[0];
-				}
-				else {
-
-				}
+				
 			}
 			else if (expression[i] == ',') {
-				(*res.end()).push_back("");
+				if (sign.top() == '*') {
+					vector<string> a = res.top();
+					res.pop();
+					vector<string> b = res.top();
+					res.pop();
+					res.push(plusvector(a, b));
+					i--;
+				}
+				else {
+					sign.push('+');
+				}				
 			}
 			else {
-				*(*res.end()).end() += expression[i];
+				string str = "";
+				while (expression[i] < 123 && expression[i] > 96) {
+					str += expression[i];
+					i++;
+				}
+				res.push(vector<string>(1, str));
 			}
 		}
 	}
