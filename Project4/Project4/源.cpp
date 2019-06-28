@@ -1,96 +1,162 @@
 #include<iostream>
 using namespace std;
 
-#include<vector>
-#include<stack>
-#include<map>
-class Solution {
-public:
-	vector<string> braceExpansionII(string expression) {
-		stack<char> sign;
-		stack<vector<string>> res;
-		int len = expression.length();
-		vector<string> strs;
-		for (int i = 0; i < len; i++) {
-			if (expression[i] == '{') {
-				if (i > 0 && expression[i - 1] != ',') {
-					if (sign.top() == '*') {
-						vector<string> a = res.top();
-						res.pop();
-						vector<string> b = res.top();
-						res.pop();
-						res.push(plusvector(a, b));
-						i--;
-					}
-					else sign.push('*');
-				}
-				sign.push('{');
-			}
-			else if (expression[i] == '}') {
-				
-			}
-			else if (expression[i] == ',') {
-				if (sign.top() == '*') {
-					vector<string> a = res.top();
-					res.pop();
-					vector<string> b = res.top();
-					res.pop();
-					res.push(plusvector(a, b));
-					i--;
-				}
-				else {
-					sign.push('+');
-				}				
-			}
-			else {
-				string str = "";
-				while (expression[i] < 123 && expression[i] > 96) {
-					str += expression[i];
-					i++;
-				}
-				res.push(vector<string>(1, str));
-			}
-		}
-	}
 
-	vector<string> splice(string str) {
-		int len = str.length();
-		vector<string> res;
-		if (len == 0)
-			return res;
-		res.push_back("");
-		for (int i = 0; i < len; i++) {
-			if (str[i] == ',') {
-				res.push_back("");
-			}
-			else {
-				*res.end() += str[i];
-			}
-		}
-		return res;
-	}
 
-	vector<string> plusvector(vector<string> a,vector<string> b) {
-		int l1 = a.size();
-		int l2 = b.size();
-		for (int i = 0; i < l1; i++) {
-			a.push_back(a[i] + b[0]);
-		}
-		for (int j = 1; j < l2; j++) {
-			for (int i = 0; i < l1; i++) {
-				a.push_back(a[i] + b[j]);
-			}
-		}
-		return a;
-	}
-};
-
-int main() {
-	Solution s;
-	s.braceExpansionII("{a,b}{c{d,e}}");
-	system("pause");
-	return 0;
-}
+/**************************************ÖÜÈü0623***************************************/
+//#include<vector>
+//#include<stack>
+//#include<map>
+//#include<string>
+//#include<algorithm>
+//class Solution {
+//public:
+//	vector<string> braceExpansionII(string expression) {
+//		stack<char> sign;
+//		stack<vector<string>> res;
+//		int len = expression.length();
+//		vector<string> strs;
+//		int i = 0;
+//		
+//		while (i < len ) {
+//			cout << i << " ";
+//			if (expression[i] == '{') {
+//				if (i > 0 && expression[i - 1] != ','&& expression[i - 1] != '{') {
+//					//if (sign.empty()==true|| sign.top() != '*') {
+//						sign.push('*');
+//					//}
+//				}
+//				sign.push('{');
+//				i++;
+//			}
+//			else if (expression[i] == '}') {
+//				char s = sign.top();
+//				while (s != '{') {					
+//					cout << s;
+//					vector<string> b = res.top();
+//					res.pop();
+//					vector<string> a = res.top();
+//					res.pop();
+//					if (s == '+') {
+//						res.push(plusvector(a, b));
+//					}
+//					else if (s=='*') {
+//						res.push(multvector(a, b));
+//					}
+//					sign.pop();
+//					s = sign.top();
+//					//cout << s;
+//				}
+//				sign.pop();
+//				i++;
+//			}
+//			else if (expression[i] == ',') {
+//				if (sign.empty() != true && sign.top() == '*') {
+//					vector<string> b = res.top();
+//					res.pop();
+//					vector<string> a = res.top();
+//					res.pop();
+//					res.push(multvector(a, b));
+//					sign.pop();
+//				}
+//				else {
+//					sign.push('+');
+//					i++;
+//				}			
+//			}
+//			else {
+//				if (i > 0 && expression[i - 1] == '}') {
+//					cout << "}a" << " ";
+//					sign.push('*');
+//				}
+//				string str = "";
+//				while (expression[i] < 123 && expression[i] > 96) {
+//					str += expression[i];
+//					i++;
+//				}
+//				//cout << " " << str << " ";
+//				res.push(vector<string>(1, str));
+//			}
+//			cout << endl;
+//		}
+//
+//		while (sign.empty() != true) {
+//			char s = sign.top();
+//			cout << s << " ";
+//			vector<string> b = res.top();
+//			res.pop();
+//			vector<string> a = res.top();
+//			res.pop();
+//			if (s == '+') {
+//				res.push(plusvector(a, b));
+//			}
+//			else if (s == '*') {
+//				res.push(multvector(a, b));
+//			}
+//			sign.pop();
+//		}
+//
+//		vector<string> r = res.top();
+//		sort(r.begin(), r.end());
+//
+//		for (int k = 0; k < r.size()-1; k++) {
+//			if ( r[k] == r[k + 1]) {
+//				r[k] = "";
+//			}
+//		}
+//		vector<string> rr;
+//		for (int j = 0; j < r.size(); j++) {
+//			if (r[j] != "") {
+//				rr.push_back(r[j]);
+//			}
+//		}
+//		for (int j = 0; j < rr.size(); j++) {
+//			cout << rr[j]<<" ";
+//		}
+//		return rr;
+//	}
+//
+//	vector<string> plusvector(vector<string> a, vector<string> b) {
+//		int l2 = b.size();
+//		for (int i = 0; i < l2; i++) {
+//			a.push_back(b[i]);
+//		}
+//
+//		//cout << "plus";
+//		//for (int i = 0; i < a.size(); i++) {
+//		//	cout << a[i] << " ";
+//		//}
+//		//cout << "plus";
+//		return a;
+//	}
+//
+//	vector<string> multvector(vector<string> a,vector<string> b) {
+//		int l1 = a.size();
+//		int l2 = b.size();
+//		for (int j = 1; j < l2; j++) {
+//			for (int i = 0; i < l1; i++) {
+//				a.push_back(a[i] + b[j]);
+//			}
+//		}
+//		for (int i = 0; i < l1; i++) {
+//			a[i] = a[i] + b[0];
+//		}
+//
+//		//cout << "mult";
+//		//for (int i = 0; i < a.size(); i++) {
+//		//	cout << a[i] << " ";
+//		//}
+//		//cout << "mult";
+//		return a;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.braceExpansionII("{{a,z},a{b,c},{ab,z}}");
+//	system("pause");
+//	return 0;
+//}
 
 
 
