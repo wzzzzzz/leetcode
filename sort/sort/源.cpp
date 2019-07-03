@@ -1,7 +1,7 @@
 #include<iostream>
 #include<algorithm>
 #include<vector>
-using namespace std;
+using namespace std; 
 
 
 class Solution{
@@ -62,50 +62,132 @@ public:
 
 	vector<int> shellsort(vector<int> nums) {
 		int len = nums.size();
-		for (int gap = len / 2; gap > 0; gap /= 2) {
-			cout << gap << "   ";
+		for (int gap = len / 2; gap > 0; gap /= 2) {			
 			int q = ceil(len / gap);
 			//对每一列单独排序
 			for (int i = 0; i < gap; i++) {
 				//插入排序(gap*k+i)
-				for (int k = 0+i; k < q*gap+i; k++) {
-					int tmp = nums[k*gap + i];
-					int j = 0;
+				for (int k = 0 + i; k < q*gap + i && k < len; k += gap) {
+					int tmp = nums[k];
+					int j = 0 + i;
 					//找到插入位置
-					for (j; j < k; j++) {
-						if (tmp < nums[j*gap + i]);
+					for (j; j < k; j+=gap) {
+						if (tmp < nums[j]) {
 							break;
+						}
 					}
 					//把后面的后移
-					for (int s = k; s > j; s--) {
-						nums[s*gap + i] = nums[(s - 1)*gap + i];
+					for (int s = k; s > j; s-=gap) {
+						nums[s] = nums[s - gap];
 					}
 					//插入
-					nums[j*gap + i] = tmp;
+					nums[j] = tmp;
 				}
-				for (int k = 0; k < q; k++) {
-					cout << nums[k*gap + i] << " ";
-				}
-				cout<<"  ";
 			}
-			for (int i = 0; i < len; i++)
-				cout << nums[i] << " ";
-			cout << endl;
+		}
+		for (int i = 0; i < len; i++)
+			cout << nums[i] << " ";
+		return nums;
+	}
+
+	vector<int> mergesort(vector<int> nums) {
+		int len = nums.size();
+		vector<int> res = nums;
+		//步长
+		for (int m = 1; m < len; m*=2) {
+			//对每两组进行合并
+			for (int n = 0; n < len; n+=2*m) {
+				int i = n;
+				int j = n + m;
+				int ind = i;
+				while (i < len&&i < n + m && j < len&&j < n + 2 * m) {
+					if (nums[i] < nums[j]) {
+						res[ind++] = nums[i++];
+					}
+					else {
+						res[ind++] = nums[j++];
+					}
+				}
+				while (i < len&&i < n + m) {
+					res[ind++] = nums[i++];
+				}
+				while (j < len&&j < n + 2 * m) {
+					res[ind++] = nums[j++];
+				}
+			}
+			nums = res;
 		}
 
 		for (int i = 0; i < len; i++)
 			cout << nums[i] << " ";
 		return nums;
 	}
+
+	vector<int> quicksort(vector<int> nums, int s, int e) {
+		if (s >= e)
+			return nums;
+		int base = nums[s];
+		int i = s;
+		int j = e;
+		while (i < j) {
+			if (nums[j] < base) {
+				nums[i++] = nums[j];
+				nums[j] = nums[i];
+			}
+			else j--;
+		}
+		nums[i] = base;
+		nums=quicksort(nums, s, i - 1);
+		nums=quicksort(nums, i + 1, e);
+
+		for (int i = 0; i < nums.size(); i++) {
+			cout << nums[i] << " ";
+		}
+		cout << endl;
+		return nums;
+	}
+
+	vector<int> radixsort(vector<int> nums,int max) {
+		int len = nums.size();
+		//有radix个桶
+		int radix = max / 10+1;
+		vector<vector<int>> bucket(radix);
+		for (int i = 0; i < len; i++) {			
+			int b = nums[i] / 10;
+			bucket[b].push_back(nums[i]);
+		}
+		int ind = 0;
+		for (int i = 0; i < radix; i++) {
+			bucket[i] = boublesort(bucket[i]);//这里多输出了一遍
+			for (int j = 0; j < bucket[i].size(); j++) {
+				nums[ind++] = bucket[i][j];
+			}
+		}
+
+		for (int i = 0; i < len; i++) {
+			cout << nums[i] << " ";
+		}
+		return nums;
+	}
+
+	vector<int> heapsort(vector<int> nums) {
+		int len = nums.size();
+
+		return nums;
+	}
 };
 
 int main() {
 	Solution s;
-	vector<int> n = { 3,8,4,6,5,10,15,1,9,2 };
+	vector<int> n = { 31,8,4,6,25,10,15,1,9 };
+	//vector<int> n = { 3,2 };
 	//s.boublesort(n);
 	//s.choosesort(n);
 	//s.insertsort(n);
-	s.shellsort(n);
+	//s.shellsort(n);
+	//s.mergesort(n);
+	//s.quicksort(n, 0, n.size() - 1);
+	s.radixsort(n,31);
 	system("pause");
 	return 0;
 }
