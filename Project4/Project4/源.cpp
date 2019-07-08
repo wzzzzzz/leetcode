@@ -3,8 +3,286 @@
 #include<vector>
 using namespace std;
 
+class Solution {
+public:
+	vector<int> maxDepthAfterSplit(string seq) {
+
+	}
+};
+
+int main() {
+
+}
 
 
+
+//Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//class Solution {
+//public:
+//	vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
+//		vector<TreeNode*> res;
+//		if (root == NULL)
+//			return res;
+//		
+//		vector<int> del(1001, -1);
+//		int dlen = to_delete.size();
+//		for (int i = 0; i < dlen; i++) {
+//			del[to_delete[i]] = 1;
+//		}
+//
+//		delnode(root, del);
+//		showtree(root);
+//		cout << endl;
+//		getres(root, NULL, 0, res);
+//
+//		for (int i = 0; i < res.size(); i++) {
+//			//cout << res[i]->val << endl;
+//			showtree(res[i]);
+//			cout << endl;
+//		}
+//		return res;
+//	}
+//
+//	void delnode(TreeNode* root, vector<int> del) {
+//		if(root) {
+//			if (del[root->val] == 1) {
+//				root->val = -1;
+//			}
+//			if (root->left) {
+//				delnode(root->left, del);
+//			}
+//			if (root->right) {
+//				delnode(root->right, del);
+//			}
+//		}
+//	}
+//
+//	void getres(TreeNode* r, TreeNode* p ,int flag ,vector<TreeNode*>& t) {
+//		if (r->val == -1) {
+//			if (flag == 1) {
+//				p->left = NULL;
+//			}
+//			if (flag == 2) {
+//				p->right = NULL;
+//			}
+//			if (r->left)
+//				getres(r->left, r, 0, t);
+//			if (r->right)
+//				getres(r->right, r, 0, t);
+//		}
+//		else {
+//			//表示这里是一个新树的起点
+//			if (flag == 0) {
+//				t.push_back(r);
+//			}
+//			if(r->left)
+//				getres(r->left, r, 1, t);
+//			if(r->right)
+//				getres(r->right, r, 2, t);
+//		}
+//	}
+//
+//	void showtree(TreeNode* r) {
+//		cout << r->val << " ";
+//		if (r->left)
+//			showtree(r->left);
+//		if (r->right) {
+//			showtree(r->right);
+//		}
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//
+//	TreeNode t1(1);
+//	TreeNode t2(2);
+//	TreeNode t3(3);
+//	TreeNode t4(4);
+//	TreeNode t5(5);
+//	TreeNode t6(6);
+//	TreeNode t7(7);
+//	TreeNode t8(8);
+//	TreeNode t9(9);
+//	TreeNode t10(-99);
+//	TreeNode t11(-99);
+//	TreeNode t12(12);
+//	TreeNode t13(13);
+//	TreeNode t14(-99);
+//	TreeNode t15(15);
+//	t1.left = &t2;
+//	t1.right = NULL;
+//	t2.left = &t4;
+//	t2.right = &t5;
+//	//t3.right = &t7;
+//	//t3.left = &t6;
+//	//t4.left = &t8;
+//	//t4.right = &t9;
+//	//t5.left = &t10;
+//	//t5.right = &t11;
+//	//t6.left = &t12;
+//	//t6.right = &t13;
+//	//t7.left = &t14;
+//	//t7.right = &t15;
+//
+//	vector<int> d = { 2,5 };
+//	s.delNodes(&t1,d);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//class Solution {
+//public:
+//	vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
+//		vector<int> res(n, 0);
+//		int len = bookings.size();
+//		for (int i = 0; i < len; i++) {
+//			res[bookings[i][0] - 1] += bookings[i][2];
+//			if (bookings[i][1] < n) {
+//				res[bookings[i][1]] -= bookings[i][2];
+//			}
+//		}
+//		cout << res[0] << " ";
+//		for (int i = 1; i < n; i++) {
+//			res[i] += res[i - 1];
+//			cout << res[i] << " ";
+//		}
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> b = {
+//		{1,2,10},{2,3,20},{2,5,25}
+//	};
+//	s.corpFlightBookings(b,5);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//#include<string>
+//class Solution {
+//public:
+//	string defangIPaddr(string address) {
+//		int len = address.length();
+//		size_t ind = 0;
+//		ind = address.find_first_of('.', ind);
+//		while (ind != address.npos) {
+//			string first = address.substr(0, ind);
+//			string second = address.substr(ind + 1, len - ind);
+//			//cout << first << "  " << second << endl;
+//			address = first + "[.]" + second;
+//			ind = address.find_first_of('.', ind+2);
+//			len = address.length();
+//		}
+//		cout << address;
+//		return address;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.defangIPaddr("1.1.1.1");
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************周赛0630***************************************/
+//class Solution {
+//public:
+//	vector<int> pathInZigZagTree(int label) {
+//		int la = label;
+//		int d = 1;
+//		int dmax = 1;
+//		while (la>1) {
+//			la /= 2;
+//			d++;
+//			dmax *= 2;
+//		}
+//		dmax = dmax * 2 - 1;
+//
+//		vector<int> res(d);
+//		res[d - 1] = label;
+//		for (int i = d - 1; i > 0; i--) {
+//			int next = label / 2;
+//			dmax /= 2;
+//			if ((d-i) % 2 == 0) {
+//				cout << next << "a ";
+//				res[i - 1] = next;
+//			}
+//			else {
+//				//计算对称的标签
+//				int next1 = dmax - (next - (dmax + 1) / 2);
+//				cout << next1 << "b ";
+//				res[i - 1] = next1;
+//			}
+//			label = next;			
+//		}
+//
+//		cout << endl;
+//		for (int i = 0; i < d; i++)
+//			cout << res[i] << " ";
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.pathInZigZagTree(1);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//class Solution {
+//public:
+//	vector<int> distributeCandies(int candies, int num_people) {
+//		vector<int> res(num_people, 0);
+//		int ind = 0;
+//		int num = 1;
+//		while (candies > 0) {
+//			if (ind >= num_people) {
+//				ind = 0;
+//			}
+//			if (candies < num)
+//				res[ind] += candies;
+//			else res[ind] += num;
+//			candies -= num;
+//
+//			num++;
+//			ind++;
+//		}
+//		for (int i = 0; i < num_people; i++)
+//			cout << res[i];
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.distributeCandies(60, 4);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+/**************************************字节跳动笔试***************************************/
 //不确定到底对不对
 //class Solution{
 //public:
