@@ -1,18 +1,66 @@
 #include<iostream>
-#include<algorithm>
-#include<vector>
 using namespace std;
 
-class Solution {
-public:
-	vector<int> maxDepthAfterSplit(string seq) {
 
-	}
-};
 
-int main() {
 
-}
+/**************************************周赛0707***************************************/
+//#include<vector>
+//#include<stack>
+//class Solution {
+//public:
+//	vector<int> maxDepthAfterSplit(string seq) {
+//		stack<int> bracket;
+//		int len = seq.length();
+//		int i = 0;
+//		int deepth = 0;
+//		while (i < len) {
+//			if (seq[i] == '(') {
+//				bracket.push(i);
+//				if (bracket.size() > deepth) {
+//					deepth = bracket.size();
+//				}
+//			}
+//			else {
+//				bracket.pop();
+//			}
+//			i++;
+//		}
+//
+//		cout << deepth << endl;
+//
+//		vector<int> res(len, 0);
+//		i = 0;
+//		int maxd = 0;
+//		while (i < len) {
+//			if (seq[i] == '(') {
+//				bracket.push(i);
+//				maxd = bracket.size();
+//				if (maxd > deepth / 2) {
+//					res[i] = 1;
+//				}
+//			}
+//			else {
+//				if (res[bracket.top()] == 1)
+//					res[i] = 1;
+//				bracket.pop();
+//			}
+//			i++;
+//		}
+//
+//		for (int j = 0; j < len; j++) {
+//			cout << res[j] << " ";
+//		}
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	s.maxDepthAfterSplit("(((()))((())))");
+//	system("pause");
+//	return 0;
+//}
 
 
 
@@ -202,6 +250,102 @@ int main() {
 
 
 /**************************************周赛0630***************************************/
+#include<stack>
+class Solution {
+public:
+	bool parseBoolExpr(string expression) {
+		stack<char> symbol;
+		stack<int> value;
+		int len = expression.size();
+		int i = 0;
+		while (i < len) {
+			if (expression[i] == '|' || expression[i] == '&' || expression[i] == '!' || expression[i] == '(')
+				symbol.push(expression[i]);
+			if (expression[i] == ')') {
+				if (expression[i - 1] != ')') {
+					int tmp = expression[i - 1] == 'f' ? 0 : 1;
+					value.push(tmp);
+				}
+				int count = 0;
+				while (symbol.top() == ',') {
+					symbol.pop();
+					count++;
+				}
+				cout << count << endl;
+				symbol.pop();
+				char exp = symbol.top();
+				if (exp == '!') {
+					int val = value.top();
+					value.pop();
+					int tmp = !val;
+					value.push(tmp);
+				}
+				else {
+					int tmp = value.top();
+					value.pop();
+					if (exp == '|') {
+						while (count > 0) {
+							tmp = tmp || value.top();
+							value.pop();
+							count--;
+						}					
+					}
+					else {
+						while (count > 0) {
+							tmp = tmp && value.top();
+							value.pop();
+							count--;
+						}
+					}
+					value.push(tmp);
+				}
+			}
+			if (expression[i] == ',') {
+				if (expression[i - 1] != ')') {
+					int tmp = expression[i - 1] == 'f' ? 0 : 1;
+					value.push(tmp);
+				}
+				symbol.push(expression[i]);
+				cout << "," << endl;
+			}
+			i++;
+		}
+		bool r = value.top();
+		cout << r;
+		return r;
+	}
+};
+
+int main() {
+	Solution s;
+	s.parseBoolExpr("|(&(t,f,t),&(t,f),t)");
+	system("pause");
+	return 0;
+}
+
+
+
+//#include<vector>
+//class Solution {
+//public:
+//	int minHeightShelves(vector<vector<int>>& books, int shelf_width) {
+//		int len = books.size();
+//		vector<int> heightorder(len, 0);
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> b = {
+//		{ 1,1 },{ 2,3 },{ 2,3 },{ 1,1 },{ 1,1 },{ 1,1 },{ 1,2 }
+//	};
+//	s.minHeightShelves(b, 4);
+//	system("pause");
+//	return 0;
+//}
+
+
+
 //class Solution {
 //public:
 //	vector<int> pathInZigZagTree(int label) {
