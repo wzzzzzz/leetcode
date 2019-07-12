@@ -250,99 +250,140 @@ using namespace std;
 
 
 /**************************************周赛0630***************************************/
-#include<stack>
-class Solution {
-public:
-	bool parseBoolExpr(string expression) {
-		stack<char> symbol;
-		stack<int> value;
-		int len = expression.size();
-		int i = 0;
-		while (i < len) {
-			if (expression[i] == '|' || expression[i] == '&' || expression[i] == '!' || expression[i] == '(')
-				symbol.push(expression[i]);
-			if (expression[i] == ')') {
-				if (expression[i - 1] != ')') {
-					int tmp = expression[i - 1] == 'f' ? 0 : 1;
-					value.push(tmp);
-				}
-				int count = 0;
-				while (symbol.top() == ',') {
-					symbol.pop();
-					count++;
-				}
-				cout << count << endl;
-				symbol.pop();
-				char exp = symbol.top();
-				if (exp == '!') {
-					int val = value.top();
-					value.pop();
-					int tmp = !val;
-					value.push(tmp);
-				}
-				else {
-					int tmp = value.top();
-					value.pop();
-					if (exp == '|') {
-						while (count > 0) {
-							tmp = tmp || value.top();
-							value.pop();
-							count--;
-						}					
-					}
-					else {
-						while (count > 0) {
-							tmp = tmp && value.top();
-							value.pop();
-							count--;
-						}
-					}
-					value.push(tmp);
-				}
-			}
-			if (expression[i] == ',') {
-				if (expression[i - 1] != ')') {
-					int tmp = expression[i - 1] == 'f' ? 0 : 1;
-					value.push(tmp);
-				}
-				symbol.push(expression[i]);
-				cout << "," << endl;
-			}
-			i++;
-		}
-		bool r = value.top();
-		cout << r;
-		return r;
-	}
-};
-
-int main() {
-	Solution s;
-	s.parseBoolExpr("|(&(t,f,t),&(t,f),t)");
-	system("pause");
-	return 0;
-}
-
-
-
-//#include<vector>
+//#include<stack>
 //class Solution {
 //public:
-//	int minHeightShelves(vector<vector<int>>& books, int shelf_width) {
-//		int len = books.size();
-//		vector<int> heightorder(len, 0);
+//	bool parseBoolExpr(string expression) {
+//		stack<char> symbol;
+//		stack<int> value;
+//		int len = expression.size();
+//		int i = 0;
+//		while (i < len) {
+//			if (expression[i] == '|' || expression[i] == '&' || expression[i] == '!' || expression[i] == '(')
+//				symbol.push(expression[i]);
+//			if (expression[i] == ')') {
+//				if (expression[i - 1] != ')') {
+//					int tmp = expression[i - 1] == 'f' ? 0 : 1;
+//					value.push(tmp);
+//				}
+//				int count = 0;
+//				while (symbol.top() == ',') {
+//					symbol.pop();
+//					count++;
+//				}
+//				//cout << count <<" "<< symbol.top()<< endl;
+//				symbol.pop();
+//				char exp = symbol.top();
+//				symbol.pop();
+//				if (exp == '!') {
+//					int val = value.top();
+//					value.pop();
+//					int tmp = !val;
+//					value.push(tmp);
+//				}
+//				else {
+//					int tmp = value.top();
+//					value.pop();
+//					if (exp == '|') {
+//						while (count > 0) {
+//							tmp = tmp || value.top();
+//							value.pop();
+//							count--;
+//						}					
+//					}
+//					else {
+//						while (count > 0) {
+//							tmp = tmp && value.top();
+//							value.pop();
+//							count--;
+//						}
+//					}
+//					value.push(tmp);
+//				}
+//			}
+//			if (expression[i] == ',') {
+//				if (expression[i - 1] != ')') {
+//					int tmp = expression[i - 1] == 'f' ? 0 : 1;
+//					value.push(tmp);
+//				}
+//				symbol.push(expression[i]);
+//				//cout << "," << endl;
+//			}
+//			i++;
+//		}
+//		bool r = value.top();
+//		cout << r;
+//		return r;
 //	}
 //};
 //
 //int main() {
 //	Solution s;
-//	vector<vector<int>> b = {
-//		{ 1,1 },{ 2,3 },{ 2,3 },{ 1,1 },{ 1,1 },{ 1,1 },{ 1,2 }
-//	};
-//	s.minHeightShelves(b, 4);
+//	s.parseBoolExpr("|(&(t,f,t),&(t,f),t)");
 //	system("pause");
 //	return 0;
 //}
+
+
+
+#include<vector>
+#include<map>
+class Solution {
+public:
+	int minHeightShelves(vector<vector<int>>& books, int shelf_width) {
+		int len = books.size();
+		vector<int> heightorder(len, 0);
+
+		int res = 0;
+		res = minHeight(books, shelf_width, 0, 0, 0, 0);
+		cout << res;
+		return res;
+	}
+
+	int minHeight(vector<vector<int>>& books, int shelf_width,int ind,int height,int hei,int wid) {
+		int len = books.size();
+		if (ind == len - 1)
+			return hei;
+
+		int res = height;
+		if (books[ind][0] <= shelf_width - wid) {
+			cout << "a" << endl;
+			int tmp = 0;
+			//下一行
+			if (books[ind][1] > hei) {
+				tmp = minHeight(books, shelf_width, ind + 1, height + hei, books[ind][1], books[ind][0]);
+			}
+			//同一行
+			hei = hei > books[ind][1] ? hei : books[ind][1];
+			height = hei > books[ind][1] ? height : height - hei + books[ind][1];
+			wid = wid + books[ind][0];
+			res = minHeight(books, shelf_width, ind + 1, height, hei, wid);
+			if (tmp != 0) {
+				res = res < tmp ? res : tmp;
+			}
+		}
+		else {
+			cout << "b" << endl;
+			wid = books[ind][0];
+			hei = books[ind][1];
+			height += hei;
+			res=minHeight(books, shelf_width, ind + 1, height, hei, wid);
+		}
+		//cout << res;
+
+		return res;
+	}
+};
+
+int main() {
+	Solution s;
+	vector<vector<int>> b = {
+		{ 1,1 },{ 2,3 },{ 2,3 },{ 1,1 },{ 1,1 },{ 1,1 },{ 1,2 }
+	};
+	s.minHeightShelves(b, 4);
+	system("pause");
+	return 0;
+}
 
 
 
