@@ -1,6 +1,83 @@
 #include <iostream>
 using namespace std;
 
+
+/****************************************第一百零二题*********************************************/
+////Definition for a binary tree node.
+//struct TreeNode {
+//    int val;
+//    TreeNode *left;
+//    TreeNode *right;
+//    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+//};
+//
+//#include<vector>
+//#include<queue>
+//class Solution {
+//public:
+//	vector<vector<int>> levelOrder(TreeNode* root) {
+//		if (root == nullptr) {
+//			return vector<vector<int>>();
+//		}
+//		
+//		queue<TreeNode*> s;
+//		vector<vector<int>> res(1);
+//		s.push(root);
+//		TreeNode t(1);
+//		//cout << &t << endl;
+//		s.push(&t);
+//		while (!s.empty()) {
+//			TreeNode* tmp = s.front();
+//			s.pop();
+//			//cout << tmp << endl;
+//			if (tmp == &t) {
+//				if (s.empty())
+//					break;
+//				res.push_back(vector<int>(0));
+//				s.push(&t);
+//				continue;
+//			}
+//			res[res.size() - 1].push_back(tmp->val);
+//			if (tmp->left)
+//				s.push(tmp->left);
+//			if (tmp->right)
+//				s.push(tmp->right);
+//		}
+//		for (int i = 0; i < res.size(); i++) {
+//			for (int j = 0; j < res[i].size(); j++) {
+//				cout << res[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	TreeNode t0(0);
+//	TreeNode t1(1);
+//	TreeNode t2(2);
+//	TreeNode t3(3);
+//	TreeNode t4(4);
+//	TreeNode t5(5);
+//	TreeNode t6(6);
+//	TreeNode t7(7);
+//	t0.left = &t1;
+//	t0.right = &t2;
+//	t1.left = &t3;
+//	t1.right = &t4;
+//	t2.left = &t5;
+//	t2.right = &t6;
+//	t4.left = &t7;
+//	Solution s;
+//	s.levelOrder(nullptr);
+//	system("pause");
+//	return 0;
+//}
+
+
+
 /****************************************第九十八题*********************************************/
 //#include<vector>;
 //#include<stack>;
