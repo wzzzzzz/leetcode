@@ -1,6 +1,105 @@
 
 
 
+/****************************************第138题*********************************************/
+// // Definition for a Node.
+// function Node(val,next,random) {
+//    this.val = val;
+//    this.next = next;
+//    this.random = random;
+// };
+
+// /**
+//  * @param {Node} head
+//  * @return {Node}
+//  */
+// var copyRandomList = function(head) {
+//     var arr=new Array();
+//     if(head==null){
+//         return null;
+//     }
+//     while(head!=null){
+//         arr.push(head);
+//         var newnode=new Node(head.val);
+//         arr.push(newnode);
+//         head=head.next;
+//     }
+//     var len=arr.length;
+//     for(var i=0;i<len-2;i+=2){
+//         arr[i+1].next=arr[i+3];
+//         var ind=arr.indexOf(arr[i].random);
+//         if(ind==-1){
+//             arr[i+1].random=null;
+//         }
+//         else{
+//             arr[i+1].random=arr[ind+1];
+//         }
+//     }
+//     arr[len-1].next=null;
+//     var ind=arr.indexOf(arr[i].random);
+//     if(ind==-1){
+//         arr[i+1].random=null;
+//     }
+//     else{
+//         arr[i+1].random=arr[ind+1];
+//     }
+//     console.log(arr[1]);
+//     return arr[1];
+// };
+// var t0=new Node(0);
+// var t1=new Node(1);
+// // var t2=new Node(2);
+// // var t3=new Node(3);
+// // var t4=new Node(4);
+// // var t5=new Node(5);
+// // var t6=new Node(6);
+// // var t7=new Node(7);
+// // var t8=new Node(8);
+// t0.next=t1;
+// t1.next=null;
+// t0.random=t1;
+// t1.random=t1;
+// copyRandomList(t0);
+
+
+
+/****************************************第137题*********************************************/
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
+// var singleNumber = function(nums) {
+//     nums.sort();
+//     console.log(nums);
+//     if(nums==null){
+//         return null;
+//     }
+//     var len=nums.length;
+//     var res=nums[0];
+//     if(len==1||res!=nums[1]){
+//         return res;
+//     }
+//     for(var i=3;i<nums.length-1;i++){
+//         if(nums[i]==nums[i+1]){
+//             i+=2;
+//         }
+//         else{
+//             res=nums[i];
+//             console.log(res);
+//             return res;
+//         }
+//     }
+//     if(res==nums[0]){
+//         res=nums[len-1];
+//         console.log(res);
+//         return res;
+//     }
+// };
+// var nums=[0,4,0,3,4,0,4];
+// singleNumber(nums);
+
+
+
 /****************************************第134题*********************************************/
 // /**
 //  * @param {number[]} gas
