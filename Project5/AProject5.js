@@ -1,11 +1,130 @@
 
 
 
+/****************************************第221题*********************************************/
+// /**
+//  * @param {character[][]} matrix
+//  * @return {number}
+//  */
+// var maximalSquare = function(matrix) {
+//     var m=matrix.length;
+//     if(m==0){
+//         return 0;
+//     }
+//     var n=matrix[0].length;
+//     if(n==0){
+//         return 0;
+//     }
+
+//     var arr=new Array(m);
+//     var res=0;
+//     for(var i=0;i<m;i++){
+//         var tmp=new Array(n);
+//         arr[i]=tmp;
+//         for(var j=0;j<n;j++){
+//             var t=new Array(3);
+//             tmp[j]=t;
+//             if(i==0){
+//                 t[0]=matrix[i][j];
+//                 t[2]=0;
+//             }
+//             else{
+//                 t[2]=matrix[i-1][j]==0?0:arr[i-1][j][2]+1;
+//             }
+//             if(j==0){
+//                 t[0]=matrix[i][j];
+//                 t[1]=0;
+//             }
+//             else{
+//                 t[1]=matrix[i][j-1]==0?0:arr[i][j-1][1]+1;
+//                 //console.log(matrix[i][j-1],t[1]);
+//             }
+//             if(i>0&&j>0){
+//                 t[0]=matrix[i][j]==0?0:Math.min(t[1],t[2],arr[i-1][j-1][0])+1;
+//             }            
+//             res=Math.max(t[0],res);
+//             console.log(i+" "+j+"  "+t);
+//         }        
+//         console.log(" ");
+//     }
+//     console.log(res*res);
+//     return res*res;
+// };
+// matrix=[["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]];
+// maximalSquare(matrix);
+
+
+
+/****************************************第213题*********************************************/
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
+// var rob = function(nums) {
+//     if(nums==null||nums.length==0){
+//         return 0;
+//     }
+//     var len=nums.length;
+//     if(len==1){
+//         return nums[0];
+//     }
+//     var res=0;
+//     if(len==2){
+//         res=Math.max(nums[0],nums[1]);
+//         return res;
+//     }
+//     if(len==3){
+//         res=Math.max(nums[0],nums[1],nums[2]);
+//         return res;
+//     }
+//     //用来记录包括最后一位的情况
+//     var path=new Array(len);
+//     path[len-1]=nums[len-1];
+//     path[len-2]=nums[len-2];
+//     path[len-3]=nums[len-1]+nums[len-3];
+//     //用来记录不包括最后一位的情况
+//     var path2=new Array(len-1);
+//     path2[len-2]=nums[len-2];
+//     path2[len-3]=nums[len-3];
+
+//     var res=Math.max(nums[len-2],path[len-3]);
+    
+//     for(var i=len-4;i>=0;i--){
+//         var flag=path[i+2];
+//         var flag2=path2[i+2];
+
+//         for(var j=i+3;j<len&&j<i+6;j++){
+//             if(path2[j]>flag2){
+//                 flag2=path2[j];
+//             }
+//             if(path[j]>flag){
+//                 flag=path[j];
+//             }
+//         }
+//         path[i]=nums[i]+flag;
+//         path2[i]=nums[i]+flag2;
+
+//         if(i==0){
+//             path[0]=0;               
+//         }
+        
+//         //console.log(path[i]+" "+path2[i]);
+//         res=Math.max(path[i],path2[i],res);
+//     }
+
+//     //console.log(res);
+//     return res;
+// };
+// nums=[2,7,9,3,1];
+// rob(nums);
+
+
+
 /****************************************第152题*********************************************/
-/**
- * @param {number[]} nums
- * @return {number}
- */
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
 // var maxProduct = function(nums) {
 //     var len=nums.length;
 //     if(len==1)
