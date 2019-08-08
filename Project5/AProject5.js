@@ -170,6 +170,136 @@
 
 
 
+/****************************************第143题*********************************************/
+// //Definition for singly-linked list.
+// function ListNode(val) {
+//     this.val = val;
+//     this.next = null;
+// }
+// /**
+//  * @param {ListNode} head
+//  * @return {void} Do not return anything, modify head in-place instead.
+//  */
+// var reorderList = function(head) {
+//     if(!(head instanceof ListNode)){
+//         return head;
+//     }
+//     var arr=new Array();
+//     var res=head;
+//     while(head instanceof ListNode){
+//         arr.push(head);
+//         head=head.next;
+//     }
+//     var len=arr.length;
+//     head=res;
+//     for(var i=0;i<Math.floor(len/2);i++){
+//         res.next=arr[i];
+//         res=res.next;
+//         //console.log(res.val);
+//         res.next=arr[len-1-i];
+//         res=res.next;
+//         //console.log(res.val+"=");
+//     }
+//     if(len%2==1){
+//         res.next=arr[i];
+//         arr[i].next=null;
+//     }
+//     else{
+//         res.next=null;
+//     }
+
+//     while(head instanceof ListNode){
+//         console.log(head.val);
+//         head=head.next;
+//     }
+
+//     return head;
+// };
+// var l0=new ListNode(0);
+// var l1=new ListNode(1);
+// var l2=new ListNode(2);
+// var l3=new ListNode(3);
+// var l4=new ListNode(4);
+// l0.next=l1;
+// l1.next=l2;
+// l2.next=l3;
+// l3.next=l4;
+// reorderList(null);
+
+
+
+/****************************************第142题*********************************************/
+// //Definition for singly-linked list.
+// function ListNode(val) {
+//     this.val = val;
+//     this.next = null;
+// }
+
+// /**
+//  * @param {ListNode} head
+//  * @return {ListNode}
+//  */
+// // var detectCycle = function(head) {
+// //     var copylist=new Array();
+// //     if(!(head instanceof ListNode)){
+// //         return head;
+// //     }
+// //     copylist.push(head);
+// //     head=head.next;
+// //     while(head instanceof ListNode){
+// //         if(copylist.indexOf(head)!=-1){
+// //             break;
+// //         }
+// //         copylist.push(head);
+// //         head=head.next;
+// //     }
+// //     if(head!=null)
+// //         console.log(head.val);
+// //     else console.log("null");
+// //     return head;
+// // };
+// var detectCycle = function(head) {
+//     var pointer1=head;
+//     var pointer2=head;
+//     while(pointer1 instanceof ListNode){
+//         pointer1=pointer1.next;
+//         pointer2=pointer2.next;
+//         if(pointer1 instanceof ListNode){
+//             pointer1=pointer1.next;
+//         }
+//         else{
+//             return null;
+//         }
+//         if(pointer1==pointer2){
+//             break;
+//         }
+//     }
+//     if(!(pointer1 instanceof ListNode)){
+//         return null;
+//     }
+//     pointer1=head;
+//     while(pointer1 instanceof ListNode){
+//         if(pointer1==pointer2){
+//             break;
+//         }
+//         pointer1=pointer1.next;
+//         pointer2=pointer2.next;
+//     }
+//     console.log(pointer1.val);
+//     return pointer1;
+// };
+// var l0=new ListNode(3);
+// var l1=new ListNode(0);
+// var l2=new ListNode(2);
+// var l3=new ListNode(4);
+// l0.next=l1;
+// l1.next=l2;
+// l2.next=l3;
+// l3.next=l1;
+// detectCycle(null);
+
+
+
 /****************************************第139题*********************************************/
 // /**
 //  * @param {string} s
