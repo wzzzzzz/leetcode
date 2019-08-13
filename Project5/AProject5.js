@@ -170,6 +170,210 @@
 
 
 
+/****************************************第148题*********************************************/
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var sortList = function(head) {
+    
+};
+
+
+
+/****************************************第147题*********************************************/
+// //Definition for singly-linked list.
+// function ListNode(val) {
+//     this.val = val;
+//     this.next = null;
+// }
+
+// /**
+//  * @param {ListNode} head
+//  * @return {ListNode}
+//  */
+// var insertionSortList = function(head) {
+//     if(!(head instanceof ListNode)){
+//         console.log("null");
+//         return head;
+//     }
+//     //排序后的头，排序后的移动指针，当前排序位
+//     var newhead=head,
+//         t=newhead,
+//         tmp=head.next;
+//     head=tmp;
+//     newhead.next=null;
+//     //console.log(newhead.val);
+//     while(head instanceof ListNode){
+//         tmp=head;
+//         head=tmp.next;
+//         tmp.next=null;
+//         t=newhead;
+//         if(t.val>tmp.val){
+            
+//             tmp.next=t;
+//             newhead=tmp;
+//         }
+//         else{
+//             while(t.next instanceof ListNode){ 
+//                 if(t.next.val<tmp.val){
+//                     t=t.next;
+//                 }
+//                 else {
+//                     tmp.next=t.next;
+//                     t.next=tmp;
+//                     break;
+//                 }
+//             }
+//             if(!(t.next instanceof ListNode)){
+//                 t.next=tmp;
+//                 tmp.next=null;
+//             }
+//         }
+//     }
+//     while(newhead instanceof ListNode){
+//         console.log(newhead.val);
+//         newhead=newhead.next;
+//     }
+//     return newhead;
+// };
+// var l0=new ListNode(-1);
+// var l1=new ListNode(6);
+// var l2=new ListNode(3);
+// var l3=new ListNode(4);
+// var l4=new ListNode(0);
+// l0.next=l1;
+// l1.next=l2;
+// l2.next=l3;
+// l3.next=l4;
+// insertionSortList(l0);
+
+
+
+/****************************************第146题*********************************************/
+// /**
+//  * @param {number} capacity
+//  */
+// var LRUCache = function(capacity) {
+//     this.capacity=capacity;
+//     this.keys=new Array(0);
+//     this.values=new Array(0);
+//     this.used=new Array(capacity);
+//     //this.notusedInd=0;
+//     for(var i=0;i<capacity;i++){
+//         this.used[i]=0;
+//     }
+// };
+
+// /** 
+//  * @param {number} key
+//  * @return {number}
+//  */
+// LRUCache.prototype.get = function(key) {
+//     if(this.keys.length>0){
+//         var ind=this.keys.indexOf(key);
+//         if(ind==-1)
+//             return -1;
+//         this.used[ind]+=1;
+//         return this.values[ind];
+//     }
+//     else return -1;
+// };
+
+// /** 
+//  * @param {number} key 
+//  * @param {number} value
+//  * @return {void}
+//  */
+// LRUCache.prototype.put = function(key, value) {
+//     var ind=this.keys.indexOf(key);
+//     if(ind>-1){
+//         this.values[ind]=value;
+//         this.used[ind]+=1;
+//     }
+//     else if(this.keys.length<this.capacity){
+//         this.keys.push(key);
+//         this.values.push(value);
+//         this.used[this.keys.length-1]+=1;
+//     }
+//     else{
+//         var indd=0;
+//         for(var i=0;i<this.capacity;i++){
+//             if(this.used[i]<this.used[indd])
+//                 indd=i;
+//         }
+//         //console.log(indd);
+//         this.keys[indd]=key;
+//         this.values[indd]=value;
+//         this.used[indd]+=1;
+//     }
+// }; 
+// //Your LRUCache object will be instantiated and called as such:
+// var cache = new LRUCache(2);
+// cache.put(2, 1);
+// cache.put(2, 2);
+// console.log(cache.get(2));
+
+
+
+/****************************************第144题*********************************************/
+// //Definition for a binary tree node.
+// function TreeNode(val) {
+//     this.val = val;
+//     this.left = this.right = null;
+// }
+// /**
+//  * @param {TreeNode} root
+//  * @return {number[]}
+//  */
+// var preorderTraversal = function(root) {
+//     var stack=new Array(),
+//         res=new Array();
+//     if(!(root instanceof TreeNode)){
+//         return res;
+//     }
+//     stack.push(root);
+//     while(stack.length!=0){
+//         var tmp=stack.pop();
+//         res.push(tmp.val);
+//         if(tmp.right){
+//             stack.push(tmp.right);
+//         }
+//         if(tmp.left){
+//             stack.push(tmp.left);
+//         }
+//     }
+//     console.log(res);
+//     return res;
+// };
+// var t0=new TreeNode(0);
+// var t1=new TreeNode(1);
+// var t2=new TreeNode(2);
+// var t3=new TreeNode(3);
+// var t4=new TreeNode(4);
+// var t5=new TreeNode(5);
+// var t6=new TreeNode(6);
+// var t7=new TreeNode(7);
+// //var t8=new TreeNode(8);
+// t0.left = t1;
+// t0.right = t2;
+// t1.left = t3;
+// t1.right = t4;
+// //t2.left = t5;
+// t2.right = t6;
+// t4.left = t7;
+// //t4.right = t8;
+// preorderTraversal(t0);
+
+
+
 /****************************************第143题*********************************************/
 // //Definition for singly-linked list.
 // function ListNode(val) {
