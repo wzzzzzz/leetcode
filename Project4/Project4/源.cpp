@@ -1,7 +1,3 @@
-#include<iostream>
-using namespace std;
-
-
 
 
 /**************************************周赛0707***************************************/
@@ -326,64 +322,64 @@ using namespace std;
 
 
 
-#include<vector>
-#include<map>
-class Solution {
-public:
-	int minHeightShelves(vector<vector<int>>& books, int shelf_width) {
-		int len = books.size();
-		vector<int> heightorder(len, 0);
-
-		int res = 0;
-		res = minHeight(books, shelf_width, 0, 0, 0, 0);
-		cout << res;
-		return res;
-	}
-
-	int minHeight(vector<vector<int>>& books, int shelf_width,int ind,int height,int hei,int wid) {
-		int len = books.size();
-		if (ind == len - 1)
-			return hei;
-
-		int res = height;
-		if (books[ind][0] <= shelf_width - wid) {
-			cout << "a" << endl;
-			int tmp = 0;
-			//下一行
-			if (books[ind][1] > hei) {
-				tmp = minHeight(books, shelf_width, ind + 1, height + hei, books[ind][1], books[ind][0]);
-			}
-			//同一行
-			hei = hei > books[ind][1] ? hei : books[ind][1];
-			height = hei > books[ind][1] ? height : height - hei + books[ind][1];
-			wid = wid + books[ind][0];
-			res = minHeight(books, shelf_width, ind + 1, height, hei, wid);
-			if (tmp != 0) {
-				res = res < tmp ? res : tmp;
-			}
-		}
-		else {
-			cout << "b" << endl;
-			wid = books[ind][0];
-			hei = books[ind][1];
-			height += hei;
-			res=minHeight(books, shelf_width, ind + 1, height, hei, wid);
-		}
-		//cout << res;
-
-		return res;
-	}
-};
-
-int main() {
-	Solution s;
-	vector<vector<int>> b = {
-		{ 1,1 },{ 2,3 },{ 2,3 },{ 1,1 },{ 1,1 },{ 1,1 },{ 1,2 }
-	};
-	s.minHeightShelves(b, 4);
-	system("pause");
-	return 0;
-}
+//#include<vector>
+//#include<map>
+//class Solution {
+//public:
+//	int minHeightShelves(vector<vector<int>>& books, int shelf_width) {
+//		int len = books.size();
+//		vector<int> heightorder(len, 0);
+//
+//		int res = 0;
+//		res = minHeight(books, shelf_width, 0, 0, 0, 0);
+//		cout << res;
+//		return res;
+//	}
+//
+//	int minHeight(vector<vector<int>>& books, int shelf_width,int ind,int height,int hei,int wid) {
+//		int len = books.size();
+//		if (ind == len - 1)
+//			return hei;
+//
+//		int res = height;
+//		if (books[ind][0] <= shelf_width - wid) {
+//			cout << "a" << endl;
+//			int tmp = 0;
+//			//下一行
+//			if (books[ind][1] > hei) {
+//				tmp = minHeight(books, shelf_width, ind + 1, height + hei, books[ind][1], books[ind][0]);
+//			}
+//			//同一行
+//			hei = hei > books[ind][1] ? hei : books[ind][1];
+//			height = hei > books[ind][1] ? height : height - hei + books[ind][1];
+//			wid = wid + books[ind][0];
+//			res = minHeight(books, shelf_width, ind + 1, height, hei, wid);
+//			if (tmp != 0) {
+//				res = res < tmp ? res : tmp;
+//			}
+//		}
+//		else {
+//			cout << "b" << endl;
+//			wid = books[ind][0];
+//			hei = books[ind][1];
+//			height += hei;
+//			res=minHeight(books, shelf_width, ind + 1, height, hei, wid);
+//		}
+//		//cout << res;
+//
+//		return res;
+//	}
+//};
+//
+//int main() {
+//	Solution s;
+//	vector<vector<int>> b = {
+//		{ 1,1 },{ 2,3 },{ 2,3 },{ 1,1 },{ 1,1 },{ 1,1 },{ 1,2 }
+//	};
+//	s.minHeightShelves(b, 4);
+//	system("pause");
+//	return 0;
+//}
 
 
 

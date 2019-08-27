@@ -1,5 +1,91 @@
 
 
+/****************************************猿辅导2019第一题*********************************************/
+
+
+
+
+/****************************************猿辅导2017第二题*********************************************/
+// var func=function(nums){
+//     var len=nums.length;
+//     if(len==0)
+//         return 0;
+//     var res=0;
+//     var add=new Array(len);
+//     for(var i=0;i<len;i++){
+//         add[i]=0;
+//     }
+//     for(var i=len-1;i>=0;i--){
+//         for(var j=i+1;j<len;j++){
+//             add[j]+=nums[i];
+//             if(add[j]==0){
+//                 res=res>(j-i+1)?res:(j-i+1);
+//             }
+//         }
+
+//         add[i]=nums[i];
+//     }
+//     console.log(res);
+//     return res;
+// }
+// var nums=[1,-1,1,-1,1,-1,-1,-1,1,-1];
+// func(nums);
+
+
+
+/****************************************猿辅导2017第一题*********************************************/
+// var func=function(price,unlucky){
+//     var len=unlucky.length;
+//     var min=1;
+//     var flag=0;
+//     unlucky.sort();
+//     for(var i=0;i<len;i++){
+//         if(unlucky[i]==min){
+//             min++;
+//         }
+//         else break;
+//     }
+    
+//     var res=0,num=0,t=1;
+//     while(price>0){
+//         num=price%10;
+//         price-=num;
+//         price/=10;
+//         num+=flag;
+//         flag=0;
+//         console.log(num);
+//         if(num==0){
+//             num=min;
+//         }
+//         else{
+//             for(i=0;i<len;i++){
+//                 if(unlucky[i]<num) continue;
+//                 if(num==unlucky[i]){
+//                     num++;
+//                 }
+//                 else{
+//                     break;
+//                 }
+//             }
+//             if(num==10){
+//                 flag=1;
+//                 num=min;
+//             }
+//         }
+//         res+=num*t;
+//         t*=10;   
+//     }
+//     if(flag==1){
+//         res+=t;
+//     }
+//     console.log(res);
+//     return res;
+// }
+// var p=9899;
+// var u=[1,4,7,8,9];
+// func(p,u);
+
+
 
 /****************************************第221题*********************************************/
 // /**
@@ -170,21 +256,128 @@
 
 
 
-/****************************************第148题*********************************************/
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-var sortList = function(head) {
-    
-};
+// /****************************************第148题*********************************************/
+// //Definition for singly-linked list.
+// function ListNode(val) {
+//     this.val = val;
+//     this.next = null;
+// }
+
+// /**
+//  * @param {ListNode} head
+//  * @return {ListNode}
+//  */
+
+// var sort=function(head,len){
+//     var ind=0;
+//     var front=head,
+//         later=head;
+//     var before=null,
+//         beforelater=head;
+//     var last;
+//     var mid=Math.floor(len/2);
+//     while(ind<mid){
+//         beforelater=later;
+//         later=later.next;
+//         ind++;
+//     }
+//     last=later;
+//     var ind2=ind;
+//     while(ind2<=len){
+//         last=last.next;
+//         ind2++;
+//     }
+//     console.log(later.val);
+//     ind2=0;
+//     while(ind2<mid&&ind<len){
+//         //console.log(front.val+"   "+later.val); 
+//         //把后指针挪到前指针的前面，然后后指针后移一位
+//         if(front.val>later.val){
+//             if(before==null){
+//                 head=later;
+//                 before=head;
+//             }
+//             else{
+//                 before.next=later;
+//             }
+//             beforelater.next=later.next;
+//             later.next=front;
+
+//             later=beforelater.next; 
+//             ind++;           
+//         }
+//         //前指针后移一位
+//         else{
+//             //console.log(front.val+" "+later.val); 
+//             before=front;
+//             front=before.next;
+//             ind2++;
+//         }         
+//     }
+//     if(ind<len){
+//         console.log("a");
+//         beforelater.next=last;
+//     }
+//     ind=0;
+//     later=head;
+//     while(later instanceof ListNode){
+//         console.log(later.val);
+//         later=later.next;
+//     }
+//     return head;
+// }
+// var sortList = function(head) {
+//     if(!(head instanceof ListNode)){
+//         return head;
+//     }
+//     var len=0;
+//     //前后指针
+//     var front=head;
+//     var later=head.next;
+//     //前指针的前一个和后指针的前一个
+//     var before=null;
+//     //var beforelater=head;
+//     //交换辅助
+//     //var tmp;
+//     while(front instanceof ListNode && front.next instanceof ListNode){
+//         len+=2;
+//         later=front.next;
+//         if(later.val<front.val){
+//             if(before==null){
+//                 front.next=later.next;
+//                 later.next=front;
+//                 head=later;
+//             }
+//             else{
+//                 before.next=later;
+//                 //beforelater.next=front;
+//                 //tmp=later.next;
+//                 front.next=later.next;
+//                 later.next=front;
+//             } 
+//             console.log(later.val+" "+front.val); 
+//             before=front;
+//             front=front.next;           
+//         }
+//         else{
+//             console.log(front.val+" "+later.val); 
+//             before=later;
+//             front=later.next;
+//         }       
+//     }
+//     if(front instanceof ListNode) len++;
+//     console.log(len);
+// };
+// var l0=new ListNode(-1);
+// var l1=new ListNode(2);
+// var l2=new ListNode(1);
+// var l3=new ListNode(3);
+// var l4=new ListNode(0);
+// l0.next=l1;
+// l1.next=l2;
+// l2.next=l3;
+// l3.next=l4;
+// sort(l0,3);
 
 
 
