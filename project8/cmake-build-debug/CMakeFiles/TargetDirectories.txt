@@ -1,0 +1,7 @@
+E:/class/project8/cmake-build-debug/CMakeFiles/project8test.dir
+E:/class/project8/cmake-build-debug/CMakeFiles/project8.dir
+E:/class/project8/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+E:/class/project8/cmake-build-debug/CMakeFiles/test2.dir
+E:/class/project8/cmake-build-debug/CMakeFiles/subtractProductAndSum.dir
+E:/class/project8/cmake-build-debug/CMakeFiles/reconstructMatrix.dir
+E:/class/project8/cmake-build-debug/CMakeFiles/edit_cache.dir
