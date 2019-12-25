@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-E:/class/project8/main.cpp
+E:/class/leetcode/project8/getDecimalValue.cpp
 iostream
--
+E:/class/leetcode/project8/iostream
+vector
+E:/class/leetcode/project8/vector
 

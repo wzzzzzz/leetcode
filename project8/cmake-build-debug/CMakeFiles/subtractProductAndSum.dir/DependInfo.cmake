@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "E:/class/project8/subtractProductAndSum.cpp" "E:/class/project8/cmake-build-debug/CMakeFiles/subtractProductAndSum.dir/subtractProductAndSum.cpp.obj"
+  "E:/class/leetcode/project8/subtractProductAndSum.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/subtractProductAndSum.dir/subtractProductAndSum.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 

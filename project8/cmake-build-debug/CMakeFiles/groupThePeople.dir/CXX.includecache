@@ -6,19 +6,11 @@
 
 #IncludeRegexTransform: 
 
-E:/class/project8/test.cpp
+E:/class/leetcode/project8/groupThePeople.cpp
 iostream
--
+E:/class/leetcode/project8/iostream
 vector
--
-string
--
-math.h
--
+E:/class/leetcode/project8/vector
 map
--
-iomanip
--
-algorithm
--
+E:/class/leetcode/project8/map
 

@@ -50,6 +50,10 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/project8test.dir/DependInfo.cmake"
   "CMakeFiles/project8.dir/DependInfo.cmake"
   "CMakeFiles/test2.dir/DependInfo.cmake"
+  "CMakeFiles/groupThePeople.dir/DependInfo.cmake"
   "CMakeFiles/subtractProductAndSum.dir/DependInfo.cmake"
   "CMakeFiles/reconstructMatrix.dir/DependInfo.cmake"
+  "CMakeFiles/getDecimalValue.dir/DependInfo.cmake"
+  "CMakeFiles/sequentialDigits.dir/DependInfo.cmake"
+  "CMakeFiles/maxSideLength.dir/DependInfo.cmake"
   )

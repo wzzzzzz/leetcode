@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-E:/class/project8/reconstructMatrix.cpp
+E:/class/leetcode/project8/sequentialDigits.cpp
 iostream
-E:/class/project8/iostream
+E:/class/leetcode/project8/iostream
 vector
-E:/class/project8/vector
+E:/class/leetcode/project8/vector
 

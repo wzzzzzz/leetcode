@@ -49,24 +49,13 @@ RM = "D:\clion\CLion 2019.2.2\bin\cmake\win\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\class\project8
+CMAKE_SOURCE_DIR = E:\class\leetcode\project8
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\class\project8\cmake-build-debug
+CMAKE_BINARY_DIR = E:\class\leetcode\project8\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	echo >nul && "D:\clion\CLion 2019.2.2\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache\fast: rebuild_cache
-
-.PHONY : rebuild_cache\fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -79,11 +68,22 @@ edit_cache\fast: edit_cache
 
 .PHONY : edit_cache\fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	echo >nul && "D:\clion\CLion 2019.2.2\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache\fast: rebuild_cache
+
+.PHONY : rebuild_cache\fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\project8\cmake-build-debug\CMakeFiles E:\class\project8\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles E:\class\leetcode\project8\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\project8\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -151,6 +151,19 @@ test2\fast:
 .PHONY : test2\fast
 
 #=============================================================================
+# Target rules for targets named groupThePeople
+
+# Build rule for target.
+groupThePeople: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) groupThePeople
+.PHONY : groupThePeople
+
+# fast build rule for target.
+groupThePeople\fast:
+	$(MAKE) -f CMakeFiles\groupThePeople.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\groupThePeople.dir\build
+.PHONY : groupThePeople\fast
+
+#=============================================================================
 # Target rules for targets named subtractProductAndSum
 
 # Build rule for target.
@@ -176,6 +189,75 @@ reconstructMatrix\fast:
 	$(MAKE) -f CMakeFiles\reconstructMatrix.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reconstructMatrix.dir\build
 .PHONY : reconstructMatrix\fast
 
+#=============================================================================
+# Target rules for targets named getDecimalValue
+
+# Build rule for target.
+getDecimalValue: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) getDecimalValue
+.PHONY : getDecimalValue
+
+# fast build rule for target.
+getDecimalValue\fast:
+	$(MAKE) -f CMakeFiles\getDecimalValue.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\getDecimalValue.dir\build
+.PHONY : getDecimalValue\fast
+
+#=============================================================================
+# Target rules for targets named sequentialDigits
+
+# Build rule for target.
+sequentialDigits: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) sequentialDigits
+.PHONY : sequentialDigits
+
+# fast build rule for target.
+sequentialDigits\fast:
+	$(MAKE) -f CMakeFiles\sequentialDigits.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sequentialDigits.dir\build
+.PHONY : sequentialDigits\fast
+
+#=============================================================================
+# Target rules for targets named maxSideLength
+
+# Build rule for target.
+maxSideLength: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) maxSideLength
+.PHONY : maxSideLength
+
+# fast build rule for target.
+maxSideLength\fast:
+	$(MAKE) -f CMakeFiles\maxSideLength.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\maxSideLength.dir\build
+.PHONY : maxSideLength\fast
+
+getDecimalValue.obj: getDecimalValue.cpp.obj
+
+.PHONY : getDecimalValue.obj
+
+# target to build an object file
+getDecimalValue.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\getDecimalValue.cpp.obj
+	$(MAKE) -f CMakeFiles\getDecimalValue.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\getDecimalValue.dir\getDecimalValue.cpp.obj
+.PHONY : getDecimalValue.cpp.obj
+
+getDecimalValue.i: getDecimalValue.cpp.i
+
+.PHONY : getDecimalValue.i
+
+# target to preprocess a source file
+getDecimalValue.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\getDecimalValue.cpp.i
+	$(MAKE) -f CMakeFiles\getDecimalValue.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\getDecimalValue.dir\getDecimalValue.cpp.i
+.PHONY : getDecimalValue.cpp.i
+
+getDecimalValue.s: getDecimalValue.cpp.s
+
+.PHONY : getDecimalValue.s
+
+# target to generate assembly for a file
+getDecimalValue.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\getDecimalValue.cpp.s
+	$(MAKE) -f CMakeFiles\getDecimalValue.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\getDecimalValue.dir\getDecimalValue.cpp.s
+.PHONY : getDecimalValue.cpp.s
+
 groupThePeople.obj: groupThePeople.cpp.obj
 
 .PHONY : groupThePeople.obj
@@ -183,6 +265,7 @@ groupThePeople.obj: groupThePeople.cpp.obj
 # target to build an object file
 groupThePeople.cpp.obj:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\groupThePeople.cpp.obj
+	$(MAKE) -f CMakeFiles\groupThePeople.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\groupThePeople.dir\groupThePeople.cpp.obj
 .PHONY : groupThePeople.cpp.obj
 
 groupThePeople.i: groupThePeople.cpp.i
@@ -192,6 +275,7 @@ groupThePeople.i: groupThePeople.cpp.i
 # target to preprocess a source file
 groupThePeople.cpp.i:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\groupThePeople.cpp.i
+	$(MAKE) -f CMakeFiles\groupThePeople.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\groupThePeople.dir\groupThePeople.cpp.i
 .PHONY : groupThePeople.cpp.i
 
 groupThePeople.s: groupThePeople.cpp.s
@@ -201,6 +285,7 @@ groupThePeople.s: groupThePeople.cpp.s
 # target to generate assembly for a file
 groupThePeople.cpp.s:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\groupThePeople.cpp.s
+	$(MAKE) -f CMakeFiles\groupThePeople.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\groupThePeople.dir\groupThePeople.cpp.s
 .PHONY : groupThePeople.cpp.s
 
 main.obj: main.cpp.obj
@@ -229,6 +314,36 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\main.cpp.s
 .PHONY : main.cpp.s
+
+maxSideLength.obj: maxSideLength.cpp.obj
+
+.PHONY : maxSideLength.obj
+
+# target to build an object file
+maxSideLength.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\maxSideLength.cpp.obj
+	$(MAKE) -f CMakeFiles\maxSideLength.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\maxSideLength.dir\maxSideLength.cpp.obj
+.PHONY : maxSideLength.cpp.obj
+
+maxSideLength.i: maxSideLength.cpp.i
+
+.PHONY : maxSideLength.i
+
+# target to preprocess a source file
+maxSideLength.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\maxSideLength.cpp.i
+	$(MAKE) -f CMakeFiles\maxSideLength.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\maxSideLength.dir\maxSideLength.cpp.i
+.PHONY : maxSideLength.cpp.i
+
+maxSideLength.s: maxSideLength.cpp.s
+
+.PHONY : maxSideLength.s
+
+# target to generate assembly for a file
+maxSideLength.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\maxSideLength.cpp.s
+	$(MAKE) -f CMakeFiles\maxSideLength.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\maxSideLength.dir\maxSideLength.cpp.s
+.PHONY : maxSideLength.cpp.s
 
 reconstructMatrix.obj: reconstructMatrix.cpp.obj
 
@@ -259,6 +374,36 @@ reconstructMatrix.cpp.s:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\reconstructMatrix.cpp.s
 	$(MAKE) -f CMakeFiles\reconstructMatrix.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reconstructMatrix.dir\reconstructMatrix.cpp.s
 .PHONY : reconstructMatrix.cpp.s
+
+sequentialDigits.obj: sequentialDigits.cpp.obj
+
+.PHONY : sequentialDigits.obj
+
+# target to build an object file
+sequentialDigits.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sequentialDigits.cpp.obj
+	$(MAKE) -f CMakeFiles\sequentialDigits.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sequentialDigits.dir\sequentialDigits.cpp.obj
+.PHONY : sequentialDigits.cpp.obj
+
+sequentialDigits.i: sequentialDigits.cpp.i
+
+.PHONY : sequentialDigits.i
+
+# target to preprocess a source file
+sequentialDigits.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sequentialDigits.cpp.i
+	$(MAKE) -f CMakeFiles\sequentialDigits.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sequentialDigits.dir\sequentialDigits.cpp.i
+.PHONY : sequentialDigits.cpp.i
+
+sequentialDigits.s: sequentialDigits.cpp.s
+
+.PHONY : sequentialDigits.s
+
+# target to generate assembly for a file
+sequentialDigits.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sequentialDigits.cpp.s
+	$(MAKE) -f CMakeFiles\sequentialDigits.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sequentialDigits.dir\sequentialDigits.cpp.s
+.PHONY : sequentialDigits.cpp.s
 
 subtractProductAndSum.obj: subtractProductAndSum.cpp.obj
 
@@ -355,20 +500,33 @@ help:
 	@echo ... depend
 	@echo ... project8test
 	@echo ... project8
-	@echo ... rebuild_cache
 	@echo ... test2
+	@echo ... groupThePeople
 	@echo ... subtractProductAndSum
 	@echo ... reconstructMatrix
+	@echo ... getDecimalValue
+	@echo ... sequentialDigits
+	@echo ... maxSideLength
 	@echo ... edit_cache
+	@echo ... rebuild_cache
+	@echo ... getDecimalValue.obj
+	@echo ... getDecimalValue.i
+	@echo ... getDecimalValue.s
 	@echo ... groupThePeople.obj
 	@echo ... groupThePeople.i
 	@echo ... groupThePeople.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... maxSideLength.obj
+	@echo ... maxSideLength.i
+	@echo ... maxSideLength.s
 	@echo ... reconstructMatrix.obj
 	@echo ... reconstructMatrix.i
 	@echo ... reconstructMatrix.s
+	@echo ... sequentialDigits.obj
+	@echo ... sequentialDigits.i
+	@echo ... sequentialDigits.s
 	@echo ... subtractProductAndSum.obj
 	@echo ... subtractProductAndSum.i
 	@echo ... subtractProductAndSum.s
