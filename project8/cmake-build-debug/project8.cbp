@@ -61,6 +61,50 @@
 					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="xorQueries">
+				<Option output="E:/class/leetcode/project8/cmake-build-debug/xorQueries.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:\vs\2015\VC\INCLUDE"/>
+					<Add directory="D:\vs\2015\VC\ATLMFC\INCLUDE"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 xorQueries"/>
+					<CompileFile command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="xorQueries/fast">
+				<Option output="E:/class/leetcode/project8/cmake-build-debug/xorQueries.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:\vs\2015\VC\INCLUDE"/>
+					<Add directory="D:\vs\2015\VC\ATLMFC\INCLUDE"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 xorQueries/fast"/>
+					<CompileFile command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="project8">
 				<Option output="E:/class/leetcode/project8/cmake-build-debug/project8.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
@@ -413,6 +457,138 @@
 					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="findNumbers">
+				<Option output="E:/class/leetcode/project8/cmake-build-debug/findNumbers.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:\vs\2015\VC\INCLUDE"/>
+					<Add directory="D:\vs\2015\VC\ATLMFC\INCLUDE"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 findNumbers"/>
+					<CompileFile command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="findNumbers/fast">
+				<Option output="E:/class/leetcode/project8/cmake-build-debug/findNumbers.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:\vs\2015\VC\INCLUDE"/>
+					<Add directory="D:\vs\2015\VC\ATLMFC\INCLUDE"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 findNumbers/fast"/>
+					<CompileFile command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="isPossibleDivide">
+				<Option output="E:/class/leetcode/project8/cmake-build-debug/isPossibleDivide.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:\vs\2015\VC\INCLUDE"/>
+					<Add directory="D:\vs\2015\VC\ATLMFC\INCLUDE"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 isPossibleDivide"/>
+					<CompileFile command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="isPossibleDivide/fast">
+				<Option output="E:/class/leetcode/project8/cmake-build-debug/isPossibleDivide.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:\vs\2015\VC\INCLUDE"/>
+					<Add directory="D:\vs\2015\VC\ATLMFC\INCLUDE"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 isPossibleDivide/fast"/>
+					<CompileFile command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="freqAlphabets">
+				<Option output="E:/class/leetcode/project8/cmake-build-debug/freqAlphabets.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:\vs\2015\VC\INCLUDE"/>
+					<Add directory="D:\vs\2015\VC\ATLMFC\INCLUDE"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 freqAlphabets"/>
+					<CompileFile command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="freqAlphabets/fast">
+				<Option output="E:/class/leetcode/project8/cmake-build-debug/freqAlphabets.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="D:\vs\2015\VC\INCLUDE"/>
+					<Add directory="D:\vs\2015\VC\ATLMFC\INCLUDE"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 freqAlphabets/fast"/>
+					<CompileFile command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f E:\class\leetcode\project8\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="E:/class/leetcode/project8/cmake-build-debug"/>
 				<Option type="4"/>
@@ -434,6 +610,14 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="E:/class/leetcode/project8/findNumbers.cpp">
+			<Option target="project8"/>
+			<Option target="findNumbers"/>
+		</Unit>
+		<Unit filename="E:/class/leetcode/project8/freqAlphabets.cpp">
+			<Option target="project8"/>
+			<Option target="freqAlphabets"/>
+		</Unit>
 		<Unit filename="E:/class/leetcode/project8/getDecimalValue.cpp">
 			<Option target="project8"/>
 			<Option target="getDecimalValue"/>
@@ -441,6 +625,10 @@
 		<Unit filename="E:/class/leetcode/project8/groupThePeople.cpp">
 			<Option target="project8"/>
 			<Option target="groupThePeople"/>
+		</Unit>
+		<Unit filename="E:/class/leetcode/project8/isPossibleDivide.cpp">
+			<Option target="project8"/>
+			<Option target="isPossibleDivide"/>
 		</Unit>
 		<Unit filename="E:/class/leetcode/project8/main.cpp">
 			<Option target="project8"/>
@@ -467,6 +655,10 @@
 		<Unit filename="E:/class/leetcode/project8/test2.cpp">
 			<Option target="project8"/>
 			<Option target="test2"/>
+		</Unit>
+		<Unit filename="E:/class/leetcode/project8/xorQueries.cpp">
+			<Option target="xorQueries"/>
+			<Option target="project8"/>
 		</Unit>
 		<Unit filename="E:/class/leetcode/project8/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

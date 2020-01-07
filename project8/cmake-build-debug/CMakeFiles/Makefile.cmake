@@ -48,6 +48,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/project8test.dir/DependInfo.cmake"
+  "CMakeFiles/xorQueries.dir/DependInfo.cmake"
   "CMakeFiles/project8.dir/DependInfo.cmake"
   "CMakeFiles/test2.dir/DependInfo.cmake"
   "CMakeFiles/groupThePeople.dir/DependInfo.cmake"
@@ -56,4 +57,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/getDecimalValue.dir/DependInfo.cmake"
   "CMakeFiles/sequentialDigits.dir/DependInfo.cmake"
   "CMakeFiles/maxSideLength.dir/DependInfo.cmake"
+  "CMakeFiles/findNumbers.dir/DependInfo.cmake"
+  "CMakeFiles/isPossibleDivide.dir/DependInfo.cmake"
+  "CMakeFiles/freqAlphabets.dir/DependInfo.cmake"
   )

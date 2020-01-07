@@ -72,7 +72,7 @@ CMAKE_BINARY_DIR = E:\class\leetcode\project8\cmake-build-debug
 CMakeFiles\project8test.dir\all:
 	$(MAKE) -f CMakeFiles\project8test.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8test.dir\depend
 	$(MAKE) -f CMakeFiles\project8test.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=16,17 "Built target project8test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=26,27 "Built target project8test"
 .PHONY : CMakeFiles\project8test.dir\all
 
 # Include target in all.
@@ -103,13 +103,50 @@ clean: CMakeFiles\project8test.dir\clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/xorQueries.dir
+
+# All Build rule for target.
+CMakeFiles\xorQueries.dir\all:
+	$(MAKE) -f CMakeFiles\xorQueries.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\xorQueries.dir\depend
+	$(MAKE) -f CMakeFiles\xorQueries.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\xorQueries.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=36,37 "Built target xorQueries"
+.PHONY : CMakeFiles\xorQueries.dir\all
+
+# Include target in all.
+all: CMakeFiles\xorQueries.dir\all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\xorQueries.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\xorQueries.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles\xorQueries.dir\rule
+
+# Convenience name for target.
+xorQueries: CMakeFiles\xorQueries.dir\rule
+
+.PHONY : xorQueries
+
+# clean rule for target.
+CMakeFiles\xorQueries.dir\clean:
+	$(MAKE) -f CMakeFiles\xorQueries.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\xorQueries.dir\clean
+.PHONY : CMakeFiles\xorQueries.dir\clean
+
+# clean rule for target.
+clean: CMakeFiles\xorQueries.dir\clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/project8.dir
 
 # All Build rule for target.
 CMakeFiles\project8.dir\all:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\depend
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15 "Built target project8"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=13,14,15,16,17,18,19,20,21,22,23,24,25 "Built target project8"
 .PHONY : CMakeFiles\project8.dir\all
 
 # Include target in all.
@@ -119,7 +156,7 @@ all: CMakeFiles\project8.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\project8.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 13
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles\project8.dir\rule
@@ -146,7 +183,7 @@ clean: CMakeFiles\project8.dir\clean
 CMakeFiles\test2.dir\all:
 	$(MAKE) -f CMakeFiles\test2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test2.dir\depend
 	$(MAKE) -f CMakeFiles\test2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test2.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=24,25 "Built target test2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=34,35 "Built target test2"
 .PHONY : CMakeFiles\test2.dir\all
 
 # Include target in all.
@@ -183,7 +220,7 @@ clean: CMakeFiles\test2.dir\clean
 CMakeFiles\groupThePeople.dir\all:
 	$(MAKE) -f CMakeFiles\groupThePeople.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\groupThePeople.dir\depend
 	$(MAKE) -f CMakeFiles\groupThePeople.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\groupThePeople.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=3,4 "Built target groupThePeople"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=7,8 "Built target groupThePeople"
 .PHONY : CMakeFiles\groupThePeople.dir\all
 
 # Include target in all.
@@ -220,7 +257,7 @@ clean: CMakeFiles\groupThePeople.dir\clean
 CMakeFiles\subtractProductAndSum.dir\all:
 	$(MAKE) -f CMakeFiles\subtractProductAndSum.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\subtractProductAndSum.dir\depend
 	$(MAKE) -f CMakeFiles\subtractProductAndSum.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\subtractProductAndSum.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=22,23 "Built target subtractProductAndSum"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=32,33 "Built target subtractProductAndSum"
 .PHONY : CMakeFiles\subtractProductAndSum.dir\all
 
 # Include target in all.
@@ -257,7 +294,7 @@ clean: CMakeFiles\subtractProductAndSum.dir\clean
 CMakeFiles\reconstructMatrix.dir\all:
 	$(MAKE) -f CMakeFiles\reconstructMatrix.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reconstructMatrix.dir\depend
 	$(MAKE) -f CMakeFiles\reconstructMatrix.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reconstructMatrix.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=18,19 "Built target reconstructMatrix"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=28,29 "Built target reconstructMatrix"
 .PHONY : CMakeFiles\reconstructMatrix.dir\all
 
 # Include target in all.
@@ -294,7 +331,7 @@ clean: CMakeFiles\reconstructMatrix.dir\clean
 CMakeFiles\getDecimalValue.dir\all:
 	$(MAKE) -f CMakeFiles\getDecimalValue.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\getDecimalValue.dir\depend
 	$(MAKE) -f CMakeFiles\getDecimalValue.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\getDecimalValue.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target getDecimalValue"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target getDecimalValue"
 .PHONY : CMakeFiles\getDecimalValue.dir\all
 
 # Include target in all.
@@ -331,7 +368,7 @@ clean: CMakeFiles\getDecimalValue.dir\clean
 CMakeFiles\sequentialDigits.dir\all:
 	$(MAKE) -f CMakeFiles\sequentialDigits.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sequentialDigits.dir\depend
 	$(MAKE) -f CMakeFiles\sequentialDigits.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sequentialDigits.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=20,21 "Built target sequentialDigits"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=30,31 "Built target sequentialDigits"
 .PHONY : CMakeFiles\sequentialDigits.dir\all
 
 # Include target in all.
@@ -368,7 +405,7 @@ clean: CMakeFiles\sequentialDigits.dir\clean
 CMakeFiles\maxSideLength.dir\all:
 	$(MAKE) -f CMakeFiles\maxSideLength.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\maxSideLength.dir\depend
 	$(MAKE) -f CMakeFiles\maxSideLength.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\maxSideLength.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target maxSideLength"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=11,12 "Built target maxSideLength"
 .PHONY : CMakeFiles\maxSideLength.dir\all
 
 # Include target in all.
@@ -395,6 +432,117 @@ CMakeFiles\maxSideLength.dir\clean:
 
 # clean rule for target.
 clean: CMakeFiles\maxSideLength.dir\clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/findNumbers.dir
+
+# All Build rule for target.
+CMakeFiles\findNumbers.dir\all:
+	$(MAKE) -f CMakeFiles\findNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\depend
+	$(MAKE) -f CMakeFiles\findNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target findNumbers"
+.PHONY : CMakeFiles\findNumbers.dir\all
+
+# Include target in all.
+all: CMakeFiles\findNumbers.dir\all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\findNumbers.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles\findNumbers.dir\rule
+
+# Convenience name for target.
+findNumbers: CMakeFiles\findNumbers.dir\rule
+
+.PHONY : findNumbers
+
+# clean rule for target.
+CMakeFiles\findNumbers.dir\clean:
+	$(MAKE) -f CMakeFiles\findNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\clean
+.PHONY : CMakeFiles\findNumbers.dir\clean
+
+# clean rule for target.
+clean: CMakeFiles\findNumbers.dir\clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/isPossibleDivide.dir
+
+# All Build rule for target.
+CMakeFiles\isPossibleDivide.dir\all:
+	$(MAKE) -f CMakeFiles\isPossibleDivide.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\depend
+	$(MAKE) -f CMakeFiles\isPossibleDivide.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target isPossibleDivide"
+.PHONY : CMakeFiles\isPossibleDivide.dir\all
+
+# Include target in all.
+all: CMakeFiles\isPossibleDivide.dir\all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\isPossibleDivide.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles\isPossibleDivide.dir\rule
+
+# Convenience name for target.
+isPossibleDivide: CMakeFiles\isPossibleDivide.dir\rule
+
+.PHONY : isPossibleDivide
+
+# clean rule for target.
+CMakeFiles\isPossibleDivide.dir\clean:
+	$(MAKE) -f CMakeFiles\isPossibleDivide.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\clean
+.PHONY : CMakeFiles\isPossibleDivide.dir\clean
+
+# clean rule for target.
+clean: CMakeFiles\isPossibleDivide.dir\clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/freqAlphabets.dir
+
+# All Build rule for target.
+CMakeFiles\freqAlphabets.dir\all:
+	$(MAKE) -f CMakeFiles\freqAlphabets.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\depend
+	$(MAKE) -f CMakeFiles\freqAlphabets.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=3,4 "Built target freqAlphabets"
+.PHONY : CMakeFiles\freqAlphabets.dir\all
+
+# Include target in all.
+all: CMakeFiles\freqAlphabets.dir\all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\freqAlphabets.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\class\leetcode\project8\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles\freqAlphabets.dir\rule
+
+# Convenience name for target.
+freqAlphabets: CMakeFiles\freqAlphabets.dir\rule
+
+.PHONY : freqAlphabets
+
+# clean rule for target.
+CMakeFiles\freqAlphabets.dir\clean:
+	$(MAKE) -f CMakeFiles\freqAlphabets.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\clean
+.PHONY : CMakeFiles\freqAlphabets.dir\clean
+
+# clean rule for target.
+clean: CMakeFiles\freqAlphabets.dir\clean
 
 .PHONY : clean
 

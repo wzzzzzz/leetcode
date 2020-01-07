@@ -125,6 +125,19 @@ project8test\fast:
 .PHONY : project8test\fast
 
 #=============================================================================
+# Target rules for targets named xorQueries
+
+# Build rule for target.
+xorQueries: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) xorQueries
+.PHONY : xorQueries
+
+# fast build rule for target.
+xorQueries\fast:
+	$(MAKE) -f CMakeFiles\xorQueries.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\xorQueries.dir\build
+.PHONY : xorQueries\fast
+
+#=============================================================================
 # Target rules for targets named project8
 
 # Build rule for target.
@@ -228,6 +241,105 @@ maxSideLength\fast:
 	$(MAKE) -f CMakeFiles\maxSideLength.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\maxSideLength.dir\build
 .PHONY : maxSideLength\fast
 
+#=============================================================================
+# Target rules for targets named findNumbers
+
+# Build rule for target.
+findNumbers: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) findNumbers
+.PHONY : findNumbers
+
+# fast build rule for target.
+findNumbers\fast:
+	$(MAKE) -f CMakeFiles\findNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\build
+.PHONY : findNumbers\fast
+
+#=============================================================================
+# Target rules for targets named isPossibleDivide
+
+# Build rule for target.
+isPossibleDivide: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) isPossibleDivide
+.PHONY : isPossibleDivide
+
+# fast build rule for target.
+isPossibleDivide\fast:
+	$(MAKE) -f CMakeFiles\isPossibleDivide.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\build
+.PHONY : isPossibleDivide\fast
+
+#=============================================================================
+# Target rules for targets named freqAlphabets
+
+# Build rule for target.
+freqAlphabets: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) freqAlphabets
+.PHONY : freqAlphabets
+
+# fast build rule for target.
+freqAlphabets\fast:
+	$(MAKE) -f CMakeFiles\freqAlphabets.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\build
+.PHONY : freqAlphabets\fast
+
+findNumbers.obj: findNumbers.cpp.obj
+
+.PHONY : findNumbers.obj
+
+# target to build an object file
+findNumbers.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\findNumbers.cpp.obj
+	$(MAKE) -f CMakeFiles\findNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\findNumbers.cpp.obj
+.PHONY : findNumbers.cpp.obj
+
+findNumbers.i: findNumbers.cpp.i
+
+.PHONY : findNumbers.i
+
+# target to preprocess a source file
+findNumbers.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\findNumbers.cpp.i
+	$(MAKE) -f CMakeFiles\findNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\findNumbers.cpp.i
+.PHONY : findNumbers.cpp.i
+
+findNumbers.s: findNumbers.cpp.s
+
+.PHONY : findNumbers.s
+
+# target to generate assembly for a file
+findNumbers.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\findNumbers.cpp.s
+	$(MAKE) -f CMakeFiles\findNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\findNumbers.cpp.s
+.PHONY : findNumbers.cpp.s
+
+freqAlphabets.obj: freqAlphabets.cpp.obj
+
+.PHONY : freqAlphabets.obj
+
+# target to build an object file
+freqAlphabets.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\freqAlphabets.cpp.obj
+	$(MAKE) -f CMakeFiles\freqAlphabets.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\freqAlphabets.cpp.obj
+.PHONY : freqAlphabets.cpp.obj
+
+freqAlphabets.i: freqAlphabets.cpp.i
+
+.PHONY : freqAlphabets.i
+
+# target to preprocess a source file
+freqAlphabets.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\freqAlphabets.cpp.i
+	$(MAKE) -f CMakeFiles\freqAlphabets.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\freqAlphabets.cpp.i
+.PHONY : freqAlphabets.cpp.i
+
+freqAlphabets.s: freqAlphabets.cpp.s
+
+.PHONY : freqAlphabets.s
+
+# target to generate assembly for a file
+freqAlphabets.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\freqAlphabets.cpp.s
+	$(MAKE) -f CMakeFiles\freqAlphabets.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\freqAlphabets.cpp.s
+.PHONY : freqAlphabets.cpp.s
+
 getDecimalValue.obj: getDecimalValue.cpp.obj
 
 .PHONY : getDecimalValue.obj
@@ -287,6 +399,36 @@ groupThePeople.cpp.s:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\groupThePeople.cpp.s
 	$(MAKE) -f CMakeFiles\groupThePeople.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\groupThePeople.dir\groupThePeople.cpp.s
 .PHONY : groupThePeople.cpp.s
+
+isPossibleDivide.obj: isPossibleDivide.cpp.obj
+
+.PHONY : isPossibleDivide.obj
+
+# target to build an object file
+isPossibleDivide.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\isPossibleDivide.cpp.obj
+	$(MAKE) -f CMakeFiles\isPossibleDivide.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\isPossibleDivide.cpp.obj
+.PHONY : isPossibleDivide.cpp.obj
+
+isPossibleDivide.i: isPossibleDivide.cpp.i
+
+.PHONY : isPossibleDivide.i
+
+# target to preprocess a source file
+isPossibleDivide.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\isPossibleDivide.cpp.i
+	$(MAKE) -f CMakeFiles\isPossibleDivide.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\isPossibleDivide.cpp.i
+.PHONY : isPossibleDivide.cpp.i
+
+isPossibleDivide.s: isPossibleDivide.cpp.s
+
+.PHONY : isPossibleDivide.s
+
+# target to generate assembly for a file
+isPossibleDivide.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\isPossibleDivide.cpp.s
+	$(MAKE) -f CMakeFiles\isPossibleDivide.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\isPossibleDivide.cpp.s
+.PHONY : isPossibleDivide.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -492,6 +634,36 @@ test2.cpp.s:
 	$(MAKE) -f CMakeFiles\test2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test2.dir\test2.cpp.s
 .PHONY : test2.cpp.s
 
+xorQueries.obj: xorQueries.cpp.obj
+
+.PHONY : xorQueries.obj
+
+# target to build an object file
+xorQueries.cpp.obj:
+	$(MAKE) -f CMakeFiles\xorQueries.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\xorQueries.dir\xorQueries.cpp.obj
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\xorQueries.cpp.obj
+.PHONY : xorQueries.cpp.obj
+
+xorQueries.i: xorQueries.cpp.i
+
+.PHONY : xorQueries.i
+
+# target to preprocess a source file
+xorQueries.cpp.i:
+	$(MAKE) -f CMakeFiles\xorQueries.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\xorQueries.dir\xorQueries.cpp.i
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\xorQueries.cpp.i
+.PHONY : xorQueries.cpp.i
+
+xorQueries.s: xorQueries.cpp.s
+
+.PHONY : xorQueries.s
+
+# target to generate assembly for a file
+xorQueries.cpp.s:
+	$(MAKE) -f CMakeFiles\xorQueries.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\xorQueries.dir\xorQueries.cpp.s
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\xorQueries.cpp.s
+.PHONY : xorQueries.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -499,6 +671,7 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... project8test
+	@echo ... xorQueries
 	@echo ... project8
 	@echo ... test2
 	@echo ... groupThePeople
@@ -507,14 +680,26 @@ help:
 	@echo ... getDecimalValue
 	@echo ... sequentialDigits
 	@echo ... maxSideLength
+	@echo ... findNumbers
+	@echo ... isPossibleDivide
+	@echo ... freqAlphabets
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... findNumbers.obj
+	@echo ... findNumbers.i
+	@echo ... findNumbers.s
+	@echo ... freqAlphabets.obj
+	@echo ... freqAlphabets.i
+	@echo ... freqAlphabets.s
 	@echo ... getDecimalValue.obj
 	@echo ... getDecimalValue.i
 	@echo ... getDecimalValue.s
 	@echo ... groupThePeople.obj
 	@echo ... groupThePeople.i
 	@echo ... groupThePeople.s
+	@echo ... isPossibleDivide.obj
+	@echo ... isPossibleDivide.i
+	@echo ... isPossibleDivide.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
@@ -536,6 +721,9 @@ help:
 	@echo ... test2.obj
 	@echo ... test2.i
 	@echo ... test2.s
+	@echo ... xorQueries.obj
+	@echo ... xorQueries.i
+	@echo ... xorQueries.s
 .PHONY : help
 
 
