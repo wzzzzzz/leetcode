@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/class/leetcode/project8/watchedVideosByFriends.cpp
+iostream
+E:/class/leetcode/project8/iostream
+vector
+E:/class/leetcode/project8/vector
+queue
+E:/class/leetcode/project8/queue
+map
+E:/class/leetcode/project8/map
+string
+E:/class/leetcode/project8/string
+

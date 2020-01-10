@@ -60,4 +60,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/findNumbers.dir/DependInfo.cmake"
   "CMakeFiles/isPossibleDivide.dir/DependInfo.cmake"
   "CMakeFiles/freqAlphabets.dir/DependInfo.cmake"
+  "CMakeFiles/watchedVideosByFriends.dir/DependInfo.cmake"
   )

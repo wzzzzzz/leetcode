@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "E:/class/leetcode/project8/sequentialDigits.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/sequentialDigits.cpp.obj"
   "E:/class/leetcode/project8/subtractProductAndSum.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/subtractProductAndSum.cpp.obj"
   "E:/class/leetcode/project8/test2.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/test2.cpp.obj"
+  "E:/class/leetcode/project8/watchedVideosByFriends.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/watchedVideosByFriends.cpp.obj"
   "E:/class/leetcode/project8/xorQueries.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/xorQueries.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")

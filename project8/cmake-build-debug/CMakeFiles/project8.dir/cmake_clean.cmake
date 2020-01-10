@@ -11,6 +11,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/project8.dir/isPossibleDivide.cpp.obj"
   "CMakeFiles/project8.dir/freqAlphabets.cpp.obj"
   "CMakeFiles/project8.dir/xorQueries.cpp.obj"
+  "CMakeFiles/project8.dir/watchedVideosByFriends.cpp.obj"
   "project8.pdb"
   "project8.exe"
   "project8.exe.manifest"

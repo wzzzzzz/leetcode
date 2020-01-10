@@ -280,6 +280,19 @@ freqAlphabets\fast:
 	$(MAKE) -f CMakeFiles\freqAlphabets.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\freqAlphabets.dir\build
 .PHONY : freqAlphabets\fast
 
+#=============================================================================
+# Target rules for targets named watchedVideosByFriends
+
+# Build rule for target.
+watchedVideosByFriends: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) watchedVideosByFriends
+.PHONY : watchedVideosByFriends
+
+# fast build rule for target.
+watchedVideosByFriends\fast:
+	$(MAKE) -f CMakeFiles\watchedVideosByFriends.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\watchedVideosByFriends.dir\build
+.PHONY : watchedVideosByFriends\fast
+
 findNumbers.obj: findNumbers.cpp.obj
 
 .PHONY : findNumbers.obj
@@ -634,6 +647,36 @@ test2.cpp.s:
 	$(MAKE) -f CMakeFiles\test2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test2.dir\test2.cpp.s
 .PHONY : test2.cpp.s
 
+watchedVideosByFriends.obj: watchedVideosByFriends.cpp.obj
+
+.PHONY : watchedVideosByFriends.obj
+
+# target to build an object file
+watchedVideosByFriends.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\watchedVideosByFriends.cpp.obj
+	$(MAKE) -f CMakeFiles\watchedVideosByFriends.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\watchedVideosByFriends.dir\watchedVideosByFriends.cpp.obj
+.PHONY : watchedVideosByFriends.cpp.obj
+
+watchedVideosByFriends.i: watchedVideosByFriends.cpp.i
+
+.PHONY : watchedVideosByFriends.i
+
+# target to preprocess a source file
+watchedVideosByFriends.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\watchedVideosByFriends.cpp.i
+	$(MAKE) -f CMakeFiles\watchedVideosByFriends.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\watchedVideosByFriends.dir\watchedVideosByFriends.cpp.i
+.PHONY : watchedVideosByFriends.cpp.i
+
+watchedVideosByFriends.s: watchedVideosByFriends.cpp.s
+
+.PHONY : watchedVideosByFriends.s
+
+# target to generate assembly for a file
+watchedVideosByFriends.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\watchedVideosByFriends.cpp.s
+	$(MAKE) -f CMakeFiles\watchedVideosByFriends.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\watchedVideosByFriends.dir\watchedVideosByFriends.cpp.s
+.PHONY : watchedVideosByFriends.cpp.s
+
 xorQueries.obj: xorQueries.cpp.obj
 
 .PHONY : xorQueries.obj
@@ -683,6 +726,7 @@ help:
 	@echo ... findNumbers
 	@echo ... isPossibleDivide
 	@echo ... freqAlphabets
+	@echo ... watchedVideosByFriends
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... findNumbers.obj
@@ -721,6 +765,9 @@ help:
 	@echo ... test2.obj
 	@echo ... test2.i
 	@echo ... test2.s
+	@echo ... watchedVideosByFriends.obj
+	@echo ... watchedVideosByFriends.i
+	@echo ... watchedVideosByFriends.s
 	@echo ... xorQueries.obj
 	@echo ... xorQueries.i
 	@echo ... xorQueries.s
