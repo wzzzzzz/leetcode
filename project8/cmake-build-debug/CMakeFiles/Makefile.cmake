@@ -61,4 +61,12 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/isPossibleDivide.dir/DependInfo.cmake"
   "CMakeFiles/freqAlphabets.dir/DependInfo.cmake"
   "CMakeFiles/watchedVideosByFriends.dir/DependInfo.cmake"
+  "CMakeFiles/sortList.dir/DependInfo.cmake"
+  "CMakeFiles/evalRPN.dir/DependInfo.cmake"
+  "CMakeFiles/reverseWords.dir/DependInfo.cmake"
+  "CMakeFiles/findMin.dir/DependInfo.cmake"
+  "CMakeFiles/compareVersion.dir/DependInfo.cmake"
+  "CMakeFiles/fractionToDecimal.dir/DependInfo.cmake"
+  "CMakeFiles/BSTIterator.dir/DependInfo.cmake"
+  "CMakeFiles/sumNumbers.dir/DependInfo.cmake"
   )

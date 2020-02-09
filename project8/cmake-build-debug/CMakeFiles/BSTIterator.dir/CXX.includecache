@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/class/leetcode/project8/BSTIterator.cpp
+iostream
+E:/class/leetcode/project8/iostream
+vector
+E:/class/leetcode/project8/vector
+stack
+E:/class/leetcode/project8/stack
+queue
+E:/class/leetcode/project8/queue
+

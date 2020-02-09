@@ -57,17 +57,6 @@ CMAKE_BINARY_DIR = E:\class\leetcode\project8\cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	echo >nul && "D:\clion\CLion 2019.2.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache\fast: edit_cache
-
-.PHONY : edit_cache\fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -78,6 +67,17 @@ rebuild_cache:
 rebuild_cache\fast: rebuild_cache
 
 .PHONY : rebuild_cache\fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	echo >nul && "D:\clion\CLion 2019.2.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache\fast: edit_cache
+
+.PHONY : edit_cache\fast
 
 # The main all target
 all: cmake_check_build_system
@@ -293,6 +293,230 @@ watchedVideosByFriends\fast:
 	$(MAKE) -f CMakeFiles\watchedVideosByFriends.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\watchedVideosByFriends.dir\build
 .PHONY : watchedVideosByFriends\fast
 
+#=============================================================================
+# Target rules for targets named sortList
+
+# Build rule for target.
+sortList: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) sortList
+.PHONY : sortList
+
+# fast build rule for target.
+sortList\fast:
+	$(MAKE) -f CMakeFiles\sortList.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sortList.dir\build
+.PHONY : sortList\fast
+
+#=============================================================================
+# Target rules for targets named evalRPN
+
+# Build rule for target.
+evalRPN: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) evalRPN
+.PHONY : evalRPN
+
+# fast build rule for target.
+evalRPN\fast:
+	$(MAKE) -f CMakeFiles\evalRPN.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\evalRPN.dir\build
+.PHONY : evalRPN\fast
+
+#=============================================================================
+# Target rules for targets named reverseWords
+
+# Build rule for target.
+reverseWords: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) reverseWords
+.PHONY : reverseWords
+
+# fast build rule for target.
+reverseWords\fast:
+	$(MAKE) -f CMakeFiles\reverseWords.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reverseWords.dir\build
+.PHONY : reverseWords\fast
+
+#=============================================================================
+# Target rules for targets named findMin
+
+# Build rule for target.
+findMin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) findMin
+.PHONY : findMin
+
+# fast build rule for target.
+findMin\fast:
+	$(MAKE) -f CMakeFiles\findMin.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findMin.dir\build
+.PHONY : findMin\fast
+
+#=============================================================================
+# Target rules for targets named compareVersion
+
+# Build rule for target.
+compareVersion: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) compareVersion
+.PHONY : compareVersion
+
+# fast build rule for target.
+compareVersion\fast:
+	$(MAKE) -f CMakeFiles\compareVersion.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\compareVersion.dir\build
+.PHONY : compareVersion\fast
+
+#=============================================================================
+# Target rules for targets named fractionToDecimal
+
+# Build rule for target.
+fractionToDecimal: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) fractionToDecimal
+.PHONY : fractionToDecimal
+
+# fast build rule for target.
+fractionToDecimal\fast:
+	$(MAKE) -f CMakeFiles\fractionToDecimal.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\fractionToDecimal.dir\build
+.PHONY : fractionToDecimal\fast
+
+#=============================================================================
+# Target rules for targets named BSTIterator
+
+# Build rule for target.
+BSTIterator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) BSTIterator
+.PHONY : BSTIterator
+
+# fast build rule for target.
+BSTIterator\fast:
+	$(MAKE) -f CMakeFiles\BSTIterator.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\BSTIterator.dir\build
+.PHONY : BSTIterator\fast
+
+#=============================================================================
+# Target rules for targets named sumNumbers
+
+# Build rule for target.
+sumNumbers: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) sumNumbers
+.PHONY : sumNumbers
+
+# fast build rule for target.
+sumNumbers\fast:
+	$(MAKE) -f CMakeFiles\sumNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sumNumbers.dir\build
+.PHONY : sumNumbers\fast
+
+BSTIterator.obj: BSTIterator.cpp.obj
+
+.PHONY : BSTIterator.obj
+
+# target to build an object file
+BSTIterator.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\BSTIterator.cpp.obj
+	$(MAKE) -f CMakeFiles\BSTIterator.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\BSTIterator.dir\BSTIterator.cpp.obj
+.PHONY : BSTIterator.cpp.obj
+
+BSTIterator.i: BSTIterator.cpp.i
+
+.PHONY : BSTIterator.i
+
+# target to preprocess a source file
+BSTIterator.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\BSTIterator.cpp.i
+	$(MAKE) -f CMakeFiles\BSTIterator.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\BSTIterator.dir\BSTIterator.cpp.i
+.PHONY : BSTIterator.cpp.i
+
+BSTIterator.s: BSTIterator.cpp.s
+
+.PHONY : BSTIterator.s
+
+# target to generate assembly for a file
+BSTIterator.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\BSTIterator.cpp.s
+	$(MAKE) -f CMakeFiles\BSTIterator.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\BSTIterator.dir\BSTIterator.cpp.s
+.PHONY : BSTIterator.cpp.s
+
+compareVersion.obj: compareVersion.cpp.obj
+
+.PHONY : compareVersion.obj
+
+# target to build an object file
+compareVersion.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\compareVersion.cpp.obj
+	$(MAKE) -f CMakeFiles\compareVersion.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\compareVersion.dir\compareVersion.cpp.obj
+.PHONY : compareVersion.cpp.obj
+
+compareVersion.i: compareVersion.cpp.i
+
+.PHONY : compareVersion.i
+
+# target to preprocess a source file
+compareVersion.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\compareVersion.cpp.i
+	$(MAKE) -f CMakeFiles\compareVersion.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\compareVersion.dir\compareVersion.cpp.i
+.PHONY : compareVersion.cpp.i
+
+compareVersion.s: compareVersion.cpp.s
+
+.PHONY : compareVersion.s
+
+# target to generate assembly for a file
+compareVersion.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\compareVersion.cpp.s
+	$(MAKE) -f CMakeFiles\compareVersion.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\compareVersion.dir\compareVersion.cpp.s
+.PHONY : compareVersion.cpp.s
+
+evalRPN.obj: evalRPN.cpp.obj
+
+.PHONY : evalRPN.obj
+
+# target to build an object file
+evalRPN.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\evalRPN.cpp.obj
+	$(MAKE) -f CMakeFiles\evalRPN.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\evalRPN.dir\evalRPN.cpp.obj
+.PHONY : evalRPN.cpp.obj
+
+evalRPN.i: evalRPN.cpp.i
+
+.PHONY : evalRPN.i
+
+# target to preprocess a source file
+evalRPN.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\evalRPN.cpp.i
+	$(MAKE) -f CMakeFiles\evalRPN.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\evalRPN.dir\evalRPN.cpp.i
+.PHONY : evalRPN.cpp.i
+
+evalRPN.s: evalRPN.cpp.s
+
+.PHONY : evalRPN.s
+
+# target to generate assembly for a file
+evalRPN.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\evalRPN.cpp.s
+	$(MAKE) -f CMakeFiles\evalRPN.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\evalRPN.dir\evalRPN.cpp.s
+.PHONY : evalRPN.cpp.s
+
+findMin.obj: findMin.cpp.obj
+
+.PHONY : findMin.obj
+
+# target to build an object file
+findMin.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\findMin.cpp.obj
+	$(MAKE) -f CMakeFiles\findMin.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findMin.dir\findMin.cpp.obj
+.PHONY : findMin.cpp.obj
+
+findMin.i: findMin.cpp.i
+
+.PHONY : findMin.i
+
+# target to preprocess a source file
+findMin.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\findMin.cpp.i
+	$(MAKE) -f CMakeFiles\findMin.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findMin.dir\findMin.cpp.i
+.PHONY : findMin.cpp.i
+
+findMin.s: findMin.cpp.s
+
+.PHONY : findMin.s
+
+# target to generate assembly for a file
+findMin.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\findMin.cpp.s
+	$(MAKE) -f CMakeFiles\findMin.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findMin.dir\findMin.cpp.s
+.PHONY : findMin.cpp.s
+
 findNumbers.obj: findNumbers.cpp.obj
 
 .PHONY : findNumbers.obj
@@ -322,6 +546,36 @@ findNumbers.cpp.s:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\findNumbers.cpp.s
 	$(MAKE) -f CMakeFiles\findNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\findNumbers.dir\findNumbers.cpp.s
 .PHONY : findNumbers.cpp.s
+
+fractionToDecimal.obj: fractionToDecimal.cpp.obj
+
+.PHONY : fractionToDecimal.obj
+
+# target to build an object file
+fractionToDecimal.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\fractionToDecimal.cpp.obj
+	$(MAKE) -f CMakeFiles\fractionToDecimal.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\fractionToDecimal.dir\fractionToDecimal.cpp.obj
+.PHONY : fractionToDecimal.cpp.obj
+
+fractionToDecimal.i: fractionToDecimal.cpp.i
+
+.PHONY : fractionToDecimal.i
+
+# target to preprocess a source file
+fractionToDecimal.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\fractionToDecimal.cpp.i
+	$(MAKE) -f CMakeFiles\fractionToDecimal.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\fractionToDecimal.dir\fractionToDecimal.cpp.i
+.PHONY : fractionToDecimal.cpp.i
+
+fractionToDecimal.s: fractionToDecimal.cpp.s
+
+.PHONY : fractionToDecimal.s
+
+# target to generate assembly for a file
+fractionToDecimal.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\fractionToDecimal.cpp.s
+	$(MAKE) -f CMakeFiles\fractionToDecimal.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\fractionToDecimal.dir\fractionToDecimal.cpp.s
+.PHONY : fractionToDecimal.cpp.s
 
 freqAlphabets.obj: freqAlphabets.cpp.obj
 
@@ -530,6 +784,36 @@ reconstructMatrix.cpp.s:
 	$(MAKE) -f CMakeFiles\reconstructMatrix.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reconstructMatrix.dir\reconstructMatrix.cpp.s
 .PHONY : reconstructMatrix.cpp.s
 
+reverseWords.obj: reverseWords.cpp.obj
+
+.PHONY : reverseWords.obj
+
+# target to build an object file
+reverseWords.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\reverseWords.cpp.obj
+	$(MAKE) -f CMakeFiles\reverseWords.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reverseWords.dir\reverseWords.cpp.obj
+.PHONY : reverseWords.cpp.obj
+
+reverseWords.i: reverseWords.cpp.i
+
+.PHONY : reverseWords.i
+
+# target to preprocess a source file
+reverseWords.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\reverseWords.cpp.i
+	$(MAKE) -f CMakeFiles\reverseWords.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reverseWords.dir\reverseWords.cpp.i
+.PHONY : reverseWords.cpp.i
+
+reverseWords.s: reverseWords.cpp.s
+
+.PHONY : reverseWords.s
+
+# target to generate assembly for a file
+reverseWords.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\reverseWords.cpp.s
+	$(MAKE) -f CMakeFiles\reverseWords.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\reverseWords.dir\reverseWords.cpp.s
+.PHONY : reverseWords.cpp.s
+
 sequentialDigits.obj: sequentialDigits.cpp.obj
 
 .PHONY : sequentialDigits.obj
@@ -560,6 +844,36 @@ sequentialDigits.cpp.s:
 	$(MAKE) -f CMakeFiles\sequentialDigits.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sequentialDigits.dir\sequentialDigits.cpp.s
 .PHONY : sequentialDigits.cpp.s
 
+sortList.obj: sortList.cpp.obj
+
+.PHONY : sortList.obj
+
+# target to build an object file
+sortList.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sortList.cpp.obj
+	$(MAKE) -f CMakeFiles\sortList.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sortList.dir\sortList.cpp.obj
+.PHONY : sortList.cpp.obj
+
+sortList.i: sortList.cpp.i
+
+.PHONY : sortList.i
+
+# target to preprocess a source file
+sortList.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sortList.cpp.i
+	$(MAKE) -f CMakeFiles\sortList.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sortList.dir\sortList.cpp.i
+.PHONY : sortList.cpp.i
+
+sortList.s: sortList.cpp.s
+
+.PHONY : sortList.s
+
+# target to generate assembly for a file
+sortList.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sortList.cpp.s
+	$(MAKE) -f CMakeFiles\sortList.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sortList.dir\sortList.cpp.s
+.PHONY : sortList.cpp.s
+
 subtractProductAndSum.obj: subtractProductAndSum.cpp.obj
 
 .PHONY : subtractProductAndSum.obj
@@ -589,6 +903,36 @@ subtractProductAndSum.cpp.s:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\subtractProductAndSum.cpp.s
 	$(MAKE) -f CMakeFiles\subtractProductAndSum.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\subtractProductAndSum.dir\subtractProductAndSum.cpp.s
 .PHONY : subtractProductAndSum.cpp.s
+
+sumNumbers.obj: sumNumbers.cpp.obj
+
+.PHONY : sumNumbers.obj
+
+# target to build an object file
+sumNumbers.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sumNumbers.cpp.obj
+	$(MAKE) -f CMakeFiles\sumNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sumNumbers.dir\sumNumbers.cpp.obj
+.PHONY : sumNumbers.cpp.obj
+
+sumNumbers.i: sumNumbers.cpp.i
+
+.PHONY : sumNumbers.i
+
+# target to preprocess a source file
+sumNumbers.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sumNumbers.cpp.i
+	$(MAKE) -f CMakeFiles\sumNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sumNumbers.dir\sumNumbers.cpp.i
+.PHONY : sumNumbers.cpp.i
+
+sumNumbers.s: sumNumbers.cpp.s
+
+.PHONY : sumNumbers.s
+
+# target to generate assembly for a file
+sumNumbers.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\sumNumbers.cpp.s
+	$(MAKE) -f CMakeFiles\sumNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sumNumbers.dir\sumNumbers.cpp.s
+.PHONY : sumNumbers.cpp.s
 
 test.obj: test.cpp.obj
 
@@ -727,11 +1071,34 @@ help:
 	@echo ... isPossibleDivide
 	@echo ... freqAlphabets
 	@echo ... watchedVideosByFriends
-	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... sortList
+	@echo ... evalRPN
+	@echo ... reverseWords
+	@echo ... findMin
+	@echo ... compareVersion
+	@echo ... fractionToDecimal
+	@echo ... edit_cache
+	@echo ... BSTIterator
+	@echo ... sumNumbers
+	@echo ... BSTIterator.obj
+	@echo ... BSTIterator.i
+	@echo ... BSTIterator.s
+	@echo ... compareVersion.obj
+	@echo ... compareVersion.i
+	@echo ... compareVersion.s
+	@echo ... evalRPN.obj
+	@echo ... evalRPN.i
+	@echo ... evalRPN.s
+	@echo ... findMin.obj
+	@echo ... findMin.i
+	@echo ... findMin.s
 	@echo ... findNumbers.obj
 	@echo ... findNumbers.i
 	@echo ... findNumbers.s
+	@echo ... fractionToDecimal.obj
+	@echo ... fractionToDecimal.i
+	@echo ... fractionToDecimal.s
 	@echo ... freqAlphabets.obj
 	@echo ... freqAlphabets.i
 	@echo ... freqAlphabets.s
@@ -753,12 +1120,21 @@ help:
 	@echo ... reconstructMatrix.obj
 	@echo ... reconstructMatrix.i
 	@echo ... reconstructMatrix.s
+	@echo ... reverseWords.obj
+	@echo ... reverseWords.i
+	@echo ... reverseWords.s
 	@echo ... sequentialDigits.obj
 	@echo ... sequentialDigits.i
 	@echo ... sequentialDigits.s
+	@echo ... sortList.obj
+	@echo ... sortList.i
+	@echo ... sortList.s
 	@echo ... subtractProductAndSum.obj
 	@echo ... subtractProductAndSum.i
 	@echo ... subtractProductAndSum.s
+	@echo ... sumNumbers.obj
+	@echo ... sumNumbers.i
+	@echo ... sumNumbers.s
 	@echo ... test.obj
 	@echo ... test.i
 	@echo ... test.s

@@ -4,7 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "E:/class/leetcode/project8/BSTIterator.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/BSTIterator.cpp.obj"
+  "E:/class/leetcode/project8/compareVersion.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/compareVersion.cpp.obj"
+  "E:/class/leetcode/project8/evalRPN.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/evalRPN.cpp.obj"
+  "E:/class/leetcode/project8/findMin.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/findMin.cpp.obj"
   "E:/class/leetcode/project8/findNumbers.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/findNumbers.cpp.obj"
+  "E:/class/leetcode/project8/fractionToDecimal.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/fractionToDecimal.cpp.obj"
   "E:/class/leetcode/project8/freqAlphabets.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/freqAlphabets.cpp.obj"
   "E:/class/leetcode/project8/getDecimalValue.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/getDecimalValue.cpp.obj"
   "E:/class/leetcode/project8/groupThePeople.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/groupThePeople.cpp.obj"
@@ -12,8 +17,11 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "E:/class/leetcode/project8/main.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/main.cpp.obj"
   "E:/class/leetcode/project8/maxSideLength.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/maxSideLength.cpp.obj"
   "E:/class/leetcode/project8/reconstructMatrix.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/reconstructMatrix.cpp.obj"
+  "E:/class/leetcode/project8/reverseWords.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/reverseWords.cpp.obj"
   "E:/class/leetcode/project8/sequentialDigits.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/sequentialDigits.cpp.obj"
+  "E:/class/leetcode/project8/sortList.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/sortList.cpp.obj"
   "E:/class/leetcode/project8/subtractProductAndSum.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/subtractProductAndSum.cpp.obj"
+  "E:/class/leetcode/project8/sumNumbers.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/sumNumbers.cpp.obj"
   "E:/class/leetcode/project8/test2.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/test2.cpp.obj"
   "E:/class/leetcode/project8/watchedVideosByFriends.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/watchedVideosByFriends.cpp.obj"
   "E:/class/leetcode/project8/xorQueries.cpp" "E:/class/leetcode/project8/cmake-build-debug/CMakeFiles/project8.dir/xorQueries.cpp.obj"

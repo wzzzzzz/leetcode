@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/class/leetcode/project8/fractionToDecimal.cpp
+iostream
+E:/class/leetcode/project8/iostream
+stdio.h
+E:/class/leetcode/project8/stdio.h
+stdlib.h
+E:/class/leetcode/project8/stdlib.h
+vector
+E:/class/leetcode/project8/vector
+string
+E:/class/leetcode/project8/string
+map
+E:/class/leetcode/project8/map
+cstdlib
+E:/class/leetcode/project8/cstdlib
+sstream
+E:/class/leetcode/project8/sstream
+
