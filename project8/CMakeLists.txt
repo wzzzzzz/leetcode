@@ -3,7 +3,7 @@ project(project8)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(project8 main.cpp test2.cpp reconstructMatrix.cpp subtractProductAndSum.cpp groupThePeople.cpp getDecimalValue.cpp sequentialDigits.cpp maxSideLength.cpp findNumbers.cpp isPossibleDivide.cpp freqAlphabets.cpp xorQueries.cpp watchedVideosByFriends.cpp sortList.cpp evalRPN.cpp reverseWords.cpp findMin.cpp compareVersion.cpp fractionToDecimal.cpp BSTIterator.cpp sumNumbers.cpp)
+add_executable(project8 main.cpp test2.cpp reconstructMatrix.cpp subtractProductAndSum.cpp groupThePeople.cpp getDecimalValue.cpp sequentialDigits.cpp maxSideLength.cpp findNumbers.cpp isPossibleDivide.cpp freqAlphabets.cpp xorQueries.cpp watchedVideosByFriends.cpp sortList.cpp evalRPN.cpp reverseWords.cpp findMin.cpp compareVersion.cpp fractionToDecimal.cpp BSTIterator.cpp sumNumbers.cpp largestNumber.cpp)
 add_executable(project8test test.cpp)
 add_executable(test2 test2.cpp)
 add_executable(reconstructMatrix reconstructMatrix.cpp)
@@ -25,3 +25,4 @@ add_executable(compareVersion compareVersion.cpp)
 add_executable(fractionToDecimal fractionToDecimal.cpp)
 add_executable(BSTIterator BSTIterator.cpp)
 add_executable(sumNumbers sumNumbers.cpp)
+add_executable(largestNumber largestNumber.cpp)

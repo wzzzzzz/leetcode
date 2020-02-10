@@ -397,6 +397,19 @@ sumNumbers\fast:
 	$(MAKE) -f CMakeFiles\sumNumbers.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sumNumbers.dir\build
 .PHONY : sumNumbers\fast
 
+#=============================================================================
+# Target rules for targets named largestNumber
+
+# Build rule for target.
+largestNumber: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) largestNumber
+.PHONY : largestNumber
+
+# fast build rule for target.
+largestNumber\fast:
+	$(MAKE) -f CMakeFiles\largestNumber.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\largestNumber.dir\build
+.PHONY : largestNumber\fast
+
 BSTIterator.obj: BSTIterator.cpp.obj
 
 .PHONY : BSTIterator.obj
@@ -696,6 +709,36 @@ isPossibleDivide.cpp.s:
 	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\isPossibleDivide.cpp.s
 	$(MAKE) -f CMakeFiles\isPossibleDivide.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\isPossibleDivide.dir\isPossibleDivide.cpp.s
 .PHONY : isPossibleDivide.cpp.s
+
+largestNumber.obj: largestNumber.cpp.obj
+
+.PHONY : largestNumber.obj
+
+# target to build an object file
+largestNumber.cpp.obj:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\largestNumber.cpp.obj
+	$(MAKE) -f CMakeFiles\largestNumber.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\largestNumber.dir\largestNumber.cpp.obj
+.PHONY : largestNumber.cpp.obj
+
+largestNumber.i: largestNumber.cpp.i
+
+.PHONY : largestNumber.i
+
+# target to preprocess a source file
+largestNumber.cpp.i:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\largestNumber.cpp.i
+	$(MAKE) -f CMakeFiles\largestNumber.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\largestNumber.dir\largestNumber.cpp.i
+.PHONY : largestNumber.cpp.i
+
+largestNumber.s: largestNumber.cpp.s
+
+.PHONY : largestNumber.s
+
+# target to generate assembly for a file
+largestNumber.cpp.s:
+	$(MAKE) -f CMakeFiles\project8.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project8.dir\largestNumber.cpp.s
+	$(MAKE) -f CMakeFiles\largestNumber.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\largestNumber.dir\largestNumber.cpp.s
+.PHONY : largestNumber.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -1081,6 +1124,7 @@ help:
 	@echo ... edit_cache
 	@echo ... BSTIterator
 	@echo ... sumNumbers
+	@echo ... largestNumber
 	@echo ... BSTIterator.obj
 	@echo ... BSTIterator.i
 	@echo ... BSTIterator.s
@@ -1111,6 +1155,9 @@ help:
 	@echo ... isPossibleDivide.obj
 	@echo ... isPossibleDivide.i
 	@echo ... isPossibleDivide.s
+	@echo ... largestNumber.obj
+	@echo ... largestNumber.i
+	@echo ... largestNumber.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -457,6 +457,25 @@ CMakeFiles\project8.dir\sumNumbers.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\project8.dir\sumNumbers.cpp.s /c E:\class\leetcode\project8\sumNumbers.cpp
 <<
 
+CMakeFiles\project8.dir\largestNumber.cpp.obj: CMakeFiles\project8.dir\flags.make
+CMakeFiles\project8.dir\largestNumber.cpp.obj: ..\largestNumber.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/project8.dir/largestNumber.cpp.obj"
+	D:\vs\2015\VC\bin\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\project8.dir\largestNumber.cpp.obj /FdCMakeFiles\project8.dir\ /FS -c E:\class\leetcode\project8\largestNumber.cpp
+<<
+
+CMakeFiles\project8.dir\largestNumber.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/project8.dir/largestNumber.cpp.i"
+	D:\vs\2015\VC\bin\cl.exe > CMakeFiles\project8.dir\largestNumber.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\class\leetcode\project8\largestNumber.cpp
+<<
+
+CMakeFiles\project8.dir\largestNumber.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/project8.dir/largestNumber.cpp.s"
+	D:\vs\2015\VC\bin\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\project8.dir\largestNumber.cpp.s /c E:\class\leetcode\project8\largestNumber.cpp
+<<
+
 # Object files for target project8
 project8_OBJECTS = \
 "CMakeFiles\project8.dir\main.cpp.obj" \
@@ -479,7 +498,8 @@ project8_OBJECTS = \
 "CMakeFiles\project8.dir\compareVersion.cpp.obj" \
 "CMakeFiles\project8.dir\fractionToDecimal.cpp.obj" \
 "CMakeFiles\project8.dir\BSTIterator.cpp.obj" \
-"CMakeFiles\project8.dir\sumNumbers.cpp.obj"
+"CMakeFiles\project8.dir\sumNumbers.cpp.obj" \
+"CMakeFiles\project8.dir\largestNumber.cpp.obj"
 
 # External object files for target project8
 project8_EXTERNAL_OBJECTS =
@@ -505,9 +525,10 @@ project8.exe: CMakeFiles\project8.dir\compareVersion.cpp.obj
 project8.exe: CMakeFiles\project8.dir\fractionToDecimal.cpp.obj
 project8.exe: CMakeFiles\project8.dir\BSTIterator.cpp.obj
 project8.exe: CMakeFiles\project8.dir\sumNumbers.cpp.obj
+project8.exe: CMakeFiles\project8.dir\largestNumber.cpp.obj
 project8.exe: CMakeFiles\project8.dir\build.make
 project8.exe: CMakeFiles\project8.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable project8.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\class\leetcode\project8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Linking CXX executable project8.exe"
 	"D:\clion\CLion 2019.2.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\project8.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\x86\mt.exe --manifests  -- D:\vs\2015\VC\bin\link.exe /nologo @CMakeFiles\project8.dir\objects1.rsp @<<
  /out:project8.exe /implib:project8.lib /pdb:E:\class\leetcode\project8\cmake-build-debug\project8.pdb /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
