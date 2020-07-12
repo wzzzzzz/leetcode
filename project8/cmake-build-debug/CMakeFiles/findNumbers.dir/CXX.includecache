@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/class/leetcode/project8/findNumbers.cpp
+iostream
+E:/class/leetcode/project8/iostream
+vector
+E:/class/leetcode/project8/vector
+

@@ -1,4 +1,213 @@
 
+var u=[[1,0],[-1,0],[0,1],[0,-1]];
+function dfs(x,y){
+    for(var i=0;i<4;i++){
+        var xx=x+u[i][0];
+        var yy=y+u[i][0];
+        if(xx>=0&&xx<n&&yy>=0&&yy<m&&(s[xx][yy])){
+            s[xx][yy]=0;
+            dfs(xx,yy);
+        }
+    }
+}
+
+function m(){
+    var n;
+    var m;
+    var s=[];
+    line=readline();
+    var lines=line.split(',');
+    n=parseInt(lines[0]);
+    m=parseInt(lines[1]);
+    while(line=readline()){
+        var lines=line.split(',');
+        var t=[];
+        for(var i=0;i<m;i++){
+            var tmp=lines[i];
+            t.push(tmp);
+        }
+        s.push(t);
+    }
+    for(var i=0;i<n;i++){
+        for(var j=0;j<m;j++){
+            sum++;
+            dfs(i,j);
+        }
+    }
+    console.log(sum);
+}
+m();
+
+
+// function func(str){
+//     var len=str.length;
+//     var s="";
+//     var stack=[];
+//     var stacknum=[];
+//     var n=0;
+//     var tmpres="";
+//     var res="";
+//     for(var i=0;i<len;i++){
+//         if(str[i]=='['){
+//             stacknum.push(n);
+//             s="";
+//         }
+//         else if(str[i]==']'){
+//             n=stacknum.pop();
+//             while(n>0){
+//                 tmpres+=s;
+//                 n--;
+//             }
+//             if(stack.length!=0){
+//                 stack.push(stack.pop()+tmpres);
+//             }
+//             else stack.push(tmpres);
+
+//             n=0;
+//             s="";
+//         }
+//         else if(str[i]<='9'&&str[i]>='0'){
+//             n*=10;
+//             n+=(str[i]-'0');
+//         }
+//         else{
+//             s+=str[i];
+//         }
+//     }
+//     res="";
+//     console.log(stack.length);
+//     console.log(stacknum.length);
+//     while(stack.length!=1){
+//         res="";
+//         var ts=stack.pop();
+//         var tn=stacknum.pop();
+//         while(tn>0){
+//             res=ts+res;
+//             tn--;
+//         }
+//         stack.push(stack.pop()+res);
+//     }
+//     res=stack.pop();
+//     console.log(res);
+// }
+// var t="2[a2[c]]";
+// func(t);
+
+
+// var rl=require('readline');
+// const r=rl.createInterface({
+//     input:process.stdin,
+//     output:process.stdout
+// })
+
+// r.on('line',function(){
+//     var token
+// })
+
+// function func(arr){
+//     var len=arr.length;
+//     var res=[];
+//     for(var i=0;i<len;i++){
+//         if(typeof arr[i]=="number"){
+//             res.push(arr[i]);
+//         }
+//         else {
+//             res=res.concat(func(arr[i]));
+//         }
+//     }
+//     return res;
+// }
+// var t=[ [1, 2, 2 ], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 10];
+// t=func(t);
+// console.log(t);
+
+
+
+
+// var ind=str.indexOf('\\n');
+// if(ind==-1){
+//     //console.log(str);
+// }
+// else{
+//     str=str.substr(0,ind);
+//     str+=lastMsg;
+//     //console.log(str);
+// }
+
+
+// function f(str){
+//     var tmp=str;
+//     var lastMsg = "\n\nToo large to show...";
+//     var ind=str.indexOf('\n');
+//     if(ind==-1){
+//         console.log(str);
+//     }
+//     else{
+//         str=[];
+//         var s;    
+//         while(ind!=-1){
+//             s=tmp.substr(0,ind);          
+//             s+=lastMsg;
+//             str.push(s);
+//             tmp=tmp.substr(ind+1);
+//             ind=tmp.indexOf('\n');
+//             console.log(s);
+//         }
+//         s=tmp;
+//         s+=lastMsg;
+//         str.push(s);
+//     }
+// }
+// var t="hello \nworld\n!";
+// console.log(t);
+// f(t);
+
+
+// var func=function(arr){
+//     var m=arr.length;
+//     var res=[];
+//     if(m==0){
+//         return;
+//     }
+//     var count=Math.floor(m/2);
+//     for(var i=0;i<count;i++){
+//         for(var j=0+i;j<m-i;j++){
+//             res.push(arr[0+i][j]);
+//         }
+//         for(var j=1+i;j<m-i;j++){
+//             res.push(arr[j][m-1-i]);
+//         }
+//         for(var j=m-2-i;j>=0+i;j--){
+//             res.push(arr[m-1-i][j]);
+//         }
+//         for(var j=m-2-i;j>0+i;j--){
+//             res.push(arr[j][0+i]);
+//         }
+//     }
+//     //console.log(res);
+//     if(m%2!=0){
+//         res.push(arr[i][i]);
+//     }
+
+//     return res;
+// }
+
+// var main=function(){
+//     var arr=[
+//         [1, 2, 3],
+//         [5, 6, 7],
+//         [9, 10, 11]
+//     ];
+//     var res=func(arr);
+//     for(var i=0;i<res.length;i++){
+//         console.log(res[i]);
+//     }
+
+// }
+// main();
+
+
+
 
 /****************************************猿辅导2019第一题*********************************************/
 

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/class/leetcode/project8/xorQueries.cpp
+iostream
+E:/class/leetcode/project8/iostream
+vector
+E:/class/leetcode/project8/vector
+string
+E:/class/leetcode/project8/string
+algorithm
+E:/class/leetcode/project8/algorithm
+

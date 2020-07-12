@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/class/leetcode/project8/isPossibleDivide.cpp
+iostream
+E:/class/leetcode/project8/iostream
+vector
+E:/class/leetcode/project8/vector
+algorithm
+E:/class/leetcode/project8/algorithm
+map
+E:/class/leetcode/project8/map
+
