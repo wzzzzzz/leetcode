@@ -7,8 +7,101 @@
 
 using namespace std;
 
+vector<long long int> calnn(int n) {
+	vector<long long int> res(n + 1, 0);
+	res[0] = 1;
+	res[1] = 1;
+	for (int i = 2; i <= n; i++) {
+		res[i] = i * res[i - 1];
+		res[i] %= 1000000007;
+	}
+	return res;
+}
+
+long long int calres(int n, int m, vector<long long int> nn) {
+	long long int res = 0;
+	long long int tmp = 0;
+	int t = m > n ? n : m;
+	for (int i = 0; i < t; i++) {
+		tmp = (nn[i + 1] * nn[n - i - 1]) % 100000007;
+		if (tmp != 0) {
+			tmp = nn[n] / tmp;
+			tmp %= 1000000007;
+		}
+		else tmp = 0;
+
+		if (i != 0 && i != m - 1) {
+			tmp *= calres(m - i, i, nn);
+			tmp %= 1000000007;
+		}
+		res += tmp;
+	}
+	return res;
+}
+
+int main() {
+	int n, m;
+	cin >> n;
+	cin >> m;
+	long long int res;
+	if (m == 1) {
+		return n;
+	}
+
+	//vector<vector<int>> res(n, vector<int>(m, 0));
+	//for (int i = 0; i < m; i++) {
+	//	res[i][0] = 1;
+	//}
 
 
+	vector<long long int> nn = calnn(n);
+
+	res = calres(n, m, nn);
+	res %= 1000000007;
+	cout << res;
+
+	system("pause");
+	return 0;
+}
+
+
+//int main() {
+//	vector<int> nums;
+//	int tmp;
+//	while (cin >> tmp) {
+//		nums.push_back(tmp);
+//	}
+//	
+//	int len = nums.size();
+//	if (len == 0) {
+//		cout << -1;
+//		return 0;
+//	}
+//	if (len == 1) {
+//		cout << 1;
+//		return 0;
+//	}
+//
+//	vector<int> path(len,-1);
+//	int min = 100;
+//	for (int i = len - 2; i > 0; i--) {
+//		if (nums[i] + i == len - 1) {
+//			path[i] = 1;
+//		}
+//		else if (path[i] + i < len-1 && path[path[i] + i] != -1) {
+//			path[i] = 1 + path[path[i] + i];
+//		}
+//		if (i < len / 2 && path[i] > 0 && path[i] < min) {
+//			min = path[i];
+//		}
+//	}
+//	if (min == 100) {
+//		cout << -1;
+//	}
+//	else cout << min + 1;
+//	system("pause");
+//	return 0;
+//}
 
 
 
